@@ -209,7 +209,8 @@ echo "Downloading eclipse to $PWD"
 
 cp /home/data/httpd/download.eclipse.org/eclipse/downloads/drops4/R-4.5.2-201602121500/eclipse-SDK-4.5.2-linux-gtk-x86_64.tar.gz .
 ls -la
-tar -xzf eclipse-SDK-4.5.2-linux-gtk-x86_64.tar.gzcd eclipse
+tar -xzf eclipse-SDK-4.5.2-linux-gtk-x86_64.tar.gz
+cd eclipse
 chmod 700 eclipse
 cd ..
 if [ ! -d "eclipse" ];
