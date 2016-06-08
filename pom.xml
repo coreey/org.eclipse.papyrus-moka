@@ -50,9 +50,9 @@
 
 		<!-- Platform properties -->
 		<env.ui.test>-Xms512m -Xmx2048m -XX:MaxPermSize=512M</env.ui.test>
-		
+
 		<testConfig>CI_TESTS_CONFIG</testConfig> <!-- See org.eclipse.papyrus.junit.framework.classification.ClassificationConfig -->
-	
+
 	</properties>
 
 	<pluginRepositories>
@@ -66,7 +66,7 @@
 		<pluginRepository>
 			<id>eclipse.org-mylyn</id>
 			<url>https://repo.eclipse.org/content/repositories/mylyn/</url>
-		</pluginRepository>			
+		</pluginRepository>
 	</pluginRepositories>
 	<build>
 		<pluginManagement>
@@ -353,5 +353,53 @@
 				<ui.test.vmargs>${env.ui.test}</ui.test.vmargs>
 			</properties>
 		</profile>
+		<profile>
+			<id>sign-moka</id>
+			<build>
+				<plugins>
+					<!-- Plugins for signing build artifacts -->
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-pack200a-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>pack200-normalize</id>
+								<goals>
+									<goal>normalize</goal>
+								</goals>
+								<phase>verify</phase>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.cbi.maven.plugins</groupId>
+						<artifactId>eclipse-jarsigner-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<phase>verify</phase>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-pack200b-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>pack200-pack</id>
+								<goals>
+									<goal>pack</goal>
+								</goals>
+								<phase>verify</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
+	
 </project>
