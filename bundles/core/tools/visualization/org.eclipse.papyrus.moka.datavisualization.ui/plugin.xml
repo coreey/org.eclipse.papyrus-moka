@@ -117,4 +117,11 @@
             provider="org.eclipse.papyrus.moka.datavisualization.ui.XYGraphFilteredLabelProvider">
       </labelProvider>
    </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.properties.contexts">
+      <context
+            contextModel="properties/DataVisualizationProfile.ctx"
+            isCustomizable="true">
+      </context>
+   </extension>
 </plugin>

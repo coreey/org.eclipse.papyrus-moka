@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ASCII"?>
+<contexts:Context xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:constraints="http://www.eclipse.org/papyrus/constraints/0.9" xmlns:contexts="http://www.eclipse.org/papyrus/properties/contexts/0.9" xmi:id="_QvCsYFi2EeatBaRLz94xqw" name="DataVisualizationProfile">
+  <dependencies href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_69QJkKDJEeSZxfCXzZz3-w"/>
+  <tabs xmi:id="_cynL8Fi2EeatBaRLz94xqw" label="Data Visualization" id="datavisualizationprofile" priority="100">
+    <sections xmi:id="_cy78EFi2EeatBaRLz94xqw" name="Single DataSource" sectionFile="ui/SingleDataSource.xwt">
+      <widget href="ui/SingleDataSource.xwt#/"/>
+    </sections>
+    <sections xmi:id="_cy8jIFi2EeatBaRLz94xqw" name="Multiple DataSource" sectionFile="ui/MultipleDataSource.xwt">
+      <widget href="ui/MultipleDataSource.xwt#/"/>
+    </sections>
+    <sections xmi:id="_cy9KMFi2EeatBaRLz94xqw" name="Single DoubleSeries" sectionFile="ui/SingleDoubleSeries.xwt">
+      <widget href="ui/SingleDoubleSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_cy9xQFi2EeatBaRLz94xqw" name="Multiple DoubleSeries" sectionFile="ui/MultipleDoubleSeries.xwt">
+      <widget href="ui/MultipleDoubleSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_cy-YUFi2EeatBaRLz94xqw" name="Single ValueSeries" sectionFile="ui/SingleValueSeries.xwt">
+      <widget href="ui/SingleValueSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_cy-YUVi2EeatBaRLz94xqw" name="Multiple ValueSeries" sectionFile="ui/MultipleValueSeries.xwt">
+      <widget href="ui/MultipleValueSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_cy-_YFi2EeatBaRLz94xqw" name="Single StringSeries" sectionFile="ui/SingleStringSeries.xwt">
+      <widget href="ui/SingleStringSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_cy_mcFi2EeatBaRLz94xqw" name="Multiple StringSeries" sectionFile="ui/MultipleStringSeries.xwt">
+      <widget href="ui/MultipleStringSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_czANgFi2EeatBaRLz94xqw" name="Single IntegerSeries" sectionFile="ui/SingleIntegerSeries.xwt">
+      <widget href="ui/SingleIntegerSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_czANgVi2EeatBaRLz94xqw" name="Multiple IntegerSeries" sectionFile="ui/MultipleIntegerSeries.xwt">
+      <widget href="ui/MultipleIntegerSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_czA0kFi2EeatBaRLz94xqw" name="Single BooleanSeries" sectionFile="ui/SingleBooleanSeries.xwt">
+      <widget href="ui/SingleBooleanSeries.xwt#/"/>
+    </sections>
+    <sections xmi:id="_czBboFi2EeatBaRLz94xqw" name="Multiple BooleanSeries" sectionFile="ui/MultipleBooleanSeries.xwt">
+      <widget href="ui/MultipleBooleanSeries.xwt#/"/>
+    </sections>
+  </tabs>
+  <views xmi:id="_QvCsYVi2EeatBaRLz94xqw" name="Single DataSource" sections="_cy78EFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCsi1i2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsYli2EeatBaRLz94xqw" name="isSingleDataSource">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCsY1i2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::DataSource"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsZFi2EeatBaRLz94xqw" elementMultiplicity="-1" name="Multiple DataSource" sections="_cy8jIFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCsi1i2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsZVi2EeatBaRLz94xqw" name="isMultipleDataSource">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCsZli2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::DataSource"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsZ1i2EeatBaRLz94xqw" name="Single DoubleSeries" sections="_cy9KMFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCsjVi2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsaFi2EeatBaRLz94xqw" name="isSingleDoubleSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCsaVi2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::DoubleSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsali2EeatBaRLz94xqw" elementMultiplicity="-1" name="Multiple DoubleSeries" sections="_cy9xQFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCsjVi2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsa1i2EeatBaRLz94xqw" name="isMultipleDoubleSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCsbFi2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::DoubleSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsbVi2EeatBaRLz94xqw" name="Single ValueSeries" sections="_cy-YUFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCshli2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsbli2EeatBaRLz94xqw" name="isSingleValueSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCsb1i2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::ValueSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCscFi2EeatBaRLz94xqw" elementMultiplicity="-1" name="Multiple ValueSeries" sections="_cy-YUVi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCshli2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCscVi2EeatBaRLz94xqw" name="isMultipleValueSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCscli2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::ValueSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsc1i2EeatBaRLz94xqw" name="Single StringSeries" sections="_cy-_YFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCskVi2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsdFi2EeatBaRLz94xqw" name="isSingleStringSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCsdVi2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::StringSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsdli2EeatBaRLz94xqw" elementMultiplicity="-1" name="Multiple StringSeries" sections="_cy_mcFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCskVi2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsd1i2EeatBaRLz94xqw" name="isMultipleStringSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCseFi2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::StringSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCseVi2EeatBaRLz94xqw" name="Single IntegerSeries" sections="_czANgFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCsiVi2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCseli2EeatBaRLz94xqw" name="isSingleIntegerSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCse1i2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::IntegerSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsfFi2EeatBaRLz94xqw" elementMultiplicity="-1" name="Multiple IntegerSeries" sections="_czANgVi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCsiVi2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsfVi2EeatBaRLz94xqw" name="isMultipleIntegerSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCsfli2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::IntegerSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsf1i2EeatBaRLz94xqw" name="Single BooleanSeries" sections="_czA0kFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCsj1i2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsgFi2EeatBaRLz94xqw" name="isSingleBooleanSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCsgVi2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::BooleanSeries"/>
+    </constraints>
+  </views>
+  <views xmi:id="_QvCsgli2EeatBaRLz94xqw" elementMultiplicity="-1" name="Multiple BooleanSeries" sections="_czBboFi2EeatBaRLz94xqw" automaticContext="true" datacontexts="_QvCsj1i2EeatBaRLz94xqw">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_QvCsg1i2EeatBaRLz94xqw" name="isMultipleBooleanSeries">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_QvCshFi2EeatBaRLz94xqw" name="stereotypeName" value="DataVisualizationProfile::BooleanSeries"/>
+    </constraints>
+  </views>
+  <dataContexts xmi:id="_QvCshVi2EeatBaRLz94xqw" name="DataVisualizationProfile">
+    <elements xmi:id="_QvCshli2EeatBaRLz94xqw" name="ValueSeries">
+      <properties xmi:id="_QvCsh1i2EeatBaRLz94xqw" name="binaryString"/>
+      <properties xmi:id="_QvCsiFi2EeatBaRLz94xqw" name="dependent" type="Reference"/>
+      <supertypes href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_690yG6DJEeSZxfCXzZz3-w"/>
+    </elements>
+    <elements xmi:id="_QvCsiVi2EeatBaRLz94xqw" name="IntegerSeries" supertypes="_QvCshli2EeatBaRLz94xqw">
+      <properties xmi:id="_QvCsili2EeatBaRLz94xqw" name="values" multiplicity="-1"/>
+    </elements>
+    <elements xmi:id="_QvCsi1i2EeatBaRLz94xqw" name="DataSource">
+      <properties xmi:id="_QvCsjFi2EeatBaRLz94xqw" name="series" type="Reference" multiplicity="-1"/>
+      <supertypes href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_690y1qDJEeSZxfCXzZz3-w"/>
+    </elements>
+    <elements xmi:id="_QvCsjVi2EeatBaRLz94xqw" name="DoubleSeries" supertypes="_QvCshli2EeatBaRLz94xqw">
+      <properties xmi:id="_QvCsjli2EeatBaRLz94xqw" name="values" multiplicity="-1"/>
+    </elements>
+    <elements xmi:id="_QvCsj1i2EeatBaRLz94xqw" name="BooleanSeries" supertypes="_QvCshli2EeatBaRLz94xqw">
+      <properties xmi:id="_QvCskFi2EeatBaRLz94xqw" name="values" multiplicity="-1"/>
+    </elements>
+    <elements xmi:id="_QvCskVi2EeatBaRLz94xqw" name="StringSeries" supertypes="_QvCshli2EeatBaRLz94xqw">
+      <properties xmi:id="_QvCskli2EeatBaRLz94xqw" name="values" multiplicity="-1"/>
+    </elements>
+    <modelElementFactory href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@modelElementFactories.2"/>
+  </dataContexts>
+</contexts:Context>
