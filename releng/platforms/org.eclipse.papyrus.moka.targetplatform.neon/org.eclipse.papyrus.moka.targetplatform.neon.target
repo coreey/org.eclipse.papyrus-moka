@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="Moka Neon Target Platform" sequenceNumber="1473163852">
+<target name="Moka Neon Target Platform" sequenceNumber="1473794963">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="4.6.0.v20160606-1342"/>
@@ -9,12 +9,8 @@
       <unit id="org.eclipse.jdt.feature.group" version="3.12.0.v20160606-1100"/>
       <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.0.400.v20160504-1450"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.300.v20160525-1303"/>
-      <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="2.0.0.201606080854"/>
+      <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="0.0.0"/>
       <repository id="eclipse-neon" location="http://download.eclipse.org/releases/neon/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.papyrus.dev.feature.feature.group" version="0.0.0"/>
-      <repository id="papyrus-neon-developper-nightly" location="https://hudson.eclipse.org/papyrus/job/Papyrus-Neon-Developer/lastSuccessfulBuild/artifact/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.aspectj.feature.group" version="1.8.9.201603152119"/>

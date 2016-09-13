@@ -9,9 +9,13 @@ location "http://download.eclipse.org/releases/neon/" eclipse-neon {
  org.eclipse.papyrus.sdk.feature.feature.group
 }
 
-location "https://hudson.eclipse.org/papyrus/job/Papyrus-Neon-Developer/lastSuccessfulBuild/artifact/repository/" papyrus-neon-developper-nightly {
+/*
+ * Not used -- Requires Papyrus test framework to be published.
+ * 
+ * location "https://hudson.eclipse.org/papyrus/job/Papyrus-Neon-Developer/lastSuccessfulBuild/artifact/repository/" papyrus-neon-developper-nightly {
  org.eclipse.papyrus.dev.feature.feature.group lazy
 }
+* */
 
 location "http://download.eclipse.org/tools/ajdt/46/dev/update/ajdt-e46-2.2.4.201603152119/" aspectj-neon{
 	org.aspectj.feature.group

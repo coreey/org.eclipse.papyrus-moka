@@ -20,7 +20,7 @@
 	<!-- Children modules to build -->
 	<modules>
 		<module>bundles</module>
-		<module>tests</module>
+		<!-- <module>tests</module> -->
 		<module>releng</module>
 		<module>products</module>
 		<module>features</module>
