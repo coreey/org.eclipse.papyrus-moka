@@ -393,10 +393,10 @@ public class Fmu2ProxyService extends CS_Object {
 				new Object[] { parameters.getModelIdentifier(), // instanceName
 						Fmi2Type.fmi2CoSimulation, // fmuType
 						parameters.getGuid(), // guid
-						parameters.getResourceFolder(), // fmulocation
+				    	"file:///"+parameters.getResourceFolder(), // fmulocation
 						Fmu2Library.cbf, // callback functions
 						false, // visible
-						false },
+						true },
 				""); // loggingOn
 		if (component == null || component.equals(Pointer.NULL)) {
 			fmi2Status = Fmi2Status.fmi2Error;
