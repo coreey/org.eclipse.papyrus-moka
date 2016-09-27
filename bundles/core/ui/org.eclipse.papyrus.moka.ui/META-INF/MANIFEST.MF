@@ -33,6 +33,7 @@ Export-Package: org.eclipse.papyrus.moka.launch,
  org.eclipse.papyrus.moka.ui.breakpoint.decoration,
  org.eclipse.papyrus.moka.ui.breakpoint.handlers,
  org.eclipse.papyrus.moka.ui.launch,
+ org.eclipse.papyrus.moka.ui.perspectives.debug,
  org.eclipse.papyrus.moka.ui.preferences,
  org.eclipse.papyrus.moka.ui.views
 Bundle-Vendor: Eclipse Modeling Project
@@ -42,3 +43,4 @@ Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.papyrus.moka.ui.Activator
 Bundle-SymbolicName: org.eclipse.papyrus.moka.ui;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
