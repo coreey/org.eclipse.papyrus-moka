@@ -3,22 +3,16 @@
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<!-- Parent of this POM is the MOKA project root POM  -->
+	<!-- Parent POM (i.e., the one owned by the releng folder) -->
 	<parent>
 		<groupId>org.eclipse.papyrus.moka</groupId>
-		<artifactId>org.eclipse.papyrus.moka.root</artifactId>
+		<artifactId>org.eclipse.papyrus.moka.releng</artifactId>
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
 	
 	<!-- POM description -->
-	<artifactId>org.eclipse.papyrus.moka.releng</artifactId>
-	<name>Moka Tycho Configuration (Releng folder)</name>
-	<packaging>pom</packaging>
-	
-	<!-- Modules to build -->
-	<modules>
-		<module>platforms</module>
-		<module>org.eclipse.papyrus.moka.p2</module>
-	</modules>
-	
+	<artifactId>org.eclipse.papyrus.moka.releng.p2</artifactId>
+	<name>Moka update site</name>
+	<packaging>eclipse-repository</packaging>
+
 </project>
