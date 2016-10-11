@@ -15,32 +15,37 @@
             <menuContribution
             allPopups="false"
             locationURI="popup:org.eclipse.papyrus.views.modelexplorer.popup.moka">
-         <command commandId="org.eclipse.papyrus.moka.datavisualization.ui.importCSVCommand"
+         <command
+               commandId="org.eclipse.papyrus.moka.datavisualization.ui.createGraph"
+               icon="platform:/plugin/org.eclipse.papyrus.moka.xygraph.common/icons/full/obj16/xygraph16.gif"
+               label="Create Graph"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.eclipse.papyrus.moka.datavisualisation.ui.importCSVCommand"
+               icon="icons/Import CSV-16x16.png"
                label="Import CSV"
                style="push">
-            <visibleWhen checkEnabled="false"></visibleWhen>
+         </command>
+         <command
+               commandId="org.eclipse.papyrus.moka.datavisualisation.ui.ExportCSVCommand"
+               icon="icons/Export CSV-16x16.png"
+               label="Export CSV"
+               style="push">
          </command>
       		</menuContribution>
-            <menuContribution
-                  allPopups="false"
-                  locationURI="popup:org.eclipse.papyrus.views.modelexplorer.popup.moka">
-               <command
-                     commandId="org.eclipse.papyrus.moka.datavisualization.ui.createGraph"
-                     label="Create Graph"
-                     style="push">
-                  <visibleWhen
-                        checkEnabled="true">
-                  </visibleWhen>
-               </command>
-            </menuContribution>
    </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             categoryId="org.eclipse.papyrus.editor.category"
+            defaultHandler="org.eclipse.papyrus.moka.datavisualization.handlers.ImportCSVHandler"
             description="Import CSV file as DataType with DataVisualization Profile stereotypes"
-            id="org.eclipse.papyrus.moka.datavisualization.ui.importCSVCommand"
-            name="ImportCSV">
+            id="org.eclipse.papyrus.moka.datavisualisation.ui.importCSVCommand"
+            name="Import CSV">
       </command>
       <command
             categoryId="org.eclipse.papyrus.editor.category"
@@ -48,28 +53,17 @@
             id="org.eclipse.papyrus.moka.datavisualization.ui.createGraph"
             name="CreateGraph">
       </command>
+      
+      <command
+            categoryId="org.eclipse.papyrus.editor.category"
+            defaultHandler="org.eclipse.papyrus.moka.datavisualization.handlers.ExportCSVHandler"
+            description="Export data Set in a CSV file"
+            id="org.eclipse.papyrus.moka.datavisualisation.ui.ExportCSVCommand"
+            name="Export CSV">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
-      <handler
-            class="org.eclipse.papyrus.moka.datavisualization.ui.ImportCSVHandler"
-            commandId="org.eclipse.papyrus.moka.datavisualization.ui.importCSVCommand">
-         <enabledWhen>
-            <with
-                  variable="selection">
-               <iterate
-                     ifEmpty="false"
-                     operator="and">
-                  <adapt
-                        type="org.eclipse.emf.ecore.EObject">
-                     <instanceof
-                           value="org.eclipse.uml2.uml.Package">
-                     </instanceof>
-                  </adapt>
-               </iterate>
-            </with>
-         </enabledWhen>
-      </handler>
       <handler
             class="org.eclipse.papyrus.moka.datavisualization.handlers.CreateXYGraphFromDataSourceHandler"
             commandId="org.eclipse.papyrus.moka.datavisualization.ui.createGraph">

@@ -18,17 +18,25 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.papyrus.moka.datavisualization.Activator;
+import org.eclipse.papyrus.moka.datavisualization.csv.CSVResource;
 import org.eclipse.papyrus.moka.datavisualization.profile.BooleanSeries;
+import org.eclipse.papyrus.moka.datavisualization.profile.DataSource;
 import org.eclipse.papyrus.moka.datavisualization.profile.DoubleSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.IntegerSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.StringSeries;
@@ -50,7 +58,7 @@ public class VisualizationUtil {
 
 	public static final String DATA_SOURCE_STEREO_QUALIFIED_NAME = VISUALIZATION_PROFILE_NAME + "::"
 			+ DATA_SOURCE_STEREO_NAME;
-	
+
 
 	public static final String PRIMITIVE_TYPE_URI = "pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml";
 	public static final String REAL_NAME = "Real";
@@ -62,7 +70,7 @@ public class VisualizationUtil {
 
 	public static final String BINARY_STRING_ZIP_ENTRY_NAME = "entry";
 
-	
+
 
 	public static Type getUMLTypeForValueSeries(ValueSeries serie) {
 		switch (serie.eClass().getClassifierID()) {
@@ -77,12 +85,12 @@ public class VisualizationUtil {
 		}
 
 	}
-	
-	
-	public static Stereotype getStereotype(EClass stereoEClass, EObject context){
-		
+
+
+	public static Stereotype getStereotype(EClass stereoEClass, EObject context) {
+
 		Profile profile = UMLUtil.getProfile(stereoEClass.getEPackage(), context);
-		if (profile != null){
+		if (profile != null) {
 			return profile.getOwnedStereotype(stereoEClass.getName());
 		}
 		return null;
@@ -134,7 +142,7 @@ public class VisualizationUtil {
 		return null;
 	}
 
-	
+
 
 	public static String getBinaryString(ValueSeries series) {
 		try (ByteArrayOutputStream outputStringStream = new ByteArrayOutputStream();
@@ -304,6 +312,42 @@ public class VisualizationUtil {
 			}
 		}
 
+	}
+
+
+	
+	public static void importCSV(Package targetPackage, String csvFile, String separator) {
+		URI targetURI = URI.createFileURI(csvFile);
+		CSVResource csvRes = new CSVResource();
+		csvRes.setURI(targetURI);
+		
+		Map<Object, Object> options = new HashMap<>();
+		options.put(CSVResource.OPTION_SEPARATOR, separator);
+		options.put(CSVResource.OPTION_TARGET_PACKAGE, targetPackage);
+
+		try {
+			csvRes.load(options);
+		} catch (IOException e) {
+			Activator.log(IStatus.ERROR, "Failed to load csv file", e);
+		}
+	}
+	
+	public static void exportCSV(DataSource dataSource, String targetFile, String separator) {
+		URI targetURI = URI.createFileURI(targetFile);
+		CSVResource csvRes = new CSVResource();
+		csvRes.setURI(targetURI);
+
+		csvRes.getContents().add(EcoreUtil.copy(dataSource));
+
+
+		Map<Object, Object> options = new HashMap<>();
+		options.put(CSVResource.OPTION_SEPARATOR, separator);
+
+		try {
+			csvRes.save(options);
+		} catch (IOException e) {
+			Activator.log(IStatus.ERROR, "Failed to save csv file", e);
+		}
 	}
 
 }

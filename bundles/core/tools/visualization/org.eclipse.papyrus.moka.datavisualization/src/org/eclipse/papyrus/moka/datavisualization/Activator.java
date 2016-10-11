@@ -15,7 +15,11 @@
 package org.eclipse.papyrus.moka.datavisualization;
 
 import org.osgi.framework.BundleContext;
+
+import java.io.IOException;
+
 import org.eclipse.core.runtime.Plugin;
+import org.eclipse.core.runtime.Status;
 
 public class Activator extends Plugin {
 
@@ -28,7 +32,9 @@ public class Activator extends Plugin {
 		instance = this;
 	}
 
-	
+	public static void log(int severity, String message, Exception e){
+		getInstance().getLog().log(new Status(severity,getBundleID(),message,e ));
+	}
 	
 	public static Activator getInstance(){
 		return instance;

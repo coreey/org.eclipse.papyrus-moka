@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <contexts:Context xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:constraints="http://www.eclipse.org/papyrus/constraints/0.9" xmlns:contexts="http://www.eclipse.org/papyrus/properties/contexts/0.9" xmi:id="_3MV3sCixEeaZYvwPs2eqUw" name="xygraph">
-  <tabs xmi:id="_E6axQCiyEeaZYvwPs2eqUw" label="xygraph" id="xygraph" priority="100">
+  <tabs xmi:id="_E6axQCiyEeaZYvwPs2eqUw" label="xygraph" id="xygraph">
     <sections xmi:id="_E6bYUCiyEeaZYvwPs2eqUw" name="Single XYGraphDescriptor" sectionFile="ui/SingleXYGraphDescriptor.xwt">
       <widget href="ui/SingleXYGraphDescriptor.xwt#/"/>
     </sections>

@@ -22,6 +22,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -67,6 +68,7 @@ public class CSVResource extends ResourceImpl {
 	private UMLFactory eFactory = (UMLFactory) UMLPackage.eINSTANCE.getEFactoryInstance();
 	private Package rootModel;
 	private DataType dataType;
+	private DataSource  dataSource;
 	private ArrayList<ValueSeries> seriesList= new ArrayList<>();
 
 	private String DEFAULT_SOURCE_NAME= "CSVFile";
@@ -78,10 +80,7 @@ public class CSVResource extends ResourceImpl {
 	@Override
 	protected void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
 	
-		if (options!= null){
-			rootModel = (Package) options.get(OPTION_TARGET_PACKAGE);
-			
-		}
+		initializeOptions(options);
 		
 		URI uri = getURI();
 		String sourceName = DEFAULT_SOURCE_NAME;
@@ -144,21 +143,22 @@ public class CSVResource extends ResourceImpl {
 
 
 
-//	private void initializeOptions(Map<?, ?> options) {
-//		if (options != null){
-//
-//			Object optionSeparator = options.get(OPTION_SEPARATOR);
-//			if (optionSeparator instanceof String){
-//				separator = (String) optionSeparator;
-//			}
-//
-//			Object optionDataDef = options.get(OPTION_INIT_DATATYPE);
-//			if (Boolean.TRUE.equals(optionDataDef)){
-//				initDataType = true;
-//			}
-//		}
-//		
-//	}
+	private void initializeOptions(Map<?, ?> options) {
+		if (options != null){
+
+			Object optionSeparator = options.get(OPTION_SEPARATOR);
+			if (optionSeparator instanceof String){
+				separator = (String) optionSeparator;
+			}
+			
+			Object optionTargetPackage = options.get(OPTION_TARGET_PACKAGE);
+		
+			if (optionTargetPackage instanceof Package){
+				rootModel = (Package) optionTargetPackage;
+			}
+		}
+		
+	}
 
 
 
@@ -349,14 +349,14 @@ public class CSVResource extends ResourceImpl {
 	@Override
 	protected void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException {
 		//first release does not support options
-		//initializeOptions(options);
+		initializeOptions(options);
 		updateDataType();
 		if (dataType != null){
 			BufferedWriter writter = new BufferedWriter(new PrintWriter(outputStream));
 			
-			DataSource source = (DataSource) dataType.getStereotypeApplication((VisualizationUtil.getDataSourceStereotype(dataType)));
-			if( source != null){
-				List<ValueSeries> series = source.getSeries();
+			
+			if( dataSource != null){
+				List<ValueSeries> series = dataSource.getSeries();
 				int seriesNumber = series.size();
 				
 				for(int i=0; i< seriesNumber; i++){
@@ -368,11 +368,11 @@ public class CSVResource extends ResourceImpl {
 				writter.newLine();
 				
 			
-				int lineNumber = source.getSeries().get(0).getSize();
+				int lineNumber = dataSource.getSeries().get(0).getSize();
 				
 				for (int lineIndex  =0 ; lineIndex< lineNumber; lineIndex++ ){
 					for(int serieIndex  = 0; serieIndex <seriesNumber; serieIndex++){
-						writter.append( source.getSeries().get(serieIndex).getStringValue(lineIndex));
+						writter.append( dataSource.getSeries().get(serieIndex).getStringValue(lineIndex));
 						if (serieIndex < seriesNumber-1){
 							writter.append(separator);
 						}
@@ -396,9 +396,11 @@ public class CSVResource extends ResourceImpl {
 
 
 	private void updateDataType() {
+		
 		for (EObject content : getContents()){
-			if( content instanceof DataType && ((DataType)content).getAppliedStereotype(VisualizationUtil.DATA_SOURCE_STEREO_QUALIFIED_NAME) != null){
-				dataType = (DataType) content;
+			if( content instanceof DataSource && ((DataSource)content).getBase_DataType() != null){
+				dataSource = (DataSource) content;
+				dataType = ((DataSource)content).getBase_DataType() ;
 				return;
 			}
 		}
