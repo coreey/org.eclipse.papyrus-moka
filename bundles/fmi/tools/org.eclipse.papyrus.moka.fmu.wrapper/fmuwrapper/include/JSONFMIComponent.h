@@ -39,6 +39,7 @@ private :
 	static const char* REQ_STEP__STRING;
 
 	static const char* RESP_STATUS;
+	static const char* RESP_NEXT_DATE;
 
 	rapidjson::Document response;
 

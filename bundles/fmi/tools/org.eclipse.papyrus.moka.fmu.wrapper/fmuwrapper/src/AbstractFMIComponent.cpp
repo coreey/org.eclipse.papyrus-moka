@@ -51,19 +51,24 @@ void AbstractFMIComponent::setReal(const fmi2ValueReference valueReference[], si
 	for (unsigned int index = 0; index < numberOfValues; index++) {
 		setRealRequests[valueReference[index]] = values[index];
 	}
+	inputChanged = true;
 }
 void AbstractFMIComponent::setInteger(const fmi2ValueReference valueReference[], size_t numberOfValues,const fmi2Integer values[]){
 	for (unsigned int index = 0; index < numberOfValues; index++) {
 		setIntegerRequests[valueReference[index]] = values[index];
 	}
+	inputChanged = true;
 }
 void AbstractFMIComponent::setBoolean(const fmi2ValueReference valueReference[], size_t numberOfValues,const fmi2Boolean values[]){
 	for (unsigned int index = 0; index < numberOfValues; index++) {
 		setBooleanRequests[valueReference[index]] = values[index];
 	}
+	inputChanged = true;
 }
 void AbstractFMIComponent::setString(const fmi2ValueReference valueReference[], size_t numberOfValues, const fmi2String values[]){
 	for (unsigned int index = 0; index < numberOfValues; index++) {
 		setStringRequests[valueReference[index]] = values[index];
 	}
+	inputChanged = true;
 }
+

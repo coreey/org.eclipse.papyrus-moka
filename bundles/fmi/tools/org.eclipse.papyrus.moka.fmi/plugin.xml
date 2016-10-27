@@ -21,7 +21,14 @@
       <package
             uri="http://www.eclipse.org/Papyrus/fmu/1.0.0"
             class="org.eclipse.papyrus.moka.fmi.fmumetamodel.FmumetamodelPackage"
-            genModel="model/fmu.genmodel"/>
+            genModel="model/fmumetamodel.genmodel"/>
    </extension>
 
+ <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://PAPYRUS_FMI_METAMODEL/"
+            target="platform:/plugin/org.eclipse.papyrus.moka.fmi/model/">
+      </mapping>
+   </extension>
 </plugin>

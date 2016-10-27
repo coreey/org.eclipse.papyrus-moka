@@ -41,6 +41,8 @@ import org.eclipse.papyrus.moka.utils.UMLPrimitiveTypesUtils;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuralFeature;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 
 public class FMUObject extends Timed_Object implements FMUInterface, IObject_ {
@@ -113,29 +115,34 @@ public class FMUObject extends Timed_Object implements FMUInterface, IObject_ {
 		}
 		if (FMIProfileUtil.isFMUPort(feature)) {
 			int key = UMLPropertyToIndexMap.get(feature) ;
-			if (feature.getType() == UMLPrimitiveTypesUtils.getReal(feature)) {
-				IRealValue realValue = values.isEmpty() ? null : (IRealValue)values.get(0) ;
-				Double value = realValue == null ? null : realValue.getValue() ;
-				realMap.put(key, value) ;
+			Type featureType = feature.getType();
+			if (featureType != null){
+				if (UMLUtil.isReal(featureType)){
+					
+					IRealValue realValue = values.isEmpty() ? null : (IRealValue)values.get(0) ;
+					Double value = realValue == null ? null : realValue.getValue() ;
+					realMap.put(key, value) ;
+				}
+				else if (UMLUtil.isInteger(featureType)) {
+					IIntegerValue integerValue = values.isEmpty() ? null : (IIntegerValue)values.get(0) ;
+					Integer value = integerValue == null ? null : integerValue.getValue() ;
+					integerMap.put(key, value) ;
+				}
+				else if (UMLUtil.isBoolean(featureType)) {
+					IBooleanValue booleanValue = values.isEmpty() ? null : (IBooleanValue)values.get(0) ;
+					Boolean value = booleanValue == null ? null : booleanValue.getValue() ;
+					booleanMap.put(key, value) ;
+				}
+				else if (UMLUtil.isString(featureType)) {
+					IStringValue stringValue = values.isEmpty() ? null : (IStringValue)values.get(0) ;
+					String value = stringValue == null ? null : stringValue.getValue() ;
+					stringMap.put(key, value) ;
+				}
+				else {
+					// FIXME unsupported type. What do we do? Return a Fatal STATUS ?
+				}
 			}
-			else if (feature.getType() == UMLPrimitiveTypesUtils.getInteger(feature)) {
-				IIntegerValue integerValue = values.isEmpty() ? null : (IIntegerValue)values.get(0) ;
-				Integer value = integerValue == null ? null : integerValue.getValue() ;
-				integerMap.put(key, value) ;
-			}
-			else if (feature.getType() == UMLPrimitiveTypesUtils.getBoolean(feature)) {
-				IBooleanValue booleanValue = values.isEmpty() ? null : (IBooleanValue)values.get(0) ;
-				Boolean value = booleanValue == null ? null : booleanValue.getValue() ;
-				booleanMap.put(key, value) ;
-			}
-			else if (feature.getType() == UMLPrimitiveTypesUtils.getString(feature)) {
-				IStringValue stringValue = values.isEmpty() ? null : (IStringValue)values.get(0) ;
-				String value = stringValue == null ? null : stringValue.getValue() ;
-				stringMap.put(key, value) ;
-			}
-			else {
-				// FIXME unsupported type. What do we do? Return a Fatal STATUS ?
-			}
+		
 		}
 	}
 

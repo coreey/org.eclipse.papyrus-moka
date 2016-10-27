@@ -25,6 +25,19 @@ JSONClient::JSONClient() :
 
 }
 
+std::thread& JSONClient::getRcpThread(){
+	return *rcpThread;
+}
+
+void startRCP(std::string cmd){
+	std::cout << cmd << std::endl;
+	int result = std::system(cmd.c_str());
+	if( result != 0){
+
+	}
+}
+
+
 int JSONClient::init(const char * fmuResourceLocation) {
 	asio::ip::tcp::acceptor acceptor(io_service);
 	char* port_str = std::getenv("MOKA_PORT_NUMBER");
@@ -39,6 +52,7 @@ int JSONClient::init(const char * fmuResourceLocation) {
 		acceptor.listen();
 		acceptor.accept(socket);
 		return 0;
+
 
 	} else {
 		asio::ip::tcp::endpoint endpoint(asio::ip::tcp::v4(), 0);
@@ -59,32 +73,30 @@ int JSONClient::init(const char * fmuResourceLocation) {
 		locationString = replaceAll(locationString, "file:///","");
 		locationString = replaceAll(locationString, "file://","");
 		locationString = replaceAll(locationString, "/","\\");
-		ss <<"start /B " << locationString <<FILE_SEPARATOR <<"rcp" << FILE_SEPARATOR<<"fmu_rcp.exe";
-		ss<<"  -noSplash -configuration @none";
-		ss <<" -data "<< locationString << FILE_SEPARATOR<<"rcp" << FILE_SEPARATOR<< "tmpData$$";
-		ss <<" -fmu "<< locationString << FILE_SEPARATOR << ".. -port " << port<< " &";
+		ss <<locationString <<FILE_SEPARATOR <<"rcp" << FILE_SEPARATOR<<"eclipsec.exe";
+		ss<<" -configuration @none";
+		ss <<" --launcher.ini "<< locationString << FILE_SEPARATOR<<"rcp" << FILE_SEPARATOR<< "fmu_rcp.ini";
+		ss <<" -fmu "<< locationString << FILE_SEPARATOR << ".. -port " << port;
 
 #else
 
 		locationString = replaceAll(locationString, "file://", "");
 		ss << "chmod -R a+x " << locationString << "; ";
-		ss << locationString << FILE_SEPARATOR << "rcp" << FILE_SEPARATOR
-				<< "fmu_rcp" << EXE_EXTENSION;
-		ss << " -data " << locationString << FILE_SEPARATOR << "rcp"
-				<< FILE_SEPARATOR << "tmpData$$";
-		ss << " -fmu " << locationString << FILE_SEPARATOR << ".. -port "
-				<< port << " &";
+		ss << locationString << FILE_SEPARATOR << "rcp" << FILE_SEPARATOR<< "fmu_rcp";
+		ss << " -fmu " << locationString << FILE_SEPARATOR << ".. -port "<< port;
 #endif
 
-		std::cout << ss.str() << std::endl;
-		int status = std::system(ss.str().c_str());
-		if (status == 0) {
-			acceptor.accept(socket);
-		}
-		return status;
+		std::string cmd  = ss.str();
+
+		rcpThread = new std::thread(startRCP,cmd);
+
+		acceptor.accept(socket);
+
+		return 0;
 	}
 
 }
+
 
 std::string JSONClient::replaceAll(std::string str, const std::string& from,
 		const std::string& to) {
@@ -101,7 +113,7 @@ JSONClient::~JSONClient() {
 
 }
 
-void JSONClient::sendRequest(rapidjson::Document& request,
+void JSONClient::nonBlockingSendRequest(rapidjson::Document& request,
 		rapidjson::Document& response) {
 
 	// Convert JSON document to string
@@ -110,7 +122,12 @@ void JSONClient::sendRequest(rapidjson::Document& request,
 	request.Accept(writer);
 
 	socket.write_some(asio::buffer(reqbuf.GetString(), reqbuf.GetSize()));
+}
 
+void JSONClient::sendRequest(rapidjson::Document& request,
+		rapidjson::Document& response) {
+
+	nonBlockingSendRequest(request, response);
 
 
 	/* This implementation is working, but is very slow!

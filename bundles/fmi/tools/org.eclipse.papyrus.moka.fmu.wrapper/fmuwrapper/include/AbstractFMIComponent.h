@@ -28,6 +28,8 @@ protected :
 	std::map<int32_t, bool>  responseBooleans;
 	std::map<int32_t, std::string>  responseStrings;
 
+	double nextDate =-1;
+	bool inputChanged =false;
 
 
 public:

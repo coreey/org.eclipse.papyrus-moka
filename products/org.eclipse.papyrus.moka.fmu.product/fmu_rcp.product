@@ -3,19 +3,19 @@
 
 <product name="FMU Embedded Moka" uid="fmu_embedded_moka" id="org.eclipse.papyrus.moka.fmu.rcp.product" application="org.eclipse.papyrus.moka.fmu.rcpapplication" version="0.1" useFeatures="false" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
-      <programArgs>-noSplash  -configuration @none
+      <programArgs>-noSplash  -configuration @none -data @none
       </programArgs>
+      <vmArgs>-Dorg.eclipse.emf.ecore.plugin.EcorePlugin.doNotLoadResourcesPlugin=true -Xverify:none -Dosgi.resolver.usesMode=ignore
+      </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
-
 
    <launcher name="fmu_rcp">
       <solaris/>
@@ -24,10 +24,8 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
       <plugin id="com.fasterxml.jackson.core.jackson-annotations"/>

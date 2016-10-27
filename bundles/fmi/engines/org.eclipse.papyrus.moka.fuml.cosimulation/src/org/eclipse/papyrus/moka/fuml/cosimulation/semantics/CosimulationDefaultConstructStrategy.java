@@ -37,7 +37,7 @@ public class CosimulationDefaultConstructStrategy extends CS_DefaultConstructStr
 		IFeatureValue featureValue = context.getFeatureValue(feature);
 		if (featureValue != null) {
 			List<IValue> values = featureValue.getValues();
-			if ((feature instanceof Port) && (feature.getAppliedStereotype(FMIProfileUtil.PORT_STEREO_QUALIFIED_NAME) == null) ) {
+			if ((feature instanceof Port) && (FMIProfileUtil.isFMUPort(feature)) ){
 				// insert an interaction point
 				ICS_InteractionPoint interactionPoint = new CS_InteractionPoint();
 				interactionPoint.setDefiningPort((Port) feature);

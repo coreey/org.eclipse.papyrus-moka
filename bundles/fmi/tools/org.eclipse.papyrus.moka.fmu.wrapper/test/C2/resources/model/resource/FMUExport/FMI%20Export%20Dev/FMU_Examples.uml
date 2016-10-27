@@ -2,15 +2,15 @@
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:fmiprofile="http://www.eclipse.org/papyrus/FMIProfile/1.0.0" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Model xmi:id="_q8DOcMXPEeWwx_puHDzFYw" name="FMU Examples">
     <packageImport xmi:id="_rEUZoMXPEeWwx_puHDzFYw">
-      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+      <importedPackage xmi:type="uml:Model" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#_0"/>
     </packageImport>
     <packageImport xmi:id="_ZvjL0OxTEeWP6eN_6Zcgmw">
-      <importedPackage xmi:type="uml:Model" href="pathmap://PAPYRUS_fUML_LIBRARY/fUML_Library.uml#_0"/>
+      <importedPackage xmi:type="uml:Model" href="../../../plugin/org.eclipse.papyrus.moka.fuml.standardlibrary/resources/fUML_Library.uml#_0"/>
     </packageImport>
     <packagedElement xmi:type="uml:Package" xmi:id="_7SAoIOxOEeWP6eN_6Zcgmw" name="EDF">
       <packagedElement xmi:type="uml:Class" xmi:id="_NO0UEMXQEeWwx_puHDzFYw" name="C1" classifierBehavior="_bnRAUMXQEeWwx_puHDzFYw" isActive="true">
         <ownedAttribute xmi:id="_RUkBcMXQEeWwx_puHDzFYw" name="valve" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_Vs8W8MXQEeWwx_puHDzFYw"/>
         </ownedAttribute>
         <ownedBehavior xmi:type="uml:Activity" xmi:id="_bnRAUMXQEeWwx_puHDzFYw" name="C1 ClassifierBehavior" node="_xrAkUMXQEeWwx_puHDzFYw _x6JMgMXQEeWwx_puHDzFYw _yIGwAMXQEeWwx_puHDzFYw _MwEQoMXSEeWwx_puHDzFYw _be-foMXTEeWwx_puHDzFYw _hclboMXVEeWwx_puHDzFYw _ia5zIMXXEeWwx_puHDzFYw _xF9SUMXXEeWwx_puHDzFYw" group="_be-foMXTEeWwx_puHDzFYw _ia5zIMXXEeWwx_puHDzFYw _xF9SUMXXEeWwx_puHDzFYw">
@@ -47,7 +47,7 @@ end C1;</body>
               <object xmi:id="_Jr8i4MXTEeWwx_puHDzFYw" name="object" incoming="_s5i5EMXTEeWwx_puHDzFYw" type="_NO0UEMXQEeWwx_puHDzFYw"/>
               <result xmi:id="_Jr9xAMXTEeWwx_puHDzFYw" name="result" type="_NO0UEMXQEeWwx_puHDzFYw"/>
               <value xmi:id="_Jr-_IMXTEeWwx_puHDzFYw" name="value" incoming="_upAEgMXTEeWwx_puHDzFYw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
             <node xmi:type="uml:ReadSelfAction" xmi:id="_jzQC8MXTEeWwx_puHDzFYw" name="this">
@@ -55,12 +55,12 @@ end C1;</body>
             </node>
             <node xmi:type="uml:ValueSpecificationAction" xmi:id="_l0ceoMXTEeWwx_puHDzFYw" name="true">
               <result xmi:id="_l0m2sMXTEeWwx_puHDzFYw" name="result" outgoing="_upAEgMXTEeWwx_puHDzFYw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
                 <upperBound xmi:type="uml:LiteralInteger" xmi:id="_mXe6QMXTEeWwx_puHDzFYw" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mXeTMMXTEeWwx_puHDzFYw" value="1"/>
               </result>
               <value xmi:type="uml:LiteralBoolean" xmi:id="_mXWXYMXTEeWwx_puHDzFYw" value="true">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
           </structuredNode>
@@ -77,7 +77,7 @@ end C1;</body>
               <object xmi:id="_mJEG8MXXEeWwx_puHDzFYw" name="object" incoming="_FHrUMMXYEeWwx_puHDzFYw" type="_NO0UEMXQEeWwx_puHDzFYw"/>
               <result xmi:id="_mJFVEMXXEeWwx_puHDzFYw" name="result" type="_NO0UEMXQEeWwx_puHDzFYw"/>
               <value xmi:id="_mJHKQMXXEeWwx_puHDzFYw" name="value" incoming="_HFo1sMXYEeWwx_puHDzFYw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
             <node xmi:type="uml:ReadSelfAction" xmi:id="_rwkiAMXXEeWwx_puHDzFYw" name="self">
@@ -85,12 +85,12 @@ end C1;</body>
             </node>
             <node xmi:type="uml:ValueSpecificationAction" xmi:id="_uIPkAMXXEeWwx_puHDzFYw" name="false">
               <result xmi:id="_uIQLEMXXEeWwx_puHDzFYw" name="result" outgoing="_HFo1sMXYEeWwx_puHDzFYw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
                 <upperBound xmi:type="uml:LiteralInteger" xmi:id="_ujJ-YMXXEeWwx_puHDzFYw" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ujJXUMXXEeWwx_puHDzFYw" value="1"/>
               </result>
               <value xmi:type="uml:LiteralBoolean" xmi:id="_ujIwQMXXEeWwx_puHDzFYw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
           </structuredNode>
@@ -107,7 +107,7 @@ end C1;</body>
               <object xmi:id="_y2PkMMXXEeWwx_puHDzFYw" name="object" incoming="_KlY6EMXYEeWwx_puHDzFYw" type="_NO0UEMXQEeWwx_puHDzFYw"/>
               <result xmi:id="_y2QyUMXXEeWwx_puHDzFYw" name="result" type="_NO0UEMXQEeWwx_puHDzFYw"/>
               <value xmi:id="_y2SAcMXXEeWwx_puHDzFYw" name="value" incoming="_MSnQ4MXYEeWwx_puHDzFYw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
             <node xmi:type="uml:ReadSelfAction" xmi:id="_4mrRwMXXEeWwx_puHDzFYw" name="self">
@@ -115,12 +115,12 @@ end C1;</body>
             </node>
             <node xmi:type="uml:ValueSpecificationAction" xmi:id="_61ItYMXXEeWwx_puHDzFYw" name="true">
               <result xmi:id="_61JUcMXXEeWwx_puHDzFYw" name="result" outgoing="_MSnQ4MXYEeWwx_puHDzFYw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
                 <upperBound xmi:type="uml:LiteralInteger" xmi:id="_7MzmgcXXEeWwx_puHDzFYw" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7MzmgMXXEeWwx_puHDzFYw" value="1"/>
               </result>
               <value xmi:type="uml:LiteralBoolean" xmi:id="_7My_cMXXEeWwx_puHDzFYw" value="true">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
           </structuredNode>
@@ -200,12 +200,12 @@ end C1;</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_V9MCEMaDEeWfFdnv26Efug" name="C2" classifierBehavior="_BxUJMMaEEeWfFdnv26Efug" isActive="true">
         <ownedAttribute xmi:id="_auAFsMaDEeWfFdnv26Efug" name="abort" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_lTy_sMaDEeWfFdnv26Efug"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_wQ2jIMaDEeWfFdnv26Efug" name="size" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
-          <defaultValue xmi:type="uml:LiteralReal" xmi:id="_15xTcMaDEeWfFdnv26Efug" value="1.0"/>
+        <ownedAttribute xmi:id="_wQ2jIMaDEeWfFdnv26Efug" name="Size" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
+          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_jRpCAJbJEeaFfs8WqHLdfw" value="100"/>
         </ownedAttribute>
         <ownedBehavior xmi:type="uml:Activity" xmi:id="_BxUJMMaEEeWfFdnv26Efug" name="C2 Classifier Behavior" node="_tNIeAMaEEeWfFdnv26Efug _9nmsYMaEEeWfFdnv26Efug _ITC7YMaFEeWfFdnv26Efug _KiYgwMaFEeWfFdnv26Efug _LaTnQMaFEeWfFdnv26Efug _KrKz4MaGEeWfFdnv26Efug" group="_KiYgwMaFEeWfFdnv26Efug _LaTnQMaFEeWfFdnv26Efug">
           <ownedComment xmi:id="_NmKQQMaEEeWfFdnv26Efug">
@@ -240,19 +240,19 @@ end C2;</body>
             </node>
             <node xmi:type="uml:ValueSpecificationAction" xmi:id="_StruQMaFEeWfFdnv26Efug" name="true">
               <result xmi:id="_StuKgMaFEeWfFdnv26Efug" name="result" outgoing="_0oCT4MaFEeWfFdnv26Efug">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
                 <upperBound xmi:type="uml:LiteralInteger" xmi:id="_TfgMwMaFEeWfFdnv26Efug" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TfflsMaFEeWfFdnv26Efug" value="1"/>
               </result>
               <value xmi:type="uml:LiteralBoolean" xmi:id="_TfatMMaFEeWfFdnv26Efug" value="true">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
             <node xmi:type="uml:AddStructuralFeatureValueAction" xmi:id="_ZEp3YMaFEeWfFdnv26Efug" name="set Abort" structuralFeature="_auAFsMaDEeWfFdnv26Efug" isReplaceAll="true">
               <object xmi:id="_ZEyaQMaFEeWfFdnv26Efug" name="object" incoming="_0P45oMaFEeWfFdnv26Efug" type="_V9MCEMaDEeWfFdnv26Efug"/>
               <result xmi:id="_ZE02gMaFEeWfFdnv26Efug" name="result" type="_V9MCEMaDEeWfFdnv26Efug"/>
               <value xmi:id="_ZE3SwMaFEeWfFdnv26Efug" name="value" incoming="_0oCT4MaFEeWfFdnv26Efug">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
           </structuredNode>
@@ -268,21 +268,19 @@ end C2;</body>
             <node xmi:type="uml:ReadSelfAction" xmi:id="_fUSpcMaFEeWfFdnv26Efug" name="self">
               <result xmi:id="_fUT3kMaFEeWfFdnv26Efug" name="result" outgoing="_0-K78MaFEeWfFdnv26Efug" type="_BxUJMMaEEeWfFdnv26Efug"/>
             </node>
-            <node xmi:type="uml:ValueSpecificationAction" xmi:id="_hCPZAMaFEeWfFdnv26Efug" name="0.5">
+            <node xmi:type="uml:ValueSpecificationAction" xmi:id="_hCPZAMaFEeWfFdnv26Efug" name="50">
               <result xmi:id="_hCQnIMaFEeWfFdnv26Efug" name="result" outgoing="_1bLBAMaFEeWfFdnv26Efug">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
                 <upperBound xmi:type="uml:LiteralInteger" xmi:id="_BZsIYM5QEeWaRpodR1S6WA" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h0FFoMaFEeWfFdnv26Efug" value="1"/>
               </result>
-              <value xmi:type="uml:LiteralReal" xmi:id="_BZgiMM5QEeWaRpodR1S6WA" value="0.5">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
-              </value>
+              <value xmi:type="uml:LiteralInteger" xmi:id="_qNO7IJbJEeaFfs8WqHLdfw" value="50"/>
             </node>
             <node xmi:type="uml:AddStructuralFeatureValueAction" xmi:id="_p4VP8MaFEeWfFdnv26Efug" name="set Size" structuralFeature="_wQ2jIMaDEeWfFdnv26Efug" isReplaceAll="true">
               <object xmi:id="_p4Y6UMaFEeWfFdnv26Efug" name="object" incoming="_0-K78MaFEeWfFdnv26Efug" type="_V9MCEMaDEeWfFdnv26Efug"/>
               <result xmi:id="_p4avgMaFEeWfFdnv26Efug" name="result" type="_V9MCEMaDEeWfFdnv26Efug"/>
               <value xmi:id="_p4gPEMaFEeWfFdnv26Efug" name="value" incoming="_1bLBAMaFEeWfFdnv26Efug">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
               </value>
             </node>
           </structuredNode>
@@ -356,19 +354,19 @@ end C2;</body>
     <packagedElement xmi:type="uml:Package" xmi:id="_-JGxEOxOEeWP6eN_6Zcgmw" name="Basic">
       <packagedElement xmi:type="uml:Class" xmi:id="_aKy6MOxPEeWP6eN_6Zcgmw" name="A" classifierBehavior="_MczfMOxaEeWP6eN_6Zcgmw" isActive="true">
         <ownedAttribute xmi:id="_eG3HIOxPEeWP6eN_6Zcgmw" name="x">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_hf1_sOxQEeWP6eN_6Zcgmw" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_fPzFIOxPEeWP6eN_6Zcgmw" name="y">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_PBPyUCQHEeaCtZpD0ATfCw"/>
         </ownedAttribute>
         <ownedBehavior xmi:type="uml:Activity" xmi:id="_1TmzMOxSEeWP6eN_6Zcgmw" name="compare_impl" specification="_QQv2cOxQEeWP6eN_6Zcgmw" node="_TuqAYOxTEeWP6eN_6Zcgmw _b7NLEOxTEeWP6eN_6Zcgmw _soiEAOxTEeWP6eN_6Zcgmw _BFmlIOxUEeWP6eN_6Zcgmw">
           <ownedParameter xmi:id="_LNhs0OxTEeWP6eN_6Zcgmw" name="v">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
           </ownedParameter>
           <ownedParameter xmi:id="_LxQE8OxTEeWP6eN_6Zcgmw" name="result" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
           </ownedParameter>
           <edge xmi:type="uml:ObjectFlow" xmi:id="_KrzDUOxUEeWP6eN_6Zcgmw" target="_b7v9oOxTEeWP6eN_6Zcgmw" source="_TuqAYOxTEeWP6eN_6Zcgmw">
             <guard xmi:type="uml:LiteralBoolean" xmi:id="_Kr-pgOxUEeWP6eN_6Zcgmw" value="true"/>
@@ -387,21 +385,21 @@ end C2;</body>
           </node>
           <node xmi:type="uml:CallBehaviorAction" xmi:id="_b7NLEOxTEeWP6eN_6Zcgmw" name=">">
             <argument xmi:id="_b7v9oOxTEeWP6eN_6Zcgmw" name="x" incoming="_KrzDUOxUEeWP6eN_6Zcgmw">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+              <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b72rUOxTEeWP6eN_6Zcgmw" value="1"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b71dMOxTEeWP6eN_6Zcgmw" value="1"/>
             </argument>
             <argument xmi:id="_b77j0OxTEeWP6eN_6Zcgmw" name="y" incoming="_LOWWwOxUEeWP6eN_6Zcgmw">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+              <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b7-AEexTEeWP6eN_6Zcgmw" value="1"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b7-AEOxTEeWP6eN_6Zcgmw" value="1"/>
             </argument>
             <result xmi:id="_b7-nIOxTEeWP6eN_6Zcgmw" name="result" outgoing="_LlhgoOxUEeWP6eN_6Zcgmw">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+              <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b8AcUexTEeWP6eN_6Zcgmw" value="1"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b8AcUOxTEeWP6eN_6Zcgmw" value="1"/>
             </result>
-            <behavior xmi:type="uml:FunctionBehavior" href="pathmap://PAPYRUS_fUML_LIBRARY/fUML_Library.uml#PrimitiveBehaviors-IntegerFunctions-gt"/>
+            <behavior xmi:type="uml:FunctionBehavior" href="../../../plugin/org.eclipse.papyrus.moka.fuml.standardlibrary/resources/fUML_Library.uml#PrimitiveBehaviors-IntegerFunctions-gt"/>
           </node>
           <node xmi:type="uml:ValueSpecificationAction" xmi:id="_soiEAOxTEeWP6eN_6Zcgmw" name="2">
             <result xmi:id="_sojSIOxTEeWP6eN_6Zcgmw" name="result" outgoing="_LOWWwOxUEeWP6eN_6Zcgmw"/>
@@ -460,19 +458,19 @@ Ecriture du résultat sur la sortie y</body>
           <node xmi:type="uml:ReadStructuralFeatureAction" xmi:id="_9mYoEOxaEeWP6eN_6Zcgmw" name="read x" structuralFeature="_eG3HIOxPEeWP6eN_6Zcgmw">
             <object xmi:id="_9mjnMOxaEeWP6eN_6Zcgmw" name="object" incoming="_dTqSIOxbEeWP6eN_6Zcgmw" type="_aKy6MOxPEeWP6eN_6Zcgmw"/>
             <result xmi:id="_9mk1UOxaEeWP6eN_6Zcgmw" name="x" outgoing="_eznpAOxbEeWP6eN_6Zcgmw">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+              <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9mnRkexaEeWP6eN_6Zcgmw" value="1"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9mnRkOxaEeWP6eN_6Zcgmw" value="1"/>
             </result>
           </node>
           <node xmi:type="uml:CallOperationAction" xmi:id="_Mrov8OxbEeWP6eN_6Zcgmw" name="call compare" operation="_QQv2cOxQEeWP6eN_6Zcgmw">
             <argument xmi:id="_Mr_VQOxbEeWP6eN_6Zcgmw" name="v" incoming="_eznpAOxbEeWP6eN_6Zcgmw">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+              <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MsBxgOxbEeWP6eN_6Zcgmw" value="1"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MsBKcOxbEeWP6eN_6Zcgmw" value="1"/>
             </argument>
             <result xmi:id="_MsDmsOxbEeWP6eN_6Zcgmw" name="result" outgoing="_8vTZoOxbEeWP6eN_6Zcgmw">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+              <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MsGC8exbEeWP6eN_6Zcgmw" value="1"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MsGC8OxbEeWP6eN_6Zcgmw" value="1"/>
             </result>
@@ -482,7 +480,7 @@ Ecriture du résultat sur la sortie y</body>
             <object xmi:id="_wBHPwOxbEeWP6eN_6Zcgmw" name="object" incoming="_7O4IsOxbEeWP6eN_6Zcgmw" type="_aKy6MOxPEeWP6eN_6Zcgmw"/>
             <result xmi:id="_wBH20OxbEeWP6eN_6Zcgmw" name="result" type="_aKy6MOxPEeWP6eN_6Zcgmw"/>
             <value xmi:id="_wBJE8OxbEeWP6eN_6Zcgmw" name="value" incoming="_8vTZoOxbEeWP6eN_6Zcgmw">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+              <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
             </value>
           </node>
           <node xmi:type="uml:AcceptEventAction" xmi:id="_maTQEOxnEeWP6eN_6Zcgmw" name="Change on x" incoming="_06MoIOxnEeWP6eN_6Zcgmw" outgoing="_pBriAOxnEeWP6eN_6Zcgmw __m4NQOxnEeWP6eN_6Zcgmw">
@@ -496,10 +494,10 @@ Ecriture du résultat sur la sortie y</body>
         </ownedBehavior>
         <ownedOperation xmi:id="_QQv2cOxQEeWP6eN_6Zcgmw" name="compare" method="_1TmzMOxSEeWP6eN_6Zcgmw">
           <ownedParameter xmi:id="_TS_fcOxQEeWP6eN_6Zcgmw" name="v">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
           </ownedParameter>
           <ownedParameter xmi:id="_cnRuQOxQEeWP6eN_6Zcgmw" name="result" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -518,23 +516,23 @@ Ecriture du résultat sur la sortie y</body>
       <packagedElement xmi:type="uml:Package" xmi:id="_FSdyICZzEeaNDtUa3wAGMw" name="Example 1">
         <packagedElement xmi:type="uml:Class" xmi:id="_JlBzgCZzEeaNDtUa3wAGMw" name="A" classifierBehavior="_JlBzoiZzEeaNDtUa3wAGMw" isActive="true">
           <ownedAttribute xmi:id="_JlBzgSZzEeaNDtUa3wAGMw" name="inBoolean">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
             <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_POvYkCZ0Eea_2cPCpxkxZw"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_u1kR0CZzEeaNDtUa3wAGMw" name="inInteger">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
             <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_2SHi8CZzEeaNDtUa3wAGMw"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_vKYEMCZzEeaNDtUa3wAGMw" name="inReal">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
             <defaultValue xmi:type="uml:LiteralReal" xmi:id="_-YlTwCZzEeaNDtUa3wAGMw"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_vdnJQCZzEeaNDtUa3wAGMw" name="inString">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
             <defaultValue xmi:type="uml:LiteralString" xmi:id="_Ma1GgCZ0Eea_2cPCpxkxZw" value=""/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_JlBzgyZzEeaNDtUa3wAGMw" name="outBoolean">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
             <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_JlBzhCZzEeaNDtUa3wAGMw"/>
           </ownedAttribute>
           <ownedBehavior xmi:type="uml:Activity" xmi:id="_JlBzoiZzEeaNDtUa3wAGMw" name="Classifier Behavior" node="_JlBzvSZzEeaNDtUa3wAGMw _JlBzvyZzEeaNDtUa3wAGMw _JlBzwCZzEeaNDtUa3wAGMw _JlBzzSZzEeaNDtUa3wAGMw _JlBz0SZzEeaNDtUa3wAGMw _UabZUCZ_Eea7EYxrzn_7lA _22aU0CcNEeaoMtQifi-PpA _9Ryc0CcNEeaoMtQifi-PpA _fbJu0CcOEeaoMtQifi-PpA">
@@ -574,7 +572,7 @@ Writing output value on outBoolean</body>
             <node xmi:type="uml:ReadStructuralFeatureAction" xmi:id="_JlBzwCZzEeaNDtUa3wAGMw" name="read inBoolean" structuralFeature="_JlBzgSZzEeaNDtUa3wAGMw">
               <object xmi:id="_JlBzwSZzEeaNDtUa3wAGMw" name="object" incoming="_JlBzpiZzEeaNDtUa3wAGMw" type="_JlBzgCZzEeaNDtUa3wAGMw"/>
               <result xmi:id="_JlBzwiZzEeaNDtUa3wAGMw" name="x" outgoing="_5_BdECZ0Eea_2cPCpxkxZw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JlBzwyZzEeaNDtUa3wAGMw" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JlBzxCZzEeaNDtUa3wAGMw" value="1"/>
               </result>
@@ -583,7 +581,7 @@ Writing output value on outBoolean</body>
               <object xmi:id="_JlBzziZzEeaNDtUa3wAGMw" name="object" incoming="_4D3_ACZ0Eea_2cPCpxkxZw" type="_JlBzgCZzEeaNDtUa3wAGMw"/>
               <result xmi:id="_JlBzzyZzEeaNDtUa3wAGMw" name="result" type="_JlBzgCZzEeaNDtUa3wAGMw"/>
               <value xmi:id="_JlBz0CZzEeaNDtUa3wAGMw" name="value" incoming="_5_BdECZ0Eea_2cPCpxkxZw">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                <type xmi:type="uml:PrimitiveType" href="../../../plugin/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
               </value>
             </node>
             <node xmi:type="uml:AcceptEventAction" xmi:id="_JlBz0SZzEeaNDtUa3wAGMw" name="Change on inBoolean" outgoing="_K8VzMCcMEeaoMtQifi-PpA">
@@ -631,26 +629,13 @@ Writing output value on outBoolean</body>
       <eAnnotations xmi:id="_CmQLMMXWEeWwx_puHDzFYw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
       </eAnnotations>
-      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+      <appliedProfile href="../../../plugin/org.eclipse.uml2.uml.resources/profiles/Standard.profile.uml#_0"/>
     </profileApplication>
     <profileApplication xmi:id="_W_MKQMaGEeWfFdnv26Efug">
       <eAnnotations xmi:id="_W_OmgMaGEeWfFdnv26Efug" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
       </eAnnotations>
-      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
-    </profileApplication>
-    <profileApplication xmi:id="_5nyw0M44EeW5W4GIqJpyFA">
-      <eAnnotations xmi:id="_5n10IM44EeW5W4GIqJpyFA" source="PapyrusVersion">
-        <details xmi:id="_5n10Ic44EeW5W4GIqJpyFA" key="Version" value="0.0.69"/>
-        <details xmi:id="_5n10Is44EeW5W4GIqJpyFA" key="Comment" value=""/>
-        <details xmi:id="_5n10I844EeW5W4GIqJpyFA" key="Copyright" value=""/>
-        <details xmi:id="_5n10JM44EeW5W4GIqJpyFA" key="Date" value="2015-12-09"/>
-        <details xmi:id="_5n10Jc44EeW5W4GIqJpyFA" key="Author" value=""/>
-      </eAnnotations>
-      <eAnnotations xmi:id="_5n0mAM44EeW5W4GIqJpyFA" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://FmiML_PROFILE/FmiML.profile.uml#_fW3TcJ5QEeW4hpViu084wQ"/>
-      </eAnnotations>
-      <appliedProfile href="pathmap://FmiML_PROFILE/FmiML.profile.uml#__Ki3oKvFEeSXqKqlHzx1gA"/>
+      <appliedProfile href="../../../plugin/org.eclipse.uml2.uml.resources/profiles/Standard.profile.uml#_0"/>
     </profileApplication>
     <profileApplication xmi:id="_LvJdwBwXEea0GMhvQ4xFnA"/>
     <profileApplication xmi:id="_cbF5cCMkEea2OavBPNFsjQ"/>
@@ -658,7 +643,7 @@ Writing output value on outBoolean</body>
       <eAnnotations xmi:id="_UhVJACZzEeaNDtUa3wAGMw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/FMIProfile/1.0.0#/"/>
       </eAnnotations>
-      <appliedProfile href="pathmap://PAPYRUS_FMI_PROFILE/FMI.profile.uml#__Ki3oKvFEeSXqKqlHzx1gA"/>
+      <appliedProfile href="../../../plugin/org.eclipse.papyrus.moka.fmi.profile/model/FMI.profile.uml#__Ki3oKvFEeSXqKqlHzx1gA"/>
     </profileApplication>
   </uml:Model>
   <standard:Create xmi:id="_CotCQMXWEeWwx_puHDzFYw" base_BehavioralFeature="_ColtgMXWEeWwx_puHDzFYw"/>

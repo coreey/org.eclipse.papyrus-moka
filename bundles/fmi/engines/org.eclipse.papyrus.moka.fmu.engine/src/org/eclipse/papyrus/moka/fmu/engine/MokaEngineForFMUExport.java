@@ -78,7 +78,6 @@ public class MokaEngineForFMUExport extends TimedUmlExecutionEngine {
 
 	public void startFMU(Class fmuClass) {
 		if (fmuClass != null && FMIProfileUtil.isCS_FMU(fmuClass)) {
-
 			// creates the locus, executor and execution factory
 			this.locus = new FMULocus();
 			locus.setExecutor(new CS_Executor());
@@ -89,10 +88,10 @@ public class MokaEngineForFMUExport extends TimedUmlExecutionEngine {
 
 			// Initializes opaque behavior executions
 			this.registerOpaqueBehaviorExecutions(locus);
-
+			
 			// Initializes semantic strategies
 			this.registerSemanticStrategies(locus);
-
+			
 			// Initializes system services
 			this.registerSystemServices(locus);
 
@@ -101,6 +100,8 @@ public class MokaEngineForFMUExport extends TimedUmlExecutionEngine {
 			//FMUObject fmuObject = (FMUObject)this.locus.instantiate(fmuClass) ;
 			FMUObject fmuObject = (FMUObject)strategy.instantiate(fmuClass, locus) ;
 			FMUEngineUtils.getFMUControlService().setFmuObject(fmuObject);
+
+			
 		}
 	}
 

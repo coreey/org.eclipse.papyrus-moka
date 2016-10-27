@@ -19,8 +19,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class JSONResponse {
 	public static final String STATUS = "s";
+	public static final String NEXT_DATE = "nd";
 
 	public String status;
+	public Double nextDate;
 	
 	public int[] intVRs;
 	public int[] ints;

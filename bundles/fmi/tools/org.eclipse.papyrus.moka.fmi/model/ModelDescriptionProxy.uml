@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_oZMi0CgJEeaEPIADLpYHKQ" name="modeldescription">
-    <ownedComment xmi:type="uml:Comment" xmi:id="_zgdMkAfHEeabPfm64ybCZg" annotatedElement="_oZMi0ygJEeaEPIADLpYHKQ">
+    <ownedComment xmi:id="_zgdMkAfHEeabPfm64ybCZg" annotatedElement="_oZMi0ygJEeaEPIADLpYHKQ">
       <body>&lt;p>This model is not used for direct code generation of modedescription metatmodel (which comes from xsd generation). But it allows to reference FmiModelDescriptionType eClass from a static profile&lt;/p>
 </body>
     </ownedComment>
-    <ownedComment xmi:type="uml:Comment" xmi:id="_oZMi0SgJEeaEPIADLpYHKQ" annotatedElement="_oZMi0ygJEeaEPIADLpYHKQ">
+    <ownedComment xmi:id="_oZMi0SgJEeaEPIADLpYHKQ" annotatedElement="_oZMi0ygJEeaEPIADLpYHKQ">
       <body>This model is not used for direct code generation of modedescription metatmodel (which comes from xsd generation). But it allows to reference FmiModelDescriptionType eClass from a static profile</body>
     </ownedComment>
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_1p1wYAfGEeabPfm64ybCZg">
+    <packageImport xmi:id="_1p1wYAfGEeabPfm64ybCZg">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
     </packageImport>
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_oZMi0igJEeaEPIADLpYHKQ">
+    <packageImport xmi:id="_oZMi0igJEeaEPIADLpYHKQ">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
     </packageImport>
     <packagedElement xmi:type="uml:Class" xmi:id="_oZMi0ygJEeaEPIADLpYHKQ" name="FmiModelDescriptionType"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_oZMi1CgJEeaEPIADLpYHKQ" name="Fmi2ScalarVariable"/>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_1lCI4AfGEeabPfm64ybCZg">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1lFMMAfGEeabPfm64ybCZg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <profileApplication xmi:id="_1lCI4AfGEeabPfm64ybCZg">
+      <eAnnotations xmi:id="_1lFMMAfGEeabPfm64ybCZg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
       </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
   <Ecore:EPackage xmi:id="_oZbMUCgJEeaEPIADLpYHKQ" base_Package="_oZMi0CgJEeaEPIADLpYHKQ" packageName="modeldescription" nsPrefix="modeldescription" nsURI="platform:/plugin/org.eclipse.papyrus.moka.fmi/schema/fmi2ModelDescription.xsd" basePackage="org.eclipse.papyrus.moka.fmi" prefix="Fmi"/>

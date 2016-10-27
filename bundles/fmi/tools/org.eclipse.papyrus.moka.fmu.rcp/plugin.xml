@@ -16,10 +16,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.papyrus.moka.fmu.rcpapplication"
-            name="fmu rcp product">
+            name="FMU Embedded Moka">
          <property
                name="appName"
-               value="fmu rcp product">
+               value="FMU Embedded Moka">
          </property>
       </product>
    </extension>

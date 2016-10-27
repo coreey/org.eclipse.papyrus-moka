@@ -23,6 +23,7 @@ import java.net.Socket;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.papyrus.moka.discreteevent.DEScheduler;
 import org.eclipse.papyrus.moka.fmu.communication.FMUInterface;
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -103,7 +104,10 @@ public class JSONSocketClient extends Thread {
 		try {
 			generator.writeStartObject();
 			generator.writeStringField(JSONResponse.STATUS, response.status);
-
+			if (response.nextDate != null){
+				generator.writeNumberField(JSONResponse.NEXT_DATE, response.nextDate.doubleValue());
+			}
+			
 			if (response.boolVRs != null) {
 				generator.writeFieldName(JSONRequest.BOOL_VRS);
 				writeIntArray(generator, response.boolVRs);
@@ -312,8 +316,10 @@ public class JSONSocketClient extends Thread {
 			updateResponse(resp);
 			resp.status = "ok";
 		} else if (request.terminate) {
-			fmu.terminate();
-			resp.status = "ok";
+			//Fast exit method...
+			System.exit(0);
+			//fmu.terminate();
+			//resp.status = "ok";
 		} else {
 			// else do step;
 			updateValues(request);
@@ -327,6 +333,12 @@ public class JSONSocketClient extends Thread {
 
 	private void updateResponse(JSONResponse resp) {
 
+		if(!DEScheduler.getInstance().getEvents().isEmpty()){
+			double absoluteDate = DEScheduler.getInstance().getEvents().get(0).getAbsoluteDate();
+			resp.nextDate = absoluteDate;
+		}
+		 
+		 
 		int index = 0;
 		if (!fmu.fmiGetBools().isEmpty()) {
 			resp.boolVRs = new int[fmu.fmiGetBools().size()];

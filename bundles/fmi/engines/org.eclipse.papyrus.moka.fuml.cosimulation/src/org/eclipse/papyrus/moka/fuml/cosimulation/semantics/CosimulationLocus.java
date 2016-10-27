@@ -30,7 +30,7 @@ public class CosimulationLocus extends Timed_Locus {
 		if (type instanceof Behavior) {
 			object = super.instantiate(type);
 		} else {
-			if (type.getAppliedStereotype(FMIProfileUtil.CS_FMU_STEREO_QUALIFIED_NAME) != null) {
+			if (FMIProfileUtil.isCS_FMU(type) != null) {
 				object = new Fmu2ProxyService(type);
 
 			} else {

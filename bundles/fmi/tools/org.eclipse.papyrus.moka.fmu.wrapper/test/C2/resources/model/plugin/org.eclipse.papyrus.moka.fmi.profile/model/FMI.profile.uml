@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="__Ki3oKvFEeSXqKqlHzx1gA" name="FMIProfile" metamodelReference="__Ki3oavFEeSXqKqlHzx1gA">
+  <eAnnotations xmi:id="_satEway_EeSXqKqlHzx1gA" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+  <ownedComment xmi:id="_NeAF8AfDEeabPfm64ybCZg">
+    <body>This Package is only present to create an UML description of FMI Modeldescription metamodel, in order to be able to import it from this FMIProfile and to reference the FmiModelDescription from the FMU stereotype&#xD;
+</body>
+  </ownedComment>
+  <elementImport xmi:id="_laYPwKvGEeSXqKqlHzx1gA" alias="Class">
+    <importedElement xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:id="_wv3E0avHEeSXqKqlHzx1gA" alias="Port">
+    <importedElement xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Port"/>
+  </elementImport>
+  <elementImport xmi:id="_wv3r4KvHEeSXqKqlHzx1gA" alias="Property">
+    <importedElement xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Property"/>
+  </elementImport>
+  <elementImport xmi:id="_rYp-UAOlEeWTZ-coMJ-ChQ" alias="Dependency">
+    <importedElement xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Dependency"/>
+  </elementImport>
+  <elementImport xmi:id="_RgJo0CQeEeWWg83RXu3e8w" alias="Connector">
+    <importedElement xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Connector"/>
+  </elementImport>
+  <packageImport xmi:id="__Ki3oavFEeSXqKqlHzx1gA">
+    <importedPackage xmi:type="uml:Model" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="__Ki3oqvFEeSXqKqlHzx1gA">
+    <importedPackage xmi:type="uml:Model" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_OPG4EAiaEeabPfm64ybCZg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://PAPYRUS_FMI_PROFILE/../../org.eclipse.papyrus.moka.fmi/model/ModelDescriptionProxy.uml#_oZMi0CgJEeaEPIADLpYHKQ"/>
+  </packageImport>
+  <packageImport xmi:id="_bg_v0CiiEeaEPIADLpYHKQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://PAPYRUS_FMI_PROFILE/../../org.eclipse.papyrus.moka.fmi/model/fmumetamodel.uml#_qqrUcCiREeaEPIADLpYHKQ"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_6Z7fcK0REeSXqKqlHzx1gA" name="FMU">
+    <ownedAttribute xmi:id="_1n8aUK0VEeSXqKqlHzx1gA" name="fmiVersion">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_GRtB4K0WEeSXqKqlHzx1gA" name="modelName">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_J4cfEK0WEeSXqKqlHzx1gA" name="guid">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_MlWxQK0WEeSXqKqlHzx1gA" name="description">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_M6KjoK0WEeSXqKqlHzx1gA" name="author">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_V-UrwK0WEeSXqKqlHzx1gA" name="version">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_W0QOMK0WEeSXqKqlHzx1gA" name="copyright">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_XLIdIK0WEeSXqKqlHzx1gA" name="license">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_X3cJgK0WEeSXqKqlHzx1gA" name="generationTool">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_YHNq4K0WEeSXqKqlHzx1gA" name="generationDateAndTime">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_YXuMEK0WEeSXqKqlHzx1gA" name="variableNamingConvention">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_YnwzMK0WEeSXqKqlHzx1gA" name="numberOfEventIndicators">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_19CGoMXZEeSibcUjNRyRzw" name="base_Class" association="_19CtsMXZEeSibcUjNRyRzw">
+      <type xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_RfTy4K1PEeSXqKqlHzx1gA" name="sourceFiles">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VYUr0K1PEeSXqKqlHzx1gA" name="canBeInstantiatedOnlyOncePerProcess">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WaONsK1PEeSXqKqlHzx1gA" name="canGetAndSetFMUstate">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Y_Mr4K1PEeSXqKqlHzx1gA" name="canNotUseMemoryManagementFunctions">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_aMTYMK1PEeSXqKqlHzx1gA" name="canSerializeFMUstate">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_f5YPwK1PEeSXqKqlHzx1gA" name="providesDirectionalDerivative">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_em57QK1PEeSXqKqlHzx1gA" name="needsExecutionTool">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_dAv1wK1PEeSXqKqlHzx1gA" name="modelIdentifier">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_jb-e0CihEeaEPIADLpYHKQ" name="modelDescription" isReadOnly="true" isDerived="true" association="_jb8poCihEeaEPIADLpYHKQ">
+      <type xmi:type="uml:Class" href="pathmap://PAPYRUS_FMI_PROFILE/../../org.eclipse.papyrus.moka.fmi/model/ModelDescriptionProxy.uml#_oZMi0ygJEeaEPIADLpYHKQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_fuzNAiiiEeaEPIADLpYHKQ" name="fmuBundle" association="_fuyl8CiiEeaEPIADLpYHKQ">
+      <type xmi:type="uml:Class" href="pathmap://PAPYRUS_FMI_PROFILE/../../org.eclipse.papyrus.moka.fmi/model/fmumetamodel.uml#_APozgCgKEeaEPIADLpYHKQ"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_njvM0K0iEeSXqKqlHzx1gA" name="Parameter">
+    <generalization xmi:id="_eghYcMPiEeSibcUjNRyRzw" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_xhWFcK0iEeSXqKqlHzx1gA" name="Local">
+    <generalization xmi:id="_d8jvwMPiEeSibcUjNRyRzw" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_zAZZYK1OEeSXqKqlHzx1gA" name="CS_FMU">
+    <generalization xmi:id="_W7zp0MPiEeSibcUjNRyRzw" general="_6Z7fcK0REeSXqKqlHzx1gA"/>
+    <ownedAttribute xmi:id="_0fRVsK1PEeSXqKqlHzx1gA" name="canHandleVariableCommunicationStepSize">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_2FmaUK1PEeSXqKqlHzx1gA" name="canInterpolateInputs">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_5C6gAK1PEeSXqKqlHzx1gA" name="canRunAsynchronuously">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_7SO3QK1PEeSXqKqlHzx1gA" name="maxOutputDerivativeOrder">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="__aAk8K1PEeSXqKqlHzx1gA" name="needsExecutionTool">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_rW02oOwdEeSEBKJWDCrAIQ" name="startTime">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_7LzLQOwdEeSEBKJWDCrAIQ" name="stopTime">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_-hgi0OwdEeSEBKJWDCrAIQ" name="stepSize">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Ar590OweEeSEBKJWDCrAIQ" name="tolerance">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_2rjcgK1OEeSXqKqlHzx1gA" name="ME_FMU">
+    <generalization xmi:id="_XQ9acMPiEeSibcUjNRyRzw" general="_6Z7fcK0REeSXqKqlHzx1gA"/>
+    <ownedAttribute xmi:id="_btjvkK1PEeSXqKqlHzx1gA" name="completedIntegratorStepNotNeeded">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_19CtsMXZEeSibcUjNRyRzw" name="E_FMU_Class1" memberEnd="_19CtscXZEeSibcUjNRyRzw _19CGoMXZEeSibcUjNRyRzw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_19CtscXZEeSibcUjNRyRzw" name="extension_FMU" type="_6Z7fcK0REeSXqKqlHzx1gA" aggregation="composite" association="_19CtsMXZEeSibcUjNRyRzw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_0Ab54OyjEeSEBKJWDCrAIQ" name="Port">
+    <generalization xmi:id="_Oa938OykEeSEBKJWDCrAIQ" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+    <ownedAttribute xmi:id="_NmHTkOykEeSEBKJWDCrAIQ" name="base_Port" association="_NmIhsOykEeSEBKJWDCrAIQ">
+      <type xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Port"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_bir8IOykEeSEBKJWDCrAIQ" name="direction" type="_CJbegAYPEea37IpNp9toNQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_NmIhsOykEeSEBKJWDCrAIQ" name="E_Port_Port1" memberEnd="_NmIhseykEeSEBKJWDCrAIQ _NmHTkOykEeSEBKJWDCrAIQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_NmIhseykEeSEBKJWDCrAIQ" name="extension_Port" type="_0Ab54OyjEeSEBKJWDCrAIQ" aggregation="composite" association="_NmIhsOykEeSEBKJWDCrAIQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_NRvP8OytEeSEBKJWDCrAIQ" name="ScalarVariable" isAbstract="true">
+    <ownedAttribute xmi:id="_XR_M4OytEeSEBKJWDCrAIQ" name="base_Property" association="_XSAbAOytEeSEBKJWDCrAIQ">
+      <type xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_hQ1boOytEeSEBKJWDCrAIQ" name="description">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_QwldkJdgEeWXHe1Lt_6eNw" name="variability" type="_m6Ae0CCbEeWt4Mi1ebEMdw"/>
+    <ownedAttribute xmi:id="_c98LQJdgEeWXHe1Lt_6eNw" name="initial" type="_EJc0gCCcEeWt4Mi1ebEMdw"/>
+    <ownedAttribute xmi:id="_gyZUUJdgEeWXHe1Lt_6eNw" name="valueReference">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/EcorePrimitiveTypes.library.uml#EInt"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_0rpegC5BEea0_OLDat2kQQ" value="-1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_reC30CihEeaEPIADLpYHKQ" name="fmiVariable" association="_reBCoCihEeaEPIADLpYHKQ">
+      <type xmi:type="uml:Class" href="pathmap://PAPYRUS_FMI_PROFILE/../../org.eclipse.papyrus.moka.fmi/model/ModelDescriptionProxy.uml#_oZMi1CgJEeaEPIADLpYHKQ"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_XSAbAOytEeSEBKJWDCrAIQ" name="E_ScalarVariable_Property1" memberEnd="_XSAbAeytEeSEBKJWDCrAIQ _XR_M4OytEeSEBKJWDCrAIQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_XSAbAeytEeSEBKJWDCrAIQ" name="extension_ScalarVariable" type="_NRvP8OytEeSEBKJWDCrAIQ" aggregation="composite" association="_XSAbAOytEeSEBKJWDCrAIQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_dWNCEO5uEeS9FOvuH52nyQ" name="Independent">
+    <generalization xmi:id="_fc_IYO5uEeS9FOvuH52nyQ" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_m6Ae0CCbEeWt4Mi1ebEMdw" name="VariabilityKind">
+    <ownedLiteral xmi:id="_ocXpcCCbEeWt4Mi1ebEMdw" name="constant"/>
+    <ownedLiteral xmi:id="_oy89cCCbEeWt4Mi1ebEMdw" name="fixed"/>
+    <ownedLiteral xmi:id="_w7HXYCCbEeWt4Mi1ebEMdw" name="tunable"/>
+    <ownedLiteral xmi:id="_x1iYQCCbEeWt4Mi1ebEMdw" name="discrete"/>
+    <ownedLiteral xmi:id="_y3oHYCCbEeWt4Mi1ebEMdw" name="continuous"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_EJc0gCCcEeWt4Mi1ebEMdw" name="InitialKind">
+    <ownedLiteral xmi:id="_FPsD0CCcEeWt4Mi1ebEMdw" name="exact"/>
+    <ownedLiteral xmi:id="_FewakCCcEeWt4Mi1ebEMdw" name="approx"/>
+    <ownedLiteral xmi:id="_F8k_ACCcEeWt4Mi1ebEMdw" name="calculated"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_MSoiICCcEeWt4Mi1ebEMdw" name="DependenciesKind">
+    <ownedLiteral xmi:id="_PhWg4CCcEeWt4Mi1ebEMdw" name="dependent"/>
+    <ownedLiteral xmi:id="_P0FPoCCcEeWt4Mi1ebEMdw" name="constant"/>
+    <ownedLiteral xmi:id="_QHfT0CCcEeWt4Mi1ebEMdw" name="fixed"/>
+    <ownedLiteral xmi:id="_QbX5ICCcEeWt4Mi1ebEMdw" name="tunable"/>
+    <ownedLiteral xmi:id="_Q5sz4CCcEeWt4Mi1ebEMdw" name="discrete"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_XbjscCCeEeWt4Mi1ebEMdw" name="Unknown">
+    <ownedAttribute xmi:id="_m_6yMCCeEeWt4Mi1ebEMdw" name="base_Property" association="_m_15sCCeEeWt4Mi1ebEMdw">
+      <type xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_N5RL8CCgEeWt4Mi1ebEMdw" name="dependencies">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Yvu_MCCgEeWt4Mi1ebEMdw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YvypkCCgEeWt4Mi1ebEMdw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_OzGW8CCgEeWt4Mi1ebEMdw" name="dependenciesKind">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5wK6QCCgEeWt4Mi1ebEMdw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5wPywCCgEeWt4Mi1ebEMdw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_YKufkCCeEeWt4Mi1ebEMdw" name="OutputUnknown">
+    <generalization xmi:id="_LrwLgCCgEeWt4Mi1ebEMdw" general="_XbjscCCeEeWt4Mi1ebEMdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_Yn3ukCCeEeWt4Mi1ebEMdw" name="InitialUnknown">
+    <generalization xmi:id="_MglhwCCgEeWt4Mi1ebEMdw" general="_XbjscCCeEeWt4Mi1ebEMdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_ly3wQCCeEeWt4Mi1ebEMdw" name="DerivativeUnknown">
+    <generalization xmi:id="_MJ4R8CCgEeWt4Mi1ebEMdw" general="_XbjscCCeEeWt4Mi1ebEMdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_m_15sCCeEeWt4Mi1ebEMdw" name="E_Unknown_Property1" memberEnd="_m_6LICCeEeWt4Mi1ebEMdw _m_6yMCCeEeWt4Mi1ebEMdw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_m_6LICCeEeWt4Mi1ebEMdw" name="extension_Unknown" type="_XbjscCCeEeWt4Mi1ebEMdw" aggregation="composite" association="_m_15sCCeEeWt4Mi1ebEMdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_kj6zcCTIEeWWg83RXu3e8w" name="CS_Graph">
+    <ownedAttribute xmi:id="_03VokJHqEeWBwegMGR0s3g" name="startTime">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:LiteralReal" xmi:id="_L4IhUJIEEeWBwegMGR0s3g"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_11TFoJHqEeWBwegMGR0s3g" name="stopTime">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:LiteralReal" xmi:id="_UFHw4JIEEeWBwegMGR0s3g" value="100.0"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VGwNAJIEEeWBwegMGR0s3g" name="stepSize">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:LiteralReal" xmi:id="_c9zBwJIEEeWBwegMGR0s3g" value="10.0"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_g-XUMJIEEeWBwegMGR0s3g" name="tolerance">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:LiteralReal" xmi:id="_l1GZoJIEEeWBwegMGR0s3g"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_mo2KwJIEEeWBwegMGR0s3g" name="toleranceDefined">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_tVFZQJIEEeWBwegMGR0s3g" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_u9MmkJIEEeWBwegMGR0s3g" name="stopTimeDefined">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_yfx8gJIEEeWBwegMGR0s3g" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_3hKywJIEEeWBwegMGR0s3g" name="computeSetupExperimentsFromFmus">
+      <type xmi:type="uml:PrimitiveType" href="../../org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_GtfL8JIFEeWBwegMGR0s3g"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_v8TtoZ5OEeW4hpViu084wQ" name="base_Class" association="_v8AysJ5OEeW4hpViu084wQ">
+      <type xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_rezSMJK2EeWNJOjtFNxhjA" name="DerivativeDependency">
+    <ownedAttribute xmi:id="_t2F5sJK2EeWNJOjtFNxhjA" name="base_Dependency" association="_t1_MAJK2EeWNJOjtFNxhjA">
+      <type xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Dependency"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ulJ_IJK2EeWNJOjtFNxhjA" name="dependencyKind" type="_MSoiICCcEeWt4Mi1ebEMdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_t1_MAJK2EeWNJOjtFNxhjA" name="E_DerivativeDependency_Dependency1" memberEnd="_t2EEgJK2EeWNJOjtFNxhjA _t2F5sJK2EeWNJOjtFNxhjA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_t2EEgJK2EeWNJOjtFNxhjA" name="extension_DerivativeDependency" type="_rezSMJK2EeWNJOjtFNxhjA" aggregation="composite" association="_t1_MAJK2EeWNJOjtFNxhjA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_3it0UJOYEeWNJOjtFNxhjA" name="OutputDependency">
+    <ownedAttribute xmi:id="_CgYbwJOZEeWNJOjtFNxhjA" name="base_Dependency" association="_CgWmkJOZEeWNJOjtFNxhjA">
+      <type xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Dependency"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_4FpiQJOYEeWNJOjtFNxhjA" name="InitialUnknownDependency">
+    <ownedAttribute xmi:id="_CGZOcJOZEeWNJOjtFNxhjA" name="base_Dependency" association="_CGXZQJOZEeWNJOjtFNxhjA">
+      <type xmi:type="uml:Class" href="../../org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml#Dependency"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_CGXZQJOZEeWNJOjtFNxhjA" name="E_InitialUnknownDependency_Dependency1" memberEnd="_CGYnYJOZEeWNJOjtFNxhjA _CGZOcJOZEeWNJOjtFNxhjA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_CGYnYJOZEeWNJOjtFNxhjA" name="extension_InitialUnknownDependency" type="_4FpiQJOYEeWNJOjtFNxhjA" aggregation="composite" association="_CGXZQJOZEeWNJOjtFNxhjA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_CgWmkJOZEeWNJOjtFNxhjA" name="E_OutputDependency_Dependency1" memberEnd="_CgX0sJOZEeWNJOjtFNxhjA _CgYbwJOZEeWNJOjtFNxhjA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_CgX0sJOZEeWNJOjtFNxhjA" name="extension_OutputDependency" type="_3it0UJOYEeWNJOjtFNxhjA" aggregation="composite" association="_CgWmkJOZEeWNJOjtFNxhjA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_JeJKsJdgEeWXHe1Lt_6eNw" name="CalculatedParameter">
+    <generalization xmi:id="_KVg3kJdgEeWXHe1Lt_6eNw" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_MTGwMJdhEeWXHe1Lt_6eNw" name="CausalityKind">
+    <ownedLiteral xmi:id="_M9HWgJdhEeWXHe1Lt_6eNw" name="parameter"/>
+    <ownedLiteral xmi:id="_ONojMJdhEeWXHe1Lt_6eNw" name="calculatedParameter"/>
+    <ownedLiteral xmi:id="_OrAbsJdhEeWXHe1Lt_6eNw" name="input"/>
+    <ownedLiteral xmi:id="_PHWZcJdhEeWXHe1Lt_6eNw" name="output"/>
+    <ownedLiteral xmi:id="_Py-wYJdhEeWXHe1Lt_6eNw" name="local"/>
+    <ownedLiteral xmi:id="_QHlucJdhEeWXHe1Lt_6eNw" name="independent"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_v8AysJ5OEeW4hpViu084wQ" name="E_CS_Graph_Class2" memberEnd="_v8TtoJ5OEeW4hpViu084wQ _v8TtoZ5OEeW4hpViu084wQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_v8TtoJ5OEeW4hpViu084wQ" name="extension_CS_Graph" type="_kj6zcCTIEeWWg83RXu3e8w" aggregation="composite" association="_v8AysJ5OEeW4hpViu084wQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_VLKjsAYHEea37IpNp9toNQ" name="VariabilityNamingConvention">
+    <ownedLiteral xmi:id="_VLKjsQYHEea37IpNp9toNQ" name="flat"/>
+    <ownedLiteral xmi:id="_VLKjsgYHEea37IpNp9toNQ" name="structured"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_PieAYAYIEea37IpNp9toNQ" name="BaseUnit">
+    <ownedLiteral xmi:id="_PieAYQYIEea37IpNp9toNQ" name="a"/>
+    <ownedLiteral xmi:id="_PieAYgYIEea37IpNp9toNQ" name="cd"/>
+    <ownedLiteral xmi:id="_PieAYwYIEea37IpNp9toNQ" name="factor"/>
+    <ownedLiteral xmi:id="_PieAZAYIEea37IpNp9toNQ" name="k"/>
+    <ownedLiteral xmi:id="_PieAZQYIEea37IpNp9toNQ" name="kg"/>
+    <ownedLiteral xmi:id="_PieAZgYIEea37IpNp9toNQ" name="m"/>
+    <ownedLiteral xmi:id="_PieAZwYIEea37IpNp9toNQ" name="mol"/>
+    <ownedLiteral xmi:id="_PieAaAYIEea37IpNp9toNQ" name="offset"/>
+    <ownedLiteral xmi:id="_PieAaQYIEea37IpNp9toNQ" name="rad"/>
+    <ownedLiteral xmi:id="_PieAagYIEea37IpNp9toNQ" name="s"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_CJbegAYPEea37IpNp9toNQ" name="FlowDirection">
+    <ownedLiteral xmi:id="_ELmKkAYPEea37IpNp9toNQ" name="in"/>
+    <ownedLiteral xmi:id="_E6PZQAYPEea37IpNp9toNQ" name="out"/>
+    <ownedLiteral xmi:id="_FwtuQAYPEea37IpNp9toNQ" name="inout"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_jb8poCihEeaEPIADLpYHKQ" memberEnd="_jb-e0CihEeaEPIADLpYHKQ _jb-e0SihEeaEPIADLpYHKQ">
+    <eAnnotations xmi:id="_jb93wCihEeaEPIADLpYHKQ" source="org.eclipse.papyrus">
+      <details xmi:id="_jb93wSihEeaEPIADLpYHKQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_jb-e0SihEeaEPIADLpYHKQ" name="fmu" type="_6Z7fcK0REeSXqKqlHzx1gA" association="_jb8poCihEeaEPIADLpYHKQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_reBCoCihEeaEPIADLpYHKQ" memberEnd="_reC30CihEeaEPIADLpYHKQ _reC30SihEeaEPIADLpYHKQ">
+    <eAnnotations xmi:id="_reCQwCihEeaEPIADLpYHKQ" source="org.eclipse.papyrus">
+      <details xmi:id="_reCQwSihEeaEPIADLpYHKQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_reC30SihEeaEPIADLpYHKQ" name="scalarvariable" type="_NRvP8OytEeSEBKJWDCrAIQ" association="_reBCoCihEeaEPIADLpYHKQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_fuyl8CiiEeaEPIADLpYHKQ" memberEnd="_fuzNAiiiEeaEPIADLpYHKQ _fuzNAyiiEeaEPIADLpYHKQ">
+    <eAnnotations xmi:id="_fuzNACiiEeaEPIADLpYHKQ" source="org.eclipse.papyrus">
+      <details xmi:id="_fuzNASiiEeaEPIADLpYHKQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_fuzNAyiiEeaEPIADLpYHKQ" name="fmu" type="_6Z7fcK0REeSXqKqlHzx1gA" association="_fuyl8CiiEeaEPIADLpYHKQ"/>
+  </packagedElement>
+  <profileApplication xmi:id="_AhWz4K0WEeSXqKqlHzx1gA">
+    <eAnnotations xmi:id="_Dg_gwJHDEeWBwegMGR0s3g" source="PapyrusVersion">
+      <details xmi:id="_Dg_gwZHDEeWBwegMGR0s3g" key="Version" value="0.1.1"/>
+      <details xmi:id="_Dg_gwpHDEeWBwegMGR0s3g" key="Comment" value=""/>
+      <details xmi:id="_Dg_gw5HDEeWBwegMGR0s3g" key="Copyright" value=""/>
+      <details xmi:id="_Dg_gxJHDEeWBwegMGR0s3g" key="Date" value="2015-01-21"/>
+      <details xmi:id="_Dg_gxZHDEeWBwegMGR0s3g" key="Author" value=""/>
+    </eAnnotations>
+    <eAnnotations xmi:id="_Ahv1cK0WEeSXqKqlHzx1gA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="../../org.eclipse.papyrus.uml.alf.libraries/resources/action-language-profile/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile href="../../org.eclipse.papyrus.uml.alf.libraries/resources/action-language-profile/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+  <profileApplication xmi:id="_kEtdUBwUEeWFRLyBnqa0ow">
+    <eAnnotations xmi:id="_kExuwBwUEeWFRLyBnqa0ow" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+  </profileApplication>
+</uml:Profile>

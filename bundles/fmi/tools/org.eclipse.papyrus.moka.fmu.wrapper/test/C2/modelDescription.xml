@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fmiModelDescription fmiVersion="2.0" generationDateAndTime="2016-06-10T11:23:19.686+02:00" generationTool="Moka FMU exporter" guid="e6e0d018-e4e5-4d2e-90fc-481bf9ebb549" modelName="C2">
+<fmiModelDescription fmiVersion="2.0" generationDateAndTime="2016-10-27T10:23:58.836+02:00" generationTool="Moka FMU exporter" guid="aa7034ea-8434-436b-a009-32efbdb332e1" modelName="C2">
   <CoSimulation canBeInstantiatedOnlyOncePerProcess="true" canGetAndSetFMUstate="false" canHandleVariableCommunicationStepSize="true" canInterpolateInputs="false" canNotUseMemoryManagementFunctions="true" canRunAsynchronuously="false" canSerializeFMUstate="false" maxOutputDerivativeOrder="0" modelIdentifier="C2Linux64" needsExecutionTool="false" providesDirectionalDerivative="false"/>
   <ModelVariables>
     <ScalarVariable causality="output" initial="exact" name="abort" valueReference="0" variability="discrete">
       <Boolean start="false"/>
     </ScalarVariable>
-    <ScalarVariable causality="output" initial="exact" name="size" valueReference="1" variability="discrete">
-      <Real start="1.0"/>
+    <ScalarVariable causality="output" initial="exact" name="Size" valueReference="1" variability="discrete">
+      <Integer start="100"/>
     </ScalarVariable>
   </ModelVariables>
   <ModelStructure>

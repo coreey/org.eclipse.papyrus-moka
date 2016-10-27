@@ -30,6 +30,8 @@ const char* JSONFMIComponent::REQ_STEP__STRING= "s";
 
 
 const char* JSONFMIComponent::RESP_STATUS= "r";
+const char* JSONFMIComponent::RESP_NEXT_DATE= "nd";
+
 
 JSONFMIComponent::JSONFMIComponent():client(), response()
 
@@ -59,77 +61,81 @@ JSONFMIComponent::~JSONFMIComponent() {
 }
 
 fmi2Status  JSONFMIComponent::doStep(fmi2Real currentCommunicationTime, fmi2Real stepSize){
-
-	rapidjson::Document request;
-	request.SetObject();
-	rapidjson::Document::AllocatorType& allocator=request.GetAllocator() ;
-
-
-
-	rapidjson::Value communicationTimeValue(currentCommunicationTime);
-	rapidjson::Value stepSizeValue(stepSize);
+	fmi2Status status = fmi2OK;
+	if ( inputChanged|| ((currentCommunicationTime+ stepSize)> nextDate)){
+		inputChanged = false;
+		rapidjson::Document request;
+		request.SetObject();
+		rapidjson::Document::AllocatorType& allocator=request.GetAllocator() ;
 
 
-	request.AddMember(rapidjson::StringRef(REQ_STEP__CURRENT_TIME), communicationTimeValue, allocator);
-	request.AddMember(rapidjson::StringRef(REQ_STEP__STEP_SIZE), stepSizeValue, allocator);
+
+		rapidjson::Value communicationTimeValue(currentCommunicationTime);
+		rapidjson::Value stepSizeValue(stepSize);
 
 
-	if (!setBooleanRequests.empty()){
-		rapidjson::Value boolVR(rapidjson::kArrayType);
-		rapidjson::Value bools(rapidjson::kArrayType);
-		for( std::map<int,bool>::iterator iterator = setBooleanRequests.begin(); iterator != setBooleanRequests.end(); iterator++) {
-			boolVR.PushBack(iterator->first, allocator);
-			bools.PushBack(iterator->second, allocator);
+		request.AddMember(rapidjson::StringRef(REQ_STEP__CURRENT_TIME), communicationTimeValue, allocator);
+		request.AddMember(rapidjson::StringRef(REQ_STEP__STEP_SIZE), stepSizeValue, allocator);
+
+
+		if (!setBooleanRequests.empty()){
+			rapidjson::Value boolVR(rapidjson::kArrayType);
+			rapidjson::Value bools(rapidjson::kArrayType);
+			for( std::map<int,bool>::iterator iterator = setBooleanRequests.begin(); iterator != setBooleanRequests.end(); iterator++) {
+				boolVR.PushBack(iterator->first, allocator);
+				bools.PushBack(iterator->second, allocator);
+			}
+			setBooleanRequests.clear();
+			request.AddMember(rapidjson::StringRef(REQ_STEP__BOOLVRS), boolVR, allocator);
+			request.AddMember(rapidjson::StringRef(REQ_STEP__BOOL), bools, allocator);
 		}
-		setBooleanRequests.clear();
-		request.AddMember(rapidjson::StringRef(REQ_STEP__BOOLVRS), boolVR, allocator);
-		request.AddMember(rapidjson::StringRef(REQ_STEP__BOOL), bools, allocator);
-	}
 
-	if (!setRealRequests.empty()){
-		rapidjson::Value realVR(rapidjson::kArrayType);
-		rapidjson::Value reals(rapidjson::kArrayType);
-		for( std::map<int,double>::iterator iterator = setRealRequests.begin(); iterator != setRealRequests.end(); iterator++) {
-			realVR.PushBack(iterator->first, allocator);
-			reals.PushBack(iterator->second, allocator);
+		if (!setRealRequests.empty()){
+			rapidjson::Value realVR(rapidjson::kArrayType);
+			rapidjson::Value reals(rapidjson::kArrayType);
+			for( std::map<int,double>::iterator iterator = setRealRequests.begin(); iterator != setRealRequests.end(); iterator++) {
+				realVR.PushBack(iterator->first, allocator);
+				reals.PushBack(iterator->second, allocator);
+			}
+			setRealRequests.clear();
+			request.AddMember(rapidjson::StringRef(REQ_STEP__DOUBLEVRS), realVR, allocator);
+			request.AddMember(rapidjson::StringRef(REQ_STEP__DOUBLE), reals, allocator);
+
 		}
-		setRealRequests.clear();
-		request.AddMember(rapidjson::StringRef(REQ_STEP__DOUBLEVRS), realVR, allocator);
-		request.AddMember(rapidjson::StringRef(REQ_STEP__DOUBLE), reals, allocator);
-
-	}
-	if (!setIntegerRequests.empty()){
-		rapidjson::Value intVR(rapidjson::kArrayType);
-		rapidjson::Value ints(rapidjson::kArrayType);
-		for( std::map<int,int>::iterator iterator = setIntegerRequests.begin(); iterator != setIntegerRequests.end(); iterator++) {
-			intVR.PushBack(iterator->first, allocator);
-			ints.PushBack(iterator->second, allocator);
+		if (!setIntegerRequests.empty()){
+			rapidjson::Value intVR(rapidjson::kArrayType);
+			rapidjson::Value ints(rapidjson::kArrayType);
+			for( std::map<int,int>::iterator iterator = setIntegerRequests.begin(); iterator != setIntegerRequests.end(); iterator++) {
+				intVR.PushBack(iterator->first, allocator);
+				ints.PushBack(iterator->second, allocator);
+			}
+			setIntegerRequests.clear();
+			request.AddMember(rapidjson::StringRef(REQ_STEP__INTVRS),intVR, allocator);
+			request.AddMember(rapidjson::StringRef(REQ_STEP__INT), ints, allocator);
 		}
-		setIntegerRequests.clear();
-		request.AddMember(rapidjson::StringRef(REQ_STEP__INTVRS),intVR, allocator);
-		request.AddMember(rapidjson::StringRef(REQ_STEP__INT), ints, allocator);
-	}
-	if (!setStringRequests.empty()){
-		rapidjson::Value stringVR(rapidjson::kArrayType);
-		rapidjson::Value strings(rapidjson::kArrayType);
-		for( std::map<int,std::string>::iterator iterator = setStringRequests.begin(); iterator != setStringRequests.end(); iterator++) {
-			stringVR.PushBack(iterator->first, allocator);
-			rapidjson::Value value;
-			value.SetString(iterator->second.c_str(),allocator);
-			strings.PushBack(value, allocator);
+		if (!setStringRequests.empty()){
+			rapidjson::Value stringVR(rapidjson::kArrayType);
+			rapidjson::Value strings(rapidjson::kArrayType);
+			for( std::map<int,std::string>::iterator iterator = setStringRequests.begin(); iterator != setStringRequests.end(); iterator++) {
+				stringVR.PushBack(iterator->first, allocator);
+				rapidjson::Value value;
+				value.SetString(iterator->second.c_str(),allocator);
+				strings.PushBack(value, allocator);
+			}
+			setStringRequests.clear();
+			request.AddMember(rapidjson::StringRef(REQ_STEP__STRINGVRS),stringVR, allocator);
+			request.AddMember(rapidjson::StringRef(REQ_STEP__STRING), strings, allocator);
 		}
-		setStringRequests.clear();
-		request.AddMember(rapidjson::StringRef(REQ_STEP__STRINGVRS),stringVR, allocator);
-		request.AddMember(rapidjson::StringRef(REQ_STEP__STRING), strings, allocator);
+
+
+
+
+		 client.sendRequest(request, response);
+
+
+		status = handleResponse();
 	}
-
-
-
-
-	 client.sendRequest(request, response);
-
-
-	return handleResponse();
+	return status;
 
 }
 
@@ -142,7 +148,10 @@ void  JSONFMIComponent::terminate(){
 
 	rapidjson::Value terminate(true);
 	request.AddMember(rapidjson::StringRef(REQ_TERMINATE), terminate, allocator);
-	client.sendRequest(request,response );
+	client.nonBlockingSendRequest(request,response );
+	if (client.getRcpThread().joinable()){
+		client.getRcpThread().join();
+	}
 
 }
 
@@ -187,9 +196,18 @@ fmi2Status  JSONFMIComponent::handleResponse(){
 			}
 		}
 
-
 	}
 
+	if (response.HasMember(rapidjson::StringRef(RESP_NEXT_DATE))) {
+		const rapidjson::Value& nextDateValue = response[RESP_NEXT_DATE];
+		if (nextDateValue.IsDouble()){
+			nextDate = nextDateValue.GetDouble();
+		}
+	}else {
+		//if we didn't receive a next date new value, if means that either  Moka simulation is finished
+		//either there are only change event. We won't need to make further do step if inputs don't change
+		 nextDate = std::numeric_limits<double>::max();
+	}
 
 	if (response.HasMember(rapidjson::StringRef(RESP_STATUS))) {
 		//TODO complete status parsing

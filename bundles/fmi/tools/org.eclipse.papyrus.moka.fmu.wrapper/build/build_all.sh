@@ -26,8 +26,8 @@ mkdir $LIN32_TMPDIR $LIN64_TMPDIR  $WIN64_TMPDIR
 
 
 LIB_NAME="libfmuwrapper"
-COMMON_COMP_OPTS="-std=c++0x -O3 -Wall -c -fmessage-length=0"
-COMMON_LINK_OPTS="-shared"
+COMMON_COMP_OPTS="-DASIO_STANDALONE -pthread -std=c++11 -O3 -Wall -c -fmessage-length=0"
+COMMON_LINK_OPTS="-shared -pthread -std=c++11"
 
 INCLUDE="-I$WRAPPER_PROJ/asio/include -I$WRAPPER_PROJ/fmi -I$WRAPPER_PROJ/rapidjson/include -I$WRAPPER_PROJ/fmuwrapper/include"
 

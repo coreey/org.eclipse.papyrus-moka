@@ -186,7 +186,7 @@ public class CosimulationInstanceValueEvaluation extends InstanceValueEvaluation
 		List<Classifier> types = instance.getClassifiers();
 		for (int i = 0; i < types.size(); i++) {
 			Classifier type = types.get(i);
-			if (type.getAppliedStereotype(FMIProfileUtil.CS_FMU_STEREO_QUALIFIED_NAME) != null) {
+			if (type instanceof Class && FMIProfileUtil.isCS_FMU((Class) type) != null) {
 				return (Class) type;
 			}
 		}
