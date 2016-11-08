@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MOKA custom fUML libraries annotation tools
+Bundle-SymbolicName: org.eclipse.papyrus.moka.fuml.libraries.tools.annotations;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: CEA
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.jdt.apt.core,
+ org.eclipse.core.resources;bundle-version="3.11.0",
+ org.eclipse.papyrus.moka.fuml;bundle-version="2.0.0",
+ org.eclipse.pde.core;bundle-version="3.11.0",
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.eclipse.uml2.uml;bundle-version="5.2.0",
+ org.eclipse.papyrus.moka.simex;bundle-version="2.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.eclipse.papyrus.moka.fuml.libraries.tools.annotations,
+ org.eclipse.papyrus.moka.fuml.libraries.tools.annotations.processor
+Bundle-Activator: org.eclipse.papyrus.moka.fuml.libraries.tools.annotations.Activator
+Bundle-ActivationPolicy: lazy
+

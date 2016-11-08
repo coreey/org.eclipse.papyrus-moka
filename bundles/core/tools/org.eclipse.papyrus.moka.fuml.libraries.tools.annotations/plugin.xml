@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.jdt.apt.core.annotationProcessorFactory">
+          <java6processors enableDefault="true">          
+            <java6processor class="org.eclipse.papyrus.moka.fuml.libraries.tools.annotations.processor.FumlLibraryProcessor"/>
+          </java6processors>
+   </extension>
+
+</plugin>

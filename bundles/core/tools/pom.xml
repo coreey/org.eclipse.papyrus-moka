@@ -26,6 +26,7 @@
 		<module>org.eclipse.papyrus.moka.utils</module>
 		<module>org.eclipse.papyrus.moka.utils.ui</module>
 		<module>visualization</module>
+		<module>org.eclipse.papyrus.moka.fuml.libraries.tools.annotations</module>
 	</modules>
 	
 </project>
