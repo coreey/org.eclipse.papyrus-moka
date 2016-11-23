@@ -16,30 +16,34 @@ package org.eclipse.papyrus.moka.fuml.profiling;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.papyrus.moka.service.IMokaExecutionListener;
 import org.eclipse.papyrus.moka.service.IMokaService;
 import org.eclipse.papyrus.moka.service.MokaServiceRegistry;
 
 public abstract class MokaObservable {
 
-	protected List<IMokaService> listeners;
+	protected List<IMokaExecutionListener> listeners;
 
 	public MokaObservable() {
-		this.listeners = new ArrayList<IMokaService>();
+		this.listeners = new ArrayList<IMokaExecutionListener>();
 		this.initialize();
 	}
 
 	public void initialize() {
 		// An observable is by default listened by any registered service
+		// ADDED: An observable is by default listener by any registered service 
+		// that implements IMokaExecutionListener
 		for (IMokaService service : MokaServiceRegistry.getInstance().getAllServices()) {
-			this.addListener(service);
+			if( service instanceof IMokaExecutionListener )
+				this.addListener( (IMokaExecutionListener)service);
 		}
 	}
 
-	public void addListener(IMokaService service) {
+	public void addListener(IMokaExecutionListener service) {
 		this.listeners.add(service);
 	}
 
-	public void removeListener(IMokaService service) {
+	public void removeListener(IMokaExecutionListener service) {
 		this.listeners.remove(service);
 	}
 

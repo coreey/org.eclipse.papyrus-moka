@@ -24,9 +24,10 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ISemanticVisitor;
 import org.eclipse.papyrus.moka.service.AbstractMokaService;
+import org.eclipse.papyrus.moka.service.IMokaExecutionListener;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 
-public class AnimationService extends AbstractMokaService implements IAnimation {
+public class AnimationService extends AbstractMokaService implements IAnimation, IMokaExecutionListener {
 
 	// The handler responsible for markers application
 	protected AnimationEngine engine;

@@ -45,19 +45,15 @@ public aspect LocusProfiler extends MokaObservable{
 	
 	public void fireValueCreated(final IValue value){
 		for(int i=0; i < this.listeners.size(); i++){
-			IMokaService service = this.listeners.get(i); 
-			if(service instanceof IMokaExecutionListener){
-				((IMokaExecutionListener)service).valueCreated(value);
-			}
+			IMokaExecutionListener listener = this.listeners.get(i); 
+			listener.valueCreated(value);			
 		}
 	}
 	
 	public void fireValueDestroyed(final IValue value){
 		for(int i=0; i < this.listeners.size(); i++){
-			IMokaService service = this.listeners.get(i); 
-			if(service instanceof IMokaExecutionListener){
-				((IMokaExecutionListener)service).valueDestroyed(value);
-			}
+			IMokaExecutionListener listener = this.listeners.get(i); 
+			listener.valueDestroyed(value);
 		}
 	} 
 }

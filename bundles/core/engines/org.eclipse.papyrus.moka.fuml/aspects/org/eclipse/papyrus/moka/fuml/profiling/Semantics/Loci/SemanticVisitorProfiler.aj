@@ -35,18 +35,13 @@ public abstract aspect SemanticVisitorProfiler extends MokaObservable{
 	after(ISemanticVisitor visitor) : endIsolation(visitor) {} 
 	
 	public void fireNodeVisited(ISemanticVisitor visitor){
-		for(IMokaService service: this.listeners){
-			if(service instanceof IMokaExecutionListener){
-				((IMokaExecutionListener)service).nodeVisited(visitor);
-			}
-		}
+		for(IMokaExecutionListener listener: this.listeners)
+			listener.nodeVisited(visitor);
+		
 	}
 	
 	public void fireNodeLeft(ISemanticVisitor visitor){
-		for(IMokaService service: this.listeners){
-			if(service instanceof IMokaExecutionListener){
-				((IMokaExecutionListener)service).nodeLeft(visitor);
-			}
-		}
+		for(IMokaExecutionListener listener: this.listeners)
+			listener.nodeLeft(visitor);
 	}
 }

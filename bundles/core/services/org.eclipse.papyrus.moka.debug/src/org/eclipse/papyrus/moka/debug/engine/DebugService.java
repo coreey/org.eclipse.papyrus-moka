@@ -20,8 +20,9 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ISemanticVisitor;
 import org.eclipse.papyrus.moka.service.AbstractMokaService;
+import org.eclipse.papyrus.moka.service.IMokaExecutionListener;
 
-public class DebugService extends AbstractMokaService {
+public class DebugService extends AbstractMokaService implements IMokaExecutionListener {
 
 	// Debug target attached to the debug service
 	protected IMokaDebugTarget debugTarget;

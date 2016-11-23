@@ -16,7 +16,7 @@ package org.eclipse.papyrus.moka.service;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.emf.ecore.EObject;
 
-public abstract class AbstractMokaService implements IMokaService, IMokaExecutionListener {
+public abstract class AbstractMokaService implements IMokaService {
 
 	@Override
 	public void init(ILaunch launcher, EObject modelElement) {
