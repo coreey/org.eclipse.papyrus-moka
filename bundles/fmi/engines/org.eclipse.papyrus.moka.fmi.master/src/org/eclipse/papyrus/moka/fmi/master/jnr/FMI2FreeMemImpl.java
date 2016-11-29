@@ -1,5 +1,6 @@
 /*****************************************************************************
- * Copyright (c) 2016 CEA LIST.
+ * 
+  * Copyright (c) 2016 CEA LIST.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,14 +9,25 @@
  *
  * Contributors:
  *  CEA LIST Initial API and implementation
+ * 
  *****************************************************************************/
-package org.eclipse.papyrus.moka.fmi.master.fmilibrary;
 
-public interface Fmi2Status {
-	public static final int fmi2OK = 0;
-	public static final int fmi2Warning = 1;
-	public static final int fmi2Discard = 2;
-	public static final int fmi2Error = 3;
-	public static final int fmi2Fatal = 4;
-	public static final int fmi2Pending = 5;
+package org.eclipse.papyrus.moka.fmi.master.jnr;
+
+import org.eclipse.papyrus.moka.fmi.master.jnr.FMI2Callbacks.FMI2FreeMemory;
+
+import jnr.ffi.Pointer;
+
+public class FMI2FreeMemImpl implements FMI2FreeMemory {
+
+	
+	private FMI2AllocatorImpl alloc;
+	public FMI2FreeMemImpl(FMI2AllocatorImpl allocator){
+		alloc = allocator;
+	}
+	@Override
+	public void call(Pointer pointer) {
+		alloc.releasePointer(pointer);
+	}
+
 }

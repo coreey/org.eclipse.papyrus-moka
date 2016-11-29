@@ -65,13 +65,6 @@ http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="com.sun.jna"
-         download-size="0"
-         install-size="0"
-         version="2.0.0.qualifier"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.papyrus.moka.fuml.cosimulation"
          download-size="0"
          install-size="0"

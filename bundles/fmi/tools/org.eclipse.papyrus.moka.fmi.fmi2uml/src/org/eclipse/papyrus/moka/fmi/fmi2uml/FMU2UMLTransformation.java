@@ -59,16 +59,40 @@ public class FMU2UMLTransformation {
 	FmiModelDescriptionType modelDescription;
 	Package dependencyPackage;
 	Class fmuClass ;
+	
+	
+	Stereotype outputDepStereo;
+	Stereotype initialUnknownDepStereo ;
+	Stereotype derivativeDepStereo;
+	Stereotype calculatedParameterStereo;
+	Stereotype independentStereo;
+	Stereotype inputStereo;
+	Stereotype outputStereo;
+	Stereotype localStereo;
+	Stereotype parameterStereo;
+	
 	private FMUBundle fmuBundle;
 	public FMU2UMLTransformation(FMUBundle fmuBundle, Package receivingPackage) {
 		this.receivingPackage = receivingPackage;
 		this.fmuBundle= fmuBundle;
 		this.modelDescription  =fmuBundle.getModelDescription();
 
+		outputDepStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.OUTPUT_DEPENDENCY_STEREO_NAME);
+		initialUnknownDepStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.INITIAL_UNKNWOWN_STEREO_NAME);
+		derivativeDepStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.DERIVATIVE_DEPENDENCY_STEREO_NAME);
+		
+		calculatedParameterStereo =FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.CALCULATED_PARAMETER_STEREO_NAME);
+		independentStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.INDEPENDENT_STEREO_NAME);
+		inputStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PORT_STEREO_NAME);
+		outputStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PORT_STEREO_NAME);
+		localStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.LOCAL_STEREO_NAME);
+		parameterStereo =FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PARAMETER_STEREO_NAME);
+		
 	}
 
 	public Class transform(){
 
+		
 		if (receivingPackage != null && modelDescription != null){
 			if (! modelDescription.getCoSimulation().isEmpty()) {
 				CoSimulationType cosim =modelDescription.getCoSimulation().get(0);
@@ -115,29 +139,26 @@ public class FMU2UMLTransformation {
 
 
 	private void createOutputsDependency(UnknownType1 unknown) {
-		Stereotype outputDepStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.OUTPUT_DEPENDENCY_STEREO_NAME);
 		createDependency(unknown.getIndex(), unknown.getDependencies(), outputDepStereo);	
 	}
 
 	private void createInitialUnknwonDependency(UnknownType unknown) {
-		Stereotype initialUnknownDepStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.INITIAL_UNKNWOWN_STEREO_NAME);
 		createDependency(unknown.getIndex(), unknown.getDependencies(), initialUnknownDepStereo);		
 	}
 
 	private void createDerivativeDependency(UnknownType1 unknown) {
-		Stereotype derivativeDepStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.DERIVATIVE_DEPENDENCY_STEREO_NAME);
 		createDependency(unknown.getIndex(), unknown.getDependencies(), derivativeDepStereo);
 	}
 
 	private void createDependency(long clientIndex, List<Long> suppliersIndexes, Stereotype setereoToApply) {
 
-		if (clientIndex< fmuClass.getOwnedAttributes().size() && suppliersIndexes != null){
-			Property client = fmuClass.getOwnedAttributes().get(getInt(clientIndex));
+		if (clientIndex<= fmuClass.getOwnedAttributes().size() && suppliersIndexes != null){
+			Property client = fmuClass.getOwnedAttributes().get(getInt(clientIndex)-1);
 			List<NamedElement> suppliers = new ArrayList<NamedElement>();
 			if (client != null){
 				for (long dep : suppliersIndexes){
-					if (dep <fmuClass.getOwnedAttributes().size() ){
-						suppliers.add(fmuClass.getOwnedAttributes().get(getInt(dep)));
+					if (dep <=fmuClass.getOwnedAttributes().size() ){
+						suppliers.add(fmuClass.getOwnedAttributes().get(getInt(dep)-1));
 					}
 				}
 				if (!suppliers.isEmpty()){
@@ -160,12 +181,16 @@ public class FMU2UMLTransformation {
 		Type propType = getUMLType(variable);
 		Property prop;
 		if (FMIUtil.isPort(variable)){
-			prop=fmuClass.createOwnedPort(variable.getName(), propType);
-			prop.setUpper(1);
-			prop.setLower(1);
+			prop = UMLFactory.eINSTANCE.createPort();
 		}else {
-			prop=fmuClass.createOwnedAttribute(variable.getName(), propType, 1, 1);
+			prop = UMLFactory.eINSTANCE.createProperty();
 		}
+		
+		fmuClass.getOwnedAttributes().add(prop);
+		prop.setName(variable.getName());
+		prop.setType(propType);
+		prop.setUpper(1);
+		prop.setLower(1);
 		prop.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		setDefaultValue(prop, variable);
 		Stereotype stereo = getPropertyStereotype(variable.getCausality());
@@ -180,18 +205,18 @@ public class FMU2UMLTransformation {
 	private Stereotype getPropertyStereotype(CausalityType causality) {
 		switch (causality){
 		case CALCULATED_PARAMETER :
-			return FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.CALCULATED_PARAMETER_STEREO_NAME);
+			return calculatedParameterStereo;
 		case INDEPENDENT:
-			return FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.INDEPENDENT_STEREO_NAME);
+			return independentStereo;
 		case INPUT:
-			return FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PORT_STEREO_NAME);
+			return inputStereo;
 		case OUTPUT:
-			return FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PORT_STEREO_NAME);
+			return outputStereo;
 		case LOCAL:
-			return FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.LOCAL_STEREO_NAME);
+			return localStereo;
 
 		case PARAMETER:
-			return FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PARAMETER_STEREO_NAME);
+			return parameterStereo;
 		default:
 			break;
 		}

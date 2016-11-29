@@ -22,8 +22,12 @@ location "http://download.eclipse.org/tools/ajdt/46/dev/update/" aspectj-neon{
 	org.eclipse.equinox.weaving.sdk.feature.group lazy
 }
 
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/" orbit-fasterxml{
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/" orbit{
 	org.eclipse.orbit.category.json
+	jnr.ffi
+	com.kenai.jffi
+	jnr.constants
+	jnr.enxio
 }
 
 location "http://download.eclipse.org/nebula/releases/1.0.0" nebula{

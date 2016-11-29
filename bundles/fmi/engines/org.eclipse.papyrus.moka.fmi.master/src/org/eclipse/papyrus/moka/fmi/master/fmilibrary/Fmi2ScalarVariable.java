@@ -51,20 +51,6 @@ public class Fmi2ScalarVariable {
 		this.initial = modelDescVariable.getInitial().getName();
 		this.setType(p.getType().getName());
 		
-		switch (type){
-		case Fmi2VariableType.fmi2Boolean :
-			this.setRuntimeValue(false);
-			break;
-		case Fmi2VariableType.fmi2Integer :
-			this.setRuntimeValue(0);
-			break;
-		case Fmi2VariableType.fmi2Real :
-			this.setRuntimeValue(0.0);
-			break;
-		case Fmi2VariableType.fmi2String :
-			this.setRuntimeValue("MOKA_DEFAULT");
-			break;
-		}
 	}
 
 	public Fmu2ProxyService getFmu() {

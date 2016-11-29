@@ -13,17 +13,8 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fmu.engine.utils;
 
-import java.util.List;
-
-import org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection;
-import org.eclipse.papyrus.moka.fmi.fmiprofile.Port;
 import org.eclipse.papyrus.moka.fmu.engine.control.FMUControlService;
 import org.eclipse.papyrus.moka.fmu.json.JSONSocketClient;
-import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.StructuralFeature;
 
 public class FMUEngineUtils {
 

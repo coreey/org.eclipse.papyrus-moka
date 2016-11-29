@@ -19,7 +19,6 @@
 	
 	<!-- Modules to build -->
 	<modules>
-		<module>com.sun.jna</module>
 		<module>org.eclipse.papyrus.moka.fmi</module>
 		<module>org.eclipse.papyrus.moka.fmi.fmi2uml</module>
 		<module>org.eclipse.papyrus.moka.fmi.profile.ui</module>
