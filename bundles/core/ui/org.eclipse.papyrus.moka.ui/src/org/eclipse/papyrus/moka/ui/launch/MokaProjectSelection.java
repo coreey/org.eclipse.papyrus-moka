@@ -11,6 +11,9 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.ui.launch;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.window.Window;
@@ -41,7 +44,14 @@ public class MokaProjectSelection extends SelectionAdapter {
 	public void widgetSelected(SelectionEvent event) {
 		TreeSelectorDialog dialog = new TreeSelectorDialog(Display.getCurrent().getActiveShell());
 		dialog.setTitle(DIALOG_NAME);
-		dialog.setContentProvider(new WorkspaceContentProvider());
+		WorkspaceContentProvider contentProvider = new WorkspaceContentProvider();
+		
+		Map<String, String> extensionFilters = new HashMap<String, String>();
+		extensionFilters.put("*", "All (*)");
+		extensionFilters.put("*.uml", "UML (*.uml)");
+		contentProvider.setExtensionFilters(extensionFilters);
+		
+		dialog.setContentProvider(contentProvider);
 		dialog.setLabelProvider(WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider());
 
 		if (this.currentSelection != null && this.currentSelection.exists()) {
