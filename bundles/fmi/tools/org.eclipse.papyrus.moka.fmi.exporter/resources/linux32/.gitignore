@@ -1,4 +1,0 @@
-# Ignore everything in this directory
-*.zip
-# Except this file
-!.gitignore

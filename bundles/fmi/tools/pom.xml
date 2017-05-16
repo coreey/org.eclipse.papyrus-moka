@@ -22,7 +22,7 @@
 		<module>org.eclipse.papyrus.moka.fmi</module>
 		<module>org.eclipse.papyrus.moka.fmi.fmi2uml</module>
 		<module>org.eclipse.papyrus.moka.fmi.profile.ui</module>
-		<module>org.eclipse.papyrus.moka.fmi.exporter</module>
+		
 		<module>org.eclipse.papyrus.moka.fmu.rcp</module>
 	</modules>
 	

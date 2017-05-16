@@ -28,21 +28,6 @@
             </visibleWhen>
          </menu>
       </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.popup.moka.fmi">
-         <command
-               commandId="org.eclipse.papyrus.moka.fmi.ui.handlers.ExportFMUHandlerCommand"
-               icon="platform:/plugin/org.eclipse.papyrus.uml.icons/resource/gif/Component.gif"
-               id="org.eclipse.papyrus.moka.ui.utils.handlers.ExportFMUMenu"
-               label="Export FMU for co-simulation"
-               style="push"
-               tooltip="Export FMU for co-simulation">
-            <visibleWhen
-                  checkEnabled="false">
-            </visibleWhen>
-         </command>
-      </menuContribution>
        <menuContribution
             allPopups="false"
             locationURI="popup:org.eclipse.papyrus.views.modelexplorer.popup.moka.fmi">
@@ -100,12 +85,6 @@
    </extension>
    <extension
          point="org.eclipse.ui.commands">
-      <command
-            categoryId="org.eclipse.papyrus.editor.category"
-            description="Export FMU"
-            id="org.eclipse.papyrus.moka.fmi.ui.handlers.ExportFMUHandlerCommand"
-            name="Export FMU">
-      </command>
        <command
             categoryId="org.eclipse.papyrus.editor.category"
             description="Import FMU"
@@ -115,25 +94,6 @@
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
-      <handler
-            class="org.eclipse.papyrus.moka.fmi.ui.handlers.ExportFMUHandler"
-            commandId="org.eclipse.papyrus.moka.fmi.ui.handlers.ExportFMUHandlerCommand">
-         <enabledWhen>
-            <with
-                  variable="selection">
-               <iterate
-                     ifEmpty="false"
-                     operator="and">
-                  <adapt
-                        type="org.eclipse.emf.ecore.EObject">
-                     <instanceof
-                           value="org.eclipse.uml2.uml.Class">
-                     </instanceof>
-                  </adapt>
-               </iterate>
-            </with>
-         </enabledWhen>
-      </handler>
       <handler
             class="org.eclipse.papyrus.moka.fmi.ui.handlers.ImportFMULibHandler"
             commandId="org.eclipse.papyrus.moka.fmi.ui.handlers.ImportFMUHandlerCommand">

@@ -100,13 +100,6 @@ http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.papyrus.moka.fmi.exporter"
-         download-size="0"
-         install-size="0"
-         version="2.0.0.qualifier"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.papyrus.moka.fmi.profile.ui"
          download-size="0"
          install-size="0"
