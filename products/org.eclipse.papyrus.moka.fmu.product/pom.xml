@@ -16,7 +16,7 @@
 	<description>FMU embedded Moka</description>
 
 	<properties>
-		<fmi.exporter.target.folder>../../bundles/fmi/tools/org.eclipse.papyrus.moka.fmi.exporter/resources/</fmi.exporter.target.folder>
+		<fmi.exporter.target.folder>../../bundles/fmi/tools/org.eclipse.papyrus.moka.fmi.rcp.export/resources/</fmi.exporter.target.folder>
 	</properties>
 
 	<!-- Specific build -->

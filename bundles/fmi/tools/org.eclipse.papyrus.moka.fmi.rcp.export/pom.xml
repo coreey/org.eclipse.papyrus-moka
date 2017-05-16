@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM (i.e., Tools) -->
+	<parent>
+		<groupId>org.eclipse.papyrus.moka</groupId>
+		<artifactId>org.eclipse.papyrus.moka.bundles.fmi.tools</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- POM Description -->
+	<artifactId>org.eclipse.papyrus.moka.fmi.rcp.export</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<name>org.eclipse.papyrus.moka.fmi.rcp.export</name>
+	<description>Moka RCP for FMI export</description>
+	<version>1.0.0-SNAPSHOT</version>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.papyrus.moka</groupId>
+			<artifactId>org.eclipse.papyrus.moka.fmu.product</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<type>eclipse-repository</type>
+		</dependency>
+	</dependencies>
+
+</project>
