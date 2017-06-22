@@ -132,9 +132,9 @@ public class FUMLExecutionEngine extends AbstractExecutionEngine {
 				loadLibrary(o, locus, this.executionEntryPoint);
 			}
 		} catch (CoreException ex) {
-			
+
 			ex.printStackTrace();
-			
+
 			System.err.println(ex.getMessage());
 		} catch (Exception ex) {
 			//Activator.log.error(ex);
@@ -203,8 +203,11 @@ public class FUMLExecutionEngine extends AbstractExecutionEngine {
 		this.executionArguments = new ArrayList<IParameterValue>();
 		if (args == null) {
 			return;
-		}
+		}		
 		List<IValue> tmpArgs = new ArrayList<IValue>();
+		if (! (this.executionEntryPoint instanceof Behavior)) {
+			return ;
+		}
 		// analyzes arguments versus parameters of the main behavior
 		List<Parameter> parameters = ((Behavior) this.executionEntryPoint).getOwnedParameters();
 		if (parameters == null) {

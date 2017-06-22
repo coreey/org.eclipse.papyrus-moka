@@ -47,6 +47,8 @@ public class FMUControlService extends AbstractMokaService implements FMUInterfa
 
 	@Override
 	public void init(ILaunch launcher, EObject modelElement) {
+		if (! (modelElement instanceof Class))
+			return ;
 		this.fmuClass = (Class) modelElement;
 		this.instantiationLock = new Semaphore(0);
 		this.stepLock = new Semaphore(0);

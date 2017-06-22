@@ -29,6 +29,7 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.OpaqueBehavior;
@@ -63,7 +64,10 @@ public class MokaTriggerComboPopulation implements ModifyListener {
 					namedElements.add((NamedElement) eObject);
 					// }
 				}
+			} else if (eObject instanceof InstanceSpecification) {		
+				namedElements.add((NamedElement) eObject);
 			}
+			
 		}
 
 		Comparator<NamedElement> comp = new Comparator<NamedElement>() {
