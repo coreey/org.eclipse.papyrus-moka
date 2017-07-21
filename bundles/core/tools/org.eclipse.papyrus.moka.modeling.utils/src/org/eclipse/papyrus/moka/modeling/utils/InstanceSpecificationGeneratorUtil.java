@@ -92,6 +92,13 @@ public class InstanceSpecificationGeneratorUtil {
 					ValueSpecification copy = EcoreUtil.copy(v) ;
 					slot.getValues().add(copy) ;
 					copy.setName("valueFor " + p.getName());
+					if (copy instanceof InstanceValue) {
+						InstanceSpecification instanceSpecToBeCopied = ((InstanceValue)copy).getInstance() ;
+						InstanceSpecification instanceSpecCopy = EcoreUtil.copy(instanceSpecToBeCopied) ;
+						instanceSpecCopy.setName("" + instanceSpecCopy.getName() + "_copy") ;
+						this.rootContainer.getPackagedElements().add(instanceSpecCopy) ;
+						((InstanceValue)copy).setInstance(instanceSpecCopy);
+					}
 				}
 				else {
 					if (this.canGenerateNewValue(classifier, p)) {
