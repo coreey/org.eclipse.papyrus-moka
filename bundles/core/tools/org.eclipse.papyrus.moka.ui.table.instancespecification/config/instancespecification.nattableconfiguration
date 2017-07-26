@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<nattableconfiguration:TableConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:nattableaxis="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxis" xmlns:nattableaxisprovider="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisprovider" xmlns:nattableconfiguration="http://www.eclipse.org/papyrus/nattable/model/nattableconfiguration" xmlns:nattablelabelprovider="http://www.eclipse.org/papyrus/nattable/model/table/nattablecontentprovider" xmlns:nattablestyle="http://www.eclipse.org/papyrus/nattable/model/table/nattablestyle" xmlns:nattabletester="http://www.eclipse.org/papyrus/nattable/model/table/nattabletester" description="Edit slot values of an existing instance tree" name="Instance specification table" type="InstanceSpecificationTable" defaultRowAxisProvider="//@rowAxisProviders.0" defaultColumnAxisProvider="//@columnAxisProviders.0">
+  <styles xsi:type="nattablestyle:TableDisplayStyle"/>
+  <styles xsi:type="nattablestyle:BooleanValueStyle" name="columnsWidthAsPercentage"/>
+  <creationTester xsi:type="nattabletester:JavaTableTester" tester="org.eclipse.papyrus.moka.ui.table.instancespecification.InstanceSpecificationTableTester"/>
+  <rowHeaderAxisConfiguration indexStyle="NUMERIC" displayIndex="false">
+    <styles xsi:type="nattablestyle:IntValueStyle" name="rowLabelWidth" intValue="250"/>
+    <ownedLabelConfigurations xsi:type="nattablelabelprovider:ObjectLabelProviderConfiguration"/>
+    <axisManagers axisManagerId="org.eclipse.papyrus.moka.ui.table.instancespecification.InstanceSpecificationRowAxisManager" labelProviderContext="org.eclipse.papyrus.infra.nattable.header.labelprovider" headerLabelConfiguration="//@rowHeaderAxisConfiguration/@ownedLabelConfigurations.0"/>
+  </rowHeaderAxisConfiguration>
+  <columnHeaderAxisConfiguration displayIndex="false">
+    <ownedLabelConfigurations xsi:type="nattablelabelprovider:FeatureLabelProviderConfiguration" displayIcon="false" displayIsDerived="false" displayType="false" displayMultiplicity="false"/>
+    <axisManagers axisManagerId="org.eclipse.papyrus.uml.nattable.feature.axis.manager" labelProviderContext="org.eclipse.papyrus.infra.nattable.header.feature.labelprovider" headerLabelConfiguration="//@columnHeaderAxisConfiguration/@ownedLabelConfigurations.0"/>
+  </columnHeaderAxisConfiguration>
+  <columnAxisProviders xsi:type="nattableaxisprovider:SlaveObjectAxisProvider" description="Provides table default columns" name="Block Property Column Provider">
+    <axis xsi:type="nattableaxis:EStructuralFeatureAxis" manager="//@columnHeaderAxisConfiguration/@axisManagers.0" alias="Value">
+      <styles xsi:type="nattablestyle:IntValueStyle" name="axisWidth" intValue="150"/>
+      <element xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Slot/value"/>
+    </axis>
+  </columnAxisProviders>
+  <rowAxisProviders xsi:type="nattableaxisprovider:MasterObjectAxisProvider" description="The row provider store the definition of block properties values" name="Row Block Property Value Provider" disconnectSlave="true"/>
+</nattableconfiguration:TableConfiguration>

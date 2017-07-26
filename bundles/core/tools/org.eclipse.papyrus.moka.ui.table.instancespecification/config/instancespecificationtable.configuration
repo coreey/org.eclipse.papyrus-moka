@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration:PapyrusConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xmi:id="_ko07IErbEeSdQKzSRatBjg">
+  <viewpoints xsi:type="configuration:PapyrusViewpoint" xmi:id="_xogdoErbEeSdQKzSRatBjg" name="Default Papyrus Viewpoint">
+    <modelKinds xsi:type="configuration:PapyrusSyncTable" xmi:id="_DqpfMHIMEee6QI2YYVjYXw" name="Instance Specification Table" icon="platform:/plugin/org.eclipse.papyrus.uml.nattable.generic.config/icons/uml_generic_table.png" implementationID="InstanceSpecificationTable">
+      <modelRules xmi:id="_etIOEHIMEee6QI2YYVjYXw">
+        <element href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
+      </modelRules>
+      <owningRules xmi:id="_hT9GYHIMEee6QI2YYVjYXw">
+        <element href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
+      </owningRules>
+      <categories href="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration#_7wNb5dxhEeOqHvRyiN87hA"/>
+      <categories href="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration#_7wNb4txhEeOqHvRyiN87hA"/>
+    </modelKinds>
+  </viewpoints>
+  <defaultStakeholder href="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration#_7wLmkdxhEeOqHvRyiN87hA"/>
+  <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+</configuration:PapyrusConfiguration>

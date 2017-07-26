@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: InstanceSpecification Table plugin
+Bundle-SymbolicName: org.eclipse.papyrus.moka.ui.table.instancespecification;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: org.eclipse.papyrus.moka.ui.table.instancespecification.Activator
+Bundle-Vendor: Eclipse Modeling Project
+Require-Bundle: org.eclipse.papyrus.infra.properties;bundle-version="1.2.0",
+ org.eclipse.papyrus.infra.constraints,
+ org.eclipse.emf.ecore,
+ org.eclipse.papyrus.infra.core,
+ org.eclipse.papyrus.infra.emf,
+ org.eclipse.uml2.uml,
+ org.eclipse.papyrus.infra.nattable;bundle-version="2.0.0",
+ org.eclipse.papyrus.uml.nattable;bundle-version="2.0.0",
+ org.eclipse.papyrus.uml.nattable.xtext.integration;bundle-version="1.2.0",
+ org.eclipse.papyrus.infra.emf.gmf,
+ org.eclipse.papyrus.uml.extensionpoints;bundle-version="1.2.0",
+ org.eclipse.papyrus.uml.tools.utils;bundle-version="2.0.0",
+ org.eclipse.papyrus.uml.nattable.xtext.valuespecification;bundle-version="2.0.0",
+ org.eclipse.papyrus.uml.textedit.valuespecification.xtext.utils,
+ org.eclipse.papyrus.infra.services.edit,
+ org.eclipse.papyrus.infra.services.validation;bundle-version="2.0.1",
+ org.eclipse.papyrus.infra.viewpoints.policy;bundle-version="1.2.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
