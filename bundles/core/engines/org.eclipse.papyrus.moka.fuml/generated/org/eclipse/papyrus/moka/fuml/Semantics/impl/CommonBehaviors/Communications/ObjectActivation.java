@@ -24,7 +24,6 @@ import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IC
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventAccepter;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IObjectActivation;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.Object_;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1.ChoiceStrategy;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
@@ -129,14 +128,9 @@ public class ObjectActivation implements IObjectActivation {
 		return ((GetNextEventStrategy) this.object.getLocus().getFactory().getStrategy("getNextEvent")).getNextEvent(this);
 	}
 
-	public void send(ISignalInstance signalInstance) {
-		// Add a signal event occurrence for the given signal instance to the event pool
-		// and signal that a new event occurrence has arrived.
-
-		// fUML12-35 Initial execution of an activity is not run to completion
-
-		SignalEventOccurrence eventOccurrence = new SignalEventOccurrence();
-		eventOccurrence.signalInstance = (SignalInstance) signalInstance.copy();
+	public void send(IEventOccurrence eventOccurrence) {
+		// Add an event occurrence to the event pool and signal that a 
+		// new event occurrence has arrived.
 		this.eventPool.add(eventOccurrence);
 		_send(new ArrivalSignal());
 	}

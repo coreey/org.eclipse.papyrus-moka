@@ -18,8 +18,8 @@ import java.util.List;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventAccepter;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IObjectActivation;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Operation;
 
@@ -33,7 +33,7 @@ public interface IObject_ extends IExtensionalValue {
 
 	public IExecution dispatch(Operation operation);
 
-	public void send(ISignalInstance signalInstance);
+	public void send(IEventOccurrence eventOccurrence);
 
 	public void register(IEventAccepter accepter);
 

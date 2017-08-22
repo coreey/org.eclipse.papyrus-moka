@@ -32,7 +32,7 @@ public interface IObjectActivation {
 
 	public IEventOccurrence getNextEvent();
 
-	public void send(ISignalInstance signalInstance);
+	public void send(IEventOccurrence eventOccurrence);
 	
 	public void notifyEventArrival();
 

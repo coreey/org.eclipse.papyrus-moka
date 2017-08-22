@@ -21,7 +21,7 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Operation;
@@ -42,9 +42,9 @@ public class Reference extends StructuredValue implements IReference {
 		return this.referent.dispatch(operation);
 	}
 
-	public void send(ISignalInstance signalInstance) {
-		// Send the given signal instance to the referent object.
-		this.referent.send(signalInstance);
+	public void send(IEventOccurrence eventOccurrence)  {
+		// Send the given event occurrence to the referent object.
+		this.referent.send(eventOccurrence);
 	}
 
 	public void destroy() {

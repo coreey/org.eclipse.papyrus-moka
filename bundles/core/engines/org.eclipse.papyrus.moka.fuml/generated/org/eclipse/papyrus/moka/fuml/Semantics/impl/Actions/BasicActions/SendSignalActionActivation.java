@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
+import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalInstance;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.Property;
@@ -45,7 +46,9 @@ public class SendSignalActionActivation extends InvocationActionActivation {
 				List<IValue> values = this.takeTokens(argumentPin);
 				signalInstance.setFeatureValue(attribute, values, 0);
 			}
-			((IReference) target).send(signalInstance);
+			SignalEventOccurrence signalEventOccurrence = new SignalEventOccurrence();
+			signalEventOccurrence.signalInstance = (SignalInstance) signalInstance.copy();
+			((IReference)target).send(signalEventOccurrence);
 		}
 	}
 }
