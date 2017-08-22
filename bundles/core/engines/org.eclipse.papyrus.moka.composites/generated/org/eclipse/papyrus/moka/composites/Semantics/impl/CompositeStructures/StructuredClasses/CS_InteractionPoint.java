@@ -16,14 +16,17 @@ package org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.S
 // Imports
 import java.util.List;
 
+import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_EventOccurrence;
+import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.InvocationActions.ICS_EventOccurrence;
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_InteractionPoint;
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_Reference;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.Reference;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Port;
 
@@ -44,7 +47,7 @@ public class CS_InteractionPoint extends Reference implements ICS_InteractionPoi
 
 	@Override
 	public void startBehavior(Class classifier, List<IParameterValue> inputs) {
-		// Overriden to do nothing
+		// Overridden to do nothing
 	}
 
 	@Override
@@ -54,9 +57,19 @@ public class CS_InteractionPoint extends Reference implements ICS_InteractionPoi
 	}
 
 	@Override
-	public void send(ISignalInstance signalInstance) {
-		// Delegates sending to the owning object
-		this.owner.sendIn(signalInstance, this);
+	public void send(IEventOccurrence eventOccurrence) {
+		// An event occurrence that passes through a CS_InteractionPoint is
+		// (if necessary) wrapped in a CS_EventOccurrence. This event occurrence
+		// is then sent to the owning object. 
+		ICS_EventOccurrence wrappingEventOccurrence = null;
+		if(eventOccurrence instanceof ICS_EventOccurrence){
+			wrappingEventOccurrence = (ICS_EventOccurrence) eventOccurrence; 
+		}else{
+			wrappingEventOccurrence = new CS_EventOccurrence();
+			wrappingEventOccurrence.setWrappedEventOccurrence(eventOccurrence);
+		}
+		wrappingEventOccurrence.setInteractionPoint(this);
+		this.owner.sendIn(wrappingEventOccurrence, this);
 	}
 
 	@Override
@@ -88,5 +101,11 @@ public class CS_InteractionPoint extends Reference implements ICS_InteractionPoi
 
 	public void setDefiningPort(Port definingPort) {
 		this.definingPort = definingPort;
+	}
+	
+	@Override
+	public boolean checkAllParents(Classifier type, Classifier classifier) {
+		// Delegates the type checking to the reference
+		return this.referent.checkAllParents(type, classifier);
 	}
 }

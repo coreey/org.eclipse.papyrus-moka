@@ -18,7 +18,7 @@ import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructu
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_Reference;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.Reference;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Port;
@@ -36,14 +36,14 @@ public class CS_Reference extends Reference implements ICS_Reference {
 		return this.compositeReferent.dispatchIn(operation, interactionPoint);
 	}
 
-	public void sendIn(ISignalInstance signalInstance, ICS_InteractionPoint interactionPoint) {
+	public void sendIn(IEventOccurrence eventOccurrence, ICS_InteractionPoint interactionPoint) {
 		// delegates sending to composite referent
-		this.compositeReferent.sendIn(signalInstance, interactionPoint);
+		this.compositeReferent.sendIn(eventOccurrence, interactionPoint);
 	}
 
-	public void sendOut(ISignalInstance signalInstance, Port onPort) {
+	public void sendOut(IEventOccurrence eventOccurrence, Port onPort) {
 		// delegates sending to composite referent
-		this.compositeReferent.sendOut(signalInstance, onPort);
+		this.compositeReferent.sendOut(eventOccurrence, onPort);
 	}
 
 	public IExecution dispatchOut(Operation operation, Port onPort) {
@@ -56,9 +56,9 @@ public class CS_Reference extends Reference implements ICS_Reference {
 		return this.compositeReferent.dispatchIn(operation, onPort);
 	}
 
-	public void sendIn(ISignalInstance signalInstance, Port onPort) {
+	public void sendIn(IEventOccurrence eventOccurrence, Port onPort) {
 		// delegates sending to composite referent
-		this.compositeReferent.sendIn(signalInstance, onPort);
+		this.compositeReferent.sendIn(eventOccurrence, onPort);
 	}
 
 	public IExecution dispatchOut(Operation operation, ICS_InteractionPoint interactionPoint) {
@@ -67,10 +67,10 @@ public class CS_Reference extends Reference implements ICS_Reference {
 		return this.compositeReferent.dispatchOut(operation, interactionPoint);
 	}
 
-	public void sendOut(ISignalInstance signalInstance, ICS_InteractionPoint interactionPoint) {
+	public void sendOut(IEventOccurrence eventOccurrence, ICS_InteractionPoint interactionPoint) {
 		// Delegates sending (through the interaction point, to the environment)
 		// to compositeReferent
-		this.compositeReferent.sendOut(signalInstance, interactionPoint);
+		this.compositeReferent.sendOut(eventOccurrence, interactionPoint);
 	}
 
 	@Override

@@ -20,7 +20,6 @@ import java.util.List;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CommonBehaviors.Communications.CS_DispatchOperationOfInterfaceStrategy;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CommonBehaviors.Communications.CS_StructuralFeatureOfInterfaceAccessStrategy;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_RequestPropagationStrategy;
-import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_SignalInstance;
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.CS_LinkKind;
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_InteractionPoint;
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_Link;
@@ -32,7 +31,7 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Actions.BasicActions.CallOperationActionActivation;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Actions.BasicActions.SendSignalActionActivation;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.Object_;
@@ -45,7 +44,6 @@ import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Port;
-import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.StructuralFeature;
 
 
@@ -88,25 +86,20 @@ public class CS_Object extends Object_ implements ICS_Object {
 	}
 
 
-	public void sendIn(ISignalInstance signalInstance, ICS_InteractionPoint interactionPoint) {
-		// If the interaction is a behavior port,
-		// creates a CS_SignalInstance from the signal instance,
-		// sets its interaction point,
-		// and sends it to the target object using operation send
-		// If this is not a behavior port,
-		// select appropriate delegation targets from interactionPoint,
-		// and propagates the signal to these targets
+	public void sendIn(IEventOccurrence eventOccurrence, ICS_InteractionPoint interactionPoint) {
+		// 1] If the interaction is a behavior port then sends the event occurrence to the target
+		// object using operation send.
+		// 2] If this is not a behavior port, select appropriate delegation targets from interactionPoint,
+		// and propagates the event occurrence to these targets
 		if (interactionPoint.getDefiningPort().isBehavior()) {
-			CS_SignalInstance newSignalInstance = (CS_SignalInstance) signalInstance.copy();
-			newSignalInstance.interactionPoint = interactionPoint;
-			this.send(newSignalInstance);
+			this.send(eventOccurrence);
 		} else {
 			boolean toInternal = true;
 			List<IReference> potentialTargets = new ArrayList<IReference>();
 			List<ICS_Link> cddLinks = this.getLinks(interactionPoint);
 			Integer linkIndex = 1;
 			while (linkIndex <= cddLinks.size()) {
-				List<IReference> validTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.DELEGATION_LITERAL, signalInstance.getType(), toInternal);
+				List<IReference> validTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.DELEGATION_LITERAL, toInternal);
 				Integer targetIndex = 1;
 				while (targetIndex <= validTargets.size()) {
 					potentialTargets.add(validTargets.get(targetIndex - 1));
@@ -119,15 +112,13 @@ public class CS_Object extends Object_ implements ICS_Object {
 			// Otherwise, do the following concurrently
 			for (int i = 0; i < potentialTargets.size(); i++) {
 				IReference target = potentialTargets.get(i);
-				CS_SignalInstance newSignalInstance = (CS_SignalInstance) signalInstance.copy();
-				newSignalInstance.interactionPoint = interactionPoint;
-				target.send(newSignalInstance);
+				target.send(eventOccurrence);
 			}
 		}
 	}
 
 
-	public List<IReference> selectTargetsForSending(ICS_Link link, ICS_InteractionPoint interactionPoint, ConnectorKind connectorKind, Signal signal, Boolean toInternal) {
+	public List<IReference> selectTargetsForSending(ICS_Link link, ICS_InteractionPoint interactionPoint, ConnectorKind connectorKind, Boolean toInternal) {
 		// From the given link, signal and interaction point, retrieves potential targets (i.e. end values of link)
 		// through which request can be propagated
 		// These targets are attached to interaction point through the given link, and respect the following rules:
@@ -298,15 +289,14 @@ public class CS_Object extends Object_ implements ICS_Object {
 		return potentialTargets;
 	}
 
-	public void sendOut(ISignalInstance signalInstance, ICS_InteractionPoint interactionPoint) {
+	public void sendOut(IEventOccurrence eventOccurrence, ICS_InteractionPoint interactionPoint) {
 		// Select appropriate delegation links from interactionPoint,
-		// and propagates the signal instance through these links
+		// and propagates the event occurrence through these links
 		// Appropriate links are links which target elements
 		// in the environment of this CS_Object.
 		// These can be delegation links (i.e, the targeted elements must
 		// require a reception for the signal) or assembly links (i.e., the target elements
 		// must provide a reception for the signal)
-
 		boolean notToInternal = false; // i.e. to environment
 		List<IReference> allPotentialTargets = new ArrayList<IReference>();
 		List<IReference> targetsForSendingIn = new ArrayList<IReference>();
@@ -315,14 +305,14 @@ public class CS_Object extends Object_ implements ICS_Object {
 		List<ICS_Link> cddLinks = this.getLinks(interactionPoint);
 		Integer linkIndex = 1;
 		while (linkIndex <= cddLinks.size()) {
-			List<IReference> validAssemblyTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.ASSEMBLY_LITERAL, signalInstance.getType(), notToInternal);
+			List<IReference> validAssemblyTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.ASSEMBLY_LITERAL, notToInternal);
 			Integer targetIndex = 1;
 			while (targetIndex <= validAssemblyTargets.size()) {
 				allPotentialTargets.add(validAssemblyTargets.get(targetIndex - 1));
 				targetsForSendingIn.add(validAssemblyTargets.get(targetIndex - 1));
 				targetIndex = targetIndex + 1;
 			}
-			List<IReference> validDelegationTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.DELEGATION_LITERAL, signalInstance.getType(), notToInternal);
+			List<IReference> validDelegationTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.DELEGATION_LITERAL, notToInternal);
 			targetIndex = 1;
 			while (targetIndex <= validDelegationTargets.size()) {
 				allPotentialTargets.add(validDelegationTargets.get(targetIndex - 1));
@@ -340,7 +330,7 @@ public class CS_Object extends Object_ implements ICS_Object {
 			for (int k = 0; k < targetsForSendingIn.size(); k++) {
 				IReference cddTarget = targetsForSendingIn.get(k);
 				if (cddTarget == target) {
-					target.send(signalInstance);
+					target.send(eventOccurrence);
 				}
 			}
 			for (int k = 0; k < targetsForSendingOut.size(); k++) {
@@ -349,7 +339,7 @@ public class CS_Object extends Object_ implements ICS_Object {
 				ICS_InteractionPoint cddTarget = (ICS_InteractionPoint) targetsForSendingOut.get(k);
 				if (cddTarget == target) {
 					ICS_Reference owner = cddTarget.getOwner();
-					owner.sendOut(signalInstance, cddTarget);
+					owner.sendOut(eventOccurrence, cddTarget);
 				}
 			}
 		}
@@ -658,9 +648,9 @@ public class CS_Object extends Object_ implements ICS_Object {
 		return isAValue;
 	}
 
-	public void sendOut(ISignalInstance signalInstance, Port onPort) {
+	public void sendOut(IEventOccurrence eventOccurrence, Port onPort) {
 		// Select a CS_InteractionPoint value playing onPort,
-		// and send the signal instance to this interaction point
+		// and send the event occurrence to this interaction point
 		IFeatureValue featureValue = this.getFeatureValue(onPort);
 		List<IValue> values = featureValue.getValues();
 		List<IReference> potentialTargets = new ArrayList<IReference>();
@@ -671,7 +661,7 @@ public class CS_Object extends Object_ implements ICS_Object {
 		List<IReference> targets = strategy.select(potentialTargets, new SendSignalActionActivation());
 		for (int i = 0; i < targets.size(); i++) {
 			CS_InteractionPoint target = (CS_InteractionPoint) targets.get(i);
-			this.sendOut(signalInstance, target);
+			this.sendOut(eventOccurrence, target);
 		}
 	}
 
@@ -707,7 +697,7 @@ public class CS_Object extends Object_ implements ICS_Object {
 		return interactionPoint.dispatch(operation);
 	}
 
-	public void sendIn(ISignalInstance signalInstance, Port onPort) {
+	public void sendIn(IEventOccurrence eventOccurrence, Port onPort) {
 		// Select a Reference value playing onPort,
 		// and send the signal instance to this interaction point
 		IFeatureValue featureValue = this.getFeatureValue(onPort);
@@ -720,7 +710,7 @@ public class CS_Object extends Object_ implements ICS_Object {
 		List<IReference> targets = strategy.select(potentialTargets, new SendSignalActionActivation());
 		for (int i = 0; i < targets.size(); i++) {
 			IReference target = targets.get(i);
-			target.send(signalInstance);
+			target.send(eventOccurrence);
 		}
 	}
 
