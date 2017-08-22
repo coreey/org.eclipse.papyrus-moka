@@ -18,7 +18,6 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Actions.CompleteActions.IAcceptEv
 import org.eclipse.papyrus.moka.fuml.Semantics.Actions.CompleteActions.IAcceptEventActionEventAccepter;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.EventAccepter;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalEventOccurrence;
 
 public class AcceptEventActionEventAccepter extends EventAccepter implements IAcceptEventActionEventAccepter {
 
@@ -29,27 +28,14 @@ public class AcceptEventActionEventAccepter extends EventAccepter implements IAc
 	public IAcceptEventActionActivation actionActivation;
 
 	public void accept(IEventOccurrence eventOccurrence) {
-		// Accept a signal event occurrence. Forward the signal instance to the action activation.
-
-		// fUML12-35 Initial execution of an activity is not run to completion
-
-
-		if (eventOccurrence instanceof SignalEventOccurrence) {
-			this.actionActivation.accept(((SignalEventOccurrence) eventOccurrence).signalInstance);
-		}
+		// Accept an event occurrence and forward it to the action activation.
+		this.actionActivation.accept(eventOccurrence);
 	}
 
 	public Boolean match(IEventOccurrence eventOccurrence) {
-		// Return true if the given event occurrence is a signal event occurrence and the
-		// signal instance matches a trigger of the accept action of the action activation.
-
-		// fUML12-35 Initial execution of an activity is not run to completion
-
-		boolean matches = false;
-		if (eventOccurrence instanceof SignalEventOccurrence) {
-			matches = this.actionActivation.match(((SignalEventOccurrence) eventOccurrence).signalInstance);
-		}
-		return matches;
+		// Return true if the given event occurrence matches a trigger of the accept event 
+		// action of the action activation.
+		return this.actionActivation.match(eventOccurrence);
 	}
 
 	public IAcceptEventActionActivation getActionActivation() {

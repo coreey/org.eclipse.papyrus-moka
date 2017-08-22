@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Actions.BasicActions.ActionActivation;
-import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ReadIsClassifiedObjectAction;
 
 public class ReadIsClassifiedObjectActionActivation extends ActionActivation {
@@ -37,17 +36,11 @@ public class ReadIsClassifiedObjectActionActivation extends ActionActivation {
 		// Otherwise place false on the result output pin.
 		ReadIsClassifiedObjectAction action = (ReadIsClassifiedObjectAction) (this.node);
 		IValue input = this.takeTokens(action.getObject()).get(0);
-		List<Classifier> types = input.getTypes();
 		boolean result = false;
-		int i = 1;
-		while (!result & i <= types.size()) {
-			Classifier type = types.get(i - 1);
-			if (type == action.getClassifier()) {
-				result = true;
-			} else if (!action.isDirect()) {
-				result = this.checkAllParents(type, action.getClassifier());
-			}
-			i = i + 1;
+		if (action.isDirect()) {
+			result = input.hasType(action.getClassifier());
+		} else {
+			result = input.isInstanceOf(action.getClassifier());
 		}
 		List<IValue> values = new ArrayList<IValue>();
 		values.add(this.makeBooleanValue(result));

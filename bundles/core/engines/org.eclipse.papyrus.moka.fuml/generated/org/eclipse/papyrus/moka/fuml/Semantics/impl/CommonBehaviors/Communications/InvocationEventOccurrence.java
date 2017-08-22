@@ -14,8 +14,13 @@
 
 package org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IInvocationEventOccurrence;
+import org.eclipse.uml2.uml.Trigger;
 
 /**
  * An invocation event occurrence represents a signal occurrence of the event of the asynchronous
@@ -36,6 +41,18 @@ public class InvocationEventOccurrence extends EventOccurrence implements IInvoc
 	@Override
 	public void setExecution(IExecution execution) {
 		this.execution = execution;
+	}
+
+	@Override
+	public boolean match(Trigger trigger) {
+		// An invocation event occurrence does not match any triggers.
+		return false;
+	}
+
+	@Override
+	public List<IParameterValue> getParameterValues() {
+		// An invocation event occurrence does not have any associated data.
+		return new ArrayList<IParameterValue>();
 	}
 
 }

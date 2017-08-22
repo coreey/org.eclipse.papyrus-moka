@@ -19,7 +19,6 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Activities.IntermediateActivities
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IBooleanValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.ILink;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
-import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.Pin;
@@ -45,7 +44,5 @@ public interface IActionActivation extends IActivityNodeActivation {
 	public Boolean valueParticipatesInLink(IValue value, ILink link);
 
 	public IBooleanValue makeBooleanValue(Boolean value);
-
-	public boolean checkAllParents(Classifier type, Classifier classifier);
 
 }

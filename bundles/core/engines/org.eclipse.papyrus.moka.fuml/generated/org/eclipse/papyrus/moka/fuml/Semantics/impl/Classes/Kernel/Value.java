@@ -25,6 +25,37 @@ public abstract class Value extends SemanticVisitor implements IValue {
 
 	public abstract ValueSpecification specify();
 
+	public boolean checkAllParents(Classifier type, Classifier classifier) {
+		// Check if the given classifier matches any of the direct or indirect
+		// ancestors of a given type.
+		List<Classifier> directParents = type.getGenerals();
+		boolean matched = false;
+		int i = 1;
+		while (!matched & i <= directParents.size()) {
+			Classifier directParent = directParents.get(i - 1);
+			if (directParent == classifier) {
+				matched = true;
+			} else {
+				matched = this.checkAllParents(directParent, classifier);
+			}
+			i = i + 1;
+		}
+		return matched;
+	}
+
+	public boolean isInstanceOf(Classifier classifier) {
+		// Check if this value has the given classifier as its type
+		// or as an ancestor of one of its types.
+		List<Classifier> types = this.getTypes();
+		boolean isInstance = this.hasType(classifier);
+		int i = 1;
+		while (!isInstance & i <= types.size()) {
+			isInstance = this.checkAllParents(types.get(i - 1), classifier);
+			i = i + 1;
+		}
+		return isInstance;
+	}
+
 	public Boolean equals(IValue otherValue) {
 		// Test if this value is equal to otherValue. To be equal, this value
 		// must have the same type as otherValue.

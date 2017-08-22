@@ -20,7 +20,6 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IExtensionalValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ILocus;
 import org.eclipse.papyrus.moka.service.IMokaExecutionListener;
-import org.eclipse.papyrus.moka.service.IMokaService;
 import org.eclipse.uml2.uml.Class;
 
 public aspect LocusProfiler extends MokaObservable{

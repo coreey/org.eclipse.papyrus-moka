@@ -11,6 +11,16 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications;
 
-public interface IEventOccurrence {
+import java.util.List;
 
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
+import org.eclipse.uml2.uml.Trigger;
+
+public interface IEventOccurrence {
+	
+	public boolean match(Trigger trigger);
+	
+	public boolean matchAny(List<Trigger> triggers);
+	
+	public abstract List<IParameterValue> getParameterValues();
 }

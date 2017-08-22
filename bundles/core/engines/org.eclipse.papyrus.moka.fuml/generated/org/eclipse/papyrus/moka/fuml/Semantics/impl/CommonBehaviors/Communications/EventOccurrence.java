@@ -14,11 +14,33 @@
 
 package org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications;
 
+import java.util.List;
+
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
+import org.eclipse.uml2.uml.Trigger;
 
 /**
- * An event occurrence represents a single occurrence of a specific kind of event.
+ * An event occurrence represents a single occurrence of a specific kind of
+ * event.
  */
-public class EventOccurrence implements IEventOccurrence {
+public abstract class EventOccurrence implements IEventOccurrence{
 
+	public abstract boolean match(Trigger trigger);
+
+	public boolean matchAny(List<Trigger> triggers) {
+		// Check that at least one of the given triggers is matched by this
+		// event occurrence.
+		boolean matches = false;
+		int i = 1;
+		while (!matches && i <= triggers.size()) {
+			if (this.match(triggers.get(i - 1))) {
+				matches = true;
+			}
+			i++;
+		}
+		return matches;
+	}
+
+	public abstract List<IParameterValue> getParameterValues();
 }

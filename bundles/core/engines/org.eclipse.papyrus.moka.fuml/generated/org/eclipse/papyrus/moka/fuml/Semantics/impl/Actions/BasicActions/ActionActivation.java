@@ -38,7 +38,6 @@ import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.BooleanValue;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.ActivityNode;
-import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ConditionalNode;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LiteralBoolean;
@@ -375,27 +374,6 @@ public abstract class ActionActivation extends ActivityNodeActivation implements
 		// fUML12-10 certain boolean flags are not properly initialized in come cases
 		super.initialize(node, group);
 		this.firing = false;
-	}
-
-	public boolean checkAllParents(Classifier type, Classifier classifier) {
-		// Check if the given classifier matches any of the direct or indirect
-		// ancestors of a given type.
-
-		// fUML12-34 AcceptEventActionActivation::match should match instances of descendants of a trigger's signal
-
-		List<Classifier> directParents = type.getGenerals();
-		boolean matched = false;
-		int i = 1;
-		while (!matched & i <= directParents.size()) {
-			Classifier directParent = directParents.get(i - 1);
-			if (directParent == classifier) {
-				matched = true;
-			} else {
-				matched = this.checkAllParents(directParent, classifier);
-			}
-			i = i + 1;
-		}
-		return matched;
 	}
 
 	// ADDED:

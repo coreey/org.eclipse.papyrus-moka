@@ -14,13 +14,13 @@
 package org.eclipse.papyrus.moka.fuml.Semantics.Actions.CompleteActions;
 
 import org.eclipse.papyrus.moka.fuml.Semantics.Actions.BasicActions.IActionActivation;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 
 public interface IAcceptEventActionActivation extends IActionActivation {
 
-	public void accept(ISignalInstance signalInstance);
+	public void accept(IEventOccurrence eventOccurrence);
 
-	public Boolean match(ISignalInstance signalInstance);
+	public Boolean match(IEventOccurrence eventOccurrence);
 
 	public IAcceptEventActionEventAccepter getEventAccepter();
 

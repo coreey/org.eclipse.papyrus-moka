@@ -22,6 +22,10 @@ import org.eclipse.uml2.uml.ValueSpecification;
 public interface IValue extends ISemanticVisitor {
 
 	public ValueSpecification specify();
+	
+	public boolean checkAllParents(Classifier type, Classifier classifier);
+	
+	public boolean isInstanceOf(Classifier classifier);
 
 	public Boolean equals(IValue otherValue);
 

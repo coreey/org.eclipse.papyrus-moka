@@ -18,7 +18,6 @@ package org.eclipse.papyrus.moka.fuml.profiling.Semantics.Loci;
 import org.eclipse.papyrus.moka.fuml.profiling.MokaObservable;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ISemanticVisitor;
 import org.eclipse.papyrus.moka.service.IMokaExecutionListener;
-import org.eclipse.papyrus.moka.service.IMokaService;
 
 public abstract aspect SemanticVisitorProfiler extends MokaObservable{
 	
