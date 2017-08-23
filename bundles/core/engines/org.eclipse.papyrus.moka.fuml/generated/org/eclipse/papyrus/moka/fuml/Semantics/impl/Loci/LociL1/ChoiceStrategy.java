@@ -13,7 +13,9 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1;
 
-public abstract class ChoiceStrategy extends SemanticStrategy {
+import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.IChoiceStrategy;
+
+public abstract class ChoiceStrategy extends SemanticStrategy implements IChoiceStrategy{
 
 	@Override
 	public String getName() {
