@@ -25,7 +25,6 @@ import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communicatio
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1.FirstChoiceStrategy;
 import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.Loci.SM_ExecutionFactory;
 import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.Loci.SM_Locus;
-import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.StructuredClassifiers.SM_RedefinitionBasedDispatchStrategy;
 
 public class StateMachineExecutionEngine extends CompositeStructuresExecutionEngine{
 
@@ -41,7 +40,6 @@ public class StateMachineExecutionEngine extends CompositeStructuresExecutionEng
 	protected void registerSemanticStrategies(ILocus locus) {
 		locus.getFactory().setStrategy(new FirstChoiceStrategy());
 		locus.getFactory().setStrategy(new FIFOGetNextEventStrategy());
-		locus.getFactory().setStrategy(new SM_RedefinitionBasedDispatchStrategy());
 		locus.getFactory().setStrategy(new CS_NameBased_StructuralFeatureOfInterfaceAccessStrategy());
 		locus.getFactory().setStrategy(new CS_DefaultRequestPropagationStrategy());
 		locus.getFactory().setStrategy(new CS_DefaultConstructStrategy());

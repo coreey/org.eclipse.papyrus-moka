@@ -19,9 +19,10 @@ import static org.eclipse.papyrus.moka.fuml.statemachines.Activator.logger;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IBooleanValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IEvaluation;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ICallEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.CommonBehavior.CallEventOccurrence;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalEventOccurrence;
+import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.ICompletionEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IRegionActivation;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.ITransitionActivation;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IVertexActivation;
@@ -234,12 +235,12 @@ public abstract class TransitionActivation extends StateMachineSemanticVisitor i
 		// A signal event is being dispatched and this transition has a trigger
 		// that matches the signal and its eventual guard evaluates to true
 		boolean reactive = true;
-		if(eventOccurrence instanceof CompletionEventOccurrence){
+		if(eventOccurrence instanceof ICompletionEventOccurrence){
 			reactive = !this.isTriggered() &&
-						this.getSourceActivation()==((CompletionEventOccurrence)eventOccurrence).stateActivation &&
+						this.getSourceActivation()==((ICompletionEventOccurrence)eventOccurrence).getScope() &&
 						this.evaluateGuard(eventOccurrence) &&
 						this.canPropagateExecution(eventOccurrence);
-		}else if(eventOccurrence instanceof SignalEventOccurrence | eventOccurrence instanceof CallEventOccurrence){
+		}else if(eventOccurrence instanceof ISignalEventOccurrence | eventOccurrence instanceof ICallEventOccurrence){
 			reactive = this.hasTrigger(eventOccurrence) && 
 					   this.evaluateGuard(eventOccurrence) &&
 					   this.canPropagateExecution(eventOccurrence);

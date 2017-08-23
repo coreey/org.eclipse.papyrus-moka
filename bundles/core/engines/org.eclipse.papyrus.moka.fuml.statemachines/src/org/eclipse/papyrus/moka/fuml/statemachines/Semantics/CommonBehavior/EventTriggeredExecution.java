@@ -21,6 +21,7 @@ import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.BasicBehavio
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.BasicBehaviors.ParameterValue;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ICallEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.CommonBehavior.IEventTriggeredExecution;
@@ -64,10 +65,10 @@ public class EventTriggeredExecution extends Execution implements IEventTriggere
 					parameterValue.setValues(values);
 					this.wrappedExecution.setParameterValue(parameterValue);
 				}
-			}else if(this.triggeringEventOccurrence instanceof CallEventOccurrence){
-				CallEventOccurrence callEventOccurrence = (CallEventOccurrence) this.triggeringEventOccurrence;
+			}else if(this.triggeringEventOccurrence instanceof ICallEventOccurrence){
+				ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) this.triggeringEventOccurrence;
 				List<Parameter> behaviorInputParameters = behavior.inputParameters();
-				List<IParameterValue> inputParameterValues = callEventOccurrence.execution.getInputParameterValues();
+				List<IParameterValue> inputParameterValues = callEventOccurrence.getCallEventExecution().getInputParameterValues();
 				if(behaviorInputParameters.size() == inputParameterValues.size()){
 					int i = 1;
 					while(i <= behaviorInputParameters.size()){
@@ -116,18 +117,18 @@ public class EventTriggeredExecution extends Execution implements IEventTriggere
 		//    output values and is the last to complete in any execution trace for the RTC
 		//    step consistent with the specified StateMachine semantics.
 		this._beginIsolation();
-		if(this.triggeringEventOccurrence instanceof CallEventOccurrence){
-			CallEventOccurrence callEventOccurrence = (CallEventOccurrence) this.triggeringEventOccurrence;
+		if(this.triggeringEventOccurrence instanceof ICallEventOccurrence){
+			ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) this.triggeringEventOccurrence;
 			Behavior behavior = this.wrappedExecution.getBehavior();
 			List<IParameterValue> outputParameterValues = this.wrappedExecution.getOutputParameterValues();
 			if(behavior.outputParameters().size() == outputParameterValues.size()){
 				int i = 1;
-				List<Parameter> behaviorOutputParameters = callEventOccurrence.execution.getBehavior().outputParameters();
+				List<Parameter> behaviorOutputParameters = callEventOccurrence.getCallEventExecution().getBehavior().outputParameters();
 				while(i <= behaviorOutputParameters.size()){
 					IParameterValue parameterValue = new ParameterValue();
 					parameterValue.setParameter(behaviorOutputParameters.get(i - 1));
 					parameterValue.setValues(outputParameterValues.get(i - 1).getValues());
-					callEventOccurrence.execution.setParameterValue(parameterValue);
+					callEventOccurrence.getCallEventExecution().setParameterValue(parameterValue);
 					i++;
 				}
 			}

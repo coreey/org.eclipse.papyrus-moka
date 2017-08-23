@@ -19,10 +19,10 @@ import java.util.List;
 
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.EventAccepter;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ICallEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventAccepter;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1.ChoiceStrategy;
-import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.CommonBehavior.CallEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IStateConfiguration;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IStateMachineEventAccepter;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.ITransitionActivation;
@@ -63,9 +63,9 @@ public class StateMachineEventAccepter extends EventAccepter implements IStateMa
 		// If the dispatched event was an CallEventOccurrence then check
 		// if the caller need to be released.
 		// FIXME: This moved on further updates to common behavior semantics
-		if(eventOccurrence instanceof CallEventOccurrence){
-			CallEventOccurrence callEventOccurrence = (CallEventOccurrence) eventOccurrence;
-			callEventOccurrence.execution.releaseCaller();
+		if(eventOccurrence instanceof ICallEventOccurrence){
+			ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) eventOccurrence;
+			callEventOccurrence.returnFromCall();
 		}
 		IObject_ context = this.registrationContext.context;
 		if(context!=null && context.getObjectActivation()!=null){
