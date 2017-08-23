@@ -25,9 +25,12 @@ public class RedefinitionBasedDispatchStrategy extends DispatchStrategy {
 
 	@Override
 	public Behavior getMethod(IObject_ object, Operation operation) {
-		// Get the method that corresponds to the given operation for the given
-		// object.
-		// [If there is more than one type with a method for the operation, then
+		// Find the member operation of a type of the given object that
+		// is the same as or a redefinition of the given operation. Then
+		// return the method of that operation, if it has one, otherwise
+		// return a CallEventBehavior as the effective method for the
+		// matching operation.
+		// [If there is more than one type with a matching operation, then
 		// the first one is arbitrarily chosen.]
 		Behavior method = null;
 		int i = 1;
@@ -40,7 +43,11 @@ public class RedefinitionBasedDispatchStrategy extends DispatchStrategy {
 				if (member instanceof Operation) {
 					Operation memberOperation = (Operation) member;
 					if (this.operationsMatch(memberOperation, operation)) {
-						method = memberOperation.getMethods().get(0);
+						if (memberOperation.getMethods().size() == 0) {
+							method = super.getMethod(object, memberOperation);
+						} else {
+							method = memberOperation.getMethods().get(0);
+						}
 					}
 				}
 				j = j + 1;
