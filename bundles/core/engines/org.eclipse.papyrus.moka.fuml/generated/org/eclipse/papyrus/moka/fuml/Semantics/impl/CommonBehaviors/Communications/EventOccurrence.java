@@ -16,6 +16,7 @@ package org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communicati
 
 import java.util.List;
 
+import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.uml2.uml.Trigger;
@@ -26,6 +27,8 @@ import org.eclipse.uml2.uml.Trigger;
  */
 public abstract class EventOccurrence implements IEventOccurrence{
 
+	public IReference target;
+	
 	public abstract boolean match(Trigger trigger);
 
 	public boolean matchAny(List<Trigger> triggers) {
@@ -43,4 +46,32 @@ public abstract class EventOccurrence implements IEventOccurrence{
 	}
 
 	public abstract List<IParameterValue> getParameterValues();
+	
+	public void sendTo(IReference target){
+		// Set the target reference and start the SendingBehavior, which 
+		// will send this event occurrence to the target.
+		this.target = target;
+		this._startObjectBehavior();
+	}
+	
+	public void doSend(){
+		// Send this event occurrence to the target reference.
+		this.target.send(this);
+	}
+	
+	public void _startObjectBehavior() {
+		// When the sending behavior starts, the current event
+		// occurrence is is forwarded to the target object.
+		if(this.target != null){
+			this.doSend();
+		}
+	}
+	
+	public void setTarget(IReference target) {
+		this.target = target;
+	}
+	
+	public IReference getTarget() {
+		return this.target;
+	}
 }

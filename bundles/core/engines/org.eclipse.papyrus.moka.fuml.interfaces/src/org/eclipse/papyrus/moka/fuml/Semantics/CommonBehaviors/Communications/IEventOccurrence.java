@@ -13,6 +13,7 @@ package org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications;
 
 import java.util.List;
 
+import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.uml2.uml.Trigger;
 
@@ -23,4 +24,15 @@ public interface IEventOccurrence {
 	public boolean matchAny(List<Trigger> triggers);
 	
 	public abstract List<IParameterValue> getParameterValues();
+	
+	public void sendTo(IReference target);
+	
+	public void doSend();
+	
+	public void _startObjectBehavior();
+	
+	public void setTarget(IReference target);
+	
+	public IReference getTarget();
+	
 }
