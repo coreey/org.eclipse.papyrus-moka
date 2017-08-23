@@ -11,25 +11,15 @@
  *   
  *****************************************************************************/
 
-package org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.InvocationActions;
+package org.eclipse.papyrus.moka.composites.interfaces.Semantics.CommonBehaviors.BasicBehaviors;
 
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_InteractionPoint;
-import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_Reference;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
-import org.eclipse.uml2.uml.Port;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.ICallEventExecution;
 
-public interface ICS_EventOccurrence extends IEventOccurrence{
+public interface ICS_CallEventExecution extends ICallEventExecution{
 
-	public void setWrappedEventOccurrence(IEventOccurrence eventOccurrence);
-	
-	public IEventOccurrence getWrappedEventOccurrence();
-	
 	public void setInteractionPoint(ICS_InteractionPoint interactionPoint);
 	
 	public ICS_InteractionPoint getInteractionPoint();
-	
-	public void sendInTo(ICS_Reference target, Port port);
-	
-	public void sendOutTo(ICS_Reference target, Port port);
 	
 }

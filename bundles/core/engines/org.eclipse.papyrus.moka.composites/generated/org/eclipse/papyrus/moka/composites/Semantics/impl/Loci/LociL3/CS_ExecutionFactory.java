@@ -21,11 +21,15 @@ import org.eclipse.papyrus.moka.composites.Semantics.impl.Actions.IntermediateAc
 import org.eclipse.papyrus.moka.composites.Semantics.impl.Actions.IntermediateActions.CS_ReadSelfActionActivation;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.Classes.Kernel.CS_InstanceValueEvaluation;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.Classes.Kernel.CS_OpaqueExpressionEvaluation;
+import org.eclipse.papyrus.moka.composites.Semantics.impl.CommonBehaviors.BasicBehaviors.CS_CallEventExecution;
+import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_AcceptCallActionActivation;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_AcceptEventActionActivation;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_CallOperationActionActivation;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_SendSignalActionActivation;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ISemanticVisitor;
+import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.BasicBehaviors.CallEventBehavior;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL3.ExecutionFactoryL3;
+import org.eclipse.uml2.uml.AcceptCallAction;
 import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.AddStructuralFeatureValueAction;
 import org.eclipse.uml2.uml.CallOperationAction;
@@ -50,7 +54,9 @@ public class CS_ExecutionFactory extends ExecutionFactoryL3 {
 		ISemanticVisitor visitor = null;
 		if (element instanceof ReadExtentAction) {
 			visitor = new CS_ReadExtentActionActivation();
-		}else if (element instanceof AcceptEventAction) {
+		}else if (element instanceof AcceptCallAction) {
+			visitor = new CS_AcceptCallActionActivation();
+ 		}else if (element instanceof AcceptEventAction) {
 			visitor = new CS_AcceptEventActionActivation();
 		} else if (element instanceof AddStructuralFeatureValueAction) {
 			visitor = new CS_AddStructuralFeatureValueActionActivation();
@@ -70,7 +76,9 @@ public class CS_ExecutionFactory extends ExecutionFactoryL3 {
 			visitor = new CS_SendSignalActionActivation();
 		} else if (element instanceof OpaqueExpression) {
 			visitor = new CS_OpaqueExpressionEvaluation();
-		} else {
+		} else if (element instanceof CallEventBehavior) {
+			visitor = new CS_CallEventExecution();
+ 		} else {
 			visitor = super.instantiateVisitor(element);
 		}
 		return visitor;

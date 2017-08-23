@@ -11,5 +11,6 @@ Bundle-Vendor: Eclipse Modeling Project
 Export-Package: org.eclipse.papyrus.moka.composites.interfaces,
  org.eclipse.papyrus.moka.composites.interfaces.Semantics.Actions.IntermediateActions,
  org.eclipse.papyrus.moka.composites.interfaces.Semantics.Classes.Kernel,
+ org.eclipse.papyrus.moka.composites.interfaces.Semantics.CommonBehaviors.BasicBehaviors,
  org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.InvocationActions,
  org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses

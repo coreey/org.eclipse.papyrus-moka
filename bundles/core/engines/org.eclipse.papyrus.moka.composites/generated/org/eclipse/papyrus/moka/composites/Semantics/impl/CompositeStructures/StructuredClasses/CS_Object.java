@@ -20,6 +20,7 @@ import java.util.List;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CommonBehaviors.Communications.CS_DispatchOperationOfInterfaceStrategy;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CommonBehaviors.Communications.CS_StructuralFeatureOfInterfaceAccessStrategy;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_RequestPropagationStrategy;
+import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CommonBehaviors.BasicBehaviors.ICS_CallEventExecution;
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.CS_LinkKind;
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_InteractionPoint;
 import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_Link;
@@ -50,14 +51,20 @@ import org.eclipse.uml2.uml.StructuralFeature;
 public class CS_Object extends Object_ implements ICS_Object {
 
 	public IExecution dispatchIn(Operation operation, ICS_InteractionPoint interactionPoint) {
-		// If the interaction point refers to a behavior port, does nothing [for the moment... ?],
-		// since the only kind of event supported in fUML is SignalEvent
+		// If the interaction point refers to a behavior port, the operation call is dispatched
+		// to the object owning the behavior port. This may result in the method being handled
+		// by the method defined for the operation at the object or through a call event handled 
+		// by the classifier behavior of the owning object. The latter case only occurs if the
+		// dispatched operation has no implementation
 		// If it does not refer to a behavior port, select appropriate delegation links
 		// from interactionPoint, and propagates the operation call through
 		// these links
 		IExecution execution = null;
 		if (interactionPoint.getDefiningPort().isBehavior()) {
-			// Do nothing
+			execution = this.dispatch(operation);
+			if(execution instanceof ICS_CallEventExecution){
+				((ICS_CallEventExecution)execution).setInteractionPoint(interactionPoint);
+			}
 		} else {
 			boolean operationIsProvided = true;
 			List<IReference> potentialTargets = new ArrayList<IReference>();

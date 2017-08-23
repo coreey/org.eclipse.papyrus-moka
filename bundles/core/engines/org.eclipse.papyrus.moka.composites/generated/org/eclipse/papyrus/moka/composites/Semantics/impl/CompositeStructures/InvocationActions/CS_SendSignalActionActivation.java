@@ -17,6 +17,8 @@ package org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.I
 import java.util.List;
 
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.StructuredClasses.CS_Reference;
+import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.InvocationActions.ICS_EventOccurrence;
+import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.StructuredClasses.ICS_Reference;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
@@ -76,16 +78,18 @@ public class CS_SendSignalActionActivation extends SendSignalActionActivation {
 				// Construct the signal event occurrence
 				SignalEventOccurrence signalEventOccurrence =  new SignalEventOccurrence();
 				signalEventOccurrence.signalInstance = (SignalInstance) signalInstance.copy();
+				ICS_EventOccurrence wrappingEventOccurrence = new CS_EventOccurrence();
+				wrappingEventOccurrence.setWrappedEventOccurrence(signalEventOccurrence);
 				// Tries to determine if the signal has to be
 				// sent to the environment or to the internals of
 				// target, through onPort
-				CS_Reference targetReference = (CS_Reference) target;
+				ICS_Reference targetReference = (ICS_Reference) target;
 				// Port onPort = action.onPort ;
 				IObject_ executionContext = this.group.getActivityExecution().getContext();
-				if (executionContext == targetReference.referent || targetReference.compositeReferent.contains(executionContext)) {
-					targetReference.sendOut(signalEventOccurrence, action.getOnPort());
+				if (executionContext == targetReference.getReferent() || targetReference.getCompositeReferent().contains(executionContext)) {
+					wrappingEventOccurrence.sendOutTo(targetReference, action.getOnPort());
 				} else {
-					targetReference.sendIn(signalEventOccurrence, action.getOnPort());
+					wrappingEventOccurrence.sendInTo(targetReference, action.getOnPort());
 				}
 			}
 		}

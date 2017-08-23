@@ -25,4 +25,5 @@ public interface ICS_InteractionPoint extends IReference {
 	public Port getDefiningPort();
 
 	public void setDefiningPort(Port definingPort);
+	
 }
