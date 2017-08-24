@@ -29,7 +29,7 @@ public class FinalStateActivation extends StateActivation {
 		if(regionActivation.getParent() instanceof StateActivation){
 			 StateActivation stateActivation = (StateActivation) regionActivation.getParent();
 			 if(stateActivation.hasCompleted()){
-				 stateActivation.notifyCompletion();
+				 stateActivation.complete();
 			 }
 		}
 	}

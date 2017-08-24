@@ -270,7 +270,7 @@ public class RegionActivation extends StateMachineSemanticVisitor implements IRe
 				IStateActivation parentState = (IStateActivation) parent; 
 				parentState.getRegionActivation().remove(this);
 				if(parentState.hasCompleted()){
-					parentState.notifyCompletion();
+					parentState.complete();
 				}
 			}
 		}

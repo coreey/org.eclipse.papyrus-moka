@@ -18,6 +18,8 @@ import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IE
 
 public interface ICompletionEventOccurrence extends IEventOccurrence{
 
+	public void register(IStateActivation stateActivation);
+	
 	public IStateActivation getScope();
 	
 	public void setScope(IStateActivation stateActivation);

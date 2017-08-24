@@ -17,19 +17,21 @@ package org.eclipse.papyrus.moka.fuml.statemachines.Semantics.StateMachines;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.EventOccurrence;
+import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.CommonBehavior.ISM_ObjectActivation;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IDeferredEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IStateActivation;
 import org.eclipse.uml2.uml.Trigger;
 
-public class DeferredEventOccurrence extends EventOccurrence implements IDeferredEventOccurrence{
-	
-	// The state activation that was constraint the event occurrence 
+public class DeferredEventOccurrence extends EventOccurrence implements IDeferredEventOccurrence {
+
+	// The state activation that was constraint the event occurrence
 	// to remain deferred.
 	public IStateActivation constrainingStateActivation;
-	
+
 	// The event occurrence that is actually deferred
 	public IEventOccurrence deferredEventOccurrence;
 
@@ -38,23 +40,48 @@ public class DeferredEventOccurrence extends EventOccurrence implements IDeferre
 		// Delegate to the match operation of the encapsulated event
 		// occurrence which is the one being deferred.
 		boolean match = false;
-		if(this.deferredEventOccurrence != null){
+		if (this.deferredEventOccurrence != null) {
 			match = this.deferredEventOccurrence.match(trigger);
 		}
 		return match;
 	}
-	
+
 	@Override
 	public List<IParameterValue> getParameterValues() {
 		// Delegate to the getParameterValues operation of the encapsulated event
 		// occurrence which is the one being deferred.
 		List<IParameterValue> parameterValues = new ArrayList<IParameterValue>();
-		if(this.deferredEventOccurrence != null){
+		if (this.deferredEventOccurrence != null) {
 			parameterValues = this.deferredEventOccurrence.getParameterValues();
 		}
 		return parameterValues;
 	}
-	
+
+	public void register(IStateActivation stateActivation) {
+		// Register this deferred event occurrence in the deffered
+		// event pool of the context object.
+		this.constrainingStateActivation = stateActivation;
+		ISM_ObjectActivation objectActivation = (ISM_ObjectActivation) stateActivation
+				.getExecutionContext().getObjectActivation();
+		objectActivation.register(this);
+	}
+
+	@Override
+	public void sendTo(IReference target) {
+		// Do nothing - the deferred event is not sent to a target.
+		// It is registered during the RTC step of the active object that
+		// entered the state from which it was generated.
+		super.sendTo(target);
+	}
+
+	@Override
+	public void doSend() {
+		// Do nothing - the deferred event is not sent to a target.
+		// It is registered during the RTC step of the active object that
+		// entered the state from which it was generated.
+		super.doSend();
+	}
+
 	@Override
 	public IStateActivation getConstrainingStateActivation() {
 		return this.constrainingStateActivation;

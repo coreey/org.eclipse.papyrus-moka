@@ -16,7 +16,6 @@ package org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.CommonB
 
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IObjectActivation;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.ICompletionEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IDeferredEventOccurrence;
@@ -28,9 +27,9 @@ public interface ISM_ObjectActivation extends IObjectActivation{
 	
 	public int getDeferredEventInsertionIndex();
 	
-	public void registerCompletionEvent(IStateActivation stateActivation);
+	public void register(ICompletionEventOccurrence completionEventOccurrence);
 	
-	public void registerDeferredEvent(IEventOccurrence eventOccurrence, IStateActivation deferringState);
+	public void register(IDeferredEventOccurrence deferredEventOccurrence);
 	
 	public void releaseDeferredEvents(IStateActivation deferringState);
 	

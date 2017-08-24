@@ -18,6 +18,8 @@ import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IE
 
 public interface IDeferredEventOccurrence extends IEventOccurrence{
 
+	public void register(IStateActivation stateActivation);
+	
 	public IStateActivation getConstrainingStateActivation();
 	
 	public void setConstrainingStateActivation(IStateActivation constrainingState);

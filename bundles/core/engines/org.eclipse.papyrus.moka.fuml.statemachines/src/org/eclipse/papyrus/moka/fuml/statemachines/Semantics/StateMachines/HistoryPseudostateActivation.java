@@ -92,7 +92,7 @@ public abstract class HistoryPseudostateActivation extends PseudostateActivation
 		stateActivation.setDoActivityCompletion(state.getDoActivity() == null);
 		stateActivation.setExitCompletion(state.getExit() == null);
 		if(stateActivation.hasCompleted()){
-			stateActivation.notifyCompletion();
+			stateActivation.complete();
 		}else{
 			stateActivation.tryExecuteEntry(eventOccurrence);
 			stateActivation.tryInvokeDoActivity(eventOccurrence);

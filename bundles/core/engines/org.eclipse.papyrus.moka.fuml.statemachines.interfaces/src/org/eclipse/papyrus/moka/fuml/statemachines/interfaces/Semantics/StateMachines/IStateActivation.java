@@ -29,7 +29,7 @@ public interface IStateActivation extends IVertexActivation{
 	
 	public boolean hasCompleted();
 	
-	public void notifyCompletion();
+	public void complete();
 	
 	public List<IPseudostateActivation> getConnectionPointActivation();
 	
