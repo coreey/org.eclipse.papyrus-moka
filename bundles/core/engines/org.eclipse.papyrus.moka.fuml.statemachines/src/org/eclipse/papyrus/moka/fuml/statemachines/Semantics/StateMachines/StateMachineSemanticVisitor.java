@@ -16,23 +16,17 @@ package org.eclipse.papyrus.moka.fuml.statemachines.Semantics.StateMachines;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_SignalInstance;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ILocus;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ISemanticVisitor;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1.SemanticVisitor;
-import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.CommonBehavior.CallEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.CommonBehavior.EventTriggeredExecution;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.CommonBehavior.IEventTriggeredExecution;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IStateMachineSemanticVisitor;
 import org.eclipse.uml2.uml.Behavior;
-import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.SignalEvent;
-import org.eclipse.uml2.uml.Trigger;
 
 public abstract class StateMachineSemanticVisitor extends SemanticVisitor implements IStateMachineSemanticVisitor{
 
@@ -137,58 +131,6 @@ public abstract class StateMachineSemanticVisitor extends SemanticVisitor implem
 			}
 		}
 		return execution;
-	}
-	
-	public boolean match(IEventOccurrence eventOccurrence, List<Trigger> triggers){
-		// Check if the event occurrence matches one of the trigger in the list.
-		// The matching rule are the following:
-		// 		1. If the event occurrence is a signal event occurrence then type
-		//		   of the signal must conforms to the type referenced by the event
-		//		   In addition, if the trigger defines ports through wich the event occurrence
-		//         is allowed to arrive then the arrival port of the event occurrence
-		//		   must be one the referenced port.
-		// 		2. If the event occurrence is a call event occurrence then the operation
-		// 		   that is referenced must be the same than the one specified in the call
-		//		   event.
-		// NOTE: CallEventOccurrence are not related to an arrival port. This limitation is
-		// introduced by a limitation in the current PSCS semantic model.
-		// 
-		// If a match is found then true is returned, false otherwise.
-		boolean match = false;
-		int i = 0;
-		while(!match && i < triggers.size()){
-			Trigger trigger = triggers.get(i);
-			if(eventOccurrence instanceof SignalEventOccurrence
-					&& trigger.getEvent() instanceof SignalEvent){
-				SignalEventOccurrence signalEventOccurrence = (SignalEventOccurrence) eventOccurrence;
-				SignalEvent event = (SignalEvent) trigger.getEvent();
-				if(event.getSignal() == signalEventOccurrence.signalInstance.type){
-					match = true;
-				}
-				if(match  && trigger.getPorts().size() > 0){
-					int j = 0;
-					boolean matchingPort = false; 
-					while(j < trigger.getPorts().size() & !matchingPort){
-						if(((CS_SignalInstance)signalEventOccurrence.signalInstance).interactionPoint.getDefiningPort() == trigger.getPorts().get(j)){
-							matchingPort = true;
-						} 
-						j = j + 1;
-					}
-					if(!matchingPort){
-						match = matchingPort;
-					}
-				}
-			}else if(eventOccurrence instanceof CallEventOccurrence
-					&& trigger.getEvent() instanceof CallEvent){
-				CallEvent event = (CallEvent) trigger.getEvent();
-				CallEventOccurrence callEventOccurrence = (CallEventOccurrence) eventOccurrence;
-				if(event.getOperation() == callEventOccurrence.execution.getOperation()){
-					match = true;
-				}
-			}
-			i++;
-		}
-		return match;
 	}
 	
 	public String toString(){

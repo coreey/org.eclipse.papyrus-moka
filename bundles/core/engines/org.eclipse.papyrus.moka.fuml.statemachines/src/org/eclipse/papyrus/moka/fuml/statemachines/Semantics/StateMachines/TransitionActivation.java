@@ -217,10 +217,10 @@ public abstract class TransitionActivation extends StateMachineSemanticVisitor i
 		// the redefining transition is considered has being able to react to the event occurrence.
 		// The rule applies recursively.
 		Transition transition = (Transition) this.node;
-		boolean match = this.match(eventOccurrence, transition.getTriggers());
+		boolean match = eventOccurrence.matchAny(transition.getTriggers());
 		while(!match && transition.getRedefinedTransition() != null){
 			transition = transition.getRedefinedTransition();
-			match = this.match(eventOccurrence, transition.getTriggers());
+			match = eventOccurrence.matchAny(transition.getTriggers());
 		}
 		return match;
 	}

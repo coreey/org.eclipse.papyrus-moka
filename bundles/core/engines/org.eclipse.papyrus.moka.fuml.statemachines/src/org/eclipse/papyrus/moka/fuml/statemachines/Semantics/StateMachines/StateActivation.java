@@ -458,10 +458,10 @@ public class StateActivation extends VertexActivation implements IStateActivatio
 		// received event occurrence is a signal event occurrence. This will change
 		// as soon as other kind of event (e.g. call event) will be supported in fUML.
 		State state = (State) this.node;
-		boolean deferred = this.match(eventOccurrence, state.getDeferrableTriggers());
+		boolean deferred = eventOccurrence.matchAny(state.getDeferrableTriggers());
 		while(!deferred && state.getRedefinedState() != null){
 			state = state.getRedefinedState();
-			deferred = this.match(eventOccurrence, state.getDeferrableTriggers());
+			deferred = eventOccurrence.matchAny(state.getDeferrableTriggers());
 		}
 		if(deferred){
 			int i = 0;

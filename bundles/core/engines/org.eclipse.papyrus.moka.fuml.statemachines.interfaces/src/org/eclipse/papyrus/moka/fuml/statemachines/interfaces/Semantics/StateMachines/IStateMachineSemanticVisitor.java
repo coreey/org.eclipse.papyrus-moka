@@ -22,7 +22,6 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ILocus;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ISemanticVisitor;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Trigger;
 
 public interface IStateMachineSemanticVisitor extends ISemanticVisitor {
 
@@ -49,7 +48,5 @@ public interface IStateMachineSemanticVisitor extends ISemanticVisitor {
 	public void activateTransitions();
 	
 	public IExecution getExecutionFor(Behavior behavior, IEventOccurrence eventOccurrence);
-	
-	public boolean match(IEventOccurrence eventOccurrence, List<Trigger> triggers);
 	
 }
