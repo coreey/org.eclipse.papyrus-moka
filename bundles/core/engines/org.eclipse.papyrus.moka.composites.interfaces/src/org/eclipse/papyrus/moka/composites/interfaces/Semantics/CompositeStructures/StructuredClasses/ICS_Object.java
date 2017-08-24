@@ -20,7 +20,9 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.ConnectorKind;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Port;
 
@@ -61,5 +63,9 @@ public interface ICS_Object extends IObject_ {
 	public List<ICS_Link> getLinks(ICS_InteractionPoint interactionPoint);
 
 	public Boolean hasValueForAFeature(IValue value);
+	
+	public Boolean realizesInterface(Class type, Interface interface_);
+	
+	public Boolean isDescendant(Interface contract, Interface interface_);
 
 }
