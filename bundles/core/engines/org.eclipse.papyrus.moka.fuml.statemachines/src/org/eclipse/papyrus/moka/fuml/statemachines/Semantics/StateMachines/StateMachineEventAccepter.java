@@ -110,7 +110,11 @@ public class StateMachineEventAccepter extends EventAccepter implements IStateMa
 		// 3 - It does not exist any running doActivity having already registered an
 		// accepter
 		// for the given event occurrence
-		boolean deferred = this._isDeferred(eventOccurrence, this.registrationContext.getConfiguration().getRoot());
+		// Note: a completion event cannot be deferred.
+		boolean deferred = false;
+		if(!(eventOccurrence instanceof CompletionEventOccurrence)){
+			deferred = this._isDeferred(eventOccurrence, this.registrationContext.getConfiguration().getRoot());
+		}
 		if (deferred) {
 			IObject_ context = this.registrationContext.context;
 			if (context != null && context.getObjectActivation() != null) {
