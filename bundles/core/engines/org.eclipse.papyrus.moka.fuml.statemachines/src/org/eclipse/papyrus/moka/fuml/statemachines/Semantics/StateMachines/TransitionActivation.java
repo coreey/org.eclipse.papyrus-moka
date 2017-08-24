@@ -19,9 +19,7 @@ import static org.eclipse.papyrus.moka.fuml.statemachines.Activator.logger;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IBooleanValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IEvaluation;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ICallEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.ICompletionEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.IRegionActivation;
 import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.StateMachines.ITransitionActivation;
@@ -227,25 +225,17 @@ public abstract class TransitionActivation extends StateMachineSemanticVisitor i
 	
 	public boolean canFireOn(IEventOccurrence eventOccurrence){
 		// A transition is can fire when:
-		//
-		// A completion event is being dispatched and this transition has no trigger
-		// but its eventual guard evaluates to true. Note: the scope of a completion
-		// event is the state from which it was generated
-		//
-		// A signal event is being dispatched and this transition has a trigger
-		// that matches the signal and its eventual guard evaluates to true
-		boolean reactive = true;
-		if(eventOccurrence instanceof ICompletionEventOccurrence){
-			reactive = !this.isTriggered() &&
-						this.getSourceActivation()==((ICompletionEventOccurrence)eventOccurrence).getScope() &&
-						this.evaluateGuard(eventOccurrence) &&
-						this.canPropagateExecution(eventOccurrence);
-		}else if(eventOccurrence instanceof ISignalEventOccurrence | eventOccurrence instanceof ICallEventOccurrence){
-			reactive = this.hasTrigger(eventOccurrence) && 
-					   this.evaluateGuard(eventOccurrence) &&
-					   this.canPropagateExecution(eventOccurrence);
-		}else{
-			reactive = false;
+		// 1. It has a trigger that matches the dispatched event occurrence.
+		// 2. Its guard evaluates to true.
+		// 3. A valid path can found to the next state machine configuration.
+		// Note: If the dispatched event is a completion event, the transition matches this latter
+		// if it has no trigger and the transition leaves the state from which the completion event
+		// was generated.
+		boolean reactive = this.hasTrigger(eventOccurrence) && 
+		this.evaluateGuard(eventOccurrence) &&
+		this.canPropagateExecution(eventOccurrence);
+		if(reactive && eventOccurrence instanceof ICompletionEventOccurrence){
+			reactive = this.getSourceActivation()==((ICompletionEventOccurrence)eventOccurrence).getScope();
 		}
 		return reactive;
 	}

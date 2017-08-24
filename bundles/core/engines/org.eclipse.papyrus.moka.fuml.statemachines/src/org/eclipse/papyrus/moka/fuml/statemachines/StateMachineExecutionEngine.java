@@ -14,6 +14,7 @@
 package org.eclipse.papyrus.moka.fuml.statemachines;
 
 import org.eclipse.papyrus.moka.composites.CompositeStructuresExecutionEngine;
+import org.eclipse.papyrus.moka.composites.Semantics.impl.CommonBehaviors.Communications.CS_DispatchOperationOfInterfaceStrategy;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CommonBehaviors.Communications.CS_NameBased_StructuralFeatureOfInterfaceAccessStrategy;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_DefaultConstructStrategy;
 import org.eclipse.papyrus.moka.composites.Semantics.impl.CompositeStructures.InvocationActions.CS_DefaultRequestPropagationStrategy;
@@ -40,6 +41,7 @@ public class StateMachineExecutionEngine extends CompositeStructuresExecutionEng
 	protected void registerSemanticStrategies(ILocus locus) {
 		locus.getFactory().setStrategy(new FirstChoiceStrategy());
 		locus.getFactory().setStrategy(new FIFOGetNextEventStrategy());
+		locus.getFactory().setStrategy(new CS_DispatchOperationOfInterfaceStrategy());
 		locus.getFactory().setStrategy(new CS_NameBased_StructuralFeatureOfInterfaceAccessStrategy());
 		locus.getFactory().setStrategy(new CS_DefaultRequestPropagationStrategy());
 		locus.getFactory().setStrategy(new CS_DefaultConstructStrategy());

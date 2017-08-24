@@ -16,6 +16,7 @@ package org.eclipse.papyrus.moka.fuml.statemachines.Semantics.CommonBehavior;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.papyrus.moka.composites.interfaces.Semantics.CompositeStructures.InvocationActions.ICS_EventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.BasicBehaviors.Execution;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
@@ -54,8 +55,12 @@ public class EventTriggeredExecution extends Execution implements IEventTriggere
 		this._beginIsolation();
 		if(this.wrappedExecution.getBehavior().getOwnedParameters().size() > 0){
 			Behavior behavior = this.wrappedExecution.getBehavior();
-			if(this.triggeringEventOccurrence instanceof SignalEventOccurrence){
-				SignalEventOccurrence signalEventOccurrence = (SignalEventOccurrence) this.triggeringEventOccurrence;
+			IEventOccurrence currentEventOccurrence = this.triggeringEventOccurrence; 
+			if(this.triggeringEventOccurrence instanceof ICS_EventOccurrence){
+				currentEventOccurrence = ((ICS_EventOccurrence)this.triggeringEventOccurrence).getWrappedEventOccurrence();
+			}
+			if(currentEventOccurrence instanceof SignalEventOccurrence){
+				SignalEventOccurrence signalEventOccurrence = (SignalEventOccurrence) currentEventOccurrence;
 				if(behavior.inputParameters().size() == 1){
 					Parameter parameter = behavior.inputParameters().get(0);
 					IParameterValue parameterValue = new ParameterValue();
@@ -65,8 +70,8 @@ public class EventTriggeredExecution extends Execution implements IEventTriggere
 					parameterValue.setValues(values);
 					this.wrappedExecution.setParameterValue(parameterValue);
 				}
-			}else if(this.triggeringEventOccurrence instanceof ICallEventOccurrence){
-				ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) this.triggeringEventOccurrence;
+			}else if(currentEventOccurrence instanceof ICallEventOccurrence){
+				ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) currentEventOccurrence;
 				List<Parameter> behaviorInputParameters = behavior.inputParameters();
 				List<IParameterValue> inputParameterValues = callEventOccurrence.getCallEventExecution().getInputParameterValues();
 				if(behaviorInputParameters.size() == inputParameterValues.size()){
@@ -94,11 +99,11 @@ public class EventTriggeredExecution extends Execution implements IEventTriggere
 		if(this.wrappedExecution != null && this.triggeringEventOccurrence != null){
 			this.initialize();
 			this.wrappedExecution.execute();
-			this.finalize();
+			this.finalize_();
 		}
 	}
 	
-	public void finalize(){
+	public void finalize_(){
 		// Transfer output parameter values (produced by the wrapped execution) back to
 		// the execution associated t the call event.
 		// If an effect, entry or exit Behavior is not just input-conforming, then the
@@ -116,9 +121,12 @@ public class EventTriggeredExecution extends Execution implements IEventTriggere
 		//    The values returned may legally be those produced any Behavior that produces potential
 		//    output values and is the last to complete in any execution trace for the RTC
 		//    step consistent with the specified StateMachine semantics.
-		this._beginIsolation();
-		if(this.triggeringEventOccurrence instanceof ICallEventOccurrence){
-			ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) this.triggeringEventOccurrence;
+		IEventOccurrence currentEventOccurrence = this.triggeringEventOccurrence; 
+		if(this.triggeringEventOccurrence instanceof ICS_EventOccurrence){
+			currentEventOccurrence = ((ICS_EventOccurrence)this.triggeringEventOccurrence).getWrappedEventOccurrence();
+		}
+		if(currentEventOccurrence instanceof ICallEventOccurrence){
+			ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) currentEventOccurrence;
 			Behavior behavior = this.wrappedExecution.getBehavior();
 			List<IParameterValue> outputParameterValues = this.wrappedExecution.getOutputParameterValues();
 			if(behavior.outputParameters().size() == outputParameterValues.size()){

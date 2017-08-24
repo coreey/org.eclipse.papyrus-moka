@@ -29,6 +29,6 @@ public interface IEventTriggeredExecution extends IExecution{
 	
 	public void initialize();
 	
-	public void finalize();
+	public void finalize_();
 	
 }
