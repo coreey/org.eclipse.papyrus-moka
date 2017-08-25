@@ -35,7 +35,6 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.ActivityNode;
-import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ConditionalNode;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LoopNode;
@@ -366,12 +365,6 @@ public abstract class AbstractExternallyControlledActionActivation<T extends IAc
 	public IBooleanValue makeBooleanValue(Boolean value) {
 		return delegatedVisitor.makeBooleanValue(value);
 	}
-
-	@Override
-	public boolean checkAllParents(Classifier type, Classifier classifier) {
-		return delegatedVisitor.checkAllParents(type, classifier);
-	}
-
 
 	// ADDED:
 	protected static List<InputPin> getInputs(Action action) {

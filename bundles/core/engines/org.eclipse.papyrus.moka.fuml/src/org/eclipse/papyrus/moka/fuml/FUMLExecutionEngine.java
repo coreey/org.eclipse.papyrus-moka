@@ -47,6 +47,8 @@ import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1.Locus;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL3.ExecutionFactoryL3;
 import org.eclipse.papyrus.moka.fuml.registry.IOpaqueBehaviorExecutionRegistry;
 import org.eclipse.papyrus.moka.fuml.registry.ISystemServicesRegistry;
+import org.eclipse.papyrus.moka.fuml.semantics.execution.RootExecution;
+import org.eclipse.papyrus.moka.fuml.semantics.queue.ExecutionQueueManager;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Parameter;
@@ -89,8 +91,9 @@ public class FUMLExecutionEngine extends AbstractExecutionEngine {
 			this.registerSemanticStrategies(locus);
 			// Initializes arguments
 			this.initializeArguments(this.executionArgs);
-			// Finally launches the execution$
-			this.locus.getExecutor().execute((Behavior) this.executionEntryPoint, null, this.executionArguments);
+			// Start execution
+			RootExecution rootExecution = new RootExecution((Behavior) this.executionEntryPoint, this.executionArguments, locus);
+			ExecutionQueueManager.getInstance().start(rootExecution);
 		}
 	}
 

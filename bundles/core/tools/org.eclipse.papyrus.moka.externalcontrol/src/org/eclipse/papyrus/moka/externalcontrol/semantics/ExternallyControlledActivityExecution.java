@@ -28,8 +28,8 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventAccepter;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IObjectActivation;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ILocus;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Activities.IntermediateActivities.ActivityExecution;
@@ -149,8 +149,8 @@ public class ExternallyControlledActivityExecution extends AbstractExternallyCon
 	}
 
 	@Override
-	public void send(ISignalInstance signalInstance) {
-		delegatedVisitor.send(signalInstance);
+	public void send(IEventOccurrence eventOccurrence) {
+		delegatedVisitor.send(eventOccurrence);
 
 	}
 
@@ -375,6 +375,14 @@ public class ExternallyControlledActivityExecution extends AbstractExternallyCon
 		return delegatedVisitor.getGroup();
 	}
 
+	@Override
+	public boolean checkAllParents(Classifier type, Classifier classifier) {
+		return this.delegatedVisitor.checkAllParents(type, classifier);
+	}
 
+	@Override
+	public boolean isInstanceOf(Classifier classifier) {
+		return this.delegatedVisitor.isInstanceOf(classifier);
+	}
 
 }

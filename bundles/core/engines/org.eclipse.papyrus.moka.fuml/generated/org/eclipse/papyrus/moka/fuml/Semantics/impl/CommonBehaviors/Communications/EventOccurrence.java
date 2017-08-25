@@ -19,6 +19,8 @@ import java.util.List;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
+import org.eclipse.papyrus.moka.fuml.semantics.execution.EventOccurrenceSendingExecution;
+import org.eclipse.papyrus.moka.fuml.semantics.queue.ExecutionQueueManager;
 import org.eclipse.uml2.uml.Trigger;
 
 /**
@@ -62,9 +64,10 @@ public abstract class EventOccurrence implements IEventOccurrence{
 	public void _startObjectBehavior() {
 		// When the sending behavior starts, the current event
 		// occurrence is is forwarded to the target object.
-		if(this.target != null){
-			this.doSend();
-		}
+		EventOccurrenceSendingExecution sendingExecution = new EventOccurrenceSendingExecution();
+		sendingExecution.self = this;
+		sendingExecution.context = this.target.getReferent();
+		ExecutionQueueManager.getInstance().enqueue(sendingExecution);
 	}
 	
 	public void setTarget(IReference target) {

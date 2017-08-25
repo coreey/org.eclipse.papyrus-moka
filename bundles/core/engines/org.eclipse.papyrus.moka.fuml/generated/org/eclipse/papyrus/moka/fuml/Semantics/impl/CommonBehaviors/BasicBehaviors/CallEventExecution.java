@@ -24,6 +24,7 @@ import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IC
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.Reference;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.CallEventOccurrence;
+import org.eclipse.papyrus.moka.fuml.semantics.queue.ExecutionQueueManager;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
@@ -144,6 +145,7 @@ public class CallEventExecution extends Execution implements ICallEventExecution
 		// Wait for an indeterminate amount of time to allow other concurrent 
 		// executions to proceed.
 		// [There is no further formal specification for this operation.]
+		ExecutionQueueManager.getInstance().step();
 	}
 
 }
