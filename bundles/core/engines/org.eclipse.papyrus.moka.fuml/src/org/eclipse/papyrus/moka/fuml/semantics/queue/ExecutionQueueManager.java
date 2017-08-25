@@ -32,6 +32,7 @@ public class ExecutionQueueManager {
 	public void start(RootExecution execution){
 		// Add an execution to the queue and start the execution
 		// loop.
+		this.queue.clear();
 		this.enqueue(execution);
 		this.run();
 	}

@@ -45,21 +45,18 @@ public class StateMachineEventAccepter extends EventAccepter implements IStateMa
 		// When an event occurrence is accepted this marks the beginning of a new RTC
 		// step for
 		// the executed state-machine. The following set of actions takes place:
-		// 1 - The list of transition that can be fired using the given event occurrence
-		// is computed
-		// 2 - This list is organized as a different sub-set of transitions that can be
-		// fired. One of the
-		// subset is chosen to be fired. Each transition fires **Concurrently**
-		// 3 - If the accepted event occurrence is a call event occurrence then there is
-		// a explicit
-		// "return from call" which enables the caller to continue its execution
-		// 4 - When the RTC step is about to complete a new event accepter for the
-		// state-machine
-		// is registered at the waiting event accepter list handled by the object
-		// activation
-		// Note that there always is a single event accepter for a state-machine (this
-		// works differently
-		// than for activities).
+		// 1 - The event can be deferred if required
+		// 2 - The event can trigger on to many transitions if it is not deferred
+		//	2.1 - The list of transitions that can be fired using the given event
+		//        occurrence is computed.
+		//  2.2 - Transitions in the set of fireable transitions are fired **concurrently**
+		//  2.3 - If the accepted event occurrence is a call event occurrence then there is a explicit
+		//	      "return from call" which enables the caller to continue its execution. 
+		// 3 - When the RTC step is about to complete a new event accepter for the state-machine
+		//	   is registered at the waiting event accepter list handled by the object activation
+		// Note that there always is a single event accepter for a state-machine. This differs from
+		// fUML. Indeed, in the state machine context, the overall state machine configuration gets
+		// analyzed.
 		if (this.isDeferred(eventOccurrence)) {
 			this.defer(eventOccurrence);
 		} else {
@@ -69,19 +66,19 @@ public class StateMachineEventAccepter extends EventAccepter implements IStateMa
 						.iterator(); fireableTransitionsIterator.hasNext();) {
 					fireableTransitionsIterator.next().fire(eventOccurrence);
 				}
+				ICallEventOccurrence callEventOccurrence = null;
+				if(eventOccurrence instanceof ICS_EventOccurrence){
+					IEventOccurrence wrappedEventOccurrence = ((ICS_EventOccurrence)eventOccurrence).getWrappedEventOccurrence();
+					if(wrappedEventOccurrence instanceof ICallEventOccurrence){
+						callEventOccurrence = (ICallEventOccurrence) wrappedEventOccurrence;
+					}
+				}else if(eventOccurrence instanceof ICallEventOccurrence){
+					callEventOccurrence = (ICallEventOccurrence) eventOccurrence;
+				}
+				if(callEventOccurrence != null){
+					callEventOccurrence.returnFromCall();
+				}
 			}
-		}
-		ICallEventOccurrence callEventOccurrence = null;
-		if (eventOccurrence instanceof ICS_EventOccurrence) {
-			IEventOccurrence wrappedEventOccurrence = ((ICS_EventOccurrence) eventOccurrence).getWrappedEventOccurrence();
-			if (wrappedEventOccurrence instanceof ICallEventOccurrence) {
-				callEventOccurrence = (ICallEventOccurrence) wrappedEventOccurrence;
-			}
-		} else if (eventOccurrence instanceof ICallEventOccurrence) {
-			callEventOccurrence = (ICallEventOccurrence) eventOccurrence;
-		}
-		if (callEventOccurrence != null) {
-			callEventOccurrence.returnFromCall();
 		}
 		IObject_ context = this.registrationContext.context;
 		if (context != null && context.getObjectActivation() != null) {
