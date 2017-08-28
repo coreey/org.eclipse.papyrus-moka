@@ -15,6 +15,7 @@ package org.eclipse.papyrus.moka.externalcontrol.engine;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.papyrus.moka.externalcontrol.advice.IControllerAdviceFactory;
 import org.eclipse.papyrus.moka.externalcontrol.control.queue.ExternallyControlledExecutionLoop;
 import org.eclipse.papyrus.moka.externalcontrol.controller.ExternalController;
@@ -118,12 +119,16 @@ public abstract class AbstractExternalControlExecutionEngine extends TimedUmlExe
 	}
 
 	@Override
+	public void start(IProgressMonitor monitor) {
+		this.controller = new ExternalController(getControllerPushPullStrategy());
+		super.start(monitor);
+	}
+	
+	@Override
 	protected void run_() {
 		// Starts externally controlled execution loop
-		RootExecution rootExecution = new RootExecution((Behavior) this.executionEntryPoint, this.executionArguments,
-				locus);
-		ExecutionController.getInstance().setExecutionLoop(
-				new ExternallyControlledExecutionLoop(new ExternalController(getControllerPushPullStrategy())));
+		RootExecution rootExecution = new RootExecution((Behavior) this.executionEntryPoint, this.executionArguments, locus);
+		ExecutionController.getInstance().setExecutionLoop(new ExternallyControlledExecutionLoop(this.controller));
 		ExecutionController.getInstance().start(rootExecution);
 	}
 
