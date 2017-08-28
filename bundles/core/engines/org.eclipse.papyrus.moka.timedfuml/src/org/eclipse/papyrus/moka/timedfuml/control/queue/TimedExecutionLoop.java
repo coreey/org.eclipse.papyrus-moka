@@ -16,7 +16,6 @@ package org.eclipse.papyrus.moka.timedfuml.control.queue;
 import org.eclipse.papyrus.moka.discreteevent.DEScheduler;
 import org.eclipse.papyrus.moka.fuml.control.execution.RootExecution;
 import org.eclipse.papyrus.moka.fuml.control.queue.ExecutionLoop;
-import org.eclipse.papyrus.moka.timedfuml.actions._displayCurrentTimeAction;
 
 public class TimedExecutionLoop extends ExecutionLoop{
 	
@@ -29,9 +28,7 @@ public class TimedExecutionLoop extends ExecutionLoop{
 	
 	@Override
 	public void start(RootExecution execution) {
-		// Initialize the scheduler and starts the execution loop
-		DEScheduler.init(-1.0);
-		DEScheduler.getInstance().pushPreStepAction(new _displayCurrentTimeAction());
+		// Retrieve scheduler instance and starts the execution
 		this.scheduler = DEScheduler.getInstance();
 		super.start(execution);
 	}
@@ -53,13 +50,14 @@ public class TimedExecutionLoop extends ExecutionLoop{
 	@Override
 	public boolean step() {
 		// If the model is in a state that enables the execution to move
-		// forward according to executable UML semantics. Conversely, if
+		// forward according to executable UML semantics then execute the
+		// next registered execution in the queue. Conversely, if
 		// the model is in a state that does not enable the execution to
 		// move forward according to the executable UML semantics then enable
 		// scheduler to step forward.
 		boolean stepIn = super.step();
-		if(!stepIn && !scheduler.isFinished()){
-			scheduler.step();
+		if(!stepIn && !this.scheduler.isFinished()){
+			this.scheduler.step();
 		}
 		return stepIn;
 	}

@@ -51,7 +51,7 @@ public class ExecutionLoop {
 		return this.runNext();
 	}
 	
-	private boolean runNext(){
+	protected final boolean runNext(){
 		// If the queue is not empty, then the head execution is removed
 		// and executed. True is returned. False is only returned if the
 		// queue was empty.

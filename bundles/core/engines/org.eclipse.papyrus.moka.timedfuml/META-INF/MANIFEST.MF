@@ -13,5 +13,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.papyrus.moka.timedfuml,
  org.eclipse.papyrus.moka.timedfuml.actions,
+ org.eclipse.papyrus.moka.timedfuml.control.queue,
  org.eclipse.papyrus.moka.timedfuml.semantics
 Bundle-Vendor: Eclipse Modeling Project

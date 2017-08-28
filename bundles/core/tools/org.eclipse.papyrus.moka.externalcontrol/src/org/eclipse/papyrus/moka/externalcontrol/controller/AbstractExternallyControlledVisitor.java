@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.papyrus.moka.discreteevent.DEScheduler;
 import org.eclipse.papyrus.moka.discreteevent.Event;
 import org.eclipse.papyrus.moka.discreteevent.actions.Action;
 import org.eclipse.papyrus.moka.externalcontrol.advice.IControllerAdvice;
@@ -84,7 +85,7 @@ public abstract class AbstractExternallyControlledVisitor<T extends ISemanticVis
 	
 
 	protected void suspendForTime(Double duration){
-		controller.getDEScheduler().pushEvent(new Event(duration, new Action() {
+		DEScheduler.getInstance().pushEvent(new Event(duration, new Action() {
 			@Override
 			public void execute() {
 				currentState = ControlledVisitorStep.FINISHING;

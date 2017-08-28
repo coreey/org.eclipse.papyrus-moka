@@ -19,7 +19,6 @@ import org.eclipse.papyrus.moka.externalcontrol.advice.IControllerAdvice;
 import org.eclipse.papyrus.moka.externalcontrol.controller.AbstractExternallyControlledVisitor;
 import org.eclipse.papyrus.moka.externalcontrol.controller.ExternalController;
 import org.eclipse.papyrus.moka.fuml.Semantics.Activities.IntermediateActivities.IActivityEdgeInstance;
-import org.eclipse.papyrus.moka.fuml.Semantics.Activities.IntermediateActivities.IActivityExecution;
 import org.eclipse.papyrus.moka.fuml.Semantics.Activities.IntermediateActivities.IActivityNodeActivation;
 import org.eclipse.papyrus.moka.fuml.Semantics.Activities.IntermediateActivities.IActivityNodeActivationGroup;
 import org.eclipse.papyrus.moka.fuml.Semantics.Activities.IntermediateActivities.IToken;
