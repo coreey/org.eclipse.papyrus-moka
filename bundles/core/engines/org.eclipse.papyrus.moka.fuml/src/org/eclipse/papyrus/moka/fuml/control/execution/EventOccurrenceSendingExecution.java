@@ -11,7 +11,7 @@
  *   
  *****************************************************************************/
 
-package org.eclipse.papyrus.moka.fuml.semantics.execution;
+package org.eclipse.papyrus.moka.fuml.control.execution;
 
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;

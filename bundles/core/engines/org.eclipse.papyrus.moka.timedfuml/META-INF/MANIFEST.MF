@@ -7,7 +7,8 @@ Bundle-Activator: org.eclipse.papyrus.moka.timedfuml.Activator
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.13.0,4.0.0)",
  org.eclipse.papyrus.moka.discreteevent;bundle-version="2.0.100";visibility:=reexport,
  org.eclipse.papyrus.moka;bundle-version="2.0.100",
- org.eclipse.papyrus.moka.fuml.statemachines;bundle-version="1.0.100";visibility:=reexport
+ org.eclipse.papyrus.moka.fuml.statemachines;bundle-version="1.0.100";visibility:=reexport,
+ org.eclipse.papyrus.moka.fuml
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.papyrus.moka.timedfuml,

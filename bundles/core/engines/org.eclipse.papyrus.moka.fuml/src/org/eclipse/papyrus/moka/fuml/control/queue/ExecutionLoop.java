@@ -1,26 +1,27 @@
-package org.eclipse.papyrus.moka.fuml.semantics.queue;
+/*****************************************************************************
+ * Copyright (c) 2017 CEA LIST and others.
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   CEA LIST - Initial API and implementation
+ *   
+ *****************************************************************************/
+
+package org.eclipse.papyrus.moka.fuml.control.queue;
 
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IExecution;
-import org.eclipse.papyrus.moka.fuml.semantics.execution.RootExecution;
+import org.eclipse.papyrus.moka.fuml.control.execution.RootExecution;
 
-public class ExecutionQueueManager {
+public class ExecutionLoop {
 	
 	// The queue handled by the execution manager
 	protected ExecutionQueue queue;
 	
-	// The manager is a singleton
-	private static ExecutionQueueManager INSTANCE;
-	
-	public static ExecutionQueueManager getInstance(){
-		// Instantiate the manager if required and return the
-		// singleton instance 
-		if(INSTANCE == null){
-			INSTANCE = new ExecutionQueueManager();
-		}
-		return INSTANCE;
-	}
-	
-	private ExecutionQueueManager(){
+	public ExecutionLoop(){
 		this.queue = new ExecutionQueue();
 	}
 	
@@ -45,9 +46,9 @@ public class ExecutionQueueManager {
 		}
 	}
 	
-	public void step(){
+	public boolean step(){
 		// Run the execution at the head of the queue
-		this.runNext();
+		return this.runNext();
 	}
 	
 	private boolean runNext(){
@@ -56,7 +57,6 @@ public class ExecutionQueueManager {
 		// queue was empty.
 		if(!this.queue.isEmpty()){
 			IExecution nextExecution = this.queue.poll();
-			//System.err.println(nextExecution);
 			nextExecution.execute();
 			return true;
 		}

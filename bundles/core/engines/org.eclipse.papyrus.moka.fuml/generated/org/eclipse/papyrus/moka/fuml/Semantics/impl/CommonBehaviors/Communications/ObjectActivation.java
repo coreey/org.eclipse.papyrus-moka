@@ -26,8 +26,8 @@ import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IE
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IObjectActivation;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.Object_;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1.ChoiceStrategy;
+import org.eclipse.papyrus.moka.fuml.control.execution.EventDispatchLoopExecution;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
-import org.eclipse.papyrus.moka.fuml.semantics.execution.EventDispatchLoopExecution;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
 

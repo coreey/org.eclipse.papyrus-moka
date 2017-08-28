@@ -11,12 +11,12 @@
  *   
  *****************************************************************************/
 
-package org.eclipse.papyrus.moka.fuml.semantics.execution;
+package org.eclipse.papyrus.moka.fuml.control.execution;
 
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IObjectActivation;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.BasicBehaviors.Execution;
-import org.eclipse.papyrus.moka.fuml.semantics.queue.ExecutionQueueManager;
+import org.eclipse.papyrus.moka.fuml.control.queue.ExecutionController;
 
 public class EventDispatchLoopExecution extends Execution {
 
@@ -34,7 +34,7 @@ public class EventDispatchLoopExecution extends Execution {
 		// the event dispatch loop execution to the execution queue manager.
 		this.signalCount = this.signalCount + 1;
 		if(this.signalCount == 1){
-			ExecutionQueueManager.getInstance().enqueue(this);
+			ExecutionController.getInstance().getExecutionLoop().enqueue(this);
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class EventDispatchLoopExecution extends Execution {
 		this.dispatchNextEvent();
 		this.signalCount = this.signalCount - 1;
 		if(this.signalCount > 0){
-			ExecutionQueueManager.getInstance().enqueue(this);
+			ExecutionController.getInstance().getExecutionLoop().enqueue(this);
 		}
 	}
 

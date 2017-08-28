@@ -17,8 +17,7 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IEvaluation;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IRealValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Actions.BasicActions.ActionActivation;
 import org.eclipse.papyrus.moka.timedfuml.actions._sendAcceptEventOfferAction;
-import org.eclipse.uml2.uml.Action;
-import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.TimeExpression;
@@ -39,10 +38,9 @@ public class Timed_AcceptEventActionActivation extends ActionActivation {
 		double relativeDate = 0;
 		double absoluteDate = 0;
 		double currentTime = 0;
-		for (Element elt : ((Action) node).getOwnedElements()) {
+		for (Trigger trigger : ((AcceptEventAction) node).getTriggers()) {
 			boolean isMissed = false;
-			Trigger t = (Trigger) elt;
-			TimeEvent e = (TimeEvent) t.getEvent();
+			TimeEvent e = (TimeEvent) trigger.getEvent();
 			TimeExpression texp = ((TimeEvent) e).getWhen();
 			IEvaluation evaluation = null;
 			// FIXME Hack. Changes would be required in fUML

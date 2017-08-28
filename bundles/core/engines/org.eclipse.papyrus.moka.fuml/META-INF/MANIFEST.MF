@@ -18,6 +18,8 @@ Export-Package: org.eclipse.papyrus.moka.fuml;uses:="org.eclipse.ui.plugin,org.o
  org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1,
  org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL2,
  org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL3,
+ org.eclipse.papyrus.moka.fuml.control.execution,
+ org.eclipse.papyrus.moka.fuml.control.queue,
  org.eclipse.papyrus.moka.fuml.debug,
  org.eclipse.papyrus.moka.fuml.profiling,
  org.eclipse.papyrus.moka.fuml.profiling.Semantics.Actions.BasicActions,

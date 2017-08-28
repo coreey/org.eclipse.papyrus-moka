@@ -11,37 +11,32 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.timedfuml;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-
 import org.eclipse.papyrus.moka.composites.Semantics.impl.Loci.LociL3.CS_Executor;
-import org.eclipse.papyrus.moka.discreteevent.DEScheduler;
 import org.eclipse.papyrus.moka.fuml.Semantics.Loci.LociL1.ILocus;
+import org.eclipse.papyrus.moka.fuml.control.execution.RootExecution;
+import org.eclipse.papyrus.moka.fuml.control.queue.ExecutionController;
 import org.eclipse.papyrus.moka.fuml.statemachines.StateMachineExecutionEngine;
-import org.eclipse.papyrus.moka.timedfuml.actions._displayCurrentTimeAction;
+import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.Loci.SM_Locus;
+import org.eclipse.papyrus.moka.timedfuml.control.queue.TimedExecutionLoop;
 import org.eclipse.papyrus.moka.timedfuml.semantics.Timed_ExecutionFactory;
-import org.eclipse.papyrus.moka.timedfuml.semantics.Timed_Locus;
+import org.eclipse.uml2.uml.Behavior;
 
 public class TimedUmlExecutionEngine extends StateMachineExecutionEngine {
 
-
 	@Override
 	public ILocus initializeLocus() {
-		this.locus = new Timed_Locus();
+		this.locus = new SM_Locus();
 		locus.setExecutor(new CS_Executor());
 		locus.setFactory(new Timed_ExecutionFactory());
-
 		return this.locus;
-
 	}
-
-	public void start(IProgressMonitor monitor) {
-		_displayCurrentTimeAction displayAction = new _displayCurrentTimeAction();
-		DEScheduler.init(-1.0);
-		DEScheduler.getInstance().pushPreStepAction(displayAction);
-		super.start(monitor);
-		DEScheduler.getInstance().run();
+	
+	@Override
+	protected void run_() {
+		// Starts the execution loop
+		RootExecution rootExecution = new RootExecution((Behavior) this.executionEntryPoint, this.executionArguments, locus);
+		ExecutionController.getInstance().setExecutionLoop(new TimedExecutionLoop());
+		ExecutionController.getInstance().start(rootExecution);
 	}
-
-
 
 }
