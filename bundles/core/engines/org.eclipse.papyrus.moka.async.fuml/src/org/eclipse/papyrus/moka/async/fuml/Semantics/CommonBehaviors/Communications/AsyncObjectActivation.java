@@ -23,12 +23,10 @@ import org.eclipse.papyrus.moka.async.fuml.debug.AsyncDebug;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventAccepter;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.ClassifierBehaviorInvocationEventAccepter;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.InvocationEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.ObjectActivation;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalInstance;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Loci.LociL1.ChoiceStrategy;
 import org.eclipse.papyrus.moka.fuml.standardlibrary.library.io.StandardOutputChannelImpl;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
@@ -144,9 +142,7 @@ public class AsyncObjectActivation extends ObjectActivation implements Runnable 
 	 *            the signal instance
 	 */
 	@Override
-	public synchronized void send(ISignalInstance signalInstance) {
-		SignalEventOccurrence eventOccurrence = new SignalEventOccurrence();
-		eventOccurrence.signalInstance = (SignalInstance) signalInstance.copy();
+	public synchronized void send(IEventOccurrence eventOccurrence) {
 		this.evtPool.send(eventOccurrence);
 	}
 

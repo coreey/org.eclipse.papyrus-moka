@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
+   <!--<extension
          point="org.eclipse.papyrus.moka.engine">
       <engine
             class="org.eclipse.papyrus.moka.async.fuml.FUMLMultiThreadExecutionEngine"
-            description="PSCS Execution Engine (multi-threaded implementation)"
+            description="PSCS Execution Engine (multi-threaded implementation) "
       >
       </engine>
-   </extension>
+   </extension>-->
    <extension
          point="org.eclipse.emf.ecore.uri_mapping">
       <mapping

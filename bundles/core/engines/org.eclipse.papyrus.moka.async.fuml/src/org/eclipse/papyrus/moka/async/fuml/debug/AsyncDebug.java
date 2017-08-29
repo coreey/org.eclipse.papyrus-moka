@@ -19,9 +19,9 @@ import org.eclipse.papyrus.infra.core.Activator;
 import org.eclipse.papyrus.moka.fuml.Semantics.Actions.CompleteActions.IAcceptEventActionEventAccepter;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventAccepter;
 import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalEventOccurrence;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.ISignalInstance;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.ObjectActivation;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.SignalInstance;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
@@ -36,27 +36,6 @@ import org.eclipse.uml2.uml.Trigger;
  * The Class AsyncDebug.
  */
 public class AsyncDebug extends Debug {
-
-	/**
-	 * Println.
-	 *
-	 * @param message
-	 *            the message
-	 */
-	public static void println(String message) {
-		// int remainingSpaces = 30-Thread.currentThread().getName().length();
-		// if(remainingSpaces < 0){
-		// System.out.println(
-		// String.format("%s", "["+Thread.currentThread().getName()+"]")
-		// +message);
-		// }else{
-		// int sideSpaceCount = remainingSpaces/2;
-		// System.out.println(
-		// String.format("[%"+sideSpaceCount+"s%s%"+sideSpaceCount+"s]", " ",
-		// Thread.currentThread().getName()
-		// ," ")+message);
-		// }
-	}
 
 	/**
 	 * The displayed message states:
@@ -89,8 +68,8 @@ public class AsyncDebug extends Debug {
 				}
 			}
 		}
-		if (eventOccurrence instanceof SignalEventOccurrence) {
-			final SignalInstance finalSignalInstance = ((SignalEventOccurrence) eventOccurrence).signalInstance;
+		if (eventOccurrence instanceof ISignalEventOccurrence) {
+			final ISignalInstance finalSignalInstance = ((ISignalEventOccurrence) eventOccurrence).getSignalInstance();
 			final String finalExpectedSignals = expectedSignals;
 			Display.getDefault().syncExec(new Runnable() {
 				public void run() {
