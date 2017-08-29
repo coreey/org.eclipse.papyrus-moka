@@ -14,12 +14,12 @@ package org.eclipse.papyrus.moka.fuml.cosimulation.semantics;
 import org.eclipse.papyrus.moka.fmi.master.fmuproxy.Fmu2ProxyService;
 import org.eclipse.papyrus.moka.fmi.profile.util.FMIProfileUtil;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
-import org.eclipse.papyrus.moka.timedfuml.semantics.Timed_Locus;
-import org.eclipse.papyrus.moka.timedfuml.semantics.Timed_Object;
+import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.Loci.SM_Locus;
+import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.StructuredClassifiers.SM_Object;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
 
-public class CosimulationLocus extends Timed_Locus {
+public class CosimulationLocus extends SM_Locus {
 
 	@Override
 	public IObject_ instantiate(Class type) {
@@ -34,7 +34,7 @@ public class CosimulationLocus extends Timed_Locus {
 				object = new Fmu2ProxyService(type);
 
 			} else {
-				object = new Timed_Object();
+				object = new SM_Object();
 			}
 			object.addType(type);
 			object.createFeatureValues();

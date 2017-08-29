@@ -28,16 +28,18 @@ import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IFeatureValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IIntegerValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IObject_;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IRealValue;
+import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IReference;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IStringValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IValue;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.BasicBehaviors.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.BooleanValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.IntegerValue;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.RealValue;
+import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.Reference;
 import org.eclipse.papyrus.moka.fuml.Semantics.impl.Classes.Kernel.StringValue;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.ArrivalSignal;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.CommonBehaviors.Communications.ObjectActivation;
-import org.eclipse.papyrus.moka.timedfuml.semantics.Timed_Object;
+import org.eclipse.papyrus.moka.fuml.statemachines.Semantics.StructuredClassifiers.SM_Object;
 import org.eclipse.papyrus.moka.utils.UMLPrimitiveTypesUtils;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuralFeature;
@@ -45,7 +47,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 
-public class FMUObject extends Timed_Object implements FMUInterface, IObject_ {
+public class FMUObject extends SM_Object implements FMUInterface, IObject_ {
 
 	// FIXME indexes in maps shall be implement with Long
 	protected Map<Integer, Double> realMap = new HashMap<Integer, Double>();
@@ -189,8 +191,10 @@ public class FMUObject extends Timed_Object implements FMUInterface, IObject_ {
 						oldValue.setType((PrimitiveType)UMLPrimitiveTypesUtils.getReal(p));
 						oldValue.setValue(new_);
 						FMUChangeEventOccurence changeEventOccurence = new FMUChangeEventOccurence(p, oldValue, realValue) ;
-						this.getObjectActivation().getEvents().add(changeEventOccurence) ;
-						((ObjectActivation)this.getObjectActivation())._send(new ArrivalSignal()); 
+						IReference target = new Reference();
+						target.setReferent(this);
+						changeEventOccurence.setTarget(target);
+						changeEventOccurence.register(); 
 					}
 				}
 				realValue.setValue(realsMap.get(key)) ;
@@ -221,8 +225,10 @@ public class FMUObject extends Timed_Object implements FMUInterface, IObject_ {
 						oldValue.setType((PrimitiveType)UMLPrimitiveTypesUtils.getInteger(p));
 						oldValue.setValue(new_);
 						FMUChangeEventOccurence changeEventOccurence = new FMUChangeEventOccurence(p, oldValue, integerValue) ;
-						this.getObjectActivation().getEvents().add(changeEventOccurence) ;
-						((ObjectActivation)this.getObjectActivation())._send(new ArrivalSignal()); 
+						IReference target = new Reference();
+						target.setReferent(this);
+						changeEventOccurence.setTarget(target);
+						changeEventOccurence.register(); 
 					}
 				}
 				integerValue.setValue(integerMap.get(key)) ;
@@ -253,8 +259,10 @@ public class FMUObject extends Timed_Object implements FMUInterface, IObject_ {
 						oldValue.setType((PrimitiveType)UMLPrimitiveTypesUtils.getBoolean(p));
 						oldValue.setValue(new_);
 						FMUChangeEventOccurence changeEventOccurence = new FMUChangeEventOccurence(p, oldValue, booleanValue) ;
-						this.getObjectActivation().getEvents().add(changeEventOccurence) ;
-						((ObjectActivation)this.getObjectActivation())._send(new ArrivalSignal()); 
+						IReference target = new Reference();
+						target.setReferent(this);
+						changeEventOccurence.setTarget(target);
+						changeEventOccurence.register(); 
 					}
 					booleanValue.setValue(booleanMap.get(key)) ;
 				}
@@ -285,8 +293,10 @@ public class FMUObject extends Timed_Object implements FMUInterface, IObject_ {
 						oldValue.setType((PrimitiveType)UMLPrimitiveTypesUtils.getString(p));
 						oldValue.setValue(new_);
 						FMUChangeEventOccurence changeEventOccurence = new FMUChangeEventOccurence(p, oldValue, stringValue) ;
-						this.getObjectActivation().getEvents().add(changeEventOccurence) ;
-						((ObjectActivation)this.getObjectActivation())._send(new ArrivalSignal()); 
+						IReference target = new Reference();
+						target.setReferent(this);
+						changeEventOccurence.setTarget(target);
+						changeEventOccurence.register(); 
 					}
 				}
 				stringValue.setValue(stringMap.get(key)) ;
@@ -300,6 +310,18 @@ public class FMUObject extends Timed_Object implements FMUInterface, IObject_ {
 
 	public Map<String, Integer> getPropertyNameToIndexMap() {
 		return UMLPropertyNameToIndexMap ;
+	}
+	
+	@Override
+	public void startBehavior(Class classifier, List<IParameterValue> inputs) {
+		// The behavior captured here is almost identical to the one provide by Object_.
+		// Instead of using a simple ObjectActivation we use an FMU specific object activation.
+		// This specialized kind of ObjectActivation allows the registering of change events.
+		if (this.objectActivation == null) {
+			this.objectActivation = new FMU_ObjectActivation();
+			this.objectActivation.setObject(this);
+		}
+		this.objectActivation.startBehavior(classifier, inputs);
 	}
 
 }

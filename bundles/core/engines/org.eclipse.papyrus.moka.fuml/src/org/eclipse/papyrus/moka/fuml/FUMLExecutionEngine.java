@@ -80,8 +80,7 @@ public class FUMLExecutionEngine extends AbstractExecutionEngine {
 	public void start(IProgressMonitor monitor) {
 		super.start(monitor);
 		this.locus = this.initializeLocus();
-		if (this.executionEntryPoint != null &&
-				this.executionEntryPoint instanceof Behavior) {
+		if (this.executionEntryPoint != null) {
 			// initializes built-in primitive types
 			this.initializeBuiltInPrimitiveTypes(locus);
 			// Initializes opaque behavior executions

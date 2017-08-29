@@ -19,6 +19,7 @@ import java.util.Map;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.papyrus.moka.discreteevent.DEScheduler;
 import org.eclipse.papyrus.moka.fmi.profile.util.FMIProfileUtil;
+import org.eclipse.papyrus.moka.fmu.engine.control.EngineStatus;
 import org.eclipse.papyrus.moka.fmu.engine.control.FMUControlService;
 import org.eclipse.papyrus.moka.fmu.engine.semantics.FMUObject;
 import org.eclipse.papyrus.moka.fmu.engine.utils.FMUEngineUtils;
@@ -182,6 +183,7 @@ public class FMUDebugDialog extends Dialog {
 			@Override
 			public void handleEvent(Event arg0) {
 				FMUControlService fmuControlService = FMUEngineUtils.getFMUControlService();
+				fmuControlService.setEngineStatus(EngineStatus.INIT);
 				new Thread(new Runnable() {
 
 					@Override
@@ -218,12 +220,13 @@ public class FMUDebugDialog extends Dialog {
 			public void handleEvent(Event arg0) {
 				stepButton.setEnabled(false);
 				final double stepSize = new Double(stepText.getText()).doubleValue();
+				FMUControlService fmuControlService = FMUEngineUtils.getFMUControlService();
+				fmuControlService.setEngineStatus(EngineStatus.STEPPING);
 				setInputValues(inputTable);
 				new Thread(new Runnable() {
 					public void run() {
 						FMUControlService fmuControlService = FMUEngineUtils.getFMUControlService();
 						fmuControlService.doStep(DEScheduler.getInstance().getCurrentTime(), stepSize);
-
 						Display.getDefault().asyncExec(new Runnable() {
 							@Override
 							public void run() {
