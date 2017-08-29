@@ -7,85 +7,83 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
+ * 	Sahar Guermazi
  *  CEA LIST Initial API and implementation
  *****************************************************************************/
 package org.eclipse.papyrus.moka.timedfuml.semantics;
 
+import java.util.List;
+
 import org.eclipse.papyrus.moka.discreteevent.DEScheduler;
 import org.eclipse.papyrus.moka.discreteevent.Event;
+import org.eclipse.papyrus.moka.fuml.Semantics.Activities.IntermediateActivities.IToken;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IEvaluation;
 import org.eclipse.papyrus.moka.fuml.Semantics.Classes.Kernel.IRealValue;
-import org.eclipse.papyrus.moka.fuml.Semantics.impl.Actions.BasicActions.ActionActivation;
+import org.eclipse.papyrus.moka.fuml.Semantics.CommonBehaviors.Communications.IEventOccurrence;
+import org.eclipse.papyrus.moka.fuml.Semantics.impl.Actions.CompleteActions.AcceptEventActionActivation;
+import org.eclipse.papyrus.moka.fuml.statemachines.interfaces.Semantics.Values.ISM_OpaqueExpressionEvaluation;
 import org.eclipse.papyrus.moka.timedfuml.actions._sendAcceptEventOfferAction;
 import org.eclipse.uml2.uml.AcceptEventAction;
-import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.TimeEvent;
-import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.Trigger;
 
-/**
- * @author sg239226
- *
- */
-public class Timed_AcceptEventActionActivation extends ActionActivation {
+public class Timed_AcceptEventActionActivation extends AcceptEventActionActivation {
 
 	public Timed_AcceptEventActionActivation() {
 		super();
 	}
 
-	public void sendOffers() {
-
+	@Override
+	public void fire(List<IToken> incomingTokens) {
+		// Register an event in the DEScheduler (clock manager) and suspend this action.
+		// Note: UML 2.5 does not put any restrictions on the number of triggers with a
+		// time event that may be referenced by a single accept event action.
 		double relativeDate = 0;
 		double absoluteDate = 0;
 		double currentTime = 0;
 		for (Trigger trigger : ((AcceptEventAction) node).getTriggers()) {
-			boolean isMissed = false;
-			TimeEvent e = (TimeEvent) trigger.getEvent();
-			TimeExpression texp = ((TimeEvent) e).getWhen();
-			IEvaluation evaluation = null;
-			// FIXME Hack. Changes would be required in fUML
-			// In fUML, evaluations cannot have a context
-			// A context might however be useful, at least in the case of OpaqueExpression, for the execution of the expression Behavior
-			if (texp.getExpr() instanceof OpaqueExpression) {
-				OpaqueExpressionEvaluationWithContext opaqueEvaluation = new OpaqueExpressionEvaluationWithContext();
-				opaqueEvaluation.specification = texp.getExpr();
-				opaqueEvaluation.locus = this.getExecutionLocus();
-				opaqueEvaluation.context = this.getExecutionContext();
-				evaluation = opaqueEvaluation;
-			} else {
-				evaluation = this.getExecutionLocus().getFactory().createEvaluation(texp.getExpr());
-			}
-			if (e.isRelative()) {
-				relativeDate = ((IRealValue) evaluation.evaluate()).getValue();
-			} else {
-				absoluteDate = ((IRealValue) evaluation.evaluate()).getValue();
-				currentTime = DEScheduler.getInstance().getCurrentTime();
-				if (absoluteDate < currentTime) {
-					isMissed = true;
-					System.out.println("Time Event is missed, absoluteTime = " + absoluteDate + " > currentTime = " + currentTime);
-				} else {
-					relativeDate = absoluteDate - currentTime;
+			if (trigger.getEvent() instanceof TimeEvent) {
+				boolean isMissed = false;
+				TimeEvent timeEvent = (TimeEvent) trigger.getEvent();
+				IEvaluation evaluation = null;
+				if (timeEvent.getWhen() != null && timeEvent.getWhen().getExpr() != null) {
+					evaluation = this.getExecutionLocus().getFactory().createEvaluation(timeEvent.getWhen().getExpr());
+					if(evaluation instanceof ISM_OpaqueExpressionEvaluation){
+						((ISM_OpaqueExpressionEvaluation)evaluation).setContext(this.getExecutionContext()) ;
+					}
+					if (timeEvent.isRelative()) {
+						relativeDate = ((IRealValue) evaluation.evaluate()).getValue();
+					} else {
+						absoluteDate = ((IRealValue) evaluation.evaluate()).getValue();
+						currentTime = DEScheduler.getInstance().getCurrentTime();
+						if (absoluteDate < currentTime) {
+							isMissed = true;
+							System.err.println("Time Event is missed, absoluteTime = " + absoluteDate + " > currentTime = "
+									+ currentTime);
+						} else {
+							relativeDate = absoluteDate - currentTime;
+						}
+					}
+					if (!isMissed) {
+						_sendAcceptEventOfferAction sendOfferAction = new _sendAcceptEventOfferAction(this);
+						DEScheduler.getInstance().pushEvent(new Event(relativeDate, sendOfferAction));
+						this.waiting = true;
+						this.firing = false;
+						this.suspend();
+					}
 				}
-
-			}
-			if (!isMissed) {
-				_sendAcceptEventOfferAction sendOfferAction = new _sendAcceptEventOfferAction(this);
-				this.suspend();
-				DEScheduler.getInstance().pushEvent(new Event(relativeDate, sendOfferAction));
 			}
 		}
 	}
 
-	public void sendOffersDefault() {
-		this.resume();
-		super.sendOffers();
-	}
-
 	@Override
-	public void doAction() {
-		// TODO Auto-generated method stub
-
+	public void accept(IEventOccurrence eventOccurrence) {
+		// There is no acceptance of "time event occurrence". The accepted event
+		// occurrence
+		// will always be null at this point.
+		this.sendOffers();
+		this.waiting = false;
+		this.receiveOffer();
+		this.resume();
 	}
-
-
 }

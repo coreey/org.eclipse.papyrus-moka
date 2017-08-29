@@ -27,17 +27,10 @@ public class _sendAcceptEventOfferAction extends Action {
 		super();
 		this.actionActivation = actionActivation;
 	}
-
-	/**
-	 * @see org.eclipse.papyrus.moka.discreteevent.actions.Action#execute()
-	 *
-	 */
+	
 	@Override
 	public void execute() {
-		// System.out.println(DEScheduler.getInstance().getCurrentTime() + " : sending offer - " + this.actionActivation);
-		this.actionActivation.sendOffersDefault();
-		actionActivation.receiveOffer();
-		actionActivation.resume() ;
+		this.actionActivation.accept(null);
 	}
 
 }
