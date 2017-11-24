@@ -158,13 +158,22 @@ public interface VisualizationPackage extends EPackage {
 	int VALUE_SERIES__DEPENDENT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Base Slot</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_SERIES__BASE_SLOT = 3;
+
+	/**
 	 * The number of structural features of the '<em>Value Series</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_SERIES_FEATURE_COUNT = 3;
+	int VALUE_SERIES_FEATURE_COUNT = 4;
 
 	/**
 	 * The operation id for the '<em>Get Size</em>' operation.
@@ -229,6 +238,15 @@ public interface VisualizationPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRING_SERIES__DEPENDENT = VALUE_SERIES__DEPENDENT;
+
+	/**
+	 * The feature id for the '<em><b>Base Slot</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_SERIES__BASE_SLOT = VALUE_SERIES__BASE_SLOT;
 
 	/**
 	 * The feature id for the '<em><b>Values</b></em>' attribute list.
@@ -313,6 +331,15 @@ public interface VisualizationPackage extends EPackage {
 	int DOUBLE_SERIES__DEPENDENT = VALUE_SERIES__DEPENDENT;
 
 	/**
+	 * The feature id for the '<em><b>Base Slot</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_SERIES__BASE_SLOT = VALUE_SERIES__BASE_SLOT;
+
+	/**
 	 * The feature id for the '<em><b>Values</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -393,6 +420,15 @@ public interface VisualizationPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_SERIES__DEPENDENT = VALUE_SERIES__DEPENDENT;
+
+	/**
+	 * The feature id for the '<em><b>Base Slot</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_SERIES__BASE_SLOT = VALUE_SERIES__BASE_SLOT;
 
 	/**
 	 * The feature id for the '<em><b>Values</b></em>' attribute list.
@@ -477,6 +513,15 @@ public interface VisualizationPackage extends EPackage {
 	int BOOLEAN_SERIES__DEPENDENT = VALUE_SERIES__DEPENDENT;
 
 	/**
+	 * The feature id for the '<em><b>Base Slot</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_SERIES__BASE_SLOT = VALUE_SERIES__BASE_SLOT;
+
+	/**
 	 * The feature id for the '<em><b>Values</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -520,6 +565,53 @@ public interface VisualizationPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_SERIES_OPERATION_COUNT = VALUE_SERIES_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.papyrus.moka.datavisualization.profile.impl.DataSourceInstanceImpl <em>Data Source Instance</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.papyrus.moka.datavisualization.profile.impl.DataSourceInstanceImpl
+	 * @see org.eclipse.papyrus.moka.datavisualization.profile.impl.VisualizationPackageImpl#getDataSourceInstance()
+	 * @generated
+	 */
+	int DATA_SOURCE_INSTANCE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Base Instance Specification</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SOURCE_INSTANCE__BASE_INSTANCE_SPECIFICATION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Series</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SOURCE_INSTANCE__SERIES = 1;
+
+	/**
+	 * The number of structural features of the '<em>Data Source Instance</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SOURCE_INSTANCE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Data Source Instance</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SOURCE_INSTANCE_OPERATION_COUNT = 0;
 
 
 	/**
@@ -596,6 +688,17 @@ public interface VisualizationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getValueSeries_Dependent();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getBase_Slot <em>Base Slot</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Base Slot</em>'.
+	 * @see org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getBase_Slot()
+	 * @see #getValueSeries()
+	 * @generated
+	 */
+	EReference getValueSeries_Base_Slot();
 
 	/**
 	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getStringValue(int) <em>Get String Value</em>}' operation.
@@ -702,6 +805,38 @@ public interface VisualizationPackage extends EPackage {
 	EAttribute getBooleanSeries_Values();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.datavisualization.profile.DataSourceInstance <em>Data Source Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Source Instance</em>'.
+	 * @see org.eclipse.papyrus.moka.datavisualization.profile.DataSourceInstance
+	 * @generated
+	 */
+	EClass getDataSourceInstance();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.papyrus.moka.datavisualization.profile.DataSourceInstance#getBase_InstanceSpecification <em>Base Instance Specification</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Base Instance Specification</em>'.
+	 * @see org.eclipse.papyrus.moka.datavisualization.profile.DataSourceInstance#getBase_InstanceSpecification()
+	 * @see #getDataSourceInstance()
+	 * @generated
+	 */
+	EReference getDataSourceInstance_Base_InstanceSpecification();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.papyrus.moka.datavisualization.profile.DataSourceInstance#getSeries <em>Series</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Series</em>'.
+	 * @see org.eclipse.papyrus.moka.datavisualization.profile.DataSourceInstance#getSeries()
+	 * @see #getDataSourceInstance()
+	 * @generated
+	 */
+	EReference getDataSourceInstance_Series();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -783,6 +918,14 @@ public interface VisualizationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VALUE_SERIES__DEPENDENT = eINSTANCE.getValueSeries_Dependent();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Slot</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VALUE_SERIES__BASE_SLOT = eINSTANCE.getValueSeries_Base_Slot();
 
 		/**
 		 * The meta object literal for the '<em><b>Get String Value</b></em>' operation.
@@ -871,6 +1014,32 @@ public interface VisualizationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BOOLEAN_SERIES__VALUES = eINSTANCE.getBooleanSeries_Values();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.datavisualization.profile.impl.DataSourceInstanceImpl <em>Data Source Instance</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.papyrus.moka.datavisualization.profile.impl.DataSourceInstanceImpl
+		 * @see org.eclipse.papyrus.moka.datavisualization.profile.impl.VisualizationPackageImpl#getDataSourceInstance()
+		 * @generated
+		 */
+		EClass DATA_SOURCE_INSTANCE = eINSTANCE.getDataSourceInstance();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Instance Specification</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_SOURCE_INSTANCE__BASE_INSTANCE_SPECIFICATION = eINSTANCE.getDataSourceInstance_Base_InstanceSpecification();
+
+		/**
+		 * The meta object literal for the '<em><b>Series</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_SOURCE_INSTANCE__SERIES = eINSTANCE.getDataSourceInstance_Series();
 
 	}
 

@@ -23,6 +23,8 @@
         lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Property"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependent" ordered="false"
         eType="#//ValueSeries"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Slot" ordered="false"
+        lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Slot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringSeries" eSuperTypes="#//ValueSeries">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
@@ -43,5 +45,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_InstanceSpecification"
+        ordered="false" lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//InstanceSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="series" ordered="false"
+        upperBound="-1" eType="#//ValueSeries" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
 </ecore:EPackage>

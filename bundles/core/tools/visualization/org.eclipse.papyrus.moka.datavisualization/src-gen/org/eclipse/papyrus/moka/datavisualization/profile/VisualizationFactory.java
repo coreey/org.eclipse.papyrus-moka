@@ -92,6 +92,15 @@ public interface VisualizationFactory extends EFactory {
 	BooleanSeries createBooleanSeries();
 
 	/**
+	 * Returns a new object of class '<em>Data Source Instance</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Source Instance</em>'.
+	 * @generated
+	 */
+	DataSourceInstance createDataSourceInstance();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

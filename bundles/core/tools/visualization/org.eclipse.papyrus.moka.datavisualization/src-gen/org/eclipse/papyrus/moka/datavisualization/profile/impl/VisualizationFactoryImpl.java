@@ -78,6 +78,7 @@ public class VisualizationFactoryImpl extends EFactoryImpl implements Visualizat
 			case VisualizationPackage.DOUBLE_SERIES: return createDoubleSeries();
 			case VisualizationPackage.INTEGER_SERIES: return createIntegerSeries();
 			case VisualizationPackage.BOOLEAN_SERIES: return createBooleanSeries();
+			case VisualizationPackage.DATA_SOURCE_INSTANCE: return createDataSourceInstance();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -141,6 +142,16 @@ public class VisualizationFactoryImpl extends EFactoryImpl implements Visualizat
 	public BooleanSeries createBooleanSeries() {
 		BooleanSeriesImpl booleanSeries = new BooleanSeriesImpl();
 		return booleanSeries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataSourceInstance createDataSourceInstance() {
+		DataSourceInstanceImpl dataSourceInstance = new DataSourceInstanceImpl();
+		return dataSourceInstance;
 	}
 
 	/**

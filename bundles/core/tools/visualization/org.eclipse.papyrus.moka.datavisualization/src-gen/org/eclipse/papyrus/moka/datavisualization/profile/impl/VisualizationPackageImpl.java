@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.papyrus.moka.datavisualization.profile.BooleanSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.DataSource;
+import org.eclipse.papyrus.moka.datavisualization.profile.DataSourceInstance;
 import org.eclipse.papyrus.moka.datavisualization.profile.DoubleSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.IntegerSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.StringSeries;
@@ -87,6 +88,13 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 	 * @generated
 	 */
 	private EClass booleanSeriesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataSourceInstanceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -220,6 +228,15 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getValueSeries_Base_Slot() {
+		return (EReference)valueSeriesEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getValueSeries__GetStringValue__int() {
 		return valueSeriesEClass.getEOperations().get(1);
 	}
@@ -310,6 +327,33 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDataSourceInstance() {
+		return dataSourceInstanceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataSourceInstance_Base_InstanceSpecification() {
+		return (EReference)dataSourceInstanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataSourceInstance_Series() {
+		return (EReference)dataSourceInstanceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public VisualizationFactory getVisualizationFactory() {
 		return (VisualizationFactory)getEFactoryInstance();
 	}
@@ -341,6 +385,7 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 		createEAttribute(valueSeriesEClass, VALUE_SERIES__BINARY_STRING);
 		createEReference(valueSeriesEClass, VALUE_SERIES__BASE_PROPERTY);
 		createEReference(valueSeriesEClass, VALUE_SERIES__DEPENDENT);
+		createEReference(valueSeriesEClass, VALUE_SERIES__BASE_SLOT);
 		createEOperation(valueSeriesEClass, VALUE_SERIES___GET_SIZE);
 		createEOperation(valueSeriesEClass, VALUE_SERIES___GET_STRING_VALUE__INT);
 
@@ -355,6 +400,10 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 
 		booleanSeriesEClass = createEClass(BOOLEAN_SERIES);
 		createEAttribute(booleanSeriesEClass, BOOLEAN_SERIES__VALUES);
+
+		dataSourceInstanceEClass = createEClass(DATA_SOURCE_INSTANCE);
+		createEReference(dataSourceInstanceEClass, DATA_SOURCE_INSTANCE__BASE_INSTANCE_SPECIFICATION);
+		createEReference(dataSourceInstanceEClass, DATA_SOURCE_INSTANCE__SERIES);
 	}
 
 	/**
@@ -403,6 +452,7 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 		initEAttribute(getValueSeries_BinaryString(), theTypesPackage.getString(), "binaryString", null, 1, 1, ValueSeries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getValueSeries_Base_Property(), theUMLPackage.getProperty(), null, "base_Property", null, 1, 1, ValueSeries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getValueSeries_Dependent(), this.getValueSeries(), null, "dependent", null, 0, 1, ValueSeries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getValueSeries_Base_Slot(), theUMLPackage.getSlot(), null, "base_Slot", null, 1, 1, ValueSeries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEOperation(getValueSeries__GetSize(), ecorePackage.getEInt(), "getSize", 1, 1, IS_UNIQUE, !IS_ORDERED);
 
@@ -420,6 +470,10 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 
 		initEClass(booleanSeriesEClass, BooleanSeries.class, "BooleanSeries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBooleanSeries_Values(), ecorePackage.getEBoolean(), "values", null, 0, -1, BooleanSeries.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataSourceInstanceEClass, DataSourceInstance.class, "DataSourceInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataSourceInstance_Base_InstanceSpecification(), theUMLPackage.getInstanceSpecification(), null, "base_InstanceSpecification", null, 1, 1, DataSourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getDataSourceInstance_Series(), this.getValueSeries(), null, "series", null, 0, -1, DataSourceInstance.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

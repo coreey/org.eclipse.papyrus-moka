@@ -45,6 +45,8 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference profile.ecore#//ValueSeries/base_Property"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference profile.ecore#//ValueSeries/dependent"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference profile.ecore#//ValueSeries/base_Slot"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="profile.ecore#//ValueSeries/getSize"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="profile.ecore#//ValueSeries/getStringValue">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="profile.ecore#//ValueSeries/getStringValue/index"/>
@@ -61,6 +63,12 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="profile.ecore#//BooleanSeries">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute profile.ecore#//BooleanSeries/values"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="profile.ecore#//DataSourceInstance">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference profile.ecore#//DataSourceInstance/base_InstanceSpecification"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference profile.ecore#//DataSourceInstance/series"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

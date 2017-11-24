@@ -13,6 +13,7 @@ package org.eclipse.papyrus.moka.datavisualization.profile;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Slot;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +27,7 @@ import org.eclipse.uml2.uml.Property;
  *   <li>{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getBinaryString <em>Binary String</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getBase_Property <em>Base Property</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getDependent <em>Dependent</em>}</li>
+ *   <li>{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getBase_Slot <em>Base Slot</em>}</li>
  * </ul>
  *
  * @see org.eclipse.papyrus.moka.datavisualization.profile.VisualizationPackage#getValueSeries()
@@ -117,6 +119,32 @@ public interface ValueSeries extends EObject {
 	 * @generated
 	 */
 	void setDependent(ValueSeries value);
+
+	/**
+	 * Returns the value of the '<em><b>Base Slot</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Base Slot</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Base Slot</em>' reference.
+	 * @see #setBase_Slot(Slot)
+	 * @see org.eclipse.papyrus.moka.datavisualization.profile.VisualizationPackage#getValueSeries_Base_Slot()
+	 * @model required="true" ordered="false"
+	 * @generated
+	 */
+	Slot getBase_Slot();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getBase_Slot <em>Base Slot</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Base Slot</em>' reference.
+	 * @see #getBase_Slot()
+	 * @generated
+	 */
+	void setBase_Slot(Slot value);
 
 	/**
 	 * <!-- begin-user-doc -->

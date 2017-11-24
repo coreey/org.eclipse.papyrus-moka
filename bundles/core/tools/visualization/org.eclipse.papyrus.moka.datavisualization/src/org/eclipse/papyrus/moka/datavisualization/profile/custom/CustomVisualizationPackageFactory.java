@@ -16,6 +16,7 @@ package org.eclipse.papyrus.moka.datavisualization.profile.custom;
 
 import org.eclipse.papyrus.moka.datavisualization.profile.BooleanSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.DataSource;
+import org.eclipse.papyrus.moka.datavisualization.profile.DataSourceInstance;
 import org.eclipse.papyrus.moka.datavisualization.profile.DoubleSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.IntegerSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.StringSeries;
@@ -29,8 +30,11 @@ public class CustomVisualizationPackageFactory extends VisualizationFactoryImpl 
 		return new CustomDataSources();
 	}
 	
-	
-	
+	@Override
+	public DataSourceInstance createDataSourceInstance() {
+		return new CustomDataSourceInstance();
+	}
+
 	@Override
 	public DoubleSeries createDoubleSeries() {
 		

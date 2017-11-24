@@ -122,6 +122,12 @@ public class VisualizationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case VisualizationPackage.DATA_SOURCE_INSTANCE: {
+				DataSourceInstance dataSourceInstance = (DataSourceInstance)theEObject;
+				T result = caseDataSourceInstance(dataSourceInstance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -213,6 +219,21 @@ public class VisualizationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBooleanSeries(BooleanSeries object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Source Instance</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Source Instance</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataSourceInstance(DataSourceInstance object) {
 		return null;
 	}
 

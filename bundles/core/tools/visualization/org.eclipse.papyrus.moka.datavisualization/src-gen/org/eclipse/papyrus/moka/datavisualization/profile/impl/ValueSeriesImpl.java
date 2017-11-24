@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.VisualizationPackage;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Slot;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,6 +39,7 @@ import org.eclipse.uml2.uml.Property;
  *   <li>{@link org.eclipse.papyrus.moka.datavisualization.profile.impl.ValueSeriesImpl#getBinaryString <em>Binary String</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.datavisualization.profile.impl.ValueSeriesImpl#getBase_Property <em>Base Property</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.datavisualization.profile.impl.ValueSeriesImpl#getDependent <em>Dependent</em>}</li>
+ *   <li>{@link org.eclipse.papyrus.moka.datavisualization.profile.impl.ValueSeriesImpl#getBase_Slot <em>Base Slot</em>}</li>
  * </ul>
  *
  * @generated
@@ -89,6 +91,16 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 	 * @ordered
 	 */
 	protected ValueSeries dependent;
+
+	/**
+	 * The cached value of the '{@link #getBase_Slot() <em>Base Slot</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBase_Slot()
+	 * @generated
+	 * @ordered
+	 */
+	protected Slot base_Slot;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,6 +223,44 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Slot getBase_Slot() {
+		if (base_Slot != null && base_Slot.eIsProxy()) {
+			InternalEObject oldBase_Slot = (InternalEObject)base_Slot;
+			base_Slot = (Slot)eResolveProxy(oldBase_Slot);
+			if (base_Slot != oldBase_Slot) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VisualizationPackage.VALUE_SERIES__BASE_SLOT, oldBase_Slot, base_Slot));
+			}
+		}
+		return base_Slot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Slot basicGetBase_Slot() {
+		return base_Slot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBase_Slot(Slot newBase_Slot) {
+		Slot oldBase_Slot = base_Slot;
+		base_Slot = newBase_Slot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, VisualizationPackage.VALUE_SERIES__BASE_SLOT, oldBase_Slot, base_Slot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getStringValue(int index) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -244,6 +294,9 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 			case VisualizationPackage.VALUE_SERIES__DEPENDENT:
 				if (resolve) return getDependent();
 				return basicGetDependent();
+			case VisualizationPackage.VALUE_SERIES__BASE_SLOT:
+				if (resolve) return getBase_Slot();
+				return basicGetBase_Slot();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -264,6 +317,9 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 				return;
 			case VisualizationPackage.VALUE_SERIES__DEPENDENT:
 				setDependent((ValueSeries)newValue);
+				return;
+			case VisualizationPackage.VALUE_SERIES__BASE_SLOT:
+				setBase_Slot((Slot)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -286,6 +342,9 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 			case VisualizationPackage.VALUE_SERIES__DEPENDENT:
 				setDependent((ValueSeries)null);
 				return;
+			case VisualizationPackage.VALUE_SERIES__BASE_SLOT:
+				setBase_Slot((Slot)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,6 +363,8 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 				return base_Property != null;
 			case VisualizationPackage.VALUE_SERIES__DEPENDENT:
 				return dependent != null;
+			case VisualizationPackage.VALUE_SERIES__BASE_SLOT:
+				return base_Slot != null;
 		}
 		return super.eIsSet(featureID);
 	}
