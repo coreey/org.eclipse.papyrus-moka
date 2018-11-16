@@ -22,6 +22,5 @@ package org.eclipse.papyrus.moka.fmi.fmiprofile;
  * @model
  * @generated
  */
-public interface Parameter extends ScalarVariable {
-
+public interface Parameter extends AbstractVariable {
 } // Parameter

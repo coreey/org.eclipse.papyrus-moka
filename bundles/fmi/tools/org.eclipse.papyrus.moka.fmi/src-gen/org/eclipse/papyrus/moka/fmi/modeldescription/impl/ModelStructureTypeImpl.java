@@ -95,6 +95,7 @@ public class ModelStructureTypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2VariableDependency getOutputs() {
 		return outputs;
 	}
@@ -119,6 +120,7 @@ public class ModelStructureTypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOutputs(Fmi2VariableDependency newOutputs) {
 		if (newOutputs != outputs) {
 			NotificationChain msgs = null;
@@ -138,6 +140,7 @@ public class ModelStructureTypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2VariableDependency getDerivatives() {
 		return derivatives;
 	}
@@ -162,6 +165,7 @@ public class ModelStructureTypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDerivatives(Fmi2VariableDependency newDerivatives) {
 		if (newDerivatives != derivatives) {
 			NotificationChain msgs = null;
@@ -181,6 +185,7 @@ public class ModelStructureTypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InitialUnknownsType getInitialUnknowns() {
 		return initialUnknowns;
 	}
@@ -205,6 +210,7 @@ public class ModelStructureTypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInitialUnknowns(InitialUnknownsType newInitialUnknowns) {
 		if (newInitialUnknowns != initialUnknowns) {
 			NotificationChain msgs = null;

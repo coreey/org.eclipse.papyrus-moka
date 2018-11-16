@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.fmi.fmumetamodel.impl;
 
@@ -17,10 +26,11 @@ import org.eclipse.papyrus.moka.fmi.fmumetamodel.ArchiveToUnzipInFMU;
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FMUBundle;
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FmumetamodelFactory;
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FmumetamodelPackage;
-
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FolderToCreateInFMU;
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.JavaFileProxy;
+
 import org.eclipse.papyrus.moka.fmi.modeldescription.FmiPackage;
+
 import org.eclipse.uml2.types.TypesPackage;
 
 /**
@@ -100,7 +110,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link FmumetamodelPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -114,7 +124,8 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 		if (isInited) return (FmumetamodelPackage)EPackage.Registry.INSTANCE.getEPackage(FmumetamodelPackage.eNS_URI);
 
 		// Obtain or create and register package
-		FmumetamodelPackageImpl theFmumetamodelPackage = (FmumetamodelPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof FmumetamodelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new FmumetamodelPackageImpl());
+		Object registeredFmumetamodelPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		FmumetamodelPackageImpl theFmumetamodelPackage = registeredFmumetamodelPackage instanceof FmumetamodelPackageImpl ? (FmumetamodelPackageImpl)registeredFmumetamodelPackage : new FmumetamodelPackageImpl();
 
 		isInited = true;
 
@@ -131,7 +142,6 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 		// Mark meta-data to indicate it can't be changed
 		theFmumetamodelPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(FmumetamodelPackage.eNS_URI, theFmumetamodelPackage);
 		return theFmumetamodelPackage;
@@ -142,6 +152,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFMUBundle() {
 		return fmuBundleEClass;
 	}
@@ -151,6 +162,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_ModelDescription() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(0);
 	}
@@ -160,6 +172,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_ResourcesFiles() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(1);
 	}
@@ -169,6 +182,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_Win32Files() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(2);
 	}
@@ -178,6 +192,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_Win64Files() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(3);
 	}
@@ -187,6 +202,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_Linux32Files() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(4);
 	}
@@ -196,6 +212,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_Linux64Files() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(5);
 	}
@@ -205,6 +222,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_Darwin64Files() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(6);
 	}
@@ -214,6 +232,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_Darwin32Files() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(7);
 	}
@@ -223,6 +242,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_DocumentationFiles() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(8);
 	}
@@ -232,6 +252,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_SourceFiles() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(9);
 	}
@@ -241,6 +262,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFMUBundle_RootFiles() {
 		return (EReference)fmuBundleEClass.getEStructuralFeatures().get(10);
 	}
@@ -250,6 +272,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractFile() {
 		return abstractFileEClass;
 	}
@@ -259,6 +282,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractFile_Name() {
 		return (EAttribute)abstractFileEClass.getEStructuralFeatures().get(0);
 	}
@@ -268,6 +292,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFolderToCreateInFMU() {
 		return folderToCreateInFMUEClass;
 	}
@@ -277,6 +302,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFolderToCreateInFMU_Children() {
 		return (EReference)folderToCreateInFMUEClass.getEStructuralFeatures().get(0);
 	}
@@ -286,6 +312,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getArchiveToUnzipInFMU() {
 		return archiveToUnzipInFMUEClass;
 	}
@@ -295,6 +322,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getArchiveToUnzipInFMU_ArchiveFile() {
 		return (EAttribute)archiveToUnzipInFMUEClass.getEStructuralFeatures().get(0);
 	}
@@ -304,6 +332,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getJavaFileProxy() {
 		return javaFileProxyEClass;
 	}
@@ -313,6 +342,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getJavaFileProxy_File() {
 		return (EAttribute)javaFileProxyEClass.getEStructuralFeatures().get(0);
 	}
@@ -322,6 +352,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getFile() {
 		return fileEDataType;
 	}
@@ -331,6 +362,7 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FmumetamodelFactory getFmumetamodelFactory() {
 		return (FmumetamodelFactory)getEFactoryInstance();
 	}
@@ -463,12 +495,12 @@ public class FmumetamodelPackageImpl extends EPackageImpl implements Fmumetamode
 	 * @generated
 	 */
 	protected void createUMLAnnotations() {
-		String source = "http://www.eclipse.org/uml2/2.0.0/UML";	
+		String source = "http://www.eclipse.org/uml2/2.0.0/UML";
 		addAnnotation
-		  (fileEDataType, 
-		   source, 
+		  (fileEDataType,
+		   source,
 		   new String[] {
-			 "originalName", "File\r\n"
+			   "originalName", "File"
 		   });
 	}
 

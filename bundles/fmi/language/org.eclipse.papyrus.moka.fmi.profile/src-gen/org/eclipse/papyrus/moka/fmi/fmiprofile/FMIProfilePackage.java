@@ -310,16 +310,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getScalarVariable()
 	 * @generated
 	 */
-	int SCALAR_VARIABLE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Base Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALAR_VARIABLE__BASE_PROPERTY = 0;
+	int SCALAR_VARIABLE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -328,7 +319,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_VARIABLE__DESCRIPTION = 1;
+	int SCALAR_VARIABLE__DESCRIPTION = 0;
 
 	/**
 	 * The feature id for the '<em><b>Variability</b></em>' attribute.
@@ -337,7 +328,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_VARIABLE__VARIABILITY = 2;
+	int SCALAR_VARIABLE__VARIABILITY = 1;
 
 	/**
 	 * The feature id for the '<em><b>Initial</b></em>' attribute.
@@ -346,7 +337,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_VARIABLE__INITIAL = 3;
+	int SCALAR_VARIABLE__INITIAL = 2;
 
 	/**
 	 * The feature id for the '<em><b>Value Reference</b></em>' attribute.
@@ -355,7 +346,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_VARIABLE__VALUE_REFERENCE = 4;
+	int SCALAR_VARIABLE__VALUE_REFERENCE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Fmi Variable</b></em>' reference.
@@ -364,7 +355,16 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_VARIABLE__FMI_VARIABLE = 5;
+	int SCALAR_VARIABLE__FMI_VARIABLE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Causality Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_VARIABLE__CAUSALITY_KIND = 5;
 
 	/**
 	 * The number of structural features of the '<em>Scalar Variable</em>' class.
@@ -385,6 +385,97 @@ public interface FMIProfilePackage extends EPackage {
 	int SCALAR_VARIABLE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.AbstractVariableImpl <em>Abstract Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.AbstractVariableImpl
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getAbstractVariable()
+	 * @generated
+	 */
+	int ABSTRACT_VARIABLE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE__DESCRIPTION = SCALAR_VARIABLE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Variability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE__VARIABILITY = SCALAR_VARIABLE__VARIABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Initial</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE__INITIAL = SCALAR_VARIABLE__INITIAL;
+
+	/**
+	 * The feature id for the '<em><b>Value Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE__VALUE_REFERENCE = SCALAR_VARIABLE__VALUE_REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Fmi Variable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE__FMI_VARIABLE = SCALAR_VARIABLE__FMI_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Causality Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE__CAUSALITY_KIND = SCALAR_VARIABLE__CAUSALITY_KIND;
+
+	/**
+	 * The feature id for the '<em><b>Base Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE__BASE_PROPERTY = SCALAR_VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE_FEATURE_COUNT = SCALAR_VARIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Abstract Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE_OPERATION_COUNT = SCALAR_VARIABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ParameterImpl <em>Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -395,22 +486,13 @@ public interface FMIProfilePackage extends EPackage {
 	int PARAMETER = 1;
 
 	/**
-	 * The feature id for the '<em><b>Base Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__BASE_PROPERTY = SCALAR_VARIABLE__BASE_PROPERTY;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__DESCRIPTION = SCALAR_VARIABLE__DESCRIPTION;
+	int PARAMETER__DESCRIPTION = ABSTRACT_VARIABLE__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Variability</b></em>' attribute.
@@ -419,7 +501,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__VARIABILITY = SCALAR_VARIABLE__VARIABILITY;
+	int PARAMETER__VARIABILITY = ABSTRACT_VARIABLE__VARIABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Initial</b></em>' attribute.
@@ -428,7 +510,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__INITIAL = SCALAR_VARIABLE__INITIAL;
+	int PARAMETER__INITIAL = ABSTRACT_VARIABLE__INITIAL;
 
 	/**
 	 * The feature id for the '<em><b>Value Reference</b></em>' attribute.
@@ -437,7 +519,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__VALUE_REFERENCE = SCALAR_VARIABLE__VALUE_REFERENCE;
+	int PARAMETER__VALUE_REFERENCE = ABSTRACT_VARIABLE__VALUE_REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Fmi Variable</b></em>' reference.
@@ -446,7 +528,25 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__FMI_VARIABLE = SCALAR_VARIABLE__FMI_VARIABLE;
+	int PARAMETER__FMI_VARIABLE = ABSTRACT_VARIABLE__FMI_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Causality Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__CAUSALITY_KIND = ABSTRACT_VARIABLE__CAUSALITY_KIND;
+
+	/**
+	 * The feature id for the '<em><b>Base Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__BASE_PROPERTY = ABSTRACT_VARIABLE__BASE_PROPERTY;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -455,7 +555,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = SCALAR_VARIABLE_FEATURE_COUNT + 0;
+	int PARAMETER_FEATURE_COUNT = ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -464,7 +564,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_OPERATION_COUNT = SCALAR_VARIABLE_OPERATION_COUNT + 0;
+	int PARAMETER_OPERATION_COUNT = ABSTRACT_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.LocalImpl <em>Local</em>}' class.
@@ -474,16 +574,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getLocal()
 	 * @generated
 	 */
-	int LOCAL = 3;
-
-	/**
-	 * The feature id for the '<em><b>Base Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOCAL__BASE_PROPERTY = SCALAR_VARIABLE__BASE_PROPERTY;
+	int LOCAL = 4;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -492,7 +583,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL__DESCRIPTION = SCALAR_VARIABLE__DESCRIPTION;
+	int LOCAL__DESCRIPTION = ABSTRACT_VARIABLE__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Variability</b></em>' attribute.
@@ -501,7 +592,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL__VARIABILITY = SCALAR_VARIABLE__VARIABILITY;
+	int LOCAL__VARIABILITY = ABSTRACT_VARIABLE__VARIABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Initial</b></em>' attribute.
@@ -510,7 +601,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL__INITIAL = SCALAR_VARIABLE__INITIAL;
+	int LOCAL__INITIAL = ABSTRACT_VARIABLE__INITIAL;
 
 	/**
 	 * The feature id for the '<em><b>Value Reference</b></em>' attribute.
@@ -519,7 +610,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL__VALUE_REFERENCE = SCALAR_VARIABLE__VALUE_REFERENCE;
+	int LOCAL__VALUE_REFERENCE = ABSTRACT_VARIABLE__VALUE_REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Fmi Variable</b></em>' reference.
@@ -528,7 +619,25 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL__FMI_VARIABLE = SCALAR_VARIABLE__FMI_VARIABLE;
+	int LOCAL__FMI_VARIABLE = ABSTRACT_VARIABLE__FMI_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Causality Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL__CAUSALITY_KIND = ABSTRACT_VARIABLE__CAUSALITY_KIND;
+
+	/**
+	 * The feature id for the '<em><b>Base Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL__BASE_PROPERTY = ABSTRACT_VARIABLE__BASE_PROPERTY;
 
 	/**
 	 * The number of structural features of the '<em>Local</em>' class.
@@ -537,7 +646,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL_FEATURE_COUNT = SCALAR_VARIABLE_FEATURE_COUNT + 0;
+	int LOCAL_FEATURE_COUNT = ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Local</em>' class.
@@ -546,7 +655,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL_OPERATION_COUNT = SCALAR_VARIABLE_OPERATION_COUNT + 0;
+	int LOCAL_OPERATION_COUNT = ABSTRACT_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.CS_FMUImpl <em>CS FMU</em>}' class.
@@ -556,7 +665,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getCS_FMU()
 	 * @generated
 	 */
-	int CS_FMU = 4;
+	int CS_FMU = 5;
 
 	/**
 	 * The feature id for the '<em><b>Fmi Version</b></em>' attribute.
@@ -863,7 +972,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getME_FMU()
 	 * @generated
 	 */
-	int ME_FMU = 5;
+	int ME_FMU = 6;
 
 	/**
 	 * The feature id for the '<em><b>Fmi Version</b></em>' attribute.
@@ -1100,23 +1209,14 @@ public interface FMIProfilePackage extends EPackage {
 	int ME_FMU_OPERATION_COUNT = FMU_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.PortImpl <em>Port</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIPortImpl <em>FMI Port</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.PortImpl
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getPort()
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIPortImpl
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getFMIPort()
 	 * @generated
 	 */
-	int PORT = 6;
-
-	/**
-	 * The feature id for the '<em><b>Base Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PORT__BASE_PROPERTY = SCALAR_VARIABLE__BASE_PROPERTY;
+	int FMI_PORT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1125,7 +1225,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT__DESCRIPTION = SCALAR_VARIABLE__DESCRIPTION;
+	int FMI_PORT__DESCRIPTION = SCALAR_VARIABLE__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Variability</b></em>' attribute.
@@ -1134,7 +1234,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT__VARIABILITY = SCALAR_VARIABLE__VARIABILITY;
+	int FMI_PORT__VARIABILITY = SCALAR_VARIABLE__VARIABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Initial</b></em>' attribute.
@@ -1143,7 +1243,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT__INITIAL = SCALAR_VARIABLE__INITIAL;
+	int FMI_PORT__INITIAL = SCALAR_VARIABLE__INITIAL;
 
 	/**
 	 * The feature id for the '<em><b>Value Reference</b></em>' attribute.
@@ -1152,7 +1252,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT__VALUE_REFERENCE = SCALAR_VARIABLE__VALUE_REFERENCE;
+	int FMI_PORT__VALUE_REFERENCE = SCALAR_VARIABLE__VALUE_REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Fmi Variable</b></em>' reference.
@@ -1161,7 +1261,16 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT__FMI_VARIABLE = SCALAR_VARIABLE__FMI_VARIABLE;
+	int FMI_PORT__FMI_VARIABLE = SCALAR_VARIABLE__FMI_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Causality Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FMI_PORT__CAUSALITY_KIND = SCALAR_VARIABLE__CAUSALITY_KIND;
 
 	/**
 	 * The feature id for the '<em><b>Base Port</b></em>' reference.
@@ -1170,7 +1279,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT__BASE_PORT = SCALAR_VARIABLE_FEATURE_COUNT + 0;
+	int FMI_PORT__BASE_PORT = SCALAR_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Direction</b></em>' attribute.
@@ -1179,25 +1288,43 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT__DIRECTION = SCALAR_VARIABLE_FEATURE_COUNT + 1;
+	int FMI_PORT__DIRECTION = SCALAR_VARIABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Port</em>' class.
+	 * The feature id for the '<em><b>Is Atomic</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_FEATURE_COUNT = SCALAR_VARIABLE_FEATURE_COUNT + 2;
+	int FMI_PORT__IS_ATOMIC = SCALAR_VARIABLE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Port</em>' class.
+	 * The number of structural features of the '<em>FMI Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_OPERATION_COUNT = SCALAR_VARIABLE_OPERATION_COUNT + 0;
+	int FMI_PORT_FEATURE_COUNT = SCALAR_VARIABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Icon</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FMI_PORT___GET_ICON = SCALAR_VARIABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>FMI Port</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FMI_PORT_OPERATION_COUNT = SCALAR_VARIABLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.IndependentImpl <em>Independent</em>}' class.
@@ -1207,16 +1334,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getIndependent()
 	 * @generated
 	 */
-	int INDEPENDENT = 7;
-
-	/**
-	 * The feature id for the '<em><b>Base Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INDEPENDENT__BASE_PROPERTY = SCALAR_VARIABLE__BASE_PROPERTY;
+	int INDEPENDENT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1225,7 +1343,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INDEPENDENT__DESCRIPTION = SCALAR_VARIABLE__DESCRIPTION;
+	int INDEPENDENT__DESCRIPTION = ABSTRACT_VARIABLE__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Variability</b></em>' attribute.
@@ -1234,7 +1352,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INDEPENDENT__VARIABILITY = SCALAR_VARIABLE__VARIABILITY;
+	int INDEPENDENT__VARIABILITY = ABSTRACT_VARIABLE__VARIABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Initial</b></em>' attribute.
@@ -1243,7 +1361,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INDEPENDENT__INITIAL = SCALAR_VARIABLE__INITIAL;
+	int INDEPENDENT__INITIAL = ABSTRACT_VARIABLE__INITIAL;
 
 	/**
 	 * The feature id for the '<em><b>Value Reference</b></em>' attribute.
@@ -1252,7 +1370,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INDEPENDENT__VALUE_REFERENCE = SCALAR_VARIABLE__VALUE_REFERENCE;
+	int INDEPENDENT__VALUE_REFERENCE = ABSTRACT_VARIABLE__VALUE_REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Fmi Variable</b></em>' reference.
@@ -1261,7 +1379,25 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INDEPENDENT__FMI_VARIABLE = SCALAR_VARIABLE__FMI_VARIABLE;
+	int INDEPENDENT__FMI_VARIABLE = ABSTRACT_VARIABLE__FMI_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Causality Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDEPENDENT__CAUSALITY_KIND = ABSTRACT_VARIABLE__CAUSALITY_KIND;
+
+	/**
+	 * The feature id for the '<em><b>Base Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDEPENDENT__BASE_PROPERTY = ABSTRACT_VARIABLE__BASE_PROPERTY;
 
 	/**
 	 * The number of structural features of the '<em>Independent</em>' class.
@@ -1270,7 +1406,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INDEPENDENT_FEATURE_COUNT = SCALAR_VARIABLE_FEATURE_COUNT + 0;
+	int INDEPENDENT_FEATURE_COUNT = ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Independent</em>' class.
@@ -1279,7 +1415,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INDEPENDENT_OPERATION_COUNT = SCALAR_VARIABLE_OPERATION_COUNT + 0;
+	int INDEPENDENT_OPERATION_COUNT = ABSTRACT_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.UnknownImpl <em>Unknown</em>}' class.
@@ -1289,7 +1425,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getUnknown()
 	 * @generated
 	 */
-	int UNKNOWN = 8;
+	int UNKNOWN = 9;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -1344,7 +1480,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getOutputUnknown()
 	 * @generated
 	 */
-	int OUTPUT_UNKNOWN = 9;
+	int OUTPUT_UNKNOWN = 10;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -1399,7 +1535,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getInitialUnknown()
 	 * @generated
 	 */
-	int INITIAL_UNKNOWN = 10;
+	int INITIAL_UNKNOWN = 11;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -1454,7 +1590,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getDerivativeUnknown()
 	 * @generated
 	 */
-	int DERIVATIVE_UNKNOWN = 11;
+	int DERIVATIVE_UNKNOWN = 12;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -1509,7 +1645,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getCS_Graph()
 	 * @generated
 	 */
-	int CS_GRAPH = 12;
+	int CS_GRAPH = 13;
 
 	/**
 	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
@@ -1609,7 +1745,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getDerivativeDependency()
 	 * @generated
 	 */
-	int DERIVATIVE_DEPENDENCY = 13;
+	int DERIVATIVE_DEPENDENCY = 14;
 
 	/**
 	 * The feature id for the '<em><b>Base Dependency</b></em>' reference.
@@ -1655,7 +1791,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getOutputDependency()
 	 * @generated
 	 */
-	int OUTPUT_DEPENDENCY = 14;
+	int OUTPUT_DEPENDENCY = 15;
 
 	/**
 	 * The feature id for the '<em><b>Base Dependency</b></em>' reference.
@@ -1692,7 +1828,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getInitialUnknownDependency()
 	 * @generated
 	 */
-	int INITIAL_UNKNOWN_DEPENDENCY = 15;
+	int INITIAL_UNKNOWN_DEPENDENCY = 16;
 
 	/**
 	 * The feature id for the '<em><b>Base Dependency</b></em>' reference.
@@ -1729,16 +1865,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getCalculatedParameter()
 	 * @generated
 	 */
-	int CALCULATED_PARAMETER = 16;
-
-	/**
-	 * The feature id for the '<em><b>Base Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALCULATED_PARAMETER__BASE_PROPERTY = SCALAR_VARIABLE__BASE_PROPERTY;
+	int CALCULATED_PARAMETER = 17;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1747,7 +1874,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALCULATED_PARAMETER__DESCRIPTION = SCALAR_VARIABLE__DESCRIPTION;
+	int CALCULATED_PARAMETER__DESCRIPTION = ABSTRACT_VARIABLE__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Variability</b></em>' attribute.
@@ -1756,7 +1883,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALCULATED_PARAMETER__VARIABILITY = SCALAR_VARIABLE__VARIABILITY;
+	int CALCULATED_PARAMETER__VARIABILITY = ABSTRACT_VARIABLE__VARIABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Initial</b></em>' attribute.
@@ -1765,7 +1892,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALCULATED_PARAMETER__INITIAL = SCALAR_VARIABLE__INITIAL;
+	int CALCULATED_PARAMETER__INITIAL = ABSTRACT_VARIABLE__INITIAL;
 
 	/**
 	 * The feature id for the '<em><b>Value Reference</b></em>' attribute.
@@ -1774,7 +1901,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALCULATED_PARAMETER__VALUE_REFERENCE = SCALAR_VARIABLE__VALUE_REFERENCE;
+	int CALCULATED_PARAMETER__VALUE_REFERENCE = ABSTRACT_VARIABLE__VALUE_REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Fmi Variable</b></em>' reference.
@@ -1783,7 +1910,25 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALCULATED_PARAMETER__FMI_VARIABLE = SCALAR_VARIABLE__FMI_VARIABLE;
+	int CALCULATED_PARAMETER__FMI_VARIABLE = ABSTRACT_VARIABLE__FMI_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Causality Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALCULATED_PARAMETER__CAUSALITY_KIND = ABSTRACT_VARIABLE__CAUSALITY_KIND;
+
+	/**
+	 * The feature id for the '<em><b>Base Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALCULATED_PARAMETER__BASE_PROPERTY = ABSTRACT_VARIABLE__BASE_PROPERTY;
 
 	/**
 	 * The number of structural features of the '<em>Calculated Parameter</em>' class.
@@ -1792,7 +1937,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALCULATED_PARAMETER_FEATURE_COUNT = SCALAR_VARIABLE_FEATURE_COUNT + 0;
+	int CALCULATED_PARAMETER_FEATURE_COUNT = ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Calculated Parameter</em>' class.
@@ -1801,7 +1946,125 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALCULATED_PARAMETER_OPERATION_COUNT = SCALAR_VARIABLE_OPERATION_COUNT + 0;
+	int CALCULATED_PARAMETER_OPERATION_COUNT = ABSTRACT_VARIABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.PortImpl <em>Port</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.PortImpl
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getPort()
+	 * @generated
+	 */
+	int PORT = 18;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__DESCRIPTION = FMI_PORT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Variability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__VARIABILITY = FMI_PORT__VARIABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Initial</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__INITIAL = FMI_PORT__INITIAL;
+
+	/**
+	 * The feature id for the '<em><b>Value Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__VALUE_REFERENCE = FMI_PORT__VALUE_REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Fmi Variable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__FMI_VARIABLE = FMI_PORT__FMI_VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Causality Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__CAUSALITY_KIND = FMI_PORT__CAUSALITY_KIND;
+
+	/**
+	 * The feature id for the '<em><b>Base Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__BASE_PORT = FMI_PORT__BASE_PORT;
+
+	/**
+	 * The feature id for the '<em><b>Direction</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__DIRECTION = FMI_PORT__DIRECTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Atomic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__IS_ATOMIC = FMI_PORT__IS_ATOMIC;
+
+	/**
+	 * The number of structural features of the '<em>Port</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_FEATURE_COUNT = FMI_PORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Icon</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT___GET_ICON = FMI_PORT___GET_ICON;
+
+	/**
+	 * The number of operations of the '<em>Port</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_OPERATION_COUNT = FMI_PORT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.VariabilityKind <em>Variability Kind</em>}' enum.
@@ -1811,7 +2074,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getVariabilityKind()
 	 * @generated
 	 */
-	int VARIABILITY_KIND = 17;
+	int VARIABILITY_KIND = 19;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.InitialKind <em>Initial Kind</em>}' enum.
@@ -1821,7 +2084,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getInitialKind()
 	 * @generated
 	 */
-	int INITIAL_KIND = 18;
+	int INITIAL_KIND = 20;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.CausalityKind <em>Causality Kind</em>}' enum.
@@ -1834,16 +2097,6 @@ public interface FMIProfilePackage extends EPackage {
 	int CAUSALITY_KIND = 21;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection <em>Flow Direction</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getFlowDirection()
-	 * @generated
-	 */
-	int FLOW_DIRECTION = 19;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.DependenciesKind <em>Dependencies Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1851,7 +2104,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getDependenciesKind()
 	 * @generated
 	 */
-	int DEPENDENCIES_KIND = 20;
+	int DEPENDENCIES_KIND = 22;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.VariabilityNamingConvention <em>Variability Naming Convention</em>}' enum.
@@ -1861,7 +2114,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getVariabilityNamingConvention()
 	 * @generated
 	 */
-	int VARIABILITY_NAMING_CONVENTION = 22;
+	int VARIABILITY_NAMING_CONVENTION = 23;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.BaseUnit <em>Base Unit</em>}' enum.
@@ -1871,7 +2124,7 @@ public interface FMIProfilePackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getBaseUnit()
 	 * @generated
 	 */
-	int BASE_UNIT = 23;
+	int BASE_UNIT = 24;
 
 
 	/**
@@ -2148,6 +2401,27 @@ public interface FMIProfilePackage extends EPackage {
 	EClass getParameter();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.AbstractVariable <em>Abstract Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Variable</em>'.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.AbstractVariable
+	 * @generated
+	 */
+	EClass getAbstractVariable();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.AbstractVariable#getBase_Property <em>Base Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Base Property</em>'.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.AbstractVariable#getBase_Property()
+	 * @see #getAbstractVariable()
+	 * @generated
+	 */
+	EReference getAbstractVariable_Base_Property();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable <em>Scalar Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2156,17 +2430,6 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getScalarVariable();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getBase_Property <em>Base Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Base Property</em>'.
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getBase_Property()
-	 * @see #getScalarVariable()
-	 * @generated
-	 */
-	EReference getScalarVariable_Base_Property();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getDescription <em>Description</em>}'.
@@ -2222,6 +2485,17 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getScalarVariable_FmiVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getCausalityKind <em>Causality Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Causality Kind</em>'.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getCausalityKind()
+	 * @see #getScalarVariable()
+	 * @generated
+	 */
+	EAttribute getScalarVariable_CausalityKind();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.Local <em>Local</em>}'.
@@ -2353,36 +2627,14 @@ public interface FMIProfilePackage extends EPackage {
 	EAttribute getME_FMU_CompletedIntegratorStepNotNeeded();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.Port <em>Port</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.FMIPort <em>FMI Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Port</em>'.
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.Port
+	 * @return the meta object for class '<em>FMI Port</em>'.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FMIPort
 	 * @generated
 	 */
-	EClass getPort();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.Port#getBase_Port <em>Base Port</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Base Port</em>'.
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.Port#getBase_Port()
-	 * @see #getPort()
-	 * @generated
-	 */
-	EReference getPort_Base_Port();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.Port#getDirection <em>Direction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Direction</em>'.
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.Port#getDirection()
-	 * @see #getPort()
-	 * @generated
-	 */
-	EAttribute getPort_Direction();
+	EClass getFMIPort();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.Independent <em>Independent</em>}'.
@@ -2650,6 +2902,16 @@ public interface FMIProfilePackage extends EPackage {
 	EClass getCalculatedParameter();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.Port <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Port</em>'.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.Port
+	 * @generated
+	 */
+	EClass getPort();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.VariabilityKind <em>Variability Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2678,16 +2940,6 @@ public interface FMIProfilePackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCausalityKind();
-
-	/**
-	 * Returns the meta object for enum '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection <em>Flow Direction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Flow Direction</em>'.
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection
-	 * @generated
-	 */
-	EEnum getFlowDirection();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.DependenciesKind <em>Dependencies Kind</em>}'.
@@ -2947,6 +3199,24 @@ public interface FMIProfilePackage extends EPackage {
 		EClass PARAMETER = eINSTANCE.getParameter();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.AbstractVariableImpl <em>Abstract Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.AbstractVariableImpl
+		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getAbstractVariable()
+		 * @generated
+		 */
+		EClass ABSTRACT_VARIABLE = eINSTANCE.getAbstractVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_VARIABLE__BASE_PROPERTY = eINSTANCE.getAbstractVariable_Base_Property();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ScalarVariableImpl <em>Scalar Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2955,14 +3225,6 @@ public interface FMIProfilePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SCALAR_VARIABLE = eINSTANCE.getScalarVariable();
-
-		/**
-		 * The meta object literal for the '<em><b>Base Property</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SCALAR_VARIABLE__BASE_PROPERTY = eINSTANCE.getScalarVariable_Base_Property();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -3003,6 +3265,14 @@ public interface FMIProfilePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SCALAR_VARIABLE__FMI_VARIABLE = eINSTANCE.getScalarVariable_FmiVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Causality Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCALAR_VARIABLE__CAUSALITY_KIND = eINSTANCE.getScalarVariable_CausalityKind();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.LocalImpl <em>Local</em>}' class.
@@ -3107,30 +3377,14 @@ public interface FMIProfilePackage extends EPackage {
 		EAttribute ME_FMU__COMPLETED_INTEGRATOR_STEP_NOT_NEEDED = eINSTANCE.getME_FMU_CompletedIntegratorStepNotNeeded();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.PortImpl <em>Port</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIPortImpl <em>FMI Port</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.PortImpl
-		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getPort()
+		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIPortImpl
+		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getFMIPort()
 		 * @generated
 		 */
-		EClass PORT = eINSTANCE.getPort();
-
-		/**
-		 * The meta object literal for the '<em><b>Base Port</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PORT__BASE_PORT = eINSTANCE.getPort_Base_Port();
-
-		/**
-		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PORT__DIRECTION = eINSTANCE.getPort_Direction();
+		EClass FMI_PORT = eINSTANCE.getFMIPort();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.IndependentImpl <em>Independent</em>}' class.
@@ -3353,6 +3607,16 @@ public interface FMIProfilePackage extends EPackage {
 		EClass CALCULATED_PARAMETER = eINSTANCE.getCalculatedParameter();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.PortImpl <em>Port</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.PortImpl
+		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getPort()
+		 * @generated
+		 */
+		EClass PORT = eINSTANCE.getPort();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.VariabilityKind <em>Variability Kind</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3381,16 +3645,6 @@ public interface FMIProfilePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum CAUSALITY_KIND = eINSTANCE.getCausalityKind();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection <em>Flow Direction</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection
-		 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.impl.FMIProfilePackageImpl#getFlowDirection()
-		 * @generated
-		 */
-		EEnum FLOW_DIRECTION = eINSTANCE.getFlowDirection();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.DependenciesKind <em>Dependencies Kind</em>}' enum.

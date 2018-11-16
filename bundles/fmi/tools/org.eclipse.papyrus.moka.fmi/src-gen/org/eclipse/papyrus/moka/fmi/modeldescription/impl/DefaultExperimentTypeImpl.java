@@ -178,6 +178,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getStartTime() {
 		return startTime;
 	}
@@ -187,6 +188,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStartTime(double newStartTime) {
 		double oldStartTime = startTime;
 		startTime = newStartTime;
@@ -201,6 +203,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetStartTime() {
 		double oldStartTime = startTime;
 		boolean oldStartTimeESet = startTimeESet;
@@ -215,6 +218,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetStartTime() {
 		return startTimeESet;
 	}
@@ -224,6 +228,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getStepSize() {
 		return stepSize;
 	}
@@ -233,6 +238,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStepSize(double newStepSize) {
 		double oldStepSize = stepSize;
 		stepSize = newStepSize;
@@ -247,6 +253,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetStepSize() {
 		double oldStepSize = stepSize;
 		boolean oldStepSizeESet = stepSizeESet;
@@ -261,6 +268,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetStepSize() {
 		return stepSizeESet;
 	}
@@ -270,6 +278,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getStopTime() {
 		return stopTime;
 	}
@@ -279,6 +288,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStopTime(double newStopTime) {
 		double oldStopTime = stopTime;
 		stopTime = newStopTime;
@@ -293,6 +303,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetStopTime() {
 		double oldStopTime = stopTime;
 		boolean oldStopTimeESet = stopTimeESet;
@@ -307,6 +318,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetStopTime() {
 		return stopTimeESet;
 	}
@@ -316,6 +328,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getTolerance() {
 		return tolerance;
 	}
@@ -325,6 +338,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTolerance(double newTolerance) {
 		double oldTolerance = tolerance;
 		tolerance = newTolerance;
@@ -339,6 +353,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetTolerance() {
 		double oldTolerance = tolerance;
 		boolean oldToleranceESet = toleranceESet;
@@ -353,6 +368,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetTolerance() {
 		return toleranceESet;
 	}
@@ -454,7 +470,7 @@ public class DefaultExperimentTypeImpl extends MinimalEObjectImpl.Container impl
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (startTime: ");
 		if (startTimeESet) result.append(startTime); else result.append("<unset>");
 		result.append(", stepSize: ");

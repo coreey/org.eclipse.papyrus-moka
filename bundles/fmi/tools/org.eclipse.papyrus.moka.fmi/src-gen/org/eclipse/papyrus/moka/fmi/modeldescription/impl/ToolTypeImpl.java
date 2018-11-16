@@ -96,6 +96,7 @@ public class ToolTypeImpl extends MinimalEObjectImpl.Container implements ToolTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getAny() {
 		if (any == null) {
 			any = new BasicFeatureMap(this, FmiPackage.TOOL_TYPE__ANY);
@@ -108,6 +109,7 @@ public class ToolTypeImpl extends MinimalEObjectImpl.Container implements ToolTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -117,6 +119,7 @@ public class ToolTypeImpl extends MinimalEObjectImpl.Container implements ToolTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -216,7 +219,7 @@ public class ToolTypeImpl extends MinimalEObjectImpl.Container implements ToolTy
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (any: ");
 		result.append(any);
 		result.append(", name: ");

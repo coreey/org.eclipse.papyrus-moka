@@ -79,6 +79,7 @@ public class Fmi2AnnotationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.FMI2_ANNOTATION__GROUP);
@@ -91,6 +92,7 @@ public class Fmi2AnnotationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ToolType> getTool() {
 		return getGroup().list(FmiPackage.Literals.FMI2_ANNOTATION__TOOL);
 	}
@@ -191,7 +193,7 @@ public class Fmi2AnnotationImpl extends MinimalEObjectImpl.Container implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(')');

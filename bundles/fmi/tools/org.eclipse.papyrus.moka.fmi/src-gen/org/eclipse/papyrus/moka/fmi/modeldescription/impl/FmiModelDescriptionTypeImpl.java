@@ -449,6 +449,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.FMI_MODEL_DESCRIPTION_TYPE__GROUP);
@@ -461,6 +462,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModelExchangeType> getModelExchange() {
 		return getGroup().list(FmiPackage.Literals.FMI_MODEL_DESCRIPTION_TYPE__MODEL_EXCHANGE);
 	}
@@ -470,6 +472,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CoSimulationType> getCoSimulation() {
 		return getGroup().list(FmiPackage.Literals.FMI_MODEL_DESCRIPTION_TYPE__CO_SIMULATION);
 	}
@@ -479,6 +482,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UnitDefinitionsType getUnitDefinitions() {
 		return unitDefinitions;
 	}
@@ -503,6 +507,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUnitDefinitions(UnitDefinitionsType newUnitDefinitions) {
 		if (newUnitDefinitions != unitDefinitions) {
 			NotificationChain msgs = null;
@@ -522,6 +527,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypeDefinitionsType getTypeDefinitions() {
 		return typeDefinitions;
 	}
@@ -546,6 +552,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTypeDefinitions(TypeDefinitionsType newTypeDefinitions) {
 		if (newTypeDefinitions != typeDefinitions) {
 			NotificationChain msgs = null;
@@ -565,6 +572,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogCategoriesType getLogCategories() {
 		return logCategories;
 	}
@@ -589,6 +597,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLogCategories(LogCategoriesType newLogCategories) {
 		if (newLogCategories != logCategories) {
 			NotificationChain msgs = null;
@@ -608,6 +617,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DefaultExperimentType getDefaultExperiment() {
 		return defaultExperiment;
 	}
@@ -632,6 +642,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefaultExperiment(DefaultExperimentType newDefaultExperiment) {
 		if (newDefaultExperiment != defaultExperiment) {
 			NotificationChain msgs = null;
@@ -651,6 +662,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2Annotation getVendorAnnotations() {
 		return vendorAnnotations;
 	}
@@ -675,6 +687,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVendorAnnotations(Fmi2Annotation newVendorAnnotations) {
 		if (newVendorAnnotations != vendorAnnotations) {
 			NotificationChain msgs = null;
@@ -694,6 +707,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelVariablesType getModelVariables() {
 		return modelVariables;
 	}
@@ -718,6 +732,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setModelVariables(ModelVariablesType newModelVariables) {
 		if (newModelVariables != modelVariables) {
 			NotificationChain msgs = null;
@@ -737,6 +752,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelStructureType getModelStructure() {
 		return modelStructure;
 	}
@@ -761,6 +777,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setModelStructure(ModelStructureType newModelStructure) {
 		if (newModelStructure != modelStructure) {
 			NotificationChain msgs = null;
@@ -780,6 +797,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAuthor() {
 		return author;
 	}
@@ -789,6 +807,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAuthor(String newAuthor) {
 		String oldAuthor = author;
 		author = newAuthor;
@@ -801,6 +820,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCopyright() {
 		return copyright;
 	}
@@ -810,6 +830,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCopyright(String newCopyright) {
 		String oldCopyright = copyright;
 		copyright = newCopyright;
@@ -822,6 +843,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -831,6 +853,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -843,6 +866,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFmiVersion() {
 		return fmiVersion;
 	}
@@ -852,6 +876,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFmiVersion(String newFmiVersion) {
 		String oldFmiVersion = fmiVersion;
 		fmiVersion = newFmiVersion;
@@ -866,6 +891,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetFmiVersion() {
 		String oldFmiVersion = fmiVersion;
 		boolean oldFmiVersionESet = fmiVersionESet;
@@ -880,6 +906,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetFmiVersion() {
 		return fmiVersionESet;
 	}
@@ -889,6 +916,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public XMLGregorianCalendar getGenerationDateAndTime() {
 		return generationDateAndTime;
 	}
@@ -898,6 +926,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGenerationDateAndTime(XMLGregorianCalendar newGenerationDateAndTime) {
 		XMLGregorianCalendar oldGenerationDateAndTime = generationDateAndTime;
 		generationDateAndTime = newGenerationDateAndTime;
@@ -910,6 +939,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getGenerationTool() {
 		return generationTool;
 	}
@@ -919,6 +949,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGenerationTool(String newGenerationTool) {
 		String oldGenerationTool = generationTool;
 		generationTool = newGenerationTool;
@@ -931,6 +962,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getGuid() {
 		return guid;
 	}
@@ -940,6 +972,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGuid(String newGuid) {
 		String oldGuid = guid;
 		guid = newGuid;
@@ -952,6 +985,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLicense() {
 		return license;
 	}
@@ -961,6 +995,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLicense(String newLicense) {
 		String oldLicense = license;
 		license = newLicense;
@@ -973,6 +1008,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getModelName() {
 		return modelName;
 	}
@@ -982,6 +1018,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setModelName(String newModelName) {
 		String oldModelName = modelName;
 		modelName = newModelName;
@@ -994,6 +1031,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getNumberOfEventIndicators() {
 		return numberOfEventIndicators;
 	}
@@ -1003,6 +1041,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNumberOfEventIndicators(long newNumberOfEventIndicators) {
 		long oldNumberOfEventIndicators = numberOfEventIndicators;
 		numberOfEventIndicators = newNumberOfEventIndicators;
@@ -1017,6 +1056,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetNumberOfEventIndicators() {
 		long oldNumberOfEventIndicators = numberOfEventIndicators;
 		boolean oldNumberOfEventIndicatorsESet = numberOfEventIndicatorsESet;
@@ -1031,6 +1071,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNumberOfEventIndicators() {
 		return numberOfEventIndicatorsESet;
 	}
@@ -1040,6 +1081,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VariableNamingConventionType getVariableNamingConvention() {
 		return variableNamingConvention;
 	}
@@ -1049,6 +1091,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVariableNamingConvention(VariableNamingConventionType newVariableNamingConvention) {
 		VariableNamingConventionType oldVariableNamingConvention = variableNamingConvention;
 		variableNamingConvention = newVariableNamingConvention == null ? VARIABLE_NAMING_CONVENTION_EDEFAULT : newVariableNamingConvention;
@@ -1063,6 +1106,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetVariableNamingConvention() {
 		VariableNamingConventionType oldVariableNamingConvention = variableNamingConvention;
 		boolean oldVariableNamingConventionESet = variableNamingConventionESet;
@@ -1077,6 +1121,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetVariableNamingConvention() {
 		return variableNamingConventionESet;
 	}
@@ -1086,6 +1131,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVersion() {
 		return version;
 	}
@@ -1095,6 +1141,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVersion(String newVersion) {
 		String oldVersion = version;
 		version = newVersion;
@@ -1415,7 +1462,7 @@ public class FmiModelDescriptionTypeImpl extends MinimalEObjectImpl.Container im
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(", author: ");

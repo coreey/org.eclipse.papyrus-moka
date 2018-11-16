@@ -12,7 +12,9 @@
 package org.eclipse.papyrus.moka.fmi.fmiprofile;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FMUBundle;
+
 import org.eclipse.papyrus.moka.fmi.modeldescription.FmiModelDescriptionType;
 
 /**

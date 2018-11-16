@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_hvtRYFhSEeiSk_egVxEj3Q" name="doc">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_h-PcoFhSEeiSk_egVxEj3Q">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_hyKvgFhSEeiSk_egVxEj3Q" name="ActivityExecution" node="_joAPwFhSEeiSk_egVxEj3Q _l_UFYFhSEeiSk_egVxEj3Q _xELhAFhSEeiSk_egVxEj3Q _iz940FhUEeiSk_egVxEj3Q _6v2qMFhUEeiSk_egVxEj3Q _LtLG8FhVEeiSk_egVxEj3Q _SeqB0FhVEeiSk_egVxEj3Q _X7SCkFhVEeiSk_egVxEj3Q _IVEGMFhWEeiSk_egVxEj3Q _aHNSIFhWEeiSk_egVxEj3Q _fukjQFhWEeiSk_egVxEj3Q _vag3sFhWEeiSk_egVxEj3Q _yZUVsFhXEeiSk_egVxEj3Q _-lUYgFhXEeiSk_egVxEj3Q _k20kkFhYEeiSk_egVxEj3Q __MR1YFhYEeiSk_egVxEj3Q _DvgwAFhZEeiSk_egVxEj3Q _Z_jDkFhZEeiSk_egVxEj3Q _dZyV0FhZEeiSk_egVxEj3Q _Lz5v0FmvEeiSk_egVxEj3Q _UAe6QFmwEeiSk_egVxEj3Q _7hcRIFmyEeiSk_egVxEj3Q">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_sixuMFhZEeiSk_egVxEj3Q">
+      <body>Simulation terminates when :&#xD;
+&#xD;
+-all the nodes have been executed&#xD;
+-or suspended nodes can't be executed and no more no time event pending</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_93nwQFmwEeiSk_egVxEj3Q">
+      <body>Suspending a visitor for time pushes an Event with specific &quot;Visitor Wake-Up action&quot; in the DEScheduler. This action will be executed by the DEScheduler when the date is reached, and is equivalent to &quot;suspend visitor for control&quot;.&#xD;
+Advices can also define their own actions and use the DEScheduler to execute things in the future.</body>
+    </ownedComment>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_rmWUcFhUEeiSk_egVxEj3Q" name="yes" target="_xELhAFhSEeiSk_egVxEj3Q" source="_iz940FhUEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_RxF7wFhWEeiSk_egVxEj3Q" target="_aHNSIFhWEeiSk_egVxEj3Q" source="_xELhAFhSEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SW-3EFhWEeiSk_egVxEj3Q" name="yes" target="_LtLG8FhVEeiSk_egVxEj3Q" source="_6v2qMFhUEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_uWqOAFhWEeiSk_egVxEj3Q" name="finishing" target="_vag3sFhWEeiSk_egVxEj3Q" source="_aHNSIFhWEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_0aCswFhWEeiSk_egVxEj3Q" name="starting" target="_6v2qMFhUEeiSk_egVxEj3Q" source="_aHNSIFhWEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_G5QaEFhXEeiSk_egVxEj3Q" target="_iz940FhUEeiSk_egVxEj3Q" source="_l_UFYFhSEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_JlMb4FhXEeiSk_egVxEj3Q" name="no" target="_X7SCkFhVEeiSk_egVxEj3Q" source="_iz940FhUEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_VA0xsFhXEeiSk_egVxEj3Q" name="yes" target="_SeqB0FhVEeiSk_egVxEj3Q" source="_X7SCkFhVEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Znh3EFhXEeiSk_egVxEj3Q" name="yes" target="_fukjQFhWEeiSk_egVxEj3Q" source="_vag3sFhWEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_d7N50FhXEeiSk_egVxEj3Q" target="_aHNSIFhWEeiSk_egVxEj3Q" source="_SeqB0FhVEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_6CiJ0FhXEeiSk_egVxEj3Q" target="_l_UFYFhSEeiSk_egVxEj3Q" source="_joAPwFhSEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_HvsdYFhYEeiSk_egVxEj3Q" name="no" target="_-lUYgFhXEeiSk_egVxEj3Q" source="_vag3sFhWEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KJtowFhYEeiSk_egVxEj3Q" name="no" target="_UAe6QFmwEeiSk_egVxEj3Q" source="_6v2qMFhUEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_L-KB4FhYEeiSk_egVxEj3Q" target="_7hcRIFmyEeiSk_egVxEj3Q" source="_LtLG8FhVEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Mq4lAFhYEeiSk_egVxEj3Q" name="yes" target="_IVEGMFhWEeiSk_egVxEj3Q" source="_yZUVsFhXEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_mlqE8FhYEeiSk_egVxEj3Q" name="no" target="_vag3sFhWEeiSk_egVxEj3Q" source="_yZUVsFhXEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_nS_sEFhYEeiSk_egVxEj3Q" target="_k20kkFhYEeiSk_egVxEj3Q" source="_-lUYgFhXEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_oBUKoFhYEeiSk_egVxEj3Q" target="_k20kkFhYEeiSk_egVxEj3Q" source="_fukjQFhWEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_pNBv0FhYEeiSk_egVxEj3Q" target="_k20kkFhYEeiSk_egVxEj3Q" source="_IVEGMFhWEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_z_WC4FhYEeiSk_egVxEj3Q" target="_iz940FhUEeiSk_egVxEj3Q" source="_k20kkFhYEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_GYMpgFhZEeiSk_egVxEj3Q" name="no" target="_DvgwAFhZEeiSk_egVxEj3Q" source="__MR1YFhYEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_HjMdAFhZEeiSk_egVxEj3Q" name="no" target="__MR1YFhYEeiSk_egVxEj3Q" source="_X7SCkFhVEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_iIF4AFhZEeiSk_egVxEj3Q" name="yes" target="_Z_jDkFhZEeiSk_egVxEj3Q" source="__MR1YFhYEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_jEgc8FhZEeiSk_egVxEj3Q" target="_dZyV0FhZEeiSk_egVxEj3Q" source="_Z_jDkFhZEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_kfRx0FhZEeiSk_egVxEj3Q" target="_X7SCkFhVEeiSk_egVxEj3Q" source="_dZyV0FhZEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_pB7wQFmvEeiSk_egVxEj3Q" target="_yZUVsFhXEeiSk_egVxEj3Q" source="_Lz5v0FmvEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_tR4GAFmwEeiSk_egVxEj3Q" target="_k20kkFhYEeiSk_egVxEj3Q" source="_UAe6QFmwEeiSk_egVxEj3Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_BN754FmzEeiSk_egVxEj3Q" target="_Lz5v0FmvEeiSk_egVxEj3Q" source="_7hcRIFmyEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_joAPwFhSEeiSk_egVxEj3Q" name="InitialNode1" outgoing="_6CiJ0FhXEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_l_UFYFhSEeiSk_egVxEj3Q" name="Visitors and Advices initialization" incoming="_6CiJ0FhXEeiSk_egVxEj3Q" outgoing="_G5QaEFhXEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_xELhAFhSEeiSk_egVxEj3Q" name="get next Visitor " incoming="_rmWUcFhUEeiSk_egVxEj3Q" outgoing="_RxF7wFhWEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_iz940FhUEeiSk_egVxEj3Q" name="has next Visitable vistor? (from fUML graph point of view)" incoming="_G5QaEFhXEeiSk_egVxEj3Q _z_WC4FhYEeiSk_egVxEj3Q" outgoing="_rmWUcFhUEeiSk_egVxEj3Q _JlMb4FhXEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_6v2qMFhUEeiSk_egVxEj3Q" name="can start? (called to all advice)" incoming="_0aCswFhWEeiSk_egVxEj3Q" outgoing="_SW-3EFhWEeiSk_egVxEj3Q _KJtowFhYEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_LtLG8FhVEeiSk_egVxEj3Q" name="do start actions (for all advices)" incoming="_SW-3EFhWEeiSk_egVxEj3Q" outgoing="_L-KB4FhYEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_SeqB0FhVEeiSk_egVxEj3Q" name="get next suspended visitor" incoming="_VA0xsFhXEeiSk_egVxEj3Q" outgoing="_d7N50FhXEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_X7SCkFhVEeiSk_egVxEj3Q" name="has visitors suspended for control which can start or finish ?" incoming="_JlMb4FhXEeiSk_egVxEj3Q _kfRx0FhZEeiSk_egVxEj3Q" outgoing="_VA0xsFhXEeiSk_egVxEj3Q _HjMdAFhZEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_IVEGMFhWEeiSk_egVxEj3Q" name="suspend visitor for time" incoming="_Mq4lAFhYEeiSk_egVxEj3Q" outgoing="_pNBv0FhYEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_aHNSIFhWEeiSk_egVxEj3Q" name="check state" incoming="_RxF7wFhWEeiSk_egVxEj3Q _d7N50FhXEeiSk_egVxEj3Q" outgoing="_uWqOAFhWEeiSk_egVxEj3Q _0aCswFhWEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_fukjQFhWEeiSk_egVxEj3Q" name="do Finish actions (for all advices)" incoming="_Znh3EFhXEeiSk_egVxEj3Q" outgoing="_oBUKoFhYEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_vag3sFhWEeiSk_egVxEj3Q" name="can finish?" incoming="_uWqOAFhWEeiSk_egVxEj3Q _mlqE8FhYEeiSk_egVxEj3Q" outgoing="_Znh3EFhXEeiSk_egVxEj3Q _HvsdYFhYEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_yZUVsFhXEeiSk_egVxEj3Q" name="has duration?" incoming="_pB7wQFmvEeiSk_egVxEj3Q" outgoing="_Mq4lAFhYEeiSk_egVxEj3Q _mlqE8FhYEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_-lUYgFhXEeiSk_egVxEj3Q" name="suspend visitor for control" incoming="_HvsdYFhYEeiSk_egVxEj3Q" outgoing="_nS_sEFhYEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:MergeNode" xmi:id="_k20kkFhYEeiSk_egVxEj3Q" name="MergeNode1" incoming="_nS_sEFhYEeiSk_egVxEj3Q _oBUKoFhYEeiSk_egVxEj3Q _pNBv0FhYEeiSk_egVxEj3Q _tR4GAFmwEeiSk_egVxEj3Q" outgoing="_z_WC4FhYEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="__MR1YFhYEeiSk_egVxEj3Q" name="has pending time events?" incoming="_HjMdAFhZEeiSk_egVxEj3Q" outgoing="_GYMpgFhZEeiSk_egVxEj3Q _iIF4AFhZEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_DvgwAFhZEeiSk_egVxEj3Q" name="finish simulation" incoming="_GYMpgFhZEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Z_jDkFhZEeiSk_egVxEj3Q" name="jump to next DEShdeduler event date" incoming="_iIF4AFhZEeiSk_egVxEj3Q" outgoing="_jEgc8FhZEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_dZyV0FhZEeiSk_egVxEj3Q" name="execute event action" incoming="_jEgc8FhZEeiSk_egVxEj3Q" outgoing="_kfRx0FhZEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Lz5v0FmvEeiSk_egVxEj3Q" name="change state to finishing" incoming="_BN754FmzEeiSk_egVxEj3Q" outgoing="_pB7wQFmvEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_UAe6QFmwEeiSk_egVxEj3Q" name="suspend visitor for control" incoming="_KJtowFhYEeiSk_egVxEj3Q" outgoing="_tR4GAFmwEeiSk_egVxEj3Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_7hcRIFmyEeiSk_egVxEj3Q" name="do fUML semantic action" incoming="_L-KB4FhYEeiSk_egVxEj3Q" outgoing="_BN754FmzEeiSk_egVxEj3Q"/>
+  </packagedElement>
+</uml:Model>

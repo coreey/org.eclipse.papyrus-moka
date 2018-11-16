@@ -303,6 +303,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SourceFilesType1 getSourceFiles() {
 		return sourceFiles;
 	}
@@ -327,6 +328,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSourceFiles(SourceFilesType1 newSourceFiles) {
 		if (newSourceFiles != sourceFiles) {
 			NotificationChain msgs = null;
@@ -346,6 +348,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanBeInstantiatedOnlyOncePerProcess() {
 		return canBeInstantiatedOnlyOncePerProcess;
 	}
@@ -355,6 +358,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanBeInstantiatedOnlyOncePerProcess(boolean newCanBeInstantiatedOnlyOncePerProcess) {
 		boolean oldCanBeInstantiatedOnlyOncePerProcess = canBeInstantiatedOnlyOncePerProcess;
 		canBeInstantiatedOnlyOncePerProcess = newCanBeInstantiatedOnlyOncePerProcess;
@@ -369,6 +373,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanBeInstantiatedOnlyOncePerProcess() {
 		boolean oldCanBeInstantiatedOnlyOncePerProcess = canBeInstantiatedOnlyOncePerProcess;
 		boolean oldCanBeInstantiatedOnlyOncePerProcessESet = canBeInstantiatedOnlyOncePerProcessESet;
@@ -383,6 +388,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanBeInstantiatedOnlyOncePerProcess() {
 		return canBeInstantiatedOnlyOncePerProcessESet;
 	}
@@ -392,6 +398,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanGetAndSetFMUstate() {
 		return canGetAndSetFMUstate;
 	}
@@ -401,6 +408,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanGetAndSetFMUstate(boolean newCanGetAndSetFMUstate) {
 		boolean oldCanGetAndSetFMUstate = canGetAndSetFMUstate;
 		canGetAndSetFMUstate = newCanGetAndSetFMUstate;
@@ -415,6 +423,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanGetAndSetFMUstate() {
 		boolean oldCanGetAndSetFMUstate = canGetAndSetFMUstate;
 		boolean oldCanGetAndSetFMUstateESet = canGetAndSetFMUstateESet;
@@ -429,6 +438,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanGetAndSetFMUstate() {
 		return canGetAndSetFMUstateESet;
 	}
@@ -438,6 +448,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanNotUseMemoryManagementFunctions() {
 		return canNotUseMemoryManagementFunctions;
 	}
@@ -447,6 +458,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanNotUseMemoryManagementFunctions(boolean newCanNotUseMemoryManagementFunctions) {
 		boolean oldCanNotUseMemoryManagementFunctions = canNotUseMemoryManagementFunctions;
 		canNotUseMemoryManagementFunctions = newCanNotUseMemoryManagementFunctions;
@@ -461,6 +473,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanNotUseMemoryManagementFunctions() {
 		boolean oldCanNotUseMemoryManagementFunctions = canNotUseMemoryManagementFunctions;
 		boolean oldCanNotUseMemoryManagementFunctionsESet = canNotUseMemoryManagementFunctionsESet;
@@ -475,6 +488,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanNotUseMemoryManagementFunctions() {
 		return canNotUseMemoryManagementFunctionsESet;
 	}
@@ -484,6 +498,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanSerializeFMUstate() {
 		return canSerializeFMUstate;
 	}
@@ -493,6 +508,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanSerializeFMUstate(boolean newCanSerializeFMUstate) {
 		boolean oldCanSerializeFMUstate = canSerializeFMUstate;
 		canSerializeFMUstate = newCanSerializeFMUstate;
@@ -507,6 +523,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanSerializeFMUstate() {
 		boolean oldCanSerializeFMUstate = canSerializeFMUstate;
 		boolean oldCanSerializeFMUstateESet = canSerializeFMUstateESet;
@@ -521,6 +538,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanSerializeFMUstate() {
 		return canSerializeFMUstateESet;
 	}
@@ -530,6 +548,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCompletedIntegratorStepNotNeeded() {
 		return completedIntegratorStepNotNeeded;
 	}
@@ -539,6 +558,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCompletedIntegratorStepNotNeeded(boolean newCompletedIntegratorStepNotNeeded) {
 		boolean oldCompletedIntegratorStepNotNeeded = completedIntegratorStepNotNeeded;
 		completedIntegratorStepNotNeeded = newCompletedIntegratorStepNotNeeded;
@@ -553,6 +573,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCompletedIntegratorStepNotNeeded() {
 		boolean oldCompletedIntegratorStepNotNeeded = completedIntegratorStepNotNeeded;
 		boolean oldCompletedIntegratorStepNotNeededESet = completedIntegratorStepNotNeededESet;
@@ -567,6 +588,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCompletedIntegratorStepNotNeeded() {
 		return completedIntegratorStepNotNeededESet;
 	}
@@ -576,6 +598,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getModelIdentifier() {
 		return modelIdentifier;
 	}
@@ -585,6 +608,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setModelIdentifier(String newModelIdentifier) {
 		String oldModelIdentifier = modelIdentifier;
 		modelIdentifier = newModelIdentifier;
@@ -597,6 +621,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isNeedsExecutionTool() {
 		return needsExecutionTool;
 	}
@@ -606,6 +631,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNeedsExecutionTool(boolean newNeedsExecutionTool) {
 		boolean oldNeedsExecutionTool = needsExecutionTool;
 		needsExecutionTool = newNeedsExecutionTool;
@@ -620,6 +646,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetNeedsExecutionTool() {
 		boolean oldNeedsExecutionTool = needsExecutionTool;
 		boolean oldNeedsExecutionToolESet = needsExecutionToolESet;
@@ -634,6 +661,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNeedsExecutionTool() {
 		return needsExecutionToolESet;
 	}
@@ -643,6 +671,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isProvidesDirectionalDerivative() {
 		return providesDirectionalDerivative;
 	}
@@ -652,6 +681,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProvidesDirectionalDerivative(boolean newProvidesDirectionalDerivative) {
 		boolean oldProvidesDirectionalDerivative = providesDirectionalDerivative;
 		providesDirectionalDerivative = newProvidesDirectionalDerivative;
@@ -666,6 +696,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetProvidesDirectionalDerivative() {
 		boolean oldProvidesDirectionalDerivative = providesDirectionalDerivative;
 		boolean oldProvidesDirectionalDerivativeESet = providesDirectionalDerivativeESet;
@@ -680,6 +711,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetProvidesDirectionalDerivative() {
 		return providesDirectionalDerivativeESet;
 	}
@@ -845,7 +877,7 @@ public class ModelExchangeTypeImpl extends MinimalEObjectImpl.Container implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (canBeInstantiatedOnlyOncePerProcess: ");
 		if (canBeInstantiatedOnlyOncePerProcessESet) result.append(canBeInstantiatedOnlyOncePerProcess); else result.append("<unset>");
 		result.append(", canGetAndSetFMUstate: ");

@@ -79,6 +79,7 @@ public class SourceFilesTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.SOURCE_FILES_TYPE__GROUP);
@@ -91,6 +92,7 @@ public class SourceFilesTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<FileType> getFile() {
 		return getGroup().list(FmiPackage.Literals.SOURCE_FILES_TYPE__FILE);
 	}
@@ -191,7 +193,7 @@ public class SourceFilesTypeImpl extends MinimalEObjectImpl.Container implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(')');

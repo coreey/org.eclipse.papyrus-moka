@@ -190,6 +190,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDeclaredType() {
 		return declaredType;
 	}
@@ -199,6 +200,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDeclaredType(String newDeclaredType) {
 		String oldDeclaredType = declaredType;
 		declaredType = newDeclaredType;
@@ -211,6 +213,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMax() {
 		return max;
 	}
@@ -220,6 +223,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMax(int newMax) {
 		int oldMax = max;
 		max = newMax;
@@ -234,6 +238,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMax() {
 		int oldMax = max;
 		boolean oldMaxESet = maxESet;
@@ -248,6 +253,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMax() {
 		return maxESet;
 	}
@@ -257,6 +263,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMin() {
 		return min;
 	}
@@ -266,6 +273,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMin(int newMin) {
 		int oldMin = min;
 		min = newMin;
@@ -280,6 +288,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMin() {
 		int oldMin = min;
 		boolean oldMinESet = minESet;
@@ -294,6 +303,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMin() {
 		return minESet;
 	}
@@ -303,6 +313,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getQuantity() {
 		return quantity;
 	}
@@ -312,6 +323,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setQuantity(String newQuantity) {
 		String oldQuantity = quantity;
 		quantity = newQuantity;
@@ -324,6 +336,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getStart() {
 		return start;
 	}
@@ -333,6 +346,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStart(int newStart) {
 		int oldStart = start;
 		start = newStart;
@@ -347,6 +361,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetStart() {
 		int oldStart = start;
 		boolean oldStartESet = startESet;
@@ -361,6 +376,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetStart() {
 		return startESet;
 	}
@@ -472,7 +488,7 @@ public class IntegerTypeImpl extends MinimalEObjectImpl.Container implements Int
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (declaredType: ");
 		result.append(declaredType);
 		result.append(", max: ");

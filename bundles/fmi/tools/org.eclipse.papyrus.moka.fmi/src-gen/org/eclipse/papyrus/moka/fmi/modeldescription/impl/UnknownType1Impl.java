@@ -133,6 +133,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<Long> getDependencies() {
 		return dependencies;
 	}
@@ -142,6 +143,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDependencies(List<Long> newDependencies) {
 		List<Long> oldDependencies = dependencies;
 		dependencies = newDependencies;
@@ -154,6 +156,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<DependenciesKindTypeItem1> getDependenciesKind() {
 		return dependenciesKind;
 	}
@@ -163,6 +166,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDependenciesKind(List<DependenciesKindTypeItem1> newDependenciesKind) {
 		List<DependenciesKindTypeItem1> oldDependenciesKind = dependenciesKind;
 		dependenciesKind = newDependenciesKind;
@@ -175,6 +179,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getIndex() {
 		return index;
 	}
@@ -184,6 +189,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIndex(long newIndex) {
 		long oldIndex = index;
 		index = newIndex;
@@ -198,6 +204,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetIndex() {
 		long oldIndex = index;
 		boolean oldIndexESet = indexESet;
@@ -212,6 +219,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetIndex() {
 		return indexESet;
 	}
@@ -304,7 +312,7 @@ public class UnknownType1Impl extends MinimalEObjectImpl.Container implements Un
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (dependencies: ");
 		result.append(dependencies);
 		result.append(", dependenciesKind: ");

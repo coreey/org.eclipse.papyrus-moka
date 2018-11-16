@@ -71,7 +71,7 @@ public class FMIProfileFactoryImpl extends EFactoryImpl implements FMIProfileFac
 			case FMIProfilePackage.LOCAL: return createLocal();
 			case FMIProfilePackage.CS_FMU: return createCS_FMU();
 			case FMIProfilePackage.ME_FMU: return createME_FMU();
-			case FMIProfilePackage.PORT: return createPort();
+			case FMIProfilePackage.FMI_PORT: return createFMIPort();
 			case FMIProfilePackage.INDEPENDENT: return createIndependent();
 			case FMIProfilePackage.UNKNOWN: return createUnknown();
 			case FMIProfilePackage.OUTPUT_UNKNOWN: return createOutputUnknown();
@@ -82,6 +82,7 @@ public class FMIProfileFactoryImpl extends EFactoryImpl implements FMIProfileFac
 			case FMIProfilePackage.OUTPUT_DEPENDENCY: return createOutputDependency();
 			case FMIProfilePackage.INITIAL_UNKNOWN_DEPENDENCY: return createInitialUnknownDependency();
 			case FMIProfilePackage.CALCULATED_PARAMETER: return createCalculatedParameter();
+			case FMIProfilePackage.PORT: return createPort();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -99,12 +100,10 @@ public class FMIProfileFactoryImpl extends EFactoryImpl implements FMIProfileFac
 				return createVariabilityKindFromString(eDataType, initialValue);
 			case FMIProfilePackage.INITIAL_KIND:
 				return createInitialKindFromString(eDataType, initialValue);
-			case FMIProfilePackage.FLOW_DIRECTION:
-				return createFlowDirectionFromString(eDataType, initialValue);
-			case FMIProfilePackage.DEPENDENCIES_KIND:
-				return createDependenciesKindFromString(eDataType, initialValue);
 			case FMIProfilePackage.CAUSALITY_KIND:
 				return createCausalityKindFromString(eDataType, initialValue);
+			case FMIProfilePackage.DEPENDENCIES_KIND:
+				return createDependenciesKindFromString(eDataType, initialValue);
 			case FMIProfilePackage.VARIABILITY_NAMING_CONVENTION:
 				return createVariabilityNamingConventionFromString(eDataType, initialValue);
 			case FMIProfilePackage.BASE_UNIT:
@@ -126,12 +125,10 @@ public class FMIProfileFactoryImpl extends EFactoryImpl implements FMIProfileFac
 				return convertVariabilityKindToString(eDataType, instanceValue);
 			case FMIProfilePackage.INITIAL_KIND:
 				return convertInitialKindToString(eDataType, instanceValue);
-			case FMIProfilePackage.FLOW_DIRECTION:
-				return convertFlowDirectionToString(eDataType, instanceValue);
-			case FMIProfilePackage.DEPENDENCIES_KIND:
-				return convertDependenciesKindToString(eDataType, instanceValue);
 			case FMIProfilePackage.CAUSALITY_KIND:
 				return convertCausalityKindToString(eDataType, instanceValue);
+			case FMIProfilePackage.DEPENDENCIES_KIND:
+				return convertDependenciesKindToString(eDataType, instanceValue);
 			case FMIProfilePackage.VARIABILITY_NAMING_CONVENTION:
 				return convertVariabilityNamingConventionToString(eDataType, instanceValue);
 			case FMIProfilePackage.BASE_UNIT:
@@ -196,9 +193,9 @@ public class FMIProfileFactoryImpl extends EFactoryImpl implements FMIProfileFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Port createPort() {
-		PortImpl port = new PortImpl();
-		return port;
+	public FMIPort createFMIPort() {
+		FMIPortImpl fmiPort = new FMIPortImpl();
+		return fmiPort;
 	}
 
 	/**
@@ -306,6 +303,16 @@ public class FMIProfileFactoryImpl extends EFactoryImpl implements FMIProfileFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Port createPort() {
+		PortImpl port = new PortImpl();
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public VariabilityKind createVariabilityKindFromString(EDataType eDataType, String initialValue) {
 		VariabilityKind result = VariabilityKind.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -358,26 +365,6 @@ public class FMIProfileFactoryImpl extends EFactoryImpl implements FMIProfileFac
 	 * @generated
 	 */
 	public String convertCausalityKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FlowDirection createFlowDirectionFromString(EDataType eDataType, String initialValue) {
-		FlowDirection result = FlowDirection.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertFlowDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

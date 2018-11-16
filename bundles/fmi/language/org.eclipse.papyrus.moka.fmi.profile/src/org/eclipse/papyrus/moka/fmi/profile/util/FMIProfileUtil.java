@@ -19,18 +19,19 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.CS_FMU;
+import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIPort;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMU;
-import org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.ME_FMU;
-import org.eclipse.papyrus.moka.fmi.fmiprofile.Port;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable;
 import org.eclipse.papyrus.moka.fmi.modeldescription.Fmi2ScalarVariable;
 import org.eclipse.papyrus.moka.fmi.modeldescription.FmiModelDescriptionType;
+import org.eclipse.papyrus.sysml14.portsandflows.FlowDirection;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
@@ -48,7 +49,7 @@ public class FMIProfileUtil {
 	public static final String PARAMETER_STEREO_NAME = FMIProfilePackage.eINSTANCE.getParameter().getName();
 	public static final String LOCAL_STEREO_NAME = FMIProfilePackage.eINSTANCE.getLocal().getName();
 	public static final String INDEPENDENT_STEREO_NAME = FMIProfilePackage.eINSTANCE.getIndependent().getName();
-	public static final String PORT_STEREO_NAME = FMIProfilePackage.eINSTANCE.getPort().getName();
+	public static final String PORT_STEREO_NAME = FMIProfilePackage.eINSTANCE.getFMIPort().getName();
 	public static final String OUTPUT_DEPENDENCY_STEREO_NAME = FMIProfilePackage.eINSTANCE.getOutputDependency()
 			.getName();
 	public static final String DERIVATIVE_DEPENDENCY_STEREO_NAME = FMIProfilePackage.eINSTANCE.getDerivativeDependency()
@@ -72,32 +73,32 @@ public class FMIProfileUtil {
 	public static final String INITIAL_UNKNWOWN_STEREO_QUALIFIED_NAME = FMI_PROFILE_NAME + "::"
 			+ INITIAL_UNKNWOWN_STEREO_NAME;
 
-	public static void applyFMIProfileIfNeeded(Package owningPackage) {
-		Profile fmiProfile = getFMIProfile(owningPackage);
+	public static void applyProfileIfNeeded(Package owningPackage, EPackage ePackage) {
+		Profile profile = getProfile(owningPackage, ePackage);
 
 		Iterator<Profile> profileIter = owningPackage.getAllAppliedProfiles().iterator();
 		Profile appliedProfile = null;
-		while (profileIter.hasNext() && (appliedProfile != fmiProfile)) {
+		while (profileIter.hasNext() && (appliedProfile != profile)) {
 			appliedProfile = profileIter.next();
 		}
-		if (appliedProfile != fmiProfile) {
+		if (appliedProfile != profile) {
 			Package rootPackage = owningPackage.getModel();
 			if (rootPackage != null && rootPackage.eResource() == owningPackage.eResource()) {
-				rootPackage.applyProfile(fmiProfile);
+				rootPackage.applyProfile(profile);
 			} else {
-				owningPackage.applyProfile(fmiProfile);
+				owningPackage.applyProfile(profile);
 			}
 		}
 	}
 
-	public static Profile getFMIProfile(EObject context) {
-		return UMLUtil.getProfile(FMIProfilePackage.eINSTANCE, context);
+	public static Profile getProfile(EObject context, EPackage ePackage) {
+		return UMLUtil.getProfile(ePackage, context);
 	}
 
-	public static Stereotype getStereotype(EObject context, String shortName) {
-		Profile fmiProfile = getFMIProfile(context);
-		if (fmiProfile != null) {
-			return fmiProfile.getOwnedStereotype(shortName);
+	public static Stereotype getStereotype(EObject context, String shortName, EPackage ePackage) {
+		Profile profile = getProfile(context, ePackage);
+		if (profile != null) {
+			return profile.getOwnedStereotype(shortName);
 		}
 		return null;
 	}
@@ -143,10 +144,8 @@ public class FMIProfileUtil {
 
 	}
 
-	public static int getValueReference(Property fmuPort) { // FIXME should
-															// return a long
-
-		Port fmiPortObj = FastUMLUtil.fastGetStereotypeApplication(fmuPort, Port.class);
+	public static long getValueReference(Property fmuPort) {
+		FMIPort fmiPortObj = FastUMLUtil.fastGetStereotypeApplication(fmuPort, FMIPort.class);
 		if (fmiPortObj != null) {
 			return fmiPortObj.getValueReference();
 		}
@@ -166,16 +165,16 @@ public class FMIProfileUtil {
 	}
 
 	public static FlowDirection getDirection(org.eclipse.uml2.uml.Port port) {
-		Port fmiPortObj = FastUMLUtil.fastGetStereotypeApplication(port, Port.class);
+		FMIPort fmiPortObj = FastUMLUtil.fastGetStereotypeApplication(port, FMIPort.class);
 		if (fmiPortObj != null) {
 			return fmiPortObj.getDirection();
 		}
 		return null;
 	}
 
-	public static int computeNewValueReference(Property prop) {
+	public static long computeNewValueReference(Property prop) {
 		Class owningClass = prop.getClass_();
-		List<Integer> valueReferences = new ArrayList<Integer>();
+		List<Long> valueReferences = new ArrayList<Long>();
 		for (Property attr : owningClass.getAllAttributes()) {
 			if (attr != prop) {
 				valueReferences.add(getValueReference(attr));

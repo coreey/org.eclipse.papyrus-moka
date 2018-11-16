@@ -79,6 +79,7 @@ public class ModelVariablesTypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.MODEL_VARIABLES_TYPE__GROUP);
@@ -91,6 +92,7 @@ public class ModelVariablesTypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Fmi2ScalarVariable> getScalarVariable() {
 		return getGroup().list(FmiPackage.Literals.MODEL_VARIABLES_TYPE__SCALAR_VARIABLE);
 	}
@@ -191,7 +193,7 @@ public class ModelVariablesTypeImpl extends MinimalEObjectImpl.Container impleme
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(')');

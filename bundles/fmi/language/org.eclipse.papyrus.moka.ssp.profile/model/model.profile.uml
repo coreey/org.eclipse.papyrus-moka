@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_T9IHYB-HEeegP6aMHpCV8A" name="SSPProfile" URI="" metaclassReference="_UDR9QB-IEeegP6aMHpCV8A _imc5QFEAEeenPsCrM3OyTw _qiu94FEBEeenPsCrM3OyTw _Int0cFECEeenPsCrM3OyTw _Go0rsDKXEeiU5oVU_O76aA _fsHhYJrfEeiosLc1kU8j4g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HMgpsB-JEeegP6aMHpCV8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_8m0PQKq7EeiaROE_eJkS6A" name="profile" nsURI="http://org.eclipse.papyrus.moka.ssp.profile/SSPProfile" nsPrefix="SSPProfile">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PQaq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/4.1.0/UML">
+          <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+          <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/FMIProfile/1.0.0#/"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PQqq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8m0PQ6q7EeiaROE_eJkS6A" key="originalName" value="SSPProfile"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PRKq7EeiaROE_eJkS6A" name="SsdConnection">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PRaq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VHB8MFD_EeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0PRqq7EeiaROE_eJkS6A" name="base_Connector" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0PSKq7EeiaROE_eJkS6A" name="start" ordered="false" lowerBound="1" eType="_8m0PUKq7EeiaROE_eJkS6A" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0PSqq7EeiaROE_eJkS6A" name="end" ordered="false" lowerBound="1" eType="_8m0PUKq7EeiaROE_eJkS6A" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0PTKq7EeiaROE_eJkS6A" name="startSsdProperty" ordered="false" derived="true">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0PTqq7EeiaROE_eJkS6A" name="endSsdProperty" ordered="false" derived="true">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PUKq7EeiaROE_eJkS6A" name="SsdConnector">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PUaq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HJSW8JyvEeissNvJNlX0qA"/>
+          <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8m0PUqq7EeiaROE_eJkS6A" name="SSDDescription" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0PVKq7EeiaROE_eJkS6A" name="icon" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Image"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PV6q7EeiaROE_eJkS6A" name="SsdElement" abstract="true">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PWKq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_E9wrMFECEeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8m0PWaq7EeiaROE_eJkS6A" name="ID" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PW6q7EeiaROE_eJkS6A" name="SsdSystem" eSuperTypes="_8m0PV6q7EeiaROE_eJkS6A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PXKq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FZyf4FECEeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0PXaq7EeiaROE_eJkS6A" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PYKq7EeiaROE_eJkS6A" name="SsdSignalDictionaryReference" eSuperTypes="_8m0PV6q7EeiaROE_eJkS6A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PYaq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5EN38NtGEee8fLUc1N33uA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0PYqq7EeiaROE_eJkS6A" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PZaq7EeiaROE_eJkS6A" name="SsdComponent" eSuperTypes="_8m0PV6q7EeiaROE_eJkS6A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PZqq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_MdifoItoEeiWf9BPHXi2qg"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8m0PZ6q7EeiaROE_eJkS6A" name="source" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8m0Paaq7EeiaROE_eJkS6A" name="type" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0Pa6q7EeiaROE_eJkS6A" name="fmu" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/FMIProfile/1.0.0#//FMU"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0Pbaq7EeiaROE_eJkS6A" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PcKq7EeiaROE_eJkS6A" name="Ssd">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0Pcaq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hKcgkJrfEeiosLc1kU8j4g"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8m0Pcqq7EeiaROE_eJkS6A" name="base_Package" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8m0PdKq7EeiaROE_eJkS6A" name="name" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8m0Pdqq7EeiaROE_eJkS6A" name="version" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PeKq7EeiaROE_eJkS6A" name="SsdConnectorAndFmiPort">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0Peaq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_yVY0kJ77EeiFcKmG9KkfrA"/>
+          <eSuperTypes xmi:type="ecore:EClass" href="#_8m0PUKq7EeiaROE_eJkS6A"/>
+          <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/FMIProfile/1.0.0#//FMIPort"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0PfKq7EeiaROE_eJkS6A" name="Class29">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0Pfaq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+          <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_8m0Pf6q7EeiaROE_eJkS6A" name="DataType30">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0PgKq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EDataType" xmi:id="_8m0Pgaq7EeiaROE_eJkS6A" name="PrimitiveType31" instanceClassName="java.lang.String">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8m0Pgqq7EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+        </eClassifiers>
+      </contents>
+      <contents xmi:type="ecore:EPackage" xmi:id="_WJrQYKq6EeiaROE_eJkS6A" name="profile" nsURI="http://org.eclipse.papyrus.moka.ssp.profile/SSPProfile" nsPrefix="SSPProfile">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQYaq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/4.1.0/UML">
+          <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+          <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/FMIProfile/1.0.0#/"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQYqq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WJrQY6q6EeiaROE_eJkS6A" key="originalName" value="SSPProfile"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQZKq6EeiaROE_eJkS6A" name="SsdConnection">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQZaq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VHB8MFD_EeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQZqq6EeiaROE_eJkS6A" name="base_Connector" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQaKq6EeiaROE_eJkS6A" name="start" ordered="false" lowerBound="1" eType="_WJrQcKq6EeiaROE_eJkS6A" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQaqq6EeiaROE_eJkS6A" name="end" ordered="false" lowerBound="1" eType="_WJrQcKq6EeiaROE_eJkS6A" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQbKq6EeiaROE_eJkS6A" name="startSsdProperty" ordered="false" derived="true">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQbqq6EeiaROE_eJkS6A" name="endSsdProperty" ordered="false" derived="true">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQcKq6EeiaROE_eJkS6A" name="SsdConnector">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQcaq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HJSW8JyvEeissNvJNlX0qA"/>
+          <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+          <eOperations xmi:type="ecore:EOperation" xmi:id="_WJrQcqq6EeiaROE_eJkS6A" name="getIcon" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Image"/>
+          </eOperations>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WJrQdKq6EeiaROE_eJkS6A" name="SSDDescription" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQd6q6EeiaROE_eJkS6A" name="SsdElement" abstract="true">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQeKq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_E9wrMFECEeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WJrQeaq6EeiaROE_eJkS6A" name="ID" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQe6q6EeiaROE_eJkS6A" name="SsdSystem" eSuperTypes="_WJrQd6q6EeiaROE_eJkS6A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQfKq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FZyf4FECEeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQfaq6EeiaROE_eJkS6A" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQgKq6EeiaROE_eJkS6A" name="SsdSignalDictionaryReference" eSuperTypes="_WJrQd6q6EeiaROE_eJkS6A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQgaq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5EN38NtGEee8fLUc1N33uA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQgqq6EeiaROE_eJkS6A" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQhaq6EeiaROE_eJkS6A" name="SsdComponent" eSuperTypes="_WJrQd6q6EeiaROE_eJkS6A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQhqq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_MdifoItoEeiWf9BPHXi2qg"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WJrQh6q6EeiaROE_eJkS6A" name="source" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WJrQiaq6EeiaROE_eJkS6A" name="type" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQi6q6EeiaROE_eJkS6A" name="fmu" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/FMIProfile/1.0.0#//FMU"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQjaq6EeiaROE_eJkS6A" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQkKq6EeiaROE_eJkS6A" name="Ssd">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQkaq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hKcgkJrfEeiosLc1kU8j4g"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WJrQkqq6EeiaROE_eJkS6A" name="base_Package" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WJrQlKq6EeiaROE_eJkS6A" name="name" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WJrQlqq6EeiaROE_eJkS6A" name="version" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQmKq6EeiaROE_eJkS6A" name="SsdConnectorAndFmiPort">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQmaq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_yVY0kJ77EeiFcKmG9KkfrA"/>
+          <eSuperTypes xmi:type="ecore:EClass" href="#_WJrQcKq6EeiaROE_eJkS6A"/>
+          <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/FMIProfile/1.0.0#//FMIPort"/>
+          <eOperations xmi:type="ecore:EOperation" xmi:id="_WJrQmqq6EeiaROE_eJkS6A" name="getIcon" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Image"/>
+          </eOperations>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQnqq6EeiaROE_eJkS6A" name="Class29">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQn6q6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+          <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WJrQoaq6EeiaROE_eJkS6A" name="DataType30">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQoqq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EDataType" xmi:id="_WJrQo6q6EeiaROE_eJkS6A" name="PrimitiveType31" instanceClassName="java.lang.String">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WJrQpKq6EeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+        </eClassifiers>
+      </contents>
+      <contents xmi:type="ecore:EPackage" xmi:id="_9_Cx8FWpEee0075sTOpvdA" name="profile" nsURI="http://org.eclipse.papyrus.moka.ssp.profile/SSPProfile" nsPrefix="SSPProfile">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9_Cx8VWpEee0075sTOpvdA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9_Cx8lWpEee0075sTOpvdA" key="originalName" value="SSPProfile"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_9_Cx81WpEee0075sTOpvdA" name="SsdConnection">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9_Cx9FWpEee0075sTOpvdA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VHB8MFD_EeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9_Cx9VWpEee0075sTOpvdA" name="base_Connector" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9_Cx91WpEee0075sTOpvdA" name="start" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ConnectorEnd"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9_Cx-VWpEee0075sTOpvdA" name="end" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ConnectorEnd"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_9_Cx-1WpEee0075sTOpvdA" name="SsdConnectorType">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9_Cx_FWpEee0075sTOpvdA" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9_Cx_VWpEee0075sTOpvdA" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_9_Cx_1WpEee0075sTOpvdA" name="SsdTComponent">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9_CyAFWpEee0075sTOpvdA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_E9wrMFECEeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9_CyAVWpEee0075sTOpvdA" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_9_CyA1WpEee0075sTOpvdA" name="SsdTSystem">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9_CyBFWpEee0075sTOpvdA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FZyf4FECEeenPsCrM3OyTw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9_CyBVWpEee0075sTOpvdA" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_UDR9QB-IEeegP6aMHpCV8A" alias="Class">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_imc5QFEAEeenPsCrM3OyTw" alias="Connector">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_qiu94FEBEeenPsCrM3OyTw" alias="Port">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_Int0cFECEeenPsCrM3OyTw" alias="Component">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_Go0rsDKXEeiU5oVU_O76aA" alias="Property">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_fsHhYJrfEeiosLc1kU8j4g" alias="Package">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+    </elementImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_OedssDdBEei4iPaKNPfTlQ">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_VHB8MFD_EeenPsCrM3OyTw" name="SsdConnection">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_jsy2QFEAEeenPsCrM3OyTw" name="base_Connector" association="_jspsUFEAEeenPsCrM3OyTw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zUMPonhuEeihra2GkjZNtQ" name="start" type="_HJSW8JyvEeissNvJNlX0qA" isReadOnly="true" isDerived="true" association="_zULokHhuEeihra2GkjZNtQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_sDL1Q3hwEeihra2GkjZNtQ" name="end" type="_HJSW8JyvEeissNvJNlX0qA" isReadOnly="true" isDerived="true" association="_sDLOMHhwEeihra2GkjZNtQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_DS50oIm-EeixnsCmB1SW-Q" name="startSsdProperty" isReadOnly="true" isDerived="true" association="_DS3YYIm-EeixnsCmB1SW-Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HhAz0Im-EeixnsCmB1SW-Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FU810onHEeixnsCmB1SW-Q" name="endSsdProperty" isReadOnly="true" isDerived="true" association="_FU7nsInHEeixnsCmB1SW-Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SqG5EInHEeixnsCmB1SW-Q"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SqJ8YInHEeixnsCmB1SW-Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_jspsUFEAEeenPsCrM3OyTw" name="E_SsdConnection_Connector1" memberEnd="_jspsUVEAEeenPsCrM3OyTw _jsy2QFEAEeenPsCrM3OyTw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_jspsUVEAEeenPsCrM3OyTw" name="extension_SsdConnection" type="_VHB8MFD_EeenPsCrM3OyTw" aggregation="composite" association="_jspsUFEAEeenPsCrM3OyTw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_E9wrMFECEeenPsCrM3OyTw" name="SsdElement" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_6Za44JAHEeiEPYPudKFLsA" name="ID">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EBzIYJAIEeiEPYPudKFLsA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EB7EMJAIEeiEPYPudKFLsA" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_FZyf4FECEeenPsCrM3OyTw" name="SsdSystem">
+      <generalization xmi:type="uml:Generalization" xmi:id="_U4FDAItoEeiWf9BPHXi2qg" general="_E9wrMFECEeenPsCrM3OyTw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Nt4G8ZAaEeibTpPP74HsGA" name="base_Class" association="_Nt1DoJAaEeibTpPP74HsGA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_5EN38NtGEee8fLUc1N33uA" name="SsdSignalDictionaryReference">
+      <generalization xmi:type="uml:Generalization" xmi:id="_UlFOgItoEeiWf9BPHXi2qg" general="_E9wrMFECEeenPsCrM3OyTw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_OHikIJAaEeibTpPP74HsGA" name="base_Class" association="_OHhWAJAaEeibTpPP74HsGA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zULokHhuEeihra2GkjZNtQ" isDerived="true" memberEnd="_zUMPoXhuEeihra2GkjZNtQ _zUMPonhuEeihra2GkjZNtQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zULokXhuEeihra2GkjZNtQ" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zUMPoHhuEeihra2GkjZNtQ" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_zUMPoXhuEeihra2GkjZNtQ" type="_VHB8MFD_EeenPsCrM3OyTw" association="_zULokHhuEeihra2GkjZNtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_sDLOMHhwEeihra2GkjZNtQ" isDerived="true" memberEnd="_sDL1QnhwEeihra2GkjZNtQ _sDL1Q3hwEeihra2GkjZNtQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sDL1QHhwEeihra2GkjZNtQ" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sDL1QXhwEeihra2GkjZNtQ" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_sDL1QnhwEeihra2GkjZNtQ" type="_VHB8MFD_EeenPsCrM3OyTw" association="_sDLOMHhwEeihra2GkjZNtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_-3k40Im9EeixnsCmB1SW-Q" name="E_SsdComponent_Property20" memberEnd="_-3muAIm9EeixnsCmB1SW-Q _MlGz8JANEeiEPYPudKFLsA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_-3muAIm9EeixnsCmB1SW-Q" name="extension_SsdComponent" type="_MdifoItoEeiWf9BPHXi2qg" aggregation="composite" association="_-3k40Im9EeixnsCmB1SW-Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_DS3YYIm-EeixnsCmB1SW-Q" visibility="public" isLeaf="true" isFinalSpecialization="true" isDerived="true" memberEnd="_DS50oIm-EeixnsCmB1SW-Q _DS6bsIm-EeixnsCmB1SW-Q">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DS4mgIm-EeixnsCmB1SW-Q" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_DS5NkIm-EeixnsCmB1SW-Q" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_DS6bsIm-EeixnsCmB1SW-Q" visibility="private" type="_VHB8MFD_EeenPsCrM3OyTw" isReadOnly="true" association="_DS3YYIm-EeixnsCmB1SW-Q">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M9x-gIm-EeixnsCmB1SW-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M97IcIm-EeixnsCmB1SW-Q" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FU7nsInHEeixnsCmB1SW-Q" isDerived="true" memberEnd="_FU810onHEeixnsCmB1SW-Q _FU9c4InHEeixnsCmB1SW-Q">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FU810InHEeixnsCmB1SW-Q" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FU810YnHEeixnsCmB1SW-Q" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FU9c4InHEeixnsCmB1SW-Q" type="_VHB8MFD_EeenPsCrM3OyTw" association="_FU7nsInHEeixnsCmB1SW-Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_MdifoItoEeiWf9BPHXi2qg" name="SsdComponent">
+      <generalization xmi:type="uml:Generalization" xmi:id="_URwC0ItoEeiWf9BPHXi2qg" general="_E9wrMFECEeenPsCrM3OyTw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xdycoNtHEee8fLUc1N33uA" name="source">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xFltINtJEee8fLUc1N33uA" name="type">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_x__uoI_tEeisd_fYEaLh1w" name="fmu">
+        <type xmi:type="uml:Stereotype" href="../../org.eclipse.papyrus.moka.fmi.profile/model/FMI.profile.uml#_6Z7fcK0REeSXqKqlHzx1gA"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_x__uoY_tEeisd_fYEaLh1w"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_x__uoo_tEeisd_fYEaLh1w" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MlGz8JANEeiEPYPudKFLsA" name="base_Property" association="_-3k40Im9EeixnsCmB1SW-Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Nt1DoJAaEeibTpPP74HsGA" name="E_SsdSystem_Class21" memberEnd="_Nt4G8JAaEeibTpPP74HsGA _Nt4G8ZAaEeibTpPP74HsGA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Nt4G8JAaEeibTpPP74HsGA" name="extension_SsdSystem" type="_FZyf4FECEeenPsCrM3OyTw" aggregation="composite" association="_Nt1DoJAaEeibTpPP74HsGA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_OHhWAJAaEeibTpPP74HsGA" name="E_SsdSignalDictionaryReference_Class22" memberEnd="_OHh9EJAaEeibTpPP74HsGA _OHikIJAaEeibTpPP74HsGA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_OHh9EJAaEeibTpPP74HsGA" name="extension_SsdSignalDictionaryReference" type="_5EN38NtGEee8fLUc1N33uA" aggregation="composite" association="_OHhWAJAaEeibTpPP74HsGA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_hKcgkJrfEeiosLc1kU8j4g" name="Ssd">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_nqCaMJrfEeiosLc1kU8j4g" name="base_Package" association="_np_W4JrfEeiosLc1kU8j4g">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_2IV20JrfEeiosLc1kU8j4g" name="name">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LBdawJrgEeiosLc1kU8j4g" name="version">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zPIOILHBEeib6JR9yOlNVg" name="mainSystem" type="_FZyf4FECEeenPsCrM3OyTw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_np_W4JrfEeiosLc1kU8j4g" name="E_Ssd_Package25" memberEnd="_nqBzIJrfEeiosLc1kU8j4g _nqCaMJrfEeiosLc1kU8j4g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_nqBzIJrfEeiosLc1kU8j4g" name="extension_Ssd" type="_hKcgkJrfEeiosLc1kU8j4g" aggregation="composite" association="_np_W4JrfEeiosLc1kU8j4g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HJSW8JyvEeissNvJNlX0qA" name="SsdConnector">
+      <generalization xmi:type="uml:Generalization" xmi:id="_kmkJkJ76EeiFcKmG9KkfrA">
+        <general xmi:type="uml:Stereotype" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements.stereotype_packagedElement_FlowPort"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FQfTwJ-YEeiGp_7CKidkRA" name="SSDDescription">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_C4cHcLUGEeiSGMgJYpbk4Q" name="typeKind" type="_eg2qYLUFEeiSGMgJYpbk4Q"/>
+      <icon xmi:type="uml:Image" xmi:id="_L6_OoKqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort_IN.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L6_OoaqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L6_OoqqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L6_Oo6qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort_IN"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_L7Bq4KqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort_OUT.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L7Bq4aqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L7Bq4qqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L7Bq46qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort_OUT"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_L7CR8KqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort_INOUT.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L7CR8aqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L7CR8qqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L7CR86qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort_INOUT"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_L7C5AKqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort_NA.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L7C5AaqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L7C5AqqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L7C5A6qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort_NA"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_L7DgEKqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L7DgEaqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L7DgEqqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L7DgE6qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort"/>
+        </eAnnotations>
+      </icon>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_yVY0kJ77EeiFcKmG9KkfrA" name="SsdConnectorAndFmiPort">
+      <generalization xmi:type="uml:Generalization" xmi:id="_NxeygJ-aEeiGp_7CKidkRA" general="_HJSW8JyvEeissNvJNlX0qA" isSubstitutable="false"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_OV2D0J-aEeiGp_7CKidkRA" isSubstitutable="false">
+        <general xmi:type="uml:Stereotype" href="../../org.eclipse.papyrus.moka.fmi.profile/model/FMI.profile.uml#_0Ab54OyjEeSEBKJWDCrAIQ"/>
+      </generalization>
+      <icon xmi:type="uml:Image" xmi:id="_Os4ugKqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort_IN.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Os4ugaqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os4ugqqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os4ug6qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort_IN"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_Os5VkKqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort_OUT.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Os5VkaqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os5VkqqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os5Vk6qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort_OUT"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_Os58oKqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort_INOUT.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Os58oaqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os58oqqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os58o6qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort_INOUT"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_Os6jsKqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort_NA.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Os6jsaqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os6jsqqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os6js6qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort_NA"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_Os7KwKqVEeiaROE_eJkS6A" format="GIF" location="platform:/plugin/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/FlowPort.gif">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Os7KwaqVEeiaROE_eJkS6A" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os7KwqqVEeiaROE_eJkS6A" key="image_kind_key" value="icon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Os7Kw6qVEeiaROE_eJkS6A" key="image_name_key" value="FlowPort"/>
+        </eAnnotations>
+      </icon>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_eg2qYLUFEeiSGMgJYpbk4Q" name="TypeKind">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3FO_ILUFEeiSGMgJYpbk4Q" name="input"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3MNw4LUFEeiSGMgJYpbk4Q" name="output"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3Te2gLUFEeiSGMgJYpbk4Q" name="parameter"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3cLfgLUFEeiSGMgJYpbk4Q" name="calculatedParameter"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_AayZQLUGEeiSGMgJYpbk4Q" name="inout"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_sHxGcB-HEeegP6aMHpCV8A">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sHzisB-HEeegP6aMHpCV8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_yCnQwPVNEeeWg-ColR3VLQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yCpF8PVNEeeWg-ColR3VLQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_7uimcKqaEeiaROE_eJkS6A">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7ulCsKqaEeiaROE_eJkS6A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_y6Fu0B-HEeegP6aMHpCV8A" base_Package="_T9IHYB-HEeegP6aMHpCV8A" packageName="profile" nsPrefix="SSPProfile" nsURI="http://org.eclipse.papyrus.moka.ssp.profile/SSPProfile" basePackage="org.eclipse.papyrus.moka.ssp" prefix="SSPProfile"/>
+</xmi:XMI>

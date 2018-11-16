@@ -382,6 +382,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDeclaredType() {
 		return declaredType;
 	}
@@ -391,6 +392,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDeclaredType(String newDeclaredType) {
 		String oldDeclaredType = declaredType;
 		declaredType = newDeclaredType;
@@ -403,6 +405,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getDerivative() {
 		return derivative;
 	}
@@ -412,6 +415,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDerivative(long newDerivative) {
 		long oldDerivative = derivative;
 		derivative = newDerivative;
@@ -426,6 +430,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetDerivative() {
 		long oldDerivative = derivative;
 		boolean oldDerivativeESet = derivativeESet;
@@ -440,6 +445,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetDerivative() {
 		return derivativeESet;
 	}
@@ -449,6 +455,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDisplayUnit() {
 		return displayUnit;
 	}
@@ -458,6 +465,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDisplayUnit(String newDisplayUnit) {
 		String oldDisplayUnit = displayUnit;
 		displayUnit = newDisplayUnit;
@@ -470,6 +478,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getMax() {
 		return max;
 	}
@@ -479,6 +488,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMax(double newMax) {
 		double oldMax = max;
 		max = newMax;
@@ -493,6 +503,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMax() {
 		double oldMax = max;
 		boolean oldMaxESet = maxESet;
@@ -507,6 +518,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMax() {
 		return maxESet;
 	}
@@ -516,6 +528,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getMin() {
 		return min;
 	}
@@ -525,6 +538,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMin(double newMin) {
 		double oldMin = min;
 		min = newMin;
@@ -539,6 +553,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMin() {
 		double oldMin = min;
 		boolean oldMinESet = minESet;
@@ -553,6 +568,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMin() {
 		return minESet;
 	}
@@ -562,6 +578,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getNominal() {
 		return nominal;
 	}
@@ -571,6 +588,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNominal(double newNominal) {
 		double oldNominal = nominal;
 		nominal = newNominal;
@@ -585,6 +603,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetNominal() {
 		double oldNominal = nominal;
 		boolean oldNominalESet = nominalESet;
@@ -599,6 +618,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNominal() {
 		return nominalESet;
 	}
@@ -608,6 +628,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getQuantity() {
 		return quantity;
 	}
@@ -617,6 +638,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setQuantity(String newQuantity) {
 		String oldQuantity = quantity;
 		quantity = newQuantity;
@@ -629,6 +651,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isReinit() {
 		return reinit;
 	}
@@ -638,6 +661,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReinit(boolean newReinit) {
 		boolean oldReinit = reinit;
 		reinit = newReinit;
@@ -652,6 +676,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetReinit() {
 		boolean oldReinit = reinit;
 		boolean oldReinitESet = reinitESet;
@@ -666,6 +691,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetReinit() {
 		return reinitESet;
 	}
@@ -675,6 +701,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isRelativeQuantity() {
 		return relativeQuantity;
 	}
@@ -684,6 +711,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRelativeQuantity(boolean newRelativeQuantity) {
 		boolean oldRelativeQuantity = relativeQuantity;
 		relativeQuantity = newRelativeQuantity;
@@ -698,6 +726,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetRelativeQuantity() {
 		boolean oldRelativeQuantity = relativeQuantity;
 		boolean oldRelativeQuantityESet = relativeQuantityESet;
@@ -712,6 +741,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRelativeQuantity() {
 		return relativeQuantityESet;
 	}
@@ -721,6 +751,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getStart() {
 		return start;
 	}
@@ -730,6 +761,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStart(double newStart) {
 		double oldStart = start;
 		start = newStart;
@@ -744,6 +776,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetStart() {
 		double oldStart = start;
 		boolean oldStartESet = startESet;
@@ -758,6 +791,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetStart() {
 		return startESet;
 	}
@@ -767,6 +801,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isUnbounded() {
 		return unbounded;
 	}
@@ -776,6 +811,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUnbounded(boolean newUnbounded) {
 		boolean oldUnbounded = unbounded;
 		unbounded = newUnbounded;
@@ -790,6 +826,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetUnbounded() {
 		boolean oldUnbounded = unbounded;
 		boolean oldUnboundedESet = unboundedESet;
@@ -804,6 +841,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetUnbounded() {
 		return unboundedESet;
 	}
@@ -813,6 +851,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUnit() {
 		return unit;
 	}
@@ -822,6 +861,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUnit(String newUnit) {
 		String oldUnit = unit;
 		unit = newUnit;
@@ -1006,7 +1046,7 @@ public class RealTypeImpl extends MinimalEObjectImpl.Container implements RealTy
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (declaredType: ");
 		result.append(declaredType);
 		result.append(", derivative: ");

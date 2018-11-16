@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.fmi.fmumetamodel.impl;
 
@@ -14,8 +23,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile;
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FMUBundle;
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FmumetamodelPackage;
@@ -180,6 +191,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FmiModelDescriptionType getModelDescription() {
 		return modelDescription;
 	}
@@ -204,6 +216,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setModelDescription(FmiModelDescriptionType newModelDescription) {
 		if (newModelDescription != modelDescription) {
 			NotificationChain msgs = null;
@@ -223,6 +236,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getResourcesFiles() {
 		if (resourcesFiles == null) {
 			resourcesFiles = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__RESOURCES_FILES);
@@ -235,6 +249,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getWin32Files() {
 		if (win32Files == null) {
 			win32Files = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__WIN32_FILES);
@@ -247,6 +262,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getWin64Files() {
 		if (win64Files == null) {
 			win64Files = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__WIN64_FILES);
@@ -259,6 +275,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getLinux32Files() {
 		if (linux32Files == null) {
 			linux32Files = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__LINUX32_FILES);
@@ -271,6 +288,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getLinux64Files() {
 		if (linux64Files == null) {
 			linux64Files = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__LINUX64_FILES);
@@ -283,6 +301,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getDarwin64Files() {
 		if (darwin64Files == null) {
 			darwin64Files = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__DARWIN64_FILES);
@@ -295,6 +314,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getDarwin32Files() {
 		if (darwin32Files == null) {
 			darwin32Files = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__DARWIN32_FILES);
@@ -307,6 +327,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getDocumentationFiles() {
 		if (documentationFiles == null) {
 			documentationFiles = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__DOCUMENTATION_FILES);
@@ -319,6 +340,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getSourceFiles() {
 		if (sourceFiles == null) {
 			sourceFiles = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__SOURCE_FILES);
@@ -331,6 +353,7 @@ public class FMUBundleImpl extends MinimalEObjectImpl.Container implements FMUBu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getRootFiles() {
 		if (rootFiles == null) {
 			rootFiles = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FMU_BUNDLE__ROOT_FILES);

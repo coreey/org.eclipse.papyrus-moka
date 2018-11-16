@@ -139,6 +139,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMax() {
 		return max;
 	}
@@ -148,6 +149,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMax(int newMax) {
 		int oldMax = max;
 		max = newMax;
@@ -162,6 +164,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMax() {
 		int oldMax = max;
 		boolean oldMaxESet = maxESet;
@@ -176,6 +179,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMax() {
 		return maxESet;
 	}
@@ -185,6 +189,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMin() {
 		return min;
 	}
@@ -194,6 +199,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMin(int newMin) {
 		int oldMin = min;
 		min = newMin;
@@ -208,6 +214,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMin() {
 		int oldMin = min;
 		boolean oldMinESet = minESet;
@@ -222,6 +229,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMin() {
 		return minESet;
 	}
@@ -231,6 +239,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getQuantity() {
 		return quantity;
 	}
@@ -240,6 +249,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setQuantity(String newQuantity) {
 		String oldQuantity = quantity;
 		quantity = newQuantity;
@@ -334,7 +344,7 @@ public class IntegerType1Impl extends MinimalEObjectImpl.Container implements In
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (max: ");
 		if (maxESet) result.append(max); else result.append("<unset>");
 		result.append(", min: ");

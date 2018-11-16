@@ -105,7 +105,7 @@ public class FMUObject extends TimedObject implements FMUInterface {
 			this.UMLPropertyNameToIndexMap = new HashMap<String, Integer>() ;
 			for (Property p : this.types.get(0).allAttributes()) {
 				if (FMIProfileUtil.isFMUPort(p)) {
-					int index = FMIProfileUtil.getValueReference(p) ;
+					int index = (int) FMIProfileUtil.getValueReference(p) ;
 					if (index != -1) {
 						this.indexToUMLPropertyMap.put(index, p) ;
 						this.UMLPropertyToIndexMap.put(p, index) ;

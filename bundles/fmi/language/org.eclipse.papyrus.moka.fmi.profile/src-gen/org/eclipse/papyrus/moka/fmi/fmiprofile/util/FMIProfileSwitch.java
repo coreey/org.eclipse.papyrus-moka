@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.eclipse.papyrus.moka.fmi.fmiprofile.*;
 
+import org.eclipse.papyrus.sysml14.deprecatedelements.FlowPort;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
@@ -84,7 +86,15 @@ public class FMIProfileSwitch<T> extends Switch<T> {
 			case FMIProfilePackage.PARAMETER: {
 				Parameter parameter = (Parameter)theEObject;
 				T result = caseParameter(parameter);
+				if (result == null) result = caseAbstractVariable(parameter);
 				if (result == null) result = caseScalarVariable(parameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FMIProfilePackage.ABSTRACT_VARIABLE: {
+				AbstractVariable abstractVariable = (AbstractVariable)theEObject;
+				T result = caseAbstractVariable(abstractVariable);
+				if (result == null) result = caseScalarVariable(abstractVariable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -97,6 +107,7 @@ public class FMIProfileSwitch<T> extends Switch<T> {
 			case FMIProfilePackage.LOCAL: {
 				Local local = (Local)theEObject;
 				T result = caseLocal(local);
+				if (result == null) result = caseAbstractVariable(local);
 				if (result == null) result = caseScalarVariable(local);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -115,16 +126,18 @@ public class FMIProfileSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case FMIProfilePackage.PORT: {
-				Port port = (Port)theEObject;
-				T result = casePort(port);
-				if (result == null) result = caseScalarVariable(port);
+			case FMIProfilePackage.FMI_PORT: {
+				FMIPort fmiPort = (FMIPort)theEObject;
+				T result = caseFMIPort(fmiPort);
+				if (result == null) result = caseScalarVariable(fmiPort);
+				if (result == null) result = caseFlowPort(fmiPort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case FMIProfilePackage.INDEPENDENT: {
 				Independent independent = (Independent)theEObject;
 				T result = caseIndependent(independent);
+				if (result == null) result = caseAbstractVariable(independent);
 				if (result == null) result = caseScalarVariable(independent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -183,7 +196,17 @@ public class FMIProfileSwitch<T> extends Switch<T> {
 			case FMIProfilePackage.CALCULATED_PARAMETER: {
 				CalculatedParameter calculatedParameter = (CalculatedParameter)theEObject;
 				T result = caseCalculatedParameter(calculatedParameter);
+				if (result == null) result = caseAbstractVariable(calculatedParameter);
 				if (result == null) result = caseScalarVariable(calculatedParameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FMIProfilePackage.PORT: {
+				Port port = (Port)theEObject;
+				T result = casePort(port);
+				if (result == null) result = caseFMIPort(port);
+				if (result == null) result = caseScalarVariable(port);
+				if (result == null) result = caseFlowPort(port);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -218,6 +241,21 @@ public class FMIProfileSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseParameter(Parameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractVariable(AbstractVariable object) {
 		return null;
 	}
 
@@ -282,17 +320,17 @@ public class FMIProfileSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Port</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>FMI Port</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Port</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>FMI Port</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePort(Port object) {
+	public T caseFMIPort(FMIPort object) {
 		return null;
 	}
 
@@ -443,6 +481,36 @@ public class FMIProfileSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCalculatedParameter(CalculatedParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Port</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePort(Port object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Flow Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Flow Port</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFlowPort(FlowPort object) {
 		return null;
 	}
 

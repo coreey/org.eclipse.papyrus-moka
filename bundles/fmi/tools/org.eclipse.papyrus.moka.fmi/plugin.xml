@@ -10,12 +10,12 @@
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
-      <parser
-            class="org.eclipse.papyrus.moka.fmi.fmu.FMUResourceFactory"
-            type="fmu">
-      </parser>
       <!-- @generated Fmi2ModelDescription -->
+      <parser
+            type="fmi"
+            class="org.eclipse.papyrus.moka.fmi.modeldescription.util.FmiResourceFactoryImpl"/>
    </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated fmu -->
       <package

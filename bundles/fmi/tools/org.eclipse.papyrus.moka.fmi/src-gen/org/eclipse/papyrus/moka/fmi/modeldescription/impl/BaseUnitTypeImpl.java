@@ -358,6 +358,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getA() {
 		return a;
 	}
@@ -367,6 +368,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setA(int newA) {
 		int oldA = a;
 		a = newA;
@@ -381,6 +383,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetA() {
 		int oldA = a;
 		boolean oldAESet = aESet;
@@ -395,6 +398,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetA() {
 		return aESet;
 	}
@@ -404,6 +408,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getCd() {
 		return cd;
 	}
@@ -413,6 +418,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCd(int newCd) {
 		int oldCd = cd;
 		cd = newCd;
@@ -427,6 +433,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCd() {
 		int oldCd = cd;
 		boolean oldCdESet = cdESet;
@@ -441,6 +448,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCd() {
 		return cdESet;
 	}
@@ -450,6 +458,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getFactor() {
 		return factor;
 	}
@@ -459,6 +468,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFactor(double newFactor) {
 		double oldFactor = factor;
 		factor = newFactor;
@@ -473,6 +483,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetFactor() {
 		double oldFactor = factor;
 		boolean oldFactorESet = factorESet;
@@ -487,6 +498,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetFactor() {
 		return factorESet;
 	}
@@ -496,6 +508,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getK() {
 		return k;
 	}
@@ -505,6 +518,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setK(int newK) {
 		int oldK = k;
 		k = newK;
@@ -519,6 +533,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetK() {
 		int oldK = k;
 		boolean oldKESet = kESet;
@@ -533,6 +548,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetK() {
 		return kESet;
 	}
@@ -542,6 +558,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getKg() {
 		return kg;
 	}
@@ -551,6 +568,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setKg(int newKg) {
 		int oldKg = kg;
 		kg = newKg;
@@ -565,6 +583,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetKg() {
 		int oldKg = kg;
 		boolean oldKgESet = kgESet;
@@ -579,6 +598,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetKg() {
 		return kgESet;
 	}
@@ -588,6 +608,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getM() {
 		return m;
 	}
@@ -597,6 +618,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setM(int newM) {
 		int oldM = m;
 		m = newM;
@@ -611,6 +633,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetM() {
 		int oldM = m;
 		boolean oldMESet = mESet;
@@ -625,6 +648,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetM() {
 		return mESet;
 	}
@@ -634,6 +658,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMol() {
 		return mol;
 	}
@@ -643,6 +668,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMol(int newMol) {
 		int oldMol = mol;
 		mol = newMol;
@@ -657,6 +683,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMol() {
 		int oldMol = mol;
 		boolean oldMolESet = molESet;
@@ -671,6 +698,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMol() {
 		return molESet;
 	}
@@ -680,6 +708,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getOffset() {
 		return offset;
 	}
@@ -689,6 +718,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(double newOffset) {
 		double oldOffset = offset;
 		offset = newOffset;
@@ -703,6 +733,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetOffset() {
 		double oldOffset = offset;
 		boolean oldOffsetESet = offsetESet;
@@ -717,6 +748,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOffset() {
 		return offsetESet;
 	}
@@ -726,6 +758,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getRad() {
 		return rad;
 	}
@@ -735,6 +768,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRad(int newRad) {
 		int oldRad = rad;
 		rad = newRad;
@@ -749,6 +783,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetRad() {
 		int oldRad = rad;
 		boolean oldRadESet = radESet;
@@ -763,6 +798,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRad() {
 		return radESet;
 	}
@@ -772,6 +808,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getS() {
 		return s;
 	}
@@ -781,6 +818,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setS(int newS) {
 		int oldS = s;
 		s = newS;
@@ -795,6 +833,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetS() {
 		int oldS = s;
 		boolean oldSESet = sESet;
@@ -809,6 +848,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetS() {
 		return sESet;
 	}
@@ -970,7 +1010,7 @@ public class BaseUnitTypeImpl extends MinimalEObjectImpl.Container implements Ba
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (a: ");
 		if (aESet) result.append(a); else result.append("<unset>");
 		result.append(", cd: ");

@@ -16,9 +16,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.papyrus.moka.fmi.fmiprofile.AbstractVariable;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.BaseUnit;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.CS_Graph;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.CalculatedParameter;
@@ -26,9 +28,9 @@ import org.eclipse.papyrus.moka.fmi.fmiprofile.CausalityKind;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.DependenciesKind;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.DerivativeDependency;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.DerivativeUnknown;
+import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIPort;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfileFactory;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
-import org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.Independent;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.InitialKind;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.InitialUnknown;
@@ -44,10 +46,18 @@ import org.eclipse.papyrus.moka.fmi.fmiprofile.VariabilityKind;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.VariabilityNamingConvention;
 
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FmumetamodelPackage;
+
 import org.eclipse.papyrus.moka.fmi.modeldescription.FmiPackage;
+
+import org.eclipse.papyrus.sysml14.deprecatedelements.DeprecatedelementsPackage;
+
+import org.eclipse.papyrus.sysml14.sysmlPackage;
+
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.UMLPackage;
+
+import org.eclipse.uml2.uml.profile.standard.StandardPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,6 +79,13 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * @generated
 	 */
 	private EClass parameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,7 +120,7 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass portEClass = null;
+	private EClass fmiPortEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,6 +197,13 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass portEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum variabilityKindEEnum = null;
 
 	/**
@@ -195,13 +219,6 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * @generated
 	 */
 	private EEnum causalityKindEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum flowDirectionEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -252,7 +269,7 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link FMIProfilePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -266,12 +283,18 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 		if (isInited) return (FMIProfilePackage)EPackage.Registry.INSTANCE.getEPackage(FMIProfilePackage.eNS_URI);
 
 		// Obtain or create and register package
-		FMIProfilePackageImpl theFMIProfilePackage = (FMIProfilePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof FMIProfilePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new FMIProfilePackageImpl());
+		Object registeredFMIProfilePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		FMIProfilePackageImpl theFMIProfilePackage = registeredFMIProfilePackage instanceof FMIProfilePackageImpl ? (FMIProfilePackageImpl)registeredFMIProfilePackage : new FMIProfilePackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
+		FmiPackage.eINSTANCE.eClass();
 		FmumetamodelPackage.eINSTANCE.eClass();
+		StandardPackage.eINSTANCE.eClass();
+		sysmlPackage.eINSTANCE.eClass();
+		TypesPackage.eINSTANCE.eClass();
 		UMLPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -283,7 +306,6 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 		// Mark meta-data to indicate it can't be changed
 		theFMIProfilePackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(FMIProfilePackage.eNS_URI, theFMIProfilePackage);
 		return theFMIProfilePackage;
@@ -519,6 +541,24 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAbstractVariable() {
+		return abstractVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractVariable_Base_Property() {
+		return (EReference)abstractVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getScalarVariable() {
 		return scalarVariableEClass;
 	}
@@ -528,17 +568,8 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getScalarVariable_Base_Property() {
-		return (EReference)scalarVariableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getScalarVariable_Description() {
-		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -547,7 +578,7 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * @generated
 	 */
 	public EAttribute getScalarVariable_Variability() {
-		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -556,7 +587,7 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * @generated
 	 */
 	public EAttribute getScalarVariable_Initial() {
-		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -565,7 +596,7 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * @generated
 	 */
 	public EAttribute getScalarVariable_ValueReference() {
-		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -574,7 +605,16 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * @generated
 	 */
 	public EReference getScalarVariable_FmiVariable() {
-		return (EReference)scalarVariableEClass.getEStructuralFeatures().get(5);
+		return (EReference)scalarVariableEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getScalarVariable_CausalityKind() {
+		return (EAttribute)scalarVariableEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -690,26 +730,8 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPort() {
-		return portEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPort_Base_Port() {
-		return (EReference)portEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPort_Direction() {
-		return (EAttribute)portEClass.getEStructuralFeatures().get(1);
+	public EClass getFMIPort() {
+		return fmiPortEClass;
 	}
 
 	/**
@@ -942,6 +964,15 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPort() {
+		return portEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getVariabilityKind() {
 		return variabilityKindEEnum;
 	}
@@ -962,15 +993,6 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 */
 	public EEnum getCausalityKind() {
 		return causalityKindEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getFlowDirection() {
-		return flowDirectionEEnum;
 	}
 
 	/**
@@ -1055,13 +1077,16 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 
 		parameterEClass = createEClass(PARAMETER);
 
+		abstractVariableEClass = createEClass(ABSTRACT_VARIABLE);
+		createEReference(abstractVariableEClass, ABSTRACT_VARIABLE__BASE_PROPERTY);
+
 		scalarVariableEClass = createEClass(SCALAR_VARIABLE);
-		createEReference(scalarVariableEClass, SCALAR_VARIABLE__BASE_PROPERTY);
 		createEAttribute(scalarVariableEClass, SCALAR_VARIABLE__DESCRIPTION);
 		createEAttribute(scalarVariableEClass, SCALAR_VARIABLE__VARIABILITY);
 		createEAttribute(scalarVariableEClass, SCALAR_VARIABLE__INITIAL);
 		createEAttribute(scalarVariableEClass, SCALAR_VARIABLE__VALUE_REFERENCE);
 		createEReference(scalarVariableEClass, SCALAR_VARIABLE__FMI_VARIABLE);
+		createEAttribute(scalarVariableEClass, SCALAR_VARIABLE__CAUSALITY_KIND);
 
 		localEClass = createEClass(LOCAL);
 
@@ -1078,9 +1103,7 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 		mE_FMUEClass = createEClass(ME_FMU);
 		createEAttribute(mE_FMUEClass, ME_FMU__COMPLETED_INTEGRATOR_STEP_NOT_NEEDED);
 
-		portEClass = createEClass(PORT);
-		createEReference(portEClass, PORT__BASE_PORT);
-		createEAttribute(portEClass, PORT__DIRECTION);
+		fmiPortEClass = createEClass(FMI_PORT);
 
 		independentEClass = createEClass(INDEPENDENT);
 
@@ -1117,12 +1140,13 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 
 		calculatedParameterEClass = createEClass(CALCULATED_PARAMETER);
 
+		portEClass = createEClass(PORT);
+
 		// Create enums
 		variabilityKindEEnum = createEEnum(VARIABILITY_KIND);
 		initialKindEEnum = createEEnum(INITIAL_KIND);
-		flowDirectionEEnum = createEEnum(FLOW_DIRECTION);
-		dependenciesKindEEnum = createEEnum(DEPENDENCIES_KIND);
 		causalityKindEEnum = createEEnum(CAUSALITY_KIND);
+		dependenciesKindEEnum = createEEnum(DEPENDENCIES_KIND);
 		variabilityNamingConventionEEnum = createEEnum(VARIABILITY_NAMING_CONVENTION);
 		baseUnitEEnum = createEEnum(BASE_UNIT);
 	}
@@ -1155,22 +1179,26 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 		UMLPackage theUMLPackage = (UMLPackage)EPackage.Registry.INSTANCE.getEPackage(UMLPackage.eNS_URI);
 		FmiPackage theFmiPackage = (FmiPackage)EPackage.Registry.INSTANCE.getEPackage(FmiPackage.eNS_URI);
 		FmumetamodelPackage theFmumetamodelPackage = (FmumetamodelPackage)EPackage.Registry.INSTANCE.getEPackage(FmumetamodelPackage.eNS_URI);
+		DeprecatedelementsPackage theDeprecatedelementsPackage = (DeprecatedelementsPackage)EPackage.Registry.INSTANCE.getEPackage(DeprecatedelementsPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		parameterEClass.getESuperTypes().add(this.getScalarVariable());
-		localEClass.getESuperTypes().add(this.getScalarVariable());
+		parameterEClass.getESuperTypes().add(this.getAbstractVariable());
+		abstractVariableEClass.getESuperTypes().add(this.getScalarVariable());
+		localEClass.getESuperTypes().add(this.getAbstractVariable());
 		cS_FMUEClass.getESuperTypes().add(this.getFMU());
 		mE_FMUEClass.getESuperTypes().add(this.getFMU());
-		portEClass.getESuperTypes().add(this.getScalarVariable());
-		independentEClass.getESuperTypes().add(this.getScalarVariable());
+		fmiPortEClass.getESuperTypes().add(this.getScalarVariable());
+		fmiPortEClass.getESuperTypes().add(theDeprecatedelementsPackage.getFlowPort());
+		independentEClass.getESuperTypes().add(this.getAbstractVariable());
 		outputUnknownEClass.getESuperTypes().add(this.getUnknown());
 		initialUnknownEClass.getESuperTypes().add(this.getUnknown());
 		derivativeUnknownEClass.getESuperTypes().add(this.getUnknown());
-		calculatedParameterEClass.getESuperTypes().add(this.getScalarVariable());
+		calculatedParameterEClass.getESuperTypes().add(this.getAbstractVariable());
+		portEClass.getESuperTypes().add(this.getFMIPort());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(fmuEClass, org.eclipse.papyrus.moka.fmi.fmiprofile.FMU.class, "FMU", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1200,13 +1228,16 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(abstractVariableEClass, AbstractVariable.class, "AbstractVariable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbstractVariable_Base_Property(), theUMLPackage.getProperty(), null, "base_Property", null, 1, 1, AbstractVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
 		initEClass(scalarVariableEClass, ScalarVariable.class, "ScalarVariable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScalarVariable_Base_Property(), theUMLPackage.getProperty(), null, "base_Property", null, 1, 1, ScalarVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getScalarVariable_Description(), theTypesPackage.getString(), "description", null, 1, 1, ScalarVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getScalarVariable_Variability(), this.getVariabilityKind(), "variability", null, 1, 1, ScalarVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getScalarVariable_Initial(), this.getInitialKind(), "initial", null, 1, 1, ScalarVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getScalarVariable_ValueReference(), ecorePackage.getEInt(), "valueReference", null, 1, 1, ScalarVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getScalarVariable_ValueReference(), ecorePackage.getELong(), "valueReference", "-1", 1, 1, ScalarVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getScalarVariable_FmiVariable(), theFmiPackage.getFmi2ScalarVariable(), null, "fmiVariable", null, 1, 1, ScalarVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getScalarVariable_CausalityKind(), this.getCausalityKind(), "causalityKind", null, 1, 1, ScalarVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(localEClass, Local.class, "Local", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1223,9 +1254,7 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 		initEClass(mE_FMUEClass, org.eclipse.papyrus.moka.fmi.fmiprofile.ME_FMU.class, "ME_FMU", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getME_FMU_CompletedIntegratorStepNotNeeded(), theTypesPackage.getBoolean(), "completedIntegratorStepNotNeeded", null, 1, 1, org.eclipse.papyrus.moka.fmi.fmiprofile.ME_FMU.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPort_Base_Port(), theUMLPackage.getPort(), null, "base_Port", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getPort_Direction(), this.getFlowDirection(), "direction", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(fmiPortEClass, FMIPort.class, "FMIPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(independentEClass, Independent.class, "Independent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1262,6 +1291,8 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 
 		initEClass(calculatedParameterEClass, CalculatedParameter.class, "CalculatedParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize enums and add enum literals
 		initEEnum(variabilityKindEEnum, VariabilityKind.class, "VariabilityKind");
 		addEEnumLiteral(variabilityKindEEnum, VariabilityKind.CONSTANT);
@@ -1275,18 +1306,6 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 		addEEnumLiteral(initialKindEEnum, InitialKind.APPROX);
 		addEEnumLiteral(initialKindEEnum, InitialKind.CALCULATED);
 
-		initEEnum(flowDirectionEEnum, FlowDirection.class, "FlowDirection");
-		addEEnumLiteral(flowDirectionEEnum, FlowDirection.IN);
-		addEEnumLiteral(flowDirectionEEnum, FlowDirection.OUT);
-		addEEnumLiteral(flowDirectionEEnum, FlowDirection.INOUT);
-
-		initEEnum(dependenciesKindEEnum, DependenciesKind.class, "DependenciesKind");
-		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.DEPENDENT);
-		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.CONSTANT);
-		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.FIXED);
-		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.TUNABLE);
-		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.DISCRETE);
-
 		initEEnum(causalityKindEEnum, CausalityKind.class, "CausalityKind");
 		addEEnumLiteral(causalityKindEEnum, CausalityKind.PARAMETER);
 		addEEnumLiteral(causalityKindEEnum, CausalityKind.CALCULATED_PARAMETER);
@@ -1294,6 +1313,13 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 		addEEnumLiteral(causalityKindEEnum, CausalityKind.OUTPUT);
 		addEEnumLiteral(causalityKindEEnum, CausalityKind.LOCAL);
 		addEEnumLiteral(causalityKindEEnum, CausalityKind.INDEPENDENT);
+
+		initEEnum(dependenciesKindEEnum, DependenciesKind.class, "DependenciesKind");
+		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.DEPENDENT);
+		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.CONSTANT);
+		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.FIXED);
+		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.TUNABLE);
+		addEEnumLiteral(dependenciesKindEEnum, DependenciesKind.DISCRETE);
 
 		initEEnum(variabilityNamingConventionEEnum, VariabilityNamingConvention.class, "VariabilityNamingConvention");
 		addEEnumLiteral(variabilityNamingConventionEEnum, VariabilityNamingConvention.FLAT);
@@ -1326,12 +1352,12 @@ public class FMIProfilePackageImpl extends EPackageImpl implements FMIProfilePac
 	 * @generated
 	 */
 	protected void createUMLAnnotations() {
-		String source = "http://www.eclipse.org/uml2/2.0.0/UML";	
+		String source = "http://www.eclipse.org/uml2/2.0.0/UML";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "originalName", "FMIProfile"
+			   "originalName", "FMIProfile"
 		   });
 	}
 

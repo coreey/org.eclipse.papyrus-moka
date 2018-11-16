@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ASCII"?>
+<paletteconfiguration:PaletteConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" id="ssd_component_diagram_palette" label="SSD">
+  <drawerConfigurations id="ssd_component_palette" label="SSD">
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="component.tool.component_tsystem" label="SSD TSystem" description="">
+      <icon pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Component.gif"/>
+      <elementDescriptors>
+        <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ssd_component_diagram_palette_UI.elementtypesconfigurations#//@elementTypeConfigurations.3"/>
+      </elementDescriptors>
+      <elementDescriptors>
+        <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ssd_component_diagram_palette_UI.elementtypesconfigurations#//@elementTypeConfigurations.4"/>
+      </elementDescriptors>
+      <elementDescriptors>
+        <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ssd_component_diagram_palette_UI.elementtypesconfigurations#//@elementTypeConfigurations.5"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="component.tool.component_tcomponent" label="SSD TComponent" description="">
+      <icon pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Component.gif"/>
+      <elementDescriptors>
+        <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ssd_component_diagram_palette_UI.elementtypesconfigurations#//@elementTypeConfigurations.0"/>
+      </elementDescriptors>
+      <elementDescriptors>
+        <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ssd_component_diagram_palette_UI.elementtypesconfigurations#//@elementTypeConfigurations.1"/>
+      </elementDescriptors>
+      <elementDescriptors>
+        <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ssd_component_diagram_palette_UI.elementtypesconfigurations#//@elementTypeConfigurations.2"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="component.tool.port_connectortype" label="SSD Connector Type" description="">
+      <icon pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Port.gif"/>
+      <elementDescriptors>
+        <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ssd_component_diagram_palette_UI.elementtypesconfigurations#//@elementTypeConfigurations.6"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="component.tool.connector_connection" label="SSD Connection" description="" kind="ConnectionTool">
+      <icon pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Connector.gif"/>
+      <elementDescriptors>
+        <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ssd_component_diagram_palette_UI.elementtypesconfigurations#_kz2dRm1BEee3upeKZ8H99g"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+  </drawerConfigurations>
+  <requiredProfiles>SSDProfile</requiredProfiles>
+</paletteconfiguration:PaletteConfiguration>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel"
-    copyrightText="Copyright (c) 2016 CEA LIST.&#xD;&#xA;&#xD;&#xA; All rights reserved. This program and the accompanying materials&#xD;&#xA; are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA; which accompanies this distribution, and is available at&#xD;&#xA; http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA; Contributors:&#xD;&#xA;  CEA LIST - Initial API and implementation"
+    copyrightText="Copyright (c) 2016 CEA LIST.&#xA;&#xA; All rights reserved. This program and the accompanying materials&#xA; are made available under the terms of the Eclipse Public License v1.0&#xA; which accompanies this distribution, and is available at&#xA; http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA; Contributors:&#xA;  CEA LIST - Initial API and implementation"
     modelDirectory="/org.eclipse.papyrus.moka.fmi.profile/src-gen" modelPluginID="org.eclipse.papyrus.moka.fmi.profile"
     modelName="FMI" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.uml2.uml.ecore.importer" complianceLevel="8.0" copyrightFields="false"
-    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.papyrus.moka.fmi/model/Fmi2ModelDescription.genmodel#//modeldescription ../../org.eclipse.papyrus.moka.fmi/model/fmumetamodel.genmodel#//fmumetamodel ../../org.eclipse.uml2.types/model/Types.genmodel#//types ../../org.eclipse.uml2.uml/model/UML.genmodel#//uml"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.papyrus.moka.fmi/model/Fmi2ModelDescription.genmodel#//modeldescription ../../org.eclipse.papyrus.moka.fmi/model/fmumetamodel.genmodel#//fmumetamodel ../../org.eclipse.uml2.uml.profile.standard/model/Standard.genmodel#//standard ../../org.eclipse.papyrus.sysml14/resources/profile/SysML.profile.genmodel#//sysml14 ../../org.eclipse.uml2.types/model/Types.genmodel#//types ../../org.eclipse.uml2.uml/model/UML.genmodel#//uml"
     operationReflection="true" importOrganizing="true">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
     <details key="OPPOSITE_ROLE_NAMES" value="IGNORE"/>
@@ -46,18 +46,6 @@
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//InitialKind/approx"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//InitialKind/calculated"/>
     </genEnums>
-    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="fmiprofile.ecore#//FlowDirection">
-      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//FlowDirection/in"/>
-      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//FlowDirection/out"/>
-      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//FlowDirection/inout"/>
-    </genEnums>
-    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="fmiprofile.ecore#//DependenciesKind">
-      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/dependent"/>
-      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/constant"/>
-      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/fixed"/>
-      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/tunable"/>
-      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/discrete"/>
-    </genEnums>
     <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="fmiprofile.ecore#//CausalityKind">
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//CausalityKind/parameter"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//CausalityKind/calculatedParameter"/>
@@ -65,6 +53,13 @@
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//CausalityKind/output"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//CausalityKind/local"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//CausalityKind/independent"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="fmiprofile.ecore#//DependenciesKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/dependent"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/constant"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/fixed"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/tunable"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//DependenciesKind/discrete"/>
     </genEnums>
     <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="fmiprofile.ecore#//VariabilityNamingConvention">
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fmiprofile.ecore#//VariabilityNamingConvention/flat"/>
@@ -111,15 +106,18 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference fmiprofile.ecore#//FMU/fmuBundle"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//Parameter"/>
-    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="fmiprofile.ecore#//ScalarVariable">
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="fmiprofile.ecore#//AbstractVariable">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference fmiprofile.ecore#//ScalarVariable/base_Property"/>
+          propertySortChoices="true" ecoreFeature="ecore:EReference fmiprofile.ecore#//AbstractVariable/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="fmiprofile.ecore#//ScalarVariable">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fmiprofile.ecore#//ScalarVariable/description"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fmiprofile.ecore#//ScalarVariable/variability"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fmiprofile.ecore#//ScalarVariable/initial"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fmiprofile.ecore#//ScalarVariable/valueReference"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference fmiprofile.ecore#//ScalarVariable/fmiVariable"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fmiprofile.ecore#//ScalarVariable/causalityKind"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//Local"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//CS_FMU">
@@ -135,11 +133,7 @@
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//ME_FMU">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fmiprofile.ecore#//ME_FMU/completedIntegratorStepNotNeeded"/>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//Port">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference fmiprofile.ecore#//Port/base_Port"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fmiprofile.ecore#//Port/direction"/>
-    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//FMIPort"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//Independent"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//Unknown">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -175,5 +169,6 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference fmiprofile.ecore#//InitialUnknownDependency/base_Dependency"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//CalculatedParameter"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fmiprofile.ecore#//Port"/>
   </genPackages>
 </genmodel:GenModel>

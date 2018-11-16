@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.fmi.fmumetamodel.impl;
 
@@ -66,6 +75,7 @@ public class FolderToCreateInFMUImpl extends AbstractFileImpl implements FolderT
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractFile> getChildren() {
 		if (children == null) {
 			children = new EObjectContainmentEList<AbstractFile>(AbstractFile.class, this, FmumetamodelPackage.FOLDER_TO_CREATE_IN_FMU__CHILDREN);

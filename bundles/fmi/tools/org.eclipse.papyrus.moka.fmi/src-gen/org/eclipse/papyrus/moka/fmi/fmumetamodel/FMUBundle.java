@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.fmi.fmumetamodel;
 
@@ -66,7 +75,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Resources Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Resources Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -82,7 +91,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Win32 Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Win32 Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -98,7 +107,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Win64 Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Win64 Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -114,7 +123,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Linux32 Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Linux32 Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -130,7 +139,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Linux64 Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Linux64 Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -146,7 +155,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Darwin64 Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Darwin64 Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -162,7 +171,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Darwin32 Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Darwin32 Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -178,7 +187,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Documentation Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Documentation Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -194,7 +203,7 @@ public interface FMUBundle extends EObject {
 	 * The list contents are of type {@link org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source Files</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Source Files</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

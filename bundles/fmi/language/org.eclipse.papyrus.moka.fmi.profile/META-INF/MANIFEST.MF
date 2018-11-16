@@ -1,20 +1,24 @@
 Manifest-Version: 1.0
-Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.14.0,4.0.0)",
- org.eclipse.uml2.uml.resources;bundle-version="[5.4.0,6.0.0)",
- org.eclipse.uml2.uml.profile.standard;bundle-version="[1.4.0,2.0.0)",
- org.eclipse.uml2.uml;bundle-version="[5.4.0,6.0.0)",
- org.eclipse.papyrus.moka.fmi;bundle-version="4.0.0"
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.13.0,4.0.0)",
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.uml2.uml.resources;bundle-version="[5.3.0,6.0.0)",
+ org.eclipse.uml2.uml.profile.standard;bundle-version="[1.0.100,2.0.0)";visibility:=reexport,
+ org.eclipse.uml2.uml;bundle-version="[5.3.0,6.0.0)";visibility:=reexport,
+ org.eclipse.papyrus.moka.fmi;bundle-version="2.0.100";visibility:=reexport,
+ org.eclipse.uml2.types;visibility:=reexport,
+ org.eclipse.papyrus.sysml14;bundle-version="1.2.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-Version: 4.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Name: FMI 2.0 UML Profile
+Bundle-Name: %pluginName
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.eclipse.papyrus.moka.fmi.profile;singleton:=true
+Automatic-Module-Name: org.eclipse.papyrus.moka.fmi.profile
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.papyrus.moka.fmi.fmiprofile,
  org.eclipse.papyrus.moka.fmi.fmiprofile.impl,
  org.eclipse.papyrus.moka.fmi.fmiprofile.util,
  org.eclipse.papyrus.moka.fmi.profile.custom,
  org.eclipse.papyrus.moka.fmi.profile.util
-Bundle-Vendor: Eclipse Modeling Project
-Automatic-Module-Name: org.eclipse.papyrus.moka.fmi.profile
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

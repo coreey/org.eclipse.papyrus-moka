@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
@@ -34,10 +35,11 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IHintedType;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
-import org.eclipse.papyrus.moka.fmi.fmiprofile.FlowDirection;
 import org.eclipse.papyrus.moka.fmi.profile.util.FMIProfileUtil;
+import org.eclipse.papyrus.moka.ssp.profile.custom.StereotypeStrings;
+import org.eclipse.papyrus.sysml14.portsandflows.FlowDirection;
 import org.eclipse.papyrus.uml.diagram.composite.custom.edit.command.CreateViewCommand;
+import org.eclipse.papyrus.uml.diagram.composite.edit.parts.PropertyPartEditPartCN;
 import org.eclipse.papyrus.uml.diagram.composite.part.UMLVisualIDRegistry;
 import org.eclipse.papyrus.uml.diagram.composite.providers.UMLElementTypes;
 import org.eclipse.papyrus.uml.tools.utils.NamedElementUtil;
@@ -45,6 +47,7 @@ import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 
 public class DropFMUAsPartCommand extends AbstractTransactionalCommand {
 
@@ -114,6 +117,11 @@ public class DropFMUAsPartCommand extends AbstractTransactionalCommand {
 		newPart.setName(NamedElementUtil.getDefaultNameWithIncrementFromBase(partName,targetSimulator.getOwnedAttributes()));
 		newPart.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		
+		Stereotype stereotype = newPart.getApplicableStereotype(StereotypeStrings.SSDCOMPONENT_QUALIFIEDNAME);
+		if (stereotype != null) {
+			EObject SsdComponent = newPart.applyStereotype(stereotype);
+		}
+		
 	}
 
 
@@ -127,9 +135,11 @@ public class DropFMUAsPartCommand extends AbstractTransactionalCommand {
 
 		int maxPortOnOneSide = Math.max(inPorts.size(), outPorts.size());
 		int figureHeight = Math.max(MIN_HEIGHT, (2 * maxPortOnOneSide + 1) * PORT_DEFAULT_HEIGHT);
-
+		
+		String elementType = PropertyPartEditPartCN.VISUAL_ID;
+		
 		ViewDescriptor descriptor = new ViewDescriptor(new EObjectAdapter(newPart), Node.class,
-				((IHintedType) UMLElementTypes.getElementType(UMLVisualIDRegistry.getNodeVisualID(targetView, newPart)))
+				((IHintedType) UMLElementTypes.getElementType(elementType))
 				.getSemanticHint(),
 				targetGraphicalEditPart.getDiagramPreferencesHint());
 		CreateViewCommand createCommand = new CreateViewCommand(domain, descriptor, targetView);

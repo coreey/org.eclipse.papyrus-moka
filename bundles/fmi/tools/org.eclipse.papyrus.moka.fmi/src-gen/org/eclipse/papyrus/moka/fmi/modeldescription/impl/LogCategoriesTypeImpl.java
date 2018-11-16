@@ -79,6 +79,7 @@ public class LogCategoriesTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.LOG_CATEGORIES_TYPE__GROUP);
@@ -91,6 +92,7 @@ public class LogCategoriesTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CategoryType> getCategory() {
 		return getGroup().list(FmiPackage.Literals.LOG_CATEGORIES_TYPE__CATEGORY);
 	}
@@ -191,7 +193,7 @@ public class LogCategoriesTypeImpl extends MinimalEObjectImpl.Container implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(')');

@@ -12,6 +12,7 @@
 package org.eclipse.papyrus.moka.fmi.fmiprofile.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.papyrus.moka.fmi.fmiprofile.CalculatedParameter;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
 
@@ -22,7 +23,7 @@ import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
  *
  * @generated
  */
-public class CalculatedParameterImpl extends ScalarVariableImpl implements CalculatedParameter {
+public class CalculatedParameterImpl extends AbstractVariableImpl implements CalculatedParameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

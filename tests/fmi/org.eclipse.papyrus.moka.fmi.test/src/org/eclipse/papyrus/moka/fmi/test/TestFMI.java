@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.papyrus.moka.fmi.fmi2uml.FMI2UML;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.CS_FMU;
+import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
 import org.eclipse.papyrus.moka.fmi.fmu.FMUParser;
 import org.eclipse.papyrus.moka.fmi.fmu.FMUResource;
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.AbstractFile;
@@ -231,7 +232,7 @@ public class TestFMI {
 			String expectedClassName = fmuRes.getFmuParser().getModelDescription().getCoSimulation().get(0).getModelIdentifier();
 			assertTrue(fmuClass.getName().equals(expectedClassName));
 			
-			Stereotype csFMUStereo = FMIProfileUtil.getStereotype(umlModel, FMIProfileUtil.CS_FMU_STEREO_NAME);
+			Stereotype csFMUStereo = FMIProfileUtil.getStereotype(umlModel, FMIProfileUtil.CS_FMU_STEREO_NAME, FMIProfilePackage.eINSTANCE);
 			EObject application = fmuClass.getStereotypeApplication(csFMUStereo);
 			assertTrue(application instanceof CS_FMU);
 			CS_FMU csFMU = (CS_FMU) application;
@@ -254,7 +255,7 @@ public class TestFMI {
 			Class umlClass = (Class) umlModel.getOwnedType(expectedClassName) ;
 			
 			csFMUStereo = umlClass.getAppliedStereotype(FMIProfileUtil.CS_FMU_STEREO_QUALIFIED_NAME);
-			assertTrue(csFMUStereo == FMIProfileUtil.getStereotype(umlModel, FMIProfileUtil.CS_FMU_STEREO_NAME));
+			assertTrue(csFMUStereo == FMIProfileUtil.getStereotype(umlModel, FMIProfileUtil.CS_FMU_STEREO_NAME, FMIProfilePackage.eINSTANCE));
 			
 			csFMU = (CS_FMU) umlClass.getStereotypeApplication(csFMUStereo);
 			assertTrue(csFMU.getModelDescription() != null);

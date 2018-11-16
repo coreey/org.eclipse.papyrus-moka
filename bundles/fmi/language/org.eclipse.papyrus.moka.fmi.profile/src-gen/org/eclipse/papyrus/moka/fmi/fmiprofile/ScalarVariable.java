@@ -14,7 +14,6 @@ package org.eclipse.papyrus.moka.fmi.fmiprofile;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.papyrus.moka.fmi.modeldescription.Fmi2ScalarVariable;
-import org.eclipse.uml2.uml.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,12 +24,12 @@ import org.eclipse.uml2.uml.Property;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getBase_Property <em>Base Property</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getDescription <em>Description</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getVariability <em>Variability</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getInitial <em>Initial</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getValueReference <em>Value Reference</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getFmiVariable <em>Fmi Variable</em>}</li>
+ *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getCausalityKind <em>Causality Kind</em>}</li>
  * </ul>
  *
  * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage#getScalarVariable()
@@ -38,32 +37,6 @@ import org.eclipse.uml2.uml.Property;
  * @generated
  */
 public interface ScalarVariable extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Base Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Base Property</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Base Property</em>' reference.
-	 * @see #setBase_Property(Property)
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage#getScalarVariable_Base_Property()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	Property getBase_Property();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getBase_Property <em>Base Property</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Base Property</em>' reference.
-	 * @see #getBase_Property()
-	 * @generated
-	 */
-	void setBase_Property(Property value);
-
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -150,6 +123,7 @@ public interface ScalarVariable extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Value Reference</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value Reference</em>' attribute isn't clear,
@@ -157,12 +131,12 @@ public interface ScalarVariable extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value Reference</em>' attribute.
-	 * @see #setValueReference(int)
+	 * @see #setValueReference(long)
 	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage#getScalarVariable_ValueReference()
-	 * @model required="true" ordered="false"
+	 * @model default="-1" required="true" ordered="false"
 	 * @generated
 	 */
-	int getValueReference();
+	long getValueReference();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getValueReference <em>Value Reference</em>}' attribute.
@@ -172,7 +146,7 @@ public interface ScalarVariable extends EObject {
 	 * @see #getValueReference()
 	 * @generated
 	 */
-	void setValueReference(int value);
+	void setValueReference(long value);
 
 	/**
 	 * Returns the value of the '<em><b>Fmi Variable</b></em>' reference.
@@ -199,5 +173,34 @@ public interface ScalarVariable extends EObject {
 	 * @generated
 	 */
 	void setFmiVariable(Fmi2ScalarVariable value);
+
+	/**
+	 * Returns the value of the '<em><b>Causality Kind</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.papyrus.moka.fmi.fmiprofile.CausalityKind}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Causality Kind</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Causality Kind</em>' attribute.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.CausalityKind
+	 * @see #setCausalityKind(CausalityKind)
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage#getScalarVariable_CausalityKind()
+	 * @model required="true" ordered="false"
+	 * @generated
+	 */
+	CausalityKind getCausalityKind();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable#getCausalityKind <em>Causality Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Causality Kind</em>' attribute.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.CausalityKind
+	 * @see #getCausalityKind()
+	 * @generated
+	 */
+	void setCausalityKind(CausalityKind value);
 
 } // ScalarVariable

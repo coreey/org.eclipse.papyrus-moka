@@ -76,13 +76,13 @@ public interface FMIProfileFactory extends EFactory {
 	ME_FMU createME_FMU();
 
 	/**
-	 * Returns a new object of class '<em>Port</em>'.
+	 * Returns a new object of class '<em>FMI Port</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Port</em>'.
+	 * @return a new object of class '<em>FMI Port</em>'.
 	 * @generated
 	 */
-	Port createPort();
+	FMIPort createFMIPort();
 
 	/**
 	 * Returns a new object of class '<em>Independent</em>'.
@@ -173,6 +173,15 @@ public interface FMIProfileFactory extends EFactory {
 	 * @generated
 	 */
 	CalculatedParameter createCalculatedParameter();
+
+	/**
+	 * Returns a new object of class '<em>Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Port</em>'.
+	 * @generated
+	 */
+	Port createPort();
 
 	/**
 	 * Returns the package supported by this factory.

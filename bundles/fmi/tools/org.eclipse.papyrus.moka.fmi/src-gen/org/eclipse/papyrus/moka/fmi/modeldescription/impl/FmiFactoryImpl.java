@@ -207,6 +207,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BaseUnitType createBaseUnitType() {
 		BaseUnitTypeImpl baseUnitType = new BaseUnitTypeImpl();
 		return baseUnitType;
@@ -217,6 +218,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanType createBooleanType() {
 		BooleanTypeImpl booleanType = new BooleanTypeImpl();
 		return booleanType;
@@ -227,6 +229,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CategoryType createCategoryType() {
 		CategoryTypeImpl categoryType = new CategoryTypeImpl();
 		return categoryType;
@@ -237,6 +240,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CoSimulationType createCoSimulationType() {
 		CoSimulationTypeImpl coSimulationType = new CoSimulationTypeImpl();
 		return coSimulationType;
@@ -247,6 +251,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DefaultExperimentType createDefaultExperimentType() {
 		DefaultExperimentTypeImpl defaultExperimentType = new DefaultExperimentTypeImpl();
 		return defaultExperimentType;
@@ -257,6 +262,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DisplayUnitType createDisplayUnitType() {
 		DisplayUnitTypeImpl displayUnitType = new DisplayUnitTypeImpl();
 		return displayUnitType;
@@ -267,6 +273,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DocumentRoot createDocumentRoot() {
 		DocumentRootImpl documentRoot = new DocumentRootImpl();
 		return documentRoot;
@@ -277,6 +284,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationType createEnumerationType() {
 		EnumerationTypeImpl enumerationType = new EnumerationTypeImpl();
 		return enumerationType;
@@ -287,6 +295,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationType1 createEnumerationType1() {
 		EnumerationType1Impl enumerationType1 = new EnumerationType1Impl();
 		return enumerationType1;
@@ -297,6 +306,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FileType createFileType() {
 		FileTypeImpl fileType = new FileTypeImpl();
 		return fileType;
@@ -307,6 +317,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FileType1 createFileType1() {
 		FileType1Impl fileType1 = new FileType1Impl();
 		return fileType1;
@@ -317,6 +328,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2Annotation createFmi2Annotation() {
 		Fmi2AnnotationImpl fmi2Annotation = new Fmi2AnnotationImpl();
 		return fmi2Annotation;
@@ -327,6 +339,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2ScalarVariable createFmi2ScalarVariable() {
 		Fmi2ScalarVariableImpl fmi2ScalarVariable = new Fmi2ScalarVariableImpl();
 		return fmi2ScalarVariable;
@@ -337,6 +350,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2SimpleType createFmi2SimpleType() {
 		Fmi2SimpleTypeImpl fmi2SimpleType = new Fmi2SimpleTypeImpl();
 		return fmi2SimpleType;
@@ -347,6 +361,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2Unit createFmi2Unit() {
 		Fmi2UnitImpl fmi2Unit = new Fmi2UnitImpl();
 		return fmi2Unit;
@@ -357,6 +372,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2VariableDependency createFmi2VariableDependency() {
 		Fmi2VariableDependencyImpl fmi2VariableDependency = new Fmi2VariableDependencyImpl();
 		return fmi2VariableDependency;
@@ -367,6 +383,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FmiModelDescriptionType createFmiModelDescriptionType() {
 		FmiModelDescriptionTypeImpl fmiModelDescriptionType = new FmiModelDescriptionTypeImpl();
 		return fmiModelDescriptionType;
@@ -377,6 +394,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InitialUnknownsType createInitialUnknownsType() {
 		InitialUnknownsTypeImpl initialUnknownsType = new InitialUnknownsTypeImpl();
 		return initialUnknownsType;
@@ -387,6 +405,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntegerType createIntegerType() {
 		IntegerTypeImpl integerType = new IntegerTypeImpl();
 		return integerType;
@@ -397,6 +416,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntegerType1 createIntegerType1() {
 		IntegerType1Impl integerType1 = new IntegerType1Impl();
 		return integerType1;
@@ -407,6 +427,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ItemType createItemType() {
 		ItemTypeImpl itemType = new ItemTypeImpl();
 		return itemType;
@@ -417,6 +438,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogCategoriesType createLogCategoriesType() {
 		LogCategoriesTypeImpl logCategoriesType = new LogCategoriesTypeImpl();
 		return logCategoriesType;
@@ -427,6 +449,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelExchangeType createModelExchangeType() {
 		ModelExchangeTypeImpl modelExchangeType = new ModelExchangeTypeImpl();
 		return modelExchangeType;
@@ -437,6 +460,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelStructureType createModelStructureType() {
 		ModelStructureTypeImpl modelStructureType = new ModelStructureTypeImpl();
 		return modelStructureType;
@@ -447,6 +471,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelVariablesType createModelVariablesType() {
 		ModelVariablesTypeImpl modelVariablesType = new ModelVariablesTypeImpl();
 		return modelVariablesType;
@@ -457,6 +482,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RealType createRealType() {
 		RealTypeImpl realType = new RealTypeImpl();
 		return realType;
@@ -467,6 +493,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RealType1 createRealType1() {
 		RealType1Impl realType1 = new RealType1Impl();
 		return realType1;
@@ -477,6 +504,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SourceFilesType createSourceFilesType() {
 		SourceFilesTypeImpl sourceFilesType = new SourceFilesTypeImpl();
 		return sourceFilesType;
@@ -487,6 +515,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SourceFilesType1 createSourceFilesType1() {
 		SourceFilesType1Impl sourceFilesType1 = new SourceFilesType1Impl();
 		return sourceFilesType1;
@@ -497,6 +526,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StringType createStringType() {
 		StringTypeImpl stringType = new StringTypeImpl();
 		return stringType;
@@ -507,6 +537,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ToolType createToolType() {
 		ToolTypeImpl toolType = new ToolTypeImpl();
 		return toolType;
@@ -517,6 +548,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypeDefinitionsType createTypeDefinitionsType() {
 		TypeDefinitionsTypeImpl typeDefinitionsType = new TypeDefinitionsTypeImpl();
 		return typeDefinitionsType;
@@ -527,6 +559,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UnitDefinitionsType createUnitDefinitionsType() {
 		UnitDefinitionsTypeImpl unitDefinitionsType = new UnitDefinitionsTypeImpl();
 		return unitDefinitionsType;
@@ -537,6 +570,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UnknownType createUnknownType() {
 		UnknownTypeImpl unknownType = new UnknownTypeImpl();
 		return unknownType;
@@ -547,6 +581,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UnknownType1 createUnknownType1() {
 		UnknownType1Impl unknownType1 = new UnknownType1Impl();
 		return unknownType1;
@@ -909,6 +944,7 @@ public class FmiFactoryImpl extends EFactoryImpl implements FmiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FmiPackage getFmiPackage() {
 		return (FmiPackage)getEPackage();
 	}

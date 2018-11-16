@@ -12,6 +12,7 @@
 package org.eclipse.papyrus.moka.fmi.fmiprofile.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.Local;
 
@@ -22,7 +23,7 @@ import org.eclipse.papyrus.moka.fmi.fmiprofile.Local;
  *
  * @generated
  */
-public class LocalImpl extends ScalarVariableImpl implements Local {
+public class LocalImpl extends AbstractVariableImpl implements Local {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

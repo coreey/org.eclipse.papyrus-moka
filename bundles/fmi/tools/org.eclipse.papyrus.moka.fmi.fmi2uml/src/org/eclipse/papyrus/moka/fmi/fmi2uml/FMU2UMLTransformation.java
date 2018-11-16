@@ -17,9 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.CS_FMU;
+import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FMUBundle;
 import org.eclipse.papyrus.moka.fmi.modeldescription.CausalityType;
 import org.eclipse.papyrus.moka.fmi.modeldescription.CoSimulationType;
@@ -29,6 +32,10 @@ import org.eclipse.papyrus.moka.fmi.modeldescription.UnknownType;
 import org.eclipse.papyrus.moka.fmi.modeldescription.UnknownType1;
 import org.eclipse.papyrus.moka.fmi.profile.util.FMIProfileUtil;
 import org.eclipse.papyrus.moka.fmi.util.FMIUtil;
+import org.eclipse.papyrus.moka.ssp.profile.SSPProfilePackage;
+import org.eclipse.papyrus.moka.ssp.profile.custom.StereotypeStrings;
+import org.eclipse.papyrus.sysml14.deprecatedelements.FlowPort;
+import org.eclipse.papyrus.sysml14.portsandflows.FlowDirection;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
@@ -59,6 +66,7 @@ public class FMU2UMLTransformation {
 	FmiModelDescriptionType modelDescription;
 	Package dependencyPackage;
 	Class fmuClass ;
+	EPackage fmiProfile;
 	
 	
 	Stereotype outputDepStereo;
@@ -70,23 +78,26 @@ public class FMU2UMLTransformation {
 	Stereotype outputStereo;
 	Stereotype localStereo;
 	Stereotype parameterStereo;
+	Stereotype flowPortStereo;
 	
 	private FMUBundle fmuBundle;
+	private SSPProfilePackage sspProfile;
 	public FMU2UMLTransformation(FMUBundle fmuBundle, Package receivingPackage) {
 		this.receivingPackage = receivingPackage;
 		this.fmuBundle= fmuBundle;
 		this.modelDescription  =fmuBundle.getModelDescription();
 
-		outputDepStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.OUTPUT_DEPENDENCY_STEREO_NAME);
-		initialUnknownDepStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.INITIAL_UNKNWOWN_STEREO_NAME);
-		derivativeDepStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.DERIVATIVE_DEPENDENCY_STEREO_NAME);
+		fmiProfile = FMIProfilePackage.eINSTANCE;
+		sspProfile = SSPProfilePackage.eINSTANCE;
+		outputDepStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.OUTPUT_DEPENDENCY_STEREO_NAME, fmiProfile);
+		initialUnknownDepStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.INITIAL_UNKNWOWN_STEREO_NAME, fmiProfile);
+		derivativeDepStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.DERIVATIVE_DEPENDENCY_STEREO_NAME, fmiProfile);
 		
-		calculatedParameterStereo =FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.CALCULATED_PARAMETER_STEREO_NAME);
-		independentStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.INDEPENDENT_STEREO_NAME);
-		inputStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PORT_STEREO_NAME);
-		outputStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PORT_STEREO_NAME);
-		localStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.LOCAL_STEREO_NAME);
-		parameterStereo =FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PARAMETER_STEREO_NAME);
+		calculatedParameterStereo =FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.CALCULATED_PARAMETER_STEREO_NAME, fmiProfile);
+		independentStereo= FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.INDEPENDENT_STEREO_NAME, fmiProfile);
+
+		localStereo = FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.LOCAL_STEREO_NAME, fmiProfile);
+		parameterStereo =FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.PARAMETER_STEREO_NAME, fmiProfile);
 		
 	}
 
@@ -97,11 +108,12 @@ public class FMU2UMLTransformation {
 			if (! modelDescription.getCoSimulation().isEmpty()) {
 				CoSimulationType cosim =modelDescription.getCoSimulation().get(0);
 
-				FMIProfileUtil.applyFMIProfileIfNeeded(receivingPackage);
+				FMIProfileUtil.applyProfileIfNeeded(receivingPackage, fmiProfile);
+				FMIProfileUtil.applyProfileIfNeeded(receivingPackage, sspProfile);
 				fmuClass = receivingPackage.createOwnedClass(cosim.getModelIdentifier(), false);
 				dependencyPackage = receivingPackage.createNestedPackage(cosim.getModelIdentifier()+FMI2UML.DEPENDENCIES_PACKAGE_SUFFIX);
 
-				CS_FMU csFMU = (CS_FMU) fmuClass.applyStereotype(FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.CS_FMU_STEREO_NAME));
+				CS_FMU csFMU = (CS_FMU) fmuClass.applyStereotype(FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.CS_FMU_STEREO_NAME, fmiProfile));
 
 				csFMU.setFmuBundle(fmuBundle);
 
@@ -187,6 +199,13 @@ public class FMU2UMLTransformation {
 		}
 		
 		fmuClass.getOwnedAttributes().add(prop);
+		if (FMIUtil.isPort(variable) && flowPortStereo == null) {
+			flowPortStereo = FMIProfileUtil.getStereotype(prop, StereotypeStrings.SSDCONNECTORANDFMIPORT_SHORTNAME, SSPProfilePackage.eINSTANCE);
+			inputStereo = flowPortStereo;
+			outputStereo = flowPortStereo;
+		}
+		
+		
 		prop.setName(variable.getName());
 		prop.setType(propType);
 		prop.setUpper(1);
@@ -195,7 +214,14 @@ public class FMU2UMLTransformation {
 		setDefaultValue(prop, variable);
 		Stereotype stereo = getPropertyStereotype(variable.getCausality());
 		if (stereo != null){
-			prop.applyStereotype(stereo);
+			EObject stereoApp = prop.applyStereotype(stereo);
+//			if (stereoApp instanceof FlowPort) {
+//				if(CausalityType.INPUT.equals(variable.getCausality())) {
+//					((FlowPort)stereoApp).setDirection(FlowDirection.IN);
+//				}else if (CausalityType.OUTPUT.equals(variable.getCausality())) {
+//					((FlowPort)stereoApp).setDirection(FlowDirection.OUT);
+//				}
+//			}
 		
 		}
 

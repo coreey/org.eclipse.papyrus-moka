@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_DGfCYCiaEeaEPIADLpYHKQ" type="PapyrusUMLClassDiagram" name="ClassDiagram" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_DGfCYCiaEeaEPIADLpYHKQ" type="PapyrusUMLClassDiagram" name="ClassDiagram" measurementUnit="Pixel">
   <children xmi:type="notation:Shape" xmi:id="_GnGpcCiaEeaEPIADLpYHKQ" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_GnGpciiaEeaEPIADLpYHKQ" type="Class_NameLabel"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_GnGpcyiaEeaEPIADLpYHKQ" type="Class_FloatingNameLabel">
@@ -212,9 +212,9 @@
     <element xmi:type="uml:Class" href="fmumetamodel.uml#_e1UXIC4PEea0_OLDat2kQQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_e1XacC4PEea0_OLDat2kQQ" x="1296" y="527" width="124" height="168"/>
   </children>
-  <styles xmi:type="notation:StringValueStyle" xmi:id="_DGfCYSiaEeaEPIADLpYHKQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_DGfCYSiaEeaEPIADLpYHKQ" name="diagram_compatibility_version" stringValue="1.4.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_DGfCYiiaEeaEPIADLpYHKQ"/>
-  <styles xmi:type="style:PapyrusViewStyle" xmi:id="_DGfCYyiaEeaEPIADLpYHKQ">
+  <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_R5w4gO-8Eeeg4t5akIWReA" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
     <owner xmi:type="uml:Model" href="fmumetamodel.uml#_qqrUcCiREeaEPIADLpYHKQ"/>
   </styles>
   <element xmi:type="uml:Model" href="fmumetamodel.uml#_qqrUcCiREeaEPIADLpYHKQ"/>

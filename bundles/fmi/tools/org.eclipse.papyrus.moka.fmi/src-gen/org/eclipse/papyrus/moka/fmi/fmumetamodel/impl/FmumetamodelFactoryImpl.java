@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.fmi.fmumetamodel.impl;
 
@@ -103,6 +112,7 @@ public class FmumetamodelFactoryImpl extends EFactoryImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FMUBundle createFMUBundle() {
 		FMUBundleImpl fmuBundle = new FMUBundleImpl();
 		return fmuBundle;
@@ -113,6 +123,7 @@ public class FmumetamodelFactoryImpl extends EFactoryImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FolderToCreateInFMU createFolderToCreateInFMU() {
 		FolderToCreateInFMUImpl folderToCreateInFMU = new FolderToCreateInFMUImpl();
 		return folderToCreateInFMU;
@@ -123,6 +134,7 @@ public class FmumetamodelFactoryImpl extends EFactoryImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArchiveToUnzipInFMU createArchiveToUnzipInFMU() {
 		ArchiveToUnzipInFMUImpl archiveToUnzipInFMU = new ArchiveToUnzipInFMUImpl();
 		return archiveToUnzipInFMU;
@@ -133,6 +145,7 @@ public class FmumetamodelFactoryImpl extends EFactoryImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public JavaFileProxy createJavaFileProxy() {
 		JavaFileProxyImpl javaFileProxy = new JavaFileProxyImpl();
 		return javaFileProxy;
@@ -161,6 +174,7 @@ public class FmumetamodelFactoryImpl extends EFactoryImpl implements Fmumetamode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FmumetamodelPackage getFmumetamodelPackage() {
 		return (FmumetamodelPackage)getEPackage();
 	}

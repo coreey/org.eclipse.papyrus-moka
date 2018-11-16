@@ -139,6 +139,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getFactor() {
 		return factor;
 	}
@@ -148,6 +149,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFactor(double newFactor) {
 		double oldFactor = factor;
 		factor = newFactor;
@@ -162,6 +164,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetFactor() {
 		double oldFactor = factor;
 		boolean oldFactorESet = factorESet;
@@ -176,6 +179,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetFactor() {
 		return factorESet;
 	}
@@ -185,6 +189,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -194,6 +199,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -206,6 +212,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getOffset() {
 		return offset;
 	}
@@ -215,6 +222,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(double newOffset) {
 		double oldOffset = offset;
 		offset = newOffset;
@@ -229,6 +237,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetOffset() {
 		double oldOffset = offset;
 		boolean oldOffsetESet = offsetESet;
@@ -243,6 +252,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOffset() {
 		return offsetESet;
 	}
@@ -334,7 +344,7 @@ public class DisplayUnitTypeImpl extends MinimalEObjectImpl.Container implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (factor: ");
 		if (factorESet) result.append(factor); else result.append("<unset>");
 		result.append(", name: ");

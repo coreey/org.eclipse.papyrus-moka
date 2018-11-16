@@ -79,6 +79,7 @@ public class TypeDefinitionsTypeImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.TYPE_DEFINITIONS_TYPE__GROUP);
@@ -91,6 +92,7 @@ public class TypeDefinitionsTypeImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Fmi2SimpleType> getSimpleType() {
 		return getGroup().list(FmiPackage.Literals.TYPE_DEFINITIONS_TYPE__SIMPLE_TYPE);
 	}
@@ -191,7 +193,7 @@ public class TypeDefinitionsTypeImpl extends MinimalEObjectImpl.Container implem
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(')');

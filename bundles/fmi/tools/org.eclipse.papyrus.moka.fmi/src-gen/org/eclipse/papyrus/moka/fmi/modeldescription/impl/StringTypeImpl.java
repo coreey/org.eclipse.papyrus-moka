@@ -100,6 +100,7 @@ public class StringTypeImpl extends MinimalEObjectImpl.Container implements Stri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDeclaredType() {
 		return declaredType;
 	}
@@ -109,6 +110,7 @@ public class StringTypeImpl extends MinimalEObjectImpl.Container implements Stri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDeclaredType(String newDeclaredType) {
 		String oldDeclaredType = declaredType;
 		declaredType = newDeclaredType;
@@ -121,6 +123,7 @@ public class StringTypeImpl extends MinimalEObjectImpl.Container implements Stri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getStart() {
 		return start;
 	}
@@ -130,6 +133,7 @@ public class StringTypeImpl extends MinimalEObjectImpl.Container implements Stri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStart(String newStart) {
 		String oldStart = start;
 		start = newStart;
@@ -214,7 +218,7 @@ public class StringTypeImpl extends MinimalEObjectImpl.Container implements Stri
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (declaredType: ");
 		result.append(declaredType);
 		result.append(", start: ");

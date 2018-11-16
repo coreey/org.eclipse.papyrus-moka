@@ -61,16 +61,16 @@ public class FMUParser{
 
 	boolean isUnzipped=false;
 
-	public FMUParser(String fmuPath){
+	public FMUParser(String fmuPath) throws FileNotFoundException{
 		initializeParser(fmuPath, true);
 	}
 	
 	
-	public FMUParser(String fmuPath, boolean autoclean){
+	public FMUParser(String fmuPath, boolean autoclean) throws FileNotFoundException{
 		initializeParser(fmuPath, autoclean);
 	}
 
-	private void initializeParser(String fmuPath, boolean autoclean) {
+	private void initializeParser(String fmuPath, boolean autoclean) throws FileNotFoundException {
 		initResourceSet();
 		
 		this.fmuPath = fmuPath ;
@@ -120,17 +120,22 @@ public class FMUParser{
 
 
 
-	private void initModelDescriptionFromFolder() {
-		Resource modelDescriptionResource = resSet.getResource(URI.createFileURI(fmuFolder.getAbsolutePath()+ File.separator + FMUResourceUtil.MODEL_DESCRIPTION_FILE_NAME), true);
-		if (modelDescriptionResource != null
-				&&!modelDescriptionResource.getContents().isEmpty() && modelDescriptionResource.getContents().get(0) instanceof DocumentRoot){
-			DocumentRoot root = (DocumentRoot) modelDescriptionResource.getContents().get(0);
-			modelDescription = root.getFmiModelDescription();
+	private void initModelDescriptionFromFolder() throws FileNotFoundException {
+		try {
+			String uri = fmuFolder.getAbsolutePath() + File.separator + FMUResourceUtil.MODEL_DESCRIPTION_FILE_NAME;
+			Resource modelDescriptionResource = resSet.getResource(URI.createFileURI(uri), true);
+			if (modelDescriptionResource != null && !modelDescriptionResource.getContents().isEmpty()
+					&& modelDescriptionResource.getContents().get(0) instanceof DocumentRoot) {
+				DocumentRoot root = (DocumentRoot) modelDescriptionResource.getContents().get(0);
+				modelDescription = root.getFmiModelDescription();
 
-			Resource resFromZip = resSet.getResource(FMUResourceUtil.MODEL_DESCRIPTION_ZIP_URI, false);
-			if (resFromZip != null && resFromZip.isLoaded()){
-				resFromZip.unload();
+				Resource resFromZip = resSet.getResource(FMUResourceUtil.MODEL_DESCRIPTION_ZIP_URI, false);
+				if (resFromZip != null && resFromZip.isLoaded()) {
+					resFromZip.unload();
+				}
 			}
+		} catch (RuntimeException e) {
+			throw new FileNotFoundException("Can't find the " + FMUResourceUtil.MODEL_DESCRIPTION_FILE_NAME + " file of the FMU.");
 		}
 	}
 
@@ -182,7 +187,8 @@ public class FMUParser{
 		}
 	
 		try{
-			UnzipUtility.unzip(fmuFile.getAbsolutePath(), fmuFolder.getAbsolutePath());
+			URI fileUri = URI.createFileURI(fmuFile.getAbsolutePath());
+			UnzipUtility.unzip(fileUri, fmuFolder.getAbsolutePath());
 		} catch (IOException e) {
 			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), "Could not unzip fmu archive" + fmuFile, e));
 		}

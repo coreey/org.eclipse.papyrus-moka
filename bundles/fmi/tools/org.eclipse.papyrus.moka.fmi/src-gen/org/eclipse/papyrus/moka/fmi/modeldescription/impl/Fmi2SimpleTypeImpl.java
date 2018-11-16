@@ -161,6 +161,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RealType1 getReal() {
 		return real;
 	}
@@ -185,6 +186,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReal(RealType1 newReal) {
 		if (newReal != real) {
 			NotificationChain msgs = null;
@@ -204,6 +206,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntegerType1 getInteger() {
 		return integer;
 	}
@@ -228,6 +231,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInteger(IntegerType1 newInteger) {
 		if (newInteger != integer) {
 			NotificationChain msgs = null;
@@ -247,6 +251,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject getBoolean() {
 		return boolean_;
 	}
@@ -271,6 +276,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBoolean(EObject newBoolean) {
 		if (newBoolean != boolean_) {
 			NotificationChain msgs = null;
@@ -290,6 +296,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject getString() {
 		return string;
 	}
@@ -314,6 +321,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setString(EObject newString) {
 		if (newString != string) {
 			NotificationChain msgs = null;
@@ -333,6 +341,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationType1 getEnumeration() {
 		return enumeration;
 	}
@@ -357,6 +366,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnumeration(EnumerationType1 newEnumeration) {
 		if (newEnumeration != enumeration) {
 			NotificationChain msgs = null;
@@ -376,6 +386,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -385,6 +396,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -397,6 +409,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -406,6 +419,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -562,7 +576,7 @@ public class Fmi2SimpleTypeImpl extends MinimalEObjectImpl.Container implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (description: ");
 		result.append(description);
 		result.append(", name: ");

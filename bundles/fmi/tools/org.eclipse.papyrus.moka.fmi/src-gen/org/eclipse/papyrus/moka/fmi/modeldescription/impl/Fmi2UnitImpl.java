@@ -114,6 +114,7 @@ public class Fmi2UnitImpl extends MinimalEObjectImpl.Container implements Fmi2Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BaseUnitType getBaseUnit() {
 		return baseUnit;
 	}
@@ -138,6 +139,7 @@ public class Fmi2UnitImpl extends MinimalEObjectImpl.Container implements Fmi2Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBaseUnit(BaseUnitType newBaseUnit) {
 		if (newBaseUnit != baseUnit) {
 			NotificationChain msgs = null;
@@ -157,6 +159,7 @@ public class Fmi2UnitImpl extends MinimalEObjectImpl.Container implements Fmi2Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.FMI2_UNIT__GROUP);
@@ -169,6 +172,7 @@ public class Fmi2UnitImpl extends MinimalEObjectImpl.Container implements Fmi2Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DisplayUnitType> getDisplayUnit() {
 		return getGroup().list(FmiPackage.Literals.FMI2_UNIT__DISPLAY_UNIT);
 	}
@@ -178,6 +182,7 @@ public class Fmi2UnitImpl extends MinimalEObjectImpl.Container implements Fmi2Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -187,6 +192,7 @@ public class Fmi2UnitImpl extends MinimalEObjectImpl.Container implements Fmi2Un
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -312,7 +318,7 @@ public class Fmi2UnitImpl extends MinimalEObjectImpl.Container implements Fmi2Un
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(", name: ");

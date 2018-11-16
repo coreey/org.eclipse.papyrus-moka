@@ -79,6 +79,7 @@ public class Fmi2VariableDependencyImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.FMI2_VARIABLE_DEPENDENCY__GROUP);
@@ -91,6 +92,7 @@ public class Fmi2VariableDependencyImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<UnknownType1> getUnknown() {
 		return getGroup().list(FmiPackage.Literals.FMI2_VARIABLE_DEPENDENCY__UNKNOWN);
 	}
@@ -191,7 +193,7 @@ public class Fmi2VariableDependencyImpl extends MinimalEObjectImpl.Container imp
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(')');

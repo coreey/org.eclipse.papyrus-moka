@@ -130,6 +130,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -139,6 +140,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -151,6 +153,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -160,6 +163,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -172,6 +176,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 		return value;
 	}
@@ -181,6 +186,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(int newValue) {
 		int oldValue = value;
 		value = newValue;
@@ -195,6 +201,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetValue() {
 		int oldValue = value;
 		boolean oldValueESet = valueESet;
@@ -209,6 +216,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetValue() {
 		return valueESet;
 	}
@@ -300,7 +308,7 @@ public class ItemTypeImpl extends MinimalEObjectImpl.Container implements ItemTy
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (description: ");
 		result.append(description);
 		result.append(", name: ");

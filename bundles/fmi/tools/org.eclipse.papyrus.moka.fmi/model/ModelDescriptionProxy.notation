@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <notation:Diagram xmi:id="_1jkwUAfGEeabPfm64ybCZg" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_zgheAAfHEeabPfm64ybCZg" type="Comment_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_zgheAgfHEeabPfm64ybCZg" type="Comment_BodyLabel"/>
@@ -99,9 +99,9 @@
       <element xsi:nil="true"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5zFBhyiSEeaEPIADLpYHKQ" x="200"/>
     </children>
-    <styles xmi:type="notation:StringValueStyle" xmi:id="_1jkwUQfGEeabPfm64ybCZg" name="diagram_compatibility_version" stringValue="1.2.0"/>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_1jkwUQfGEeabPfm64ybCZg" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_1jkwUgfGEeabPfm64ybCZg"/>
-    <styles xmi:type="style:PapyrusViewStyle" xmi:id="_1jkwUwfGEeabPfm64ybCZg">
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_R0zgAO-8Eeeg4t5akIWReA" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
       <owner xmi:type="uml:Model" href="ModelDescriptionProxy.uml#_1jIEYAfGEeabPfm64ybCZg"/>
     </styles>
     <element xmi:type="uml:Model" href="ModelDescriptionProxy.uml#_1jIEYAfGEeabPfm64ybCZg"/>
@@ -234,9 +234,9 @@
       <element xmi:type="uml:Comment" href="ModelDescriptionProxy.uml#_oZMi0SgJEeaEPIADLpYHKQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oZW7wCgJEeaEPIADLpYHKQ" x="784" y="213" width="430" height="79"/>
     </children>
-    <styles xmi:type="notation:StringValueStyle" xmi:id="_oZW7wSgJEeaEPIADLpYHKQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_oZW7wSgJEeaEPIADLpYHKQ" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_oZW7wigJEeaEPIADLpYHKQ"/>
-    <styles xmi:type="style:PapyrusViewStyle" xmi:id="_oZW7wygJEeaEPIADLpYHKQ">
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_R3wGUO-8Eeeg4t5akIWReA" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
       <owner xmi:type="uml:Model" href="ModelDescriptionProxy.uml#_oZMi0CgJEeaEPIADLpYHKQ"/>
     </styles>
     <element xmi:type="uml:Model" href="ModelDescriptionProxy.uml#_oZMi0CgJEeaEPIADLpYHKQ"/>

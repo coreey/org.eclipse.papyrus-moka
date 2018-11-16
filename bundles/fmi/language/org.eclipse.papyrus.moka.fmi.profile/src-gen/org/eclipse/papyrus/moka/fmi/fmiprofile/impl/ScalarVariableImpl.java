@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.papyrus.moka.fmi.fmiprofile.CausalityKind;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.InitialKind;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.ScalarVariable;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.VariabilityKind;
 
 import org.eclipse.papyrus.moka.fmi.modeldescription.Fmi2ScalarVariable;
-import org.eclipse.uml2.uml.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,27 +35,17 @@ import org.eclipse.uml2.uml.Property;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ScalarVariableImpl#getBase_Property <em>Base Property</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ScalarVariableImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ScalarVariableImpl#getVariability <em>Variability</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ScalarVariableImpl#getInitial <em>Initial</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ScalarVariableImpl#getValueReference <em>Value Reference</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ScalarVariableImpl#getFmiVariable <em>Fmi Variable</em>}</li>
+ *   <li>{@link org.eclipse.papyrus.moka.fmi.fmiprofile.impl.ScalarVariableImpl#getCausalityKind <em>Causality Kind</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container implements ScalarVariable {
-	/**
-	 * The cached value of the '{@link #getBase_Property() <em>Base Property</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBase_Property()
-	 * @generated
-	 * @ordered
-	 */
-	protected Property base_Property;
-
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -124,7 +114,7 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int VALUE_REFERENCE_EDEFAULT = 0;
+	protected static final long VALUE_REFERENCE_EDEFAULT = -1L;
 
 	/**
 	 * The cached value of the '{@link #getValueReference() <em>Value Reference</em>}' attribute.
@@ -134,7 +124,7 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 * @ordered
 	 */
-	protected int valueReference = VALUE_REFERENCE_EDEFAULT;
+	protected long valueReference = VALUE_REFERENCE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getFmiVariable() <em>Fmi Variable</em>}' reference.
@@ -145,6 +135,26 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected Fmi2ScalarVariable fmiVariable;
+
+	/**
+	 * The default value of the '{@link #getCausalityKind() <em>Causality Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCausalityKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final CausalityKind CAUSALITY_KIND_EDEFAULT = CausalityKind.PARAMETER;
+
+	/**
+	 * The cached value of the '{@link #getCausalityKind() <em>Causality Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCausalityKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected CausalityKind causalityKind = CAUSALITY_KIND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,44 +173,6 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	@Override
 	protected EClass eStaticClass() {
 		return FMIProfilePackage.Literals.SCALAR_VARIABLE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Property getBase_Property() {
-		if (base_Property != null && base_Property.eIsProxy()) {
-			InternalEObject oldBase_Property = (InternalEObject)base_Property;
-			base_Property = (Property)eResolveProxy(oldBase_Property);
-			if (base_Property != oldBase_Property) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FMIProfilePackage.SCALAR_VARIABLE__BASE_PROPERTY, oldBase_Property, base_Property));
-			}
-		}
-		return base_Property;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Property basicGetBase_Property() {
-		return base_Property;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBase_Property(Property newBase_Property) {
-		Property oldBase_Property = base_Property;
-		base_Property = newBase_Property;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FMIProfilePackage.SCALAR_VARIABLE__BASE_PROPERTY, oldBase_Property, base_Property));
 	}
 
 	/**
@@ -271,7 +243,7 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getValueReference() {
+	public long getValueReference() {
 		return valueReference;
 	}
 
@@ -280,8 +252,8 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValueReference(int newValueReference) {
-		int oldValueReference = valueReference;
+	public void setValueReference(long newValueReference) {
+		long oldValueReference = valueReference;
 		valueReference = newValueReference;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FMIProfilePackage.SCALAR_VARIABLE__VALUE_REFERENCE, oldValueReference, valueReference));
@@ -330,12 +302,30 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CausalityKind getCausalityKind() {
+		return causalityKind;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCausalityKind(CausalityKind newCausalityKind) {
+		CausalityKind oldCausalityKind = causalityKind;
+		causalityKind = newCausalityKind == null ? CAUSALITY_KIND_EDEFAULT : newCausalityKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FMIProfilePackage.SCALAR_VARIABLE__CAUSALITY_KIND, oldCausalityKind, causalityKind));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FMIProfilePackage.SCALAR_VARIABLE__BASE_PROPERTY:
-				if (resolve) return getBase_Property();
-				return basicGetBase_Property();
 			case FMIProfilePackage.SCALAR_VARIABLE__DESCRIPTION:
 				return getDescription();
 			case FMIProfilePackage.SCALAR_VARIABLE__VARIABILITY:
@@ -347,6 +337,8 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 			case FMIProfilePackage.SCALAR_VARIABLE__FMI_VARIABLE:
 				if (resolve) return getFmiVariable();
 				return basicGetFmiVariable();
+			case FMIProfilePackage.SCALAR_VARIABLE__CAUSALITY_KIND:
+				return getCausalityKind();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -359,9 +351,6 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FMIProfilePackage.SCALAR_VARIABLE__BASE_PROPERTY:
-				setBase_Property((Property)newValue);
-				return;
 			case FMIProfilePackage.SCALAR_VARIABLE__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
@@ -372,10 +361,13 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 				setInitial((InitialKind)newValue);
 				return;
 			case FMIProfilePackage.SCALAR_VARIABLE__VALUE_REFERENCE:
-				setValueReference((Integer)newValue);
+				setValueReference((Long)newValue);
 				return;
 			case FMIProfilePackage.SCALAR_VARIABLE__FMI_VARIABLE:
 				setFmiVariable((Fmi2ScalarVariable)newValue);
+				return;
+			case FMIProfilePackage.SCALAR_VARIABLE__CAUSALITY_KIND:
+				setCausalityKind((CausalityKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -389,9 +381,6 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FMIProfilePackage.SCALAR_VARIABLE__BASE_PROPERTY:
-				setBase_Property((Property)null);
-				return;
 			case FMIProfilePackage.SCALAR_VARIABLE__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
@@ -407,6 +396,9 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 			case FMIProfilePackage.SCALAR_VARIABLE__FMI_VARIABLE:
 				setFmiVariable((Fmi2ScalarVariable)null);
 				return;
+			case FMIProfilePackage.SCALAR_VARIABLE__CAUSALITY_KIND:
+				setCausalityKind(CAUSALITY_KIND_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -419,8 +411,6 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FMIProfilePackage.SCALAR_VARIABLE__BASE_PROPERTY:
-				return base_Property != null;
 			case FMIProfilePackage.SCALAR_VARIABLE__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case FMIProfilePackage.SCALAR_VARIABLE__VARIABILITY:
@@ -431,6 +421,8 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 				return valueReference != VALUE_REFERENCE_EDEFAULT;
 			case FMIProfilePackage.SCALAR_VARIABLE__FMI_VARIABLE:
 				return fmiVariable != null;
+			case FMIProfilePackage.SCALAR_VARIABLE__CAUSALITY_KIND:
+				return causalityKind != CAUSALITY_KIND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -444,7 +436,7 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (description: ");
 		result.append(description);
 		result.append(", variability: ");
@@ -453,6 +445,8 @@ public abstract class ScalarVariableImpl extends MinimalEObjectImpl.Container im
 		result.append(initial);
 		result.append(", valueReference: ");
 		result.append(valueReference);
+		result.append(", causalityKind: ");
+		result.append(causalityKind);
 		result.append(')');
 		return result.toString();
 	}

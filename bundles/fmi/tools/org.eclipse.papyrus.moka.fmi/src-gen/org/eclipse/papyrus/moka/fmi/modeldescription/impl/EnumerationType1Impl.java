@@ -102,6 +102,7 @@ public class EnumerationType1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.ENUMERATION_TYPE1__GROUP);
@@ -114,6 +115,7 @@ public class EnumerationType1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ItemType> getItem() {
 		return getGroup().list(FmiPackage.Literals.ENUMERATION_TYPE1__ITEM);
 	}
@@ -123,6 +125,7 @@ public class EnumerationType1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getQuantity() {
 		return quantity;
 	}
@@ -132,6 +135,7 @@ public class EnumerationType1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setQuantity(String newQuantity) {
 		String oldQuantity = quantity;
 		quantity = newQuantity;
@@ -245,7 +249,7 @@ public class EnumerationType1Impl extends MinimalEObjectImpl.Container implement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(", quantity: ");

@@ -39,5 +39,9 @@
       <unit id="org.eclipse.nebula.visualization.feature.feature.group" version="0.0.0"/>
       <repository id="nebula" location="http://download.eclipse.org/nebula/releases/2.0.1"/>
     </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.papyrus.sysml14.feature.feature.group" version="0.0.0"/>
+      <repository id="sysml-photon" location="http://download.eclipse.org/modeling/mdt/papyrus/components/sysml14/photon/"/>
+    </location>
   </locations>
 </target>

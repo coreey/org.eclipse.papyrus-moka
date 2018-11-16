@@ -1,6 +1,6 @@
 /*****************************************************************************
  * 
- * Copyright (c) 2016 CEA LIST.
+ * Copyright (c) 2016,2019 CEA LIST.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -57,9 +57,9 @@ public class CustomCalculatedParameter extends CalculatedParameterImpl {
 	}
 
 	@Override
-	public int getValueReference() {
+	public long getValueReference() {
 		if (getFmiVariable() != null){
-			return (int)getFmiVariable().getValueReference();
+			return (long)getFmiVariable().getValueReference();
 		}
 		return super.getValueReference();
 	}

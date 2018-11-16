@@ -327,6 +327,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RealType getReal() {
 		return real;
 	}
@@ -351,6 +352,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReal(RealType newReal) {
 		if (newReal != real) {
 			NotificationChain msgs = null;
@@ -370,6 +372,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntegerType getInteger() {
 		return integer;
 	}
@@ -394,6 +397,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInteger(IntegerType newInteger) {
 		if (newInteger != integer) {
 			NotificationChain msgs = null;
@@ -413,6 +417,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanType getBoolean() {
 		return boolean_;
 	}
@@ -437,6 +442,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBoolean(BooleanType newBoolean) {
 		if (newBoolean != boolean_) {
 			NotificationChain msgs = null;
@@ -456,6 +462,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StringType getString() {
 		return string;
 	}
@@ -480,6 +487,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setString(StringType newString) {
 		if (newString != string) {
 			NotificationChain msgs = null;
@@ -499,6 +507,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationType getEnumeration() {
 		return enumeration;
 	}
@@ -523,6 +532,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnumeration(EnumerationType newEnumeration) {
 		if (newEnumeration != enumeration) {
 			NotificationChain msgs = null;
@@ -542,6 +552,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fmi2Annotation getAnnotations() {
 		return annotations;
 	}
@@ -566,6 +577,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAnnotations(Fmi2Annotation newAnnotations) {
 		if (newAnnotations != annotations) {
 			NotificationChain msgs = null;
@@ -585,6 +597,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanHandleMultipleSetPerTimeInstant() {
 		return canHandleMultipleSetPerTimeInstant;
 	}
@@ -594,6 +607,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanHandleMultipleSetPerTimeInstant(boolean newCanHandleMultipleSetPerTimeInstant) {
 		boolean oldCanHandleMultipleSetPerTimeInstant = canHandleMultipleSetPerTimeInstant;
 		canHandleMultipleSetPerTimeInstant = newCanHandleMultipleSetPerTimeInstant;
@@ -608,6 +622,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanHandleMultipleSetPerTimeInstant() {
 		boolean oldCanHandleMultipleSetPerTimeInstant = canHandleMultipleSetPerTimeInstant;
 		boolean oldCanHandleMultipleSetPerTimeInstantESet = canHandleMultipleSetPerTimeInstantESet;
@@ -622,6 +637,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanHandleMultipleSetPerTimeInstant() {
 		return canHandleMultipleSetPerTimeInstantESet;
 	}
@@ -631,6 +647,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CausalityType getCausality() {
 		return causality;
 	}
@@ -640,6 +657,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCausality(CausalityType newCausality) {
 		CausalityType oldCausality = causality;
 		causality = newCausality == null ? CAUSALITY_EDEFAULT : newCausality;
@@ -654,6 +672,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCausality() {
 		CausalityType oldCausality = causality;
 		boolean oldCausalityESet = causalityESet;
@@ -668,6 +687,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCausality() {
 		return causalityESet;
 	}
@@ -677,6 +697,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -686,6 +707,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -698,6 +720,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InitialType getInitial() {
 		return initial;
 	}
@@ -707,6 +730,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInitial(InitialType newInitial) {
 		InitialType oldInitial = initial;
 		initial = newInitial == null ? INITIAL_EDEFAULT : newInitial;
@@ -721,6 +745,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetInitial() {
 		InitialType oldInitial = initial;
 		boolean oldInitialESet = initialESet;
@@ -735,6 +760,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetInitial() {
 		return initialESet;
 	}
@@ -744,6 +770,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -753,6 +780,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -765,6 +793,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getValueReference() {
 		return valueReference;
 	}
@@ -774,6 +803,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValueReference(long newValueReference) {
 		long oldValueReference = valueReference;
 		valueReference = newValueReference;
@@ -788,6 +818,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetValueReference() {
 		long oldValueReference = valueReference;
 		boolean oldValueReferenceESet = valueReferenceESet;
@@ -802,6 +833,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetValueReference() {
 		return valueReferenceESet;
 	}
@@ -811,6 +843,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VariabilityType getVariability() {
 		return variability;
 	}
@@ -820,6 +853,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVariability(VariabilityType newVariability) {
 		VariabilityType oldVariability = variability;
 		variability = newVariability == null ? VARIABILITY_EDEFAULT : newVariability;
@@ -834,6 +868,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetVariability() {
 		VariabilityType oldVariability = variability;
 		boolean oldVariabilityESet = variabilityESet;
@@ -848,6 +883,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetVariability() {
 		return variabilityESet;
 	}
@@ -1063,7 +1099,7 @@ public class Fmi2ScalarVariableImpl extends MinimalEObjectImpl.Container impleme
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (canHandleMultipleSetPerTimeInstant: ");
 		if (canHandleMultipleSetPerTimeInstantESet) result.append(canHandleMultipleSetPerTimeInstant); else result.append("<unset>");
 		result.append(", causality: ");

@@ -20,6 +20,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.papyrus.moka.fmi.fmiprofile.*;
 
+import org.eclipse.papyrus.sysml14.deprecatedelements.FlowPort;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
@@ -85,6 +87,10 @@ public class FMIProfileAdapterFactory extends AdapterFactoryImpl {
 				return createParameterAdapter();
 			}
 			@Override
+			public Adapter caseAbstractVariable(AbstractVariable object) {
+				return createAbstractVariableAdapter();
+			}
+			@Override
 			public Adapter caseScalarVariable(ScalarVariable object) {
 				return createScalarVariableAdapter();
 			}
@@ -101,8 +107,8 @@ public class FMIProfileAdapterFactory extends AdapterFactoryImpl {
 				return createME_FMUAdapter();
 			}
 			@Override
-			public Adapter casePort(Port object) {
-				return createPortAdapter();
+			public Adapter caseFMIPort(FMIPort object) {
+				return createFMIPortAdapter();
 			}
 			@Override
 			public Adapter caseIndependent(Independent object) {
@@ -143,6 +149,14 @@ public class FMIProfileAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCalculatedParameter(CalculatedParameter object) {
 				return createCalculatedParameterAdapter();
+			}
+			@Override
+			public Adapter casePort(Port object) {
+				return createPortAdapter();
+			}
+			@Override
+			public Adapter caseFlowPort(FlowPort object) {
+				return createFlowPortAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -189,6 +203,20 @@ public class FMIProfileAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.AbstractVariable <em>Abstract Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.AbstractVariable
+	 * @generated
+	 */
+	public Adapter createAbstractVariableAdapter() {
 		return null;
 	}
 
@@ -249,16 +277,16 @@ public class FMIProfileAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.Port <em>Port</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.FMIPort <em>FMI Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.Port
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.FMIPort
 	 * @generated
 	 */
-	public Adapter createPortAdapter() {
+	public Adapter createFMIPortAdapter() {
 		return null;
 	}
 
@@ -399,6 +427,34 @@ public class FMIProfileAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCalculatedParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.papyrus.moka.fmi.fmiprofile.Port <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.papyrus.moka.fmi.fmiprofile.Port
+	 * @generated
+	 */
+	public Adapter createPortAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.papyrus.sysml14.deprecatedelements.FlowPort <em>Flow Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.papyrus.sysml14.deprecatedelements.FlowPort
+	 * @generated
+	 */
+	public Adapter createFlowPortAdapter() {
 		return null;
 	}
 

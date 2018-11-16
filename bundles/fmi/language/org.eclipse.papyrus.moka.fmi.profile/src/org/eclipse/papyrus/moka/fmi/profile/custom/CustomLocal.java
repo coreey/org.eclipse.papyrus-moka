@@ -56,9 +56,9 @@ public class CustomLocal extends LocalImpl {
 	}
 
 	@Override
-	public int getValueReference() {
+	public long getValueReference() {
 		if (getFmiVariable() != null){
-			return (int)getFmiVariable().getValueReference();
+			return getFmiVariable().getValueReference();
 		}
 		return super.getValueReference();
 	}

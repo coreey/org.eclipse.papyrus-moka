@@ -79,6 +79,7 @@ public class InitialUnknownsTypeImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getGroup() {
 		if (group == null) {
 			group = new BasicFeatureMap(this, FmiPackage.INITIAL_UNKNOWNS_TYPE__GROUP);
@@ -91,6 +92,7 @@ public class InitialUnknownsTypeImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<UnknownType> getUnknown() {
 		return getGroup().list(FmiPackage.Literals.INITIAL_UNKNOWNS_TYPE__UNKNOWN);
 	}
@@ -191,7 +193,7 @@ public class InitialUnknownsTypeImpl extends MinimalEObjectImpl.Container implem
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (group: ");
 		result.append(group);
 		result.append(')');

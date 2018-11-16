@@ -6,6 +6,10 @@
       <body>This Package is only present to create an UML description of FMI Modeldescription metamodel, in order to be able to import it from this FMIProfile and to reference the FmiModelDescription from the FMU stereotype&#xD;
 </body>
     </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_7FkIQOdeEeiqD6Bjo7FTPw" annotatedElement="_YdHfoOc0EeiqD6Bjo7FTPw">
+      <body>This Stereotype is deprecated and should not be use anymore (let for legacy compatibility).&#xD;
+</body>
+    </ownedComment>
     <elementImport xmi:type="uml:ElementImport" xmi:id="_laYPwKvGEeSXqKqlHzx1gA" alias="Class">
       <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
     </elementImport>
@@ -32,6 +36,9 @@
     </packageImport>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_bg_v0CiiEeaEPIADLpYHKQ">
       <importedPackage xmi:type="uml:Model" href="pathmap://PAPYRUS_FMI_METAMODEL/fmumetamodel.uml#_qqrUcCiREeaEPIADLpYHKQ"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_vDZH4IjMEeilvIR_3Qiscw">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
     </packageImport>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_6Z7fcK0REeSXqKqlHzx1gA" name="FMU">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_1n8aUK0VEeSXqKqlHzx1gA" name="fmiVersion">
@@ -105,10 +112,10 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_njvM0K0iEeSXqKqlHzx1gA" name="Parameter">
-      <generalization xmi:type="uml:Generalization" xmi:id="_eghYcMPiEeSibcUjNRyRzw" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_oxNykImlEeil3Yu5qF19Ew" general="_-lJq4ImjEeiP2ZwYABBzMw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_xhWFcK0iEeSXqKqlHzx1gA" name="Local">
-      <generalization xmi:type="uml:Generalization" xmi:id="_d8jvwMPiEeSibcUjNRyRzw" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_pQJKQImlEeil3Yu5qF19Ew" general="_-lJq4ImjEeiP2ZwYABBzMw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_zAZZYK1OEeSXqKqlHzx1gA" name="CS_FMU">
       <generalization xmi:type="uml:Generalization" xmi:id="_W7zp0MPiEeSibcUjNRyRzw" general="_6Z7fcK0REeSXqKqlHzx1gA"/>
@@ -149,38 +156,38 @@
     <packagedElement xmi:type="uml:Extension" xmi:id="_19CtsMXZEeSibcUjNRyRzw" name="E_FMU_Class1" memberEnd="_19CtscXZEeSibcUjNRyRzw _19CGoMXZEeSibcUjNRyRzw">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_19CtscXZEeSibcUjNRyRzw" name="extension_FMU" type="_6Z7fcK0REeSXqKqlHzx1gA" aggregation="composite" association="_19CtsMXZEeSibcUjNRyRzw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_0Ab54OyjEeSEBKJWDCrAIQ" name="Port">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_0Ab54OyjEeSEBKJWDCrAIQ" name="FMIPort">
       <generalization xmi:type="uml:Generalization" xmi:id="_Oa938OykEeSEBKJWDCrAIQ" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_q-xxAIjOEeilvIR_3Qiscw">
+        <general xmi:type="uml:Stereotype" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements.stereotype_packagedElement_FlowPort"/>
+      </generalization>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_NmHTkOykEeSEBKJWDCrAIQ" name="base_Port" association="_NmIhsOykEeSEBKJWDCrAIQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_bir8IOykEeSEBKJWDCrAIQ" name="direction" type="_CJbegAYPEea37IpNp9toNQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_NmIhsOykEeSEBKJWDCrAIQ" name="E_Port_Port1" memberEnd="_NmIhseykEeSEBKJWDCrAIQ _NmHTkOykEeSEBKJWDCrAIQ">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_NmIhseykEeSEBKJWDCrAIQ" name="extension_Port" type="_0Ab54OyjEeSEBKJWDCrAIQ" aggregation="composite" association="_NmIhsOykEeSEBKJWDCrAIQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_NRvP8OytEeSEBKJWDCrAIQ" name="ScalarVariable" isAbstract="true">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_XR_M4OytEeSEBKJWDCrAIQ" name="base_Property" association="_XSAbAOytEeSEBKJWDCrAIQ">
-        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
-      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_hQ1boOytEeSEBKJWDCrAIQ" name="description">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_QwldkJdgEeWXHe1Lt_6eNw" name="variability" type="_m6Ae0CCbEeWt4Mi1ebEMdw"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_c98LQJdgEeWXHe1Lt_6eNw" name="initial" type="_EJc0gCCcEeWt4Mi1ebEMdw"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_gyZUUJdgEeWXHe1Lt_6eNw" name="valueReference">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ELong"/>
         <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_0rpegC5BEea0_OLDat2kQQ" value="-1"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_reC30CihEeaEPIADLpYHKQ" name="fmiVariable" association="_reBCoCihEeaEPIADLpYHKQ">
         <type xmi:type="uml:Class" href="pathmap://PAPYRUS_FMI_METAMODEL/ModelDescriptionProxy.uml#_oZMi1CgJEeaEPIADLpYHKQ"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gBBDULUKEeiSGMgJYpbk4Q" name="causalityKind" type="_MTGwMJdhEeWXHe1Lt_6eNw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_XSAbAOytEeSEBKJWDCrAIQ" name="E_ScalarVariable_Property1" memberEnd="_XSAbAeytEeSEBKJWDCrAIQ _XR_M4OytEeSEBKJWDCrAIQ">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_XSAbAeytEeSEBKJWDCrAIQ" name="extension_ScalarVariable" type="_NRvP8OytEeSEBKJWDCrAIQ" aggregation="composite" association="_XSAbAOytEeSEBKJWDCrAIQ"/>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_XSAbAOytEeSEBKJWDCrAIQ" name="E_AbstractVariable_Property1" memberEnd="_XSAbAeytEeSEBKJWDCrAIQ _8SO7IImlEeil3Yu5qF19Ew">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_XSAbAeytEeSEBKJWDCrAIQ" name="extension_AbstractVariable" type="_-lJq4ImjEeiP2ZwYABBzMw" aggregation="composite" association="_XSAbAOytEeSEBKJWDCrAIQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_dWNCEO5uEeS9FOvuH52nyQ" name="Independent">
-      <generalization xmi:type="uml:Generalization" xmi:id="_fc_IYO5uEeS9FOvuH52nyQ" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_qH88AImlEeil3Yu5qF19Ew" general="_-lJq4ImjEeiP2ZwYABBzMw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_m6Ae0CCbEeWt4Mi1ebEMdw" name="VariabilityKind">
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ocXpcCCbEeWt4Mi1ebEMdw" name="constant"/>
@@ -287,7 +294,7 @@
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_CgX0sJOZEeWNJOjtFNxhjA" name="extension_OutputDependency" type="_3it0UJOYEeWNJOjtFNxhjA" aggregation="composite" association="_CgWmkJOZEeWNJOjtFNxhjA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_JeJKsJdgEeWXHe1Lt_6eNw" name="CalculatedParameter">
-      <generalization xmi:type="uml:Generalization" xmi:id="_KVg3kJdgEeWXHe1Lt_6eNw" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_prAhUImlEeil3Yu5qF19Ew" general="_-lJq4ImjEeiP2ZwYABBzMw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_MTGwMJdhEeWXHe1Lt_6eNw" name="CausalityKind">
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_M9HWgJdhEeWXHe1Lt_6eNw" name="parameter"/>
@@ -316,11 +323,6 @@
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_PieAaQYIEea37IpNp9toNQ" name="rad"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_PieAagYIEea37IpNp9toNQ" name="s"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_CJbegAYPEea37IpNp9toNQ" name="FlowDirection">
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ELmKkAYPEea37IpNp9toNQ" name="in"/>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_E6PZQAYPEea37IpNp9toNQ" name="out"/>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FwtuQAYPEea37IpNp9toNQ" name="inout"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_jb8poCihEeaEPIADLpYHKQ" memberEnd="_jb-e0CihEeaEPIADLpYHKQ _jb-e0SihEeaEPIADLpYHKQ">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jb93wCihEeaEPIADLpYHKQ" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jb93wSihEeaEPIADLpYHKQ" key="nature" value="UML_Nature"/>
@@ -339,11 +341,26 @@
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_fuzNAyiiEeaEPIADLpYHKQ" name="fmu" type="_6Z7fcK0REeSXqKqlHzx1gA" association="_fuyl8CiiEeaEPIADLpYHKQ"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_-lJq4ImjEeiP2ZwYABBzMw" name="AbstractVariable" isAbstract="true">
+      <generalization xmi:type="uml:Generalization" xmi:id="_3dahQImlEeil3Yu5qF19Ew" general="_NRvP8OytEeSEBKJWDCrAIQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_8SO7IImlEeil3Yu5qF19Ew" name="base_Property" association="_XSAbAOytEeSEBKJWDCrAIQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_YdHfoOc0EeiqD6Bjo7FTPw" name="Port">
+      <generalization xmi:type="uml:Generalization" xmi:id="_9QKakOc9EeiqD6Bjo7FTPw" general="_0Ab54OyjEeSEBKJWDCrAIQ"/>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_kEtdUBwUEeWFRLyBnqa0ow">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kExuwBwUEeWFRLyBnqa0ow" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lkn10LUKEeiSGMgJYpbk4Q">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lkprALUKEeiSGMgJYpbk4Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
     </profileApplication>
   </uml:Profile>
   <Ecore:EPackage xmi:id="_eNs-YAYLEea37IpNp9toNQ" base_Package="__Ki3oKvFEeSXqKqlHzx1gA" packageName="fmiprofile" nsPrefix="fmiprofile" nsURI="http://www.eclipse.org/papyrus/FMIProfile/1.0.0" basePackage="org.eclipse.papyrus.moka.fmi" prefix="FMIProfile"/>

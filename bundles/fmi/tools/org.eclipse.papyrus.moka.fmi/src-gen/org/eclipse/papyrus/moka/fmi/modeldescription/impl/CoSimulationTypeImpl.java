@@ -393,6 +393,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SourceFilesType getSourceFiles() {
 		return sourceFiles;
 	}
@@ -417,6 +418,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSourceFiles(SourceFilesType newSourceFiles) {
 		if (newSourceFiles != sourceFiles) {
 			NotificationChain msgs = null;
@@ -436,6 +438,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanBeInstantiatedOnlyOncePerProcess() {
 		return canBeInstantiatedOnlyOncePerProcess;
 	}
@@ -445,6 +448,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanBeInstantiatedOnlyOncePerProcess(boolean newCanBeInstantiatedOnlyOncePerProcess) {
 		boolean oldCanBeInstantiatedOnlyOncePerProcess = canBeInstantiatedOnlyOncePerProcess;
 		canBeInstantiatedOnlyOncePerProcess = newCanBeInstantiatedOnlyOncePerProcess;
@@ -459,6 +463,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanBeInstantiatedOnlyOncePerProcess() {
 		boolean oldCanBeInstantiatedOnlyOncePerProcess = canBeInstantiatedOnlyOncePerProcess;
 		boolean oldCanBeInstantiatedOnlyOncePerProcessESet = canBeInstantiatedOnlyOncePerProcessESet;
@@ -473,6 +478,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanBeInstantiatedOnlyOncePerProcess() {
 		return canBeInstantiatedOnlyOncePerProcessESet;
 	}
@@ -482,6 +488,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanGetAndSetFMUstate() {
 		return canGetAndSetFMUstate;
 	}
@@ -491,6 +498,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanGetAndSetFMUstate(boolean newCanGetAndSetFMUstate) {
 		boolean oldCanGetAndSetFMUstate = canGetAndSetFMUstate;
 		canGetAndSetFMUstate = newCanGetAndSetFMUstate;
@@ -505,6 +513,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanGetAndSetFMUstate() {
 		boolean oldCanGetAndSetFMUstate = canGetAndSetFMUstate;
 		boolean oldCanGetAndSetFMUstateESet = canGetAndSetFMUstateESet;
@@ -519,6 +528,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanGetAndSetFMUstate() {
 		return canGetAndSetFMUstateESet;
 	}
@@ -528,6 +538,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanHandleVariableCommunicationStepSize() {
 		return canHandleVariableCommunicationStepSize;
 	}
@@ -537,6 +548,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanHandleVariableCommunicationStepSize(boolean newCanHandleVariableCommunicationStepSize) {
 		boolean oldCanHandleVariableCommunicationStepSize = canHandleVariableCommunicationStepSize;
 		canHandleVariableCommunicationStepSize = newCanHandleVariableCommunicationStepSize;
@@ -551,6 +563,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanHandleVariableCommunicationStepSize() {
 		boolean oldCanHandleVariableCommunicationStepSize = canHandleVariableCommunicationStepSize;
 		boolean oldCanHandleVariableCommunicationStepSizeESet = canHandleVariableCommunicationStepSizeESet;
@@ -565,6 +578,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanHandleVariableCommunicationStepSize() {
 		return canHandleVariableCommunicationStepSizeESet;
 	}
@@ -574,6 +588,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanInterpolateInputs() {
 		return canInterpolateInputs;
 	}
@@ -583,6 +598,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanInterpolateInputs(boolean newCanInterpolateInputs) {
 		boolean oldCanInterpolateInputs = canInterpolateInputs;
 		canInterpolateInputs = newCanInterpolateInputs;
@@ -597,6 +613,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanInterpolateInputs() {
 		boolean oldCanInterpolateInputs = canInterpolateInputs;
 		boolean oldCanInterpolateInputsESet = canInterpolateInputsESet;
@@ -611,6 +628,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanInterpolateInputs() {
 		return canInterpolateInputsESet;
 	}
@@ -620,6 +638,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanNotUseMemoryManagementFunctions() {
 		return canNotUseMemoryManagementFunctions;
 	}
@@ -629,6 +648,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanNotUseMemoryManagementFunctions(boolean newCanNotUseMemoryManagementFunctions) {
 		boolean oldCanNotUseMemoryManagementFunctions = canNotUseMemoryManagementFunctions;
 		canNotUseMemoryManagementFunctions = newCanNotUseMemoryManagementFunctions;
@@ -643,6 +663,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanNotUseMemoryManagementFunctions() {
 		boolean oldCanNotUseMemoryManagementFunctions = canNotUseMemoryManagementFunctions;
 		boolean oldCanNotUseMemoryManagementFunctionsESet = canNotUseMemoryManagementFunctionsESet;
@@ -657,6 +678,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanNotUseMemoryManagementFunctions() {
 		return canNotUseMemoryManagementFunctionsESet;
 	}
@@ -666,6 +688,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanRunAsynchronuously() {
 		return canRunAsynchronuously;
 	}
@@ -675,6 +698,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanRunAsynchronuously(boolean newCanRunAsynchronuously) {
 		boolean oldCanRunAsynchronuously = canRunAsynchronuously;
 		canRunAsynchronuously = newCanRunAsynchronuously;
@@ -689,6 +713,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanRunAsynchronuously() {
 		boolean oldCanRunAsynchronuously = canRunAsynchronuously;
 		boolean oldCanRunAsynchronuouslyESet = canRunAsynchronuouslyESet;
@@ -703,6 +728,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanRunAsynchronuously() {
 		return canRunAsynchronuouslyESet;
 	}
@@ -712,6 +738,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCanSerializeFMUstate() {
 		return canSerializeFMUstate;
 	}
@@ -721,6 +748,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCanSerializeFMUstate(boolean newCanSerializeFMUstate) {
 		boolean oldCanSerializeFMUstate = canSerializeFMUstate;
 		canSerializeFMUstate = newCanSerializeFMUstate;
@@ -735,6 +763,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetCanSerializeFMUstate() {
 		boolean oldCanSerializeFMUstate = canSerializeFMUstate;
 		boolean oldCanSerializeFMUstateESet = canSerializeFMUstateESet;
@@ -749,6 +778,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetCanSerializeFMUstate() {
 		return canSerializeFMUstateESet;
 	}
@@ -758,6 +788,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getMaxOutputDerivativeOrder() {
 		return maxOutputDerivativeOrder;
 	}
@@ -767,6 +798,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxOutputDerivativeOrder(long newMaxOutputDerivativeOrder) {
 		long oldMaxOutputDerivativeOrder = maxOutputDerivativeOrder;
 		maxOutputDerivativeOrder = newMaxOutputDerivativeOrder;
@@ -781,6 +813,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMaxOutputDerivativeOrder() {
 		long oldMaxOutputDerivativeOrder = maxOutputDerivativeOrder;
 		boolean oldMaxOutputDerivativeOrderESet = maxOutputDerivativeOrderESet;
@@ -795,6 +828,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMaxOutputDerivativeOrder() {
 		return maxOutputDerivativeOrderESet;
 	}
@@ -804,6 +838,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getModelIdentifier() {
 		return modelIdentifier;
 	}
@@ -813,6 +848,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setModelIdentifier(String newModelIdentifier) {
 		String oldModelIdentifier = modelIdentifier;
 		modelIdentifier = newModelIdentifier;
@@ -825,6 +861,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isNeedsExecutionTool() {
 		return needsExecutionTool;
 	}
@@ -834,6 +871,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNeedsExecutionTool(boolean newNeedsExecutionTool) {
 		boolean oldNeedsExecutionTool = needsExecutionTool;
 		needsExecutionTool = newNeedsExecutionTool;
@@ -848,6 +886,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetNeedsExecutionTool() {
 		boolean oldNeedsExecutionTool = needsExecutionTool;
 		boolean oldNeedsExecutionToolESet = needsExecutionToolESet;
@@ -862,6 +901,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNeedsExecutionTool() {
 		return needsExecutionToolESet;
 	}
@@ -871,6 +911,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isProvidesDirectionalDerivative() {
 		return providesDirectionalDerivative;
 	}
@@ -880,6 +921,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProvidesDirectionalDerivative(boolean newProvidesDirectionalDerivative) {
 		boolean oldProvidesDirectionalDerivative = providesDirectionalDerivative;
 		providesDirectionalDerivative = newProvidesDirectionalDerivative;
@@ -894,6 +936,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetProvidesDirectionalDerivative() {
 		boolean oldProvidesDirectionalDerivative = providesDirectionalDerivative;
 		boolean oldProvidesDirectionalDerivativeESet = providesDirectionalDerivativeESet;
@@ -908,6 +951,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetProvidesDirectionalDerivative() {
 		return providesDirectionalDerivativeESet;
 	}
@@ -1103,7 +1147,7 @@ public class CoSimulationTypeImpl extends MinimalEObjectImpl.Container implement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (canBeInstantiatedOnlyOncePerProcess: ");
 		if (canBeInstantiatedOnlyOncePerProcessESet) result.append(canBeInstantiatedOnlyOncePerProcess); else result.append("<unset>");
 		result.append(", canGetAndSetFMUstate: ");

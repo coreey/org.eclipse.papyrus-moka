@@ -12,6 +12,7 @@
 package org.eclipse.papyrus.moka.fmi.fmiprofile.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.Independent;
 
@@ -22,7 +23,7 @@ import org.eclipse.papyrus.moka.fmi.fmiprofile.Independent;
  *
  * @generated
  */
-public class IndependentImpl extends ScalarVariableImpl implements Independent {
+public class IndependentImpl extends AbstractVariableImpl implements Independent {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

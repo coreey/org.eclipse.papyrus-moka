@@ -54,10 +54,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="fmuBundle" ordered="false"
         lowerBound="1" eType="ecore:EClass ../../org.eclipse.papyrus.moka.fmi/model/fmumetamodel.ecore#//FMUBundle"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//ScalarVariable"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ScalarVariable" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//AbstractVariable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractVariable" abstract="true" eSuperTypes="#//ScalarVariable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
         lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScalarVariable" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" ordered="false"
         lowerBound="1" eType="ecore:EDataType ../../org.eclipse.uml2.types/model/Types.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variability" ordered="false"
@@ -65,10 +67,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initial" ordered="false"
         lowerBound="1" eType="#//InitialKind"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueReference" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
         defaultValueLiteral="-1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fmiVariable" ordered="false"
         lowerBound="1" eType="ecore:EClass ../../org.eclipse.papyrus.moka.fmi/model/Fmi2ModelDescription.ecore#//Fmi2ScalarVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="causalityKind" ordered="false"
+        lowerBound="1" eType="#//CausalityKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="VariabilityKind">
     <eLiterals name="constant"/>
@@ -82,7 +86,15 @@
     <eLiterals name="approx" value="1"/>
     <eLiterals name="calculated" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Local" eSuperTypes="#//ScalarVariable"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="CausalityKind">
+    <eLiterals name="parameter"/>
+    <eLiterals name="calculatedParameter" value="1"/>
+    <eLiterals name="input" value="2"/>
+    <eLiterals name="output" value="3"/>
+    <eLiterals name="local" value="4"/>
+    <eLiterals name="independent" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Local" eSuperTypes="#//AbstractVariable"/>
   <eClassifiers xsi:type="ecore:EClass" name="CS_FMU" eSuperTypes="#//FMU">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="canHandleVariableCommunicationStepSize"
         ordered="false" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.uml2.types/model/Types.ecore#//Boolean"/>
@@ -105,18 +117,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="completedIntegratorStepNotNeeded"
         ordered="false" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.uml2.types/model/Types.ecore#//Boolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Port" eSuperTypes="#//ScalarVariable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Port" ordered="false"
-        lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Port"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" ordered="false"
-        lowerBound="1" eType="#//FlowDirection"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="FlowDirection">
-    <eLiterals name="in"/>
-    <eLiterals name="out" value="1"/>
-    <eLiterals name="inout" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Independent" eSuperTypes="#//ScalarVariable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FMIPort" eSuperTypes="#//ScalarVariable ../../org.eclipse.papyrus.sysml14/resources/profile/sysml.ecore#//deprecatedelements/FlowPort"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Independent" eSuperTypes="#//AbstractVariable"/>
   <eClassifiers xsi:type="ecore:EEnum" name="DependenciesKind">
     <eLiterals name="dependent"/>
     <eLiterals name="constant" value="1"/>
@@ -174,15 +176,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="base_Dependency" ordered="false"
         lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Dependency"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CalculatedParameter" eSuperTypes="#//ScalarVariable"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="CausalityKind">
-    <eLiterals name="parameter"/>
-    <eLiterals name="calculatedParameter" value="1"/>
-    <eLiterals name="input" value="2"/>
-    <eLiterals name="output" value="3"/>
-    <eLiterals name="local" value="4"/>
-    <eLiterals name="independent" value="5"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CalculatedParameter" eSuperTypes="#//AbstractVariable"/>
   <eClassifiers xsi:type="ecore:EEnum" name="VariabilityNamingConvention">
     <eLiterals name="flat"/>
     <eLiterals name="structured" value="1"/>
@@ -199,4 +193,5 @@
     <eLiterals name="rad" value="8"/>
     <eLiterals name="s" value="9"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" eSuperTypes="#//FMIPort"/>
 </ecore:EPackage>

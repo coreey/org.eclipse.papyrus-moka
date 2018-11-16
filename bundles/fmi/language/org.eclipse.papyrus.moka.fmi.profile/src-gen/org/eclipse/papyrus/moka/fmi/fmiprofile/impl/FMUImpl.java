@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIProfilePackage;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.FMU;
+
 import org.eclipse.papyrus.moka.fmi.fmumetamodel.FMUBundle;
+
 import org.eclipse.papyrus.moka.fmi.modeldescription.FmiModelDescriptionType;
 
 /**
@@ -1301,7 +1303,7 @@ public class FMUImpl extends MinimalEObjectImpl.Container implements FMU {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (fmiVersion: ");
 		result.append(fmiVersion);
 		result.append(", modelName: ");

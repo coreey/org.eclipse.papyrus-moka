@@ -15,6 +15,7 @@ package org.eclipse.papyrus.moka.fmi.profile.custom;
 
 import org.eclipse.papyrus.moka.fmi.fmiprofile.CS_FMU;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.CalculatedParameter;
+import org.eclipse.papyrus.moka.fmi.fmiprofile.FMIPort;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.Independent;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.Local;
 import org.eclipse.papyrus.moka.fmi.fmiprofile.ME_FMU;
@@ -46,6 +47,11 @@ public class CustomFMIProfileFactory extends FMIProfileFactoryImpl {
 	@Override
 	public Parameter createParameter() {
 		return new CustomParameter();
+	}
+	
+	@Override
+	public FMIPort createFMIPort() {
+		return new CustomFMIPort();
 	}
 	
 	@Override

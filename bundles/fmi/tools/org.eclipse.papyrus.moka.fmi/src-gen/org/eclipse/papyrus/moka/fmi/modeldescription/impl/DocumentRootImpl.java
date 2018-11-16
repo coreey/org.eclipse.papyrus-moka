@@ -103,6 +103,7 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureMap getMixed() {
 		if (mixed == null) {
 			mixed = new BasicFeatureMap(this, FmiPackage.DOCUMENT_ROOT__MIXED);
@@ -115,6 +116,7 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, String> getXMLNSPrefixMap() {
 		if (xMLNSPrefixMap == null) {
 			xMLNSPrefixMap = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, FmiPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
@@ -127,6 +129,7 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, String> getXSISchemaLocation() {
 		if (xSISchemaLocation == null) {
 			xSISchemaLocation = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, FmiPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
@@ -139,6 +142,7 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FmiModelDescriptionType getFmiModelDescription() {
 		return (FmiModelDescriptionType)getMixed().get(FmiPackage.Literals.DOCUMENT_ROOT__FMI_MODEL_DESCRIPTION, true);
 	}
@@ -157,6 +161,7 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFmiModelDescription(FmiModelDescriptionType newFmiModelDescription) {
 		((FeatureMap.Internal)getMixed()).set(FmiPackage.Literals.DOCUMENT_ROOT__FMI_MODEL_DESCRIPTION, newFmiModelDescription);
 	}
@@ -281,7 +286,7 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (mixed: ");
 		result.append(mixed);
 		result.append(')');

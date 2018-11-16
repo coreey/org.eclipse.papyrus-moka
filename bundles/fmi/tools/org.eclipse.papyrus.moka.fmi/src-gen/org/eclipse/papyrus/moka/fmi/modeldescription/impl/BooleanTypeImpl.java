@@ -109,6 +109,7 @@ public class BooleanTypeImpl extends MinimalEObjectImpl.Container implements Boo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDeclaredType() {
 		return declaredType;
 	}
@@ -118,6 +119,7 @@ public class BooleanTypeImpl extends MinimalEObjectImpl.Container implements Boo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDeclaredType(String newDeclaredType) {
 		String oldDeclaredType = declaredType;
 		declaredType = newDeclaredType;
@@ -130,6 +132,7 @@ public class BooleanTypeImpl extends MinimalEObjectImpl.Container implements Boo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isStart() {
 		return start;
 	}
@@ -139,6 +142,7 @@ public class BooleanTypeImpl extends MinimalEObjectImpl.Container implements Boo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStart(boolean newStart) {
 		boolean oldStart = start;
 		start = newStart;
@@ -153,6 +157,7 @@ public class BooleanTypeImpl extends MinimalEObjectImpl.Container implements Boo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetStart() {
 		boolean oldStart = start;
 		boolean oldStartESet = startESet;
@@ -167,6 +172,7 @@ public class BooleanTypeImpl extends MinimalEObjectImpl.Container implements Boo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetStart() {
 		return startESet;
 	}
@@ -248,7 +254,7 @@ public class BooleanTypeImpl extends MinimalEObjectImpl.Container implements Boo
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (declaredType: ");
 		result.append(declaredType);
 		result.append(", start: ");

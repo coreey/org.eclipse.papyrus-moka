@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_zIAAYLgtEeizUOX0GlzCzg" name="OMSimulatorProfile" metaclassReference="_07maELgvEeizUOX0GlzCzg _07tu0LgvEeizUOX0GlzCzg __qTiIMVZEeiLVbFVoMGQrQ __3VcEMVaEeiLVbFVoMGQrQ _6JuGgOmMEeiRcfn1Mejhlg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6PFF4bgvEeizUOX0GlzCzg" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_I8yvQMVcEeiLVbFVoMGQrQ" annotatedElement="_A48AsLguEeizUOX0GlzCzg">
+      <body>TLMInterface will be used to defined all the predefined TLM physical types supported by OMSimulator.&#xD;
+More particularly, each TLM interface will have to list all the corresponding signals an FMU must own.&#xD;
+Each signal will be defined with a SysML flowport.&#xD;
+</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_gmGi4MVcEeiLVbFVoMGQrQ" annotatedElement="_4T2nEMVbEeiLVbFVoMGQrQ">
+      <body>A TLMSignal will be an additional annotation put on each FMU ports implementing TLM predefined signal, which will be referenced with its &quot;definition&quot; attribute.</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_6OzbYMVcEeiLVbFVoMGQrQ" annotatedElement="_DwNAgMVaEeiLVbFVoMGQrQ">
+      <body>OMSimulatorBus is a new kind of Port which can be added to FMU Blocks. Those ports can reference other Flowports belonging to the owning FMU.</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_a4XHgMVdEeiLVbFVoMGQrQ" annotatedElement="_xI4DkMVaEeiLVbFVoMGQrQ">
+      <body>BusConnectionEnd is a stereotype that has to be applied on the corresponding connectorEnd of an UML connector, when connected to an OMSimulatorBus port.&#xD;
+The &quot;referencedSignals&quot; attribute shoud be a subset of the OMSimulatorBus::signals attribute.&#xD;
+</body>
+    </ownedComment>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_07maELgvEeizUOX0GlzCzg" alias="Interface">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_07tu0LgvEeizUOX0GlzCzg" alias="Connector">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="__qTiIMVZEeiLVbFVoMGQrQ" alias="Port">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="__3VcEMVaEeiLVbFVoMGQrQ" alias="ConnectorEnd">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ConnectorEnd"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_6JuGgOmMEeiRcfn1Mejhlg" alias="Class">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </elementImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_zSjDgLgtEeizUOX0GlzCzg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_zSjqkLgtEeizUOX0GlzCzg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_8A6h0LgtEeizUOX0GlzCzg" name="TLMConnection">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_99Su8LgtEeizUOX0GlzCzg" name="time delay">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_QEchkLguEeizUOX0GlzCzg" name="impedance">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RlT3YLguEeizUOX0GlzCzg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rlk9ILguEeizUOX0GlzCzg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TLzUELguEeizUOX0GlzCzg" name="rotational impedance">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WG6aULguEeizUOX0GlzCzg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WHN8ULguEeizUOX0GlzCzg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_XPcIoLguEeizUOX0GlzCzg" name="alpha">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Yl-dwLguEeizUOX0GlzCzg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YmXfULguEeizUOX0GlzCzg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_1_ya8LgvEeizUOX0GlzCzg" name="base_Connector" association="_1_pRALgvEeizUOX0GlzCzg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_A48AsLguEeizUOX0GlzCzg" name="TLMInterfaceDefinition">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wKVDcLgvEeizUOX0GlzCzg" name="interpolation" type="_Wpg7oLgvEeizUOX0GlzCzg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_2ZNAgLgvEeizUOX0GlzCzg" name="base_Interface" association="_2ZMZcLgvEeizUOX0GlzCzg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_7QHG0OmMEeiRcfn1Mejhlg" name="base_Class" association="_7QC1YOmMEeiRcfn1Mejhlg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_izuV0umfEeiRcfn1Mejhlg" name="signalDefinitions" type="_AsULoOmfEeiRcfn1Mejhlg" isDerived="true" association="_iztuwOmfEeiRcfn1Mejhlg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lfpwkOmfEeiRcfn1Mejhlg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lgNxQOmfEeiRcfn1Mejhlg" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_aSibEOmjEeiRcfn1Mejhlg" name="dimensions" aggregation="composite">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_4LCRoOmfEeiRcfn1Mejhlg" name="getSignalDefinitions">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_Y33ewOmhEeiRcfn1Mejhlg" name="result" type="_AsULoOmfEeiRcfn1Mejhlg" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_msrScOmhEeiRcfn1Mejhlg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mtVZwOmhEeiRcfn1Mejhlg" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_bObtwLguEeizUOX0GlzCzg" name="TLMDomain">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_fCzXQLguEeizUOX0GlzCzg" name="Hydraulic"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_iZeYILguEeizUOX0GlzCzg" name="Mechanical"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jwhDkLguEeizUOX0GlzCzg" name="Rotational"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_m6xZELguEeizUOX0GlzCzg" name="Electric"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ujWGAOmcEeiRcfn1Mejhlg" name="input"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_vcmCMOmcEeiRcfn1Mejhlg" name="output"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Wpg7oLgvEeizUOX0GlzCzg" name="Interpolation">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Z0VR0LgvEeizUOX0GlzCzg" name="none"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_f4qy0LgvEeizUOX0GlzCzg" name="coarsegrained"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_YN3DQLgvEeizUOX0GlzCzg" name="finegrained"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_1_pRALgvEeizUOX0GlzCzg" name="E_TLMConnection_Connector10" memberEnd="_1_xz4LgvEeizUOX0GlzCzg _1_ya8LgvEeizUOX0GlzCzg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_1_xz4LgvEeizUOX0GlzCzg" name="extension_TLMConnection" type="_8A6h0LgtEeizUOX0GlzCzg" aggregation="composite" association="_1_pRALgvEeizUOX0GlzCzg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_2ZMZcLgvEeizUOX0GlzCzg" name="E_TLMInterface_Interface11" memberEnd="_2ZMZcbgvEeizUOX0GlzCzg _2ZNAgLgvEeizUOX0GlzCzg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_2ZMZcbgvEeizUOX0GlzCzg" name="extension_TLMInterface" type="_A48AsLguEeizUOX0GlzCzg" aggregation="composite" association="_2ZMZcLgvEeizUOX0GlzCzg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DwNAgMVaEeiLVbFVoMGQrQ" name="OMSimulatorBus">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_lu1pMcVaEeiLVbFVoMGQrQ" name="base_Port" association="_lusfQMVaEeiLVbFVoMGQrQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_pNXJEMVbEeiLVbFVoMGQrQ" name="signals">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_t9OKcMVbEeiLVbFVoMGQrQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_t90AUMVbEeiLVbFVoMGQrQ" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_n0uf4LguEeizUOX0GlzCzg" name="domain" type="_bObtwLguEeizUOX0GlzCzg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9EUmsOmdEeiRcfn1Mejhlg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9E2yMOmdEeiRcfn1Mejhlg" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_lusfQMVaEeiLVbFVoMGQrQ" name="E_OMSimulatorBus_Port15" memberEnd="_lu1pMMVaEeiLVbFVoMGQrQ _lu1pMcVaEeiLVbFVoMGQrQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lu1pMMVaEeiLVbFVoMGQrQ" name="extension_OMSimulatorBus" type="_DwNAgMVaEeiLVbFVoMGQrQ" aggregation="composite" association="_lusfQMVaEeiLVbFVoMGQrQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_xI4DkMVaEeiLVbFVoMGQrQ" name="BusConnectionEnd">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_A5T2ccVbEeiLVbFVoMGQrQ" name="base_ConnectorEnd" association="_A5KsgMVbEeiLVbFVoMGQrQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ConnectorEnd"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_KAonUMVbEeiLVbFVoMGQrQ" name="referencedSignal">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Y8eCkMVdEeiLVbFVoMGQrQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Y8w9gMVdEeiLVbFVoMGQrQ" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_A5KsgMVbEeiLVbFVoMGQrQ" name="E_BusConnectionEnd_ConnectorEnd18" memberEnd="_A5T2cMVbEeiLVbFVoMGQrQ _A5T2ccVbEeiLVbFVoMGQrQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_A5T2cMVbEeiLVbFVoMGQrQ" name="extension_BusConnectionEnd" type="_xI4DkMVaEeiLVbFVoMGQrQ" aggregation="composite" association="_A5KsgMVbEeiLVbFVoMGQrQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_4T2nEMVbEeiLVbFVoMGQrQ" name="TLMSignal">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_6auM8sVbEeiLVbFVoMGQrQ" name="base_Port" association="_6auM8MVbEeiLVbFVoMGQrQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_dMTaUOmfEeiRcfn1Mejhlg" name="definition" type="_AsULoOmfEeiRcfn1Mejhlg" association="_dMK3cOmfEeiRcfn1Mejhlg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_6auM8MVbEeiLVbFVoMGQrQ" name="E_TLMSignal_Port20" memberEnd="_6auM8cVbEeiLVbFVoMGQrQ _6auM8sVbEeiLVbFVoMGQrQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_6auM8cVbEeiLVbFVoMGQrQ" name="extension_TLMSignal" type="_4T2nEMVbEeiLVbFVoMGQrQ" aggregation="composite" association="_6auM8MVbEeiLVbFVoMGQrQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_7QC1YOmMEeiRcfn1Mejhlg" name="E_TLMInterfaceDefinition_Class1" memberEnd="_7QGfwOmMEeiRcfn1Mejhlg _7QHG0OmMEeiRcfn1Mejhlg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_7QGfwOmMEeiRcfn1Mejhlg" name="extension_TLMInterfaceDefinition" type="_A48AsLguEeizUOX0GlzCzg" aggregation="composite" association="_7QC1YOmMEeiRcfn1Mejhlg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_AsULoOmfEeiRcfn1Mejhlg" name="TLMSignalDefinition">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_DT3csemfEeiRcfn1Mejhlg" name="base_Port" association="_DT21oOmfEeiRcfn1Mejhlg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_DT21oOmfEeiRcfn1Mejhlg" name="E_TLMSignalDefinition_Port29" memberEnd="_DT3csOmfEeiRcfn1Mejhlg _DT3csemfEeiRcfn1Mejhlg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DT3csOmfEeiRcfn1Mejhlg" name="extension_TLMSignalDefinition" type="_AsULoOmfEeiRcfn1Mejhlg" aggregation="composite" association="_DT21oOmfEeiRcfn1Mejhlg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_dMK3cOmfEeiRcfn1Mejhlg" memberEnd="_dMTaUOmfEeiRcfn1Mejhlg _dMUocOmfEeiRcfn1Mejhlg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dMQ-EOmfEeiRcfn1Mejhlg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dMRlIOmfEeiRcfn1Mejhlg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_dMUocOmfEeiRcfn1Mejhlg" name="tlmsignal" type="_4T2nEMVbEeiLVbFVoMGQrQ" association="_dMK3cOmfEeiRcfn1Mejhlg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iztuwOmfEeiRcfn1Mejhlg" memberEnd="_izuV0umfEeiRcfn1Mejhlg _izu84OmfEeiRcfn1Mejhlg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_izuV0OmfEeiRcfn1Mejhlg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_izuV0emfEeiRcfn1Mejhlg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_izu84OmfEeiRcfn1Mejhlg" name="tlminterfacedefinition" type="_A48AsLguEeizUOX0GlzCzg" association="_iztuwOmfEeiRcfn1Mejhlg"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_TifVwLguEeizUOX0GlzCzg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TijAILguEeizUOX0GlzCzg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_PtjQ0OmMEeiRcfn1Mejhlg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ptp-gOmMEeiRcfn1Mejhlg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_VEhgEOmNEeiRcfn1Mejhlg" base_Package="_zIAAYLgtEeizUOX0GlzCzg" packageName="omsimulatorprofile" nsPrefix="omsim" nsURI="http://www.eclipse.org/papyrus/OMSimulatorProfile/1.0.0" basePackage="org.eclipse.papyrus.moka.ssp" prefix="OMSimulator"/>
+  <Ecore:EOperation xmi:id="_70azIOmfEeiRcfn1Mejhlg" base_Operation="_4LCRoOmfEeiRcfn1Mejhlg" visibility="None"/>
+</xmi:XMI>

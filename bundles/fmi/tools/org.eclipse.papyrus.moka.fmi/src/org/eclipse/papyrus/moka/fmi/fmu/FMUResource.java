@@ -60,7 +60,7 @@ public class FMUResource extends XMLResourceImpl {
 	public void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
 
 		Path tmpDirectoryPath = Files.createTempDirectory("fmuResource");
-		UnzipUtility.unzip(new ZipInputStream(inputStream), tmpDirectoryPath.toString());
+		UnzipUtility.unzip(new ZipInputStream(inputStream), tmpDirectoryPath.toString(), uri.lastSegment());
 		fmuParser = new FMUParser(tmpDirectoryPath.toString());
 		createFmuBundle();
 		getContents().add(fmuBundle);
@@ -86,7 +86,7 @@ public class FMUResource extends XMLResourceImpl {
 				break;
 
 			case FMUResourceUtil.FOLDER_SOURCES:
-				fmuBundle.getDocumentationFiles()
+				fmuBundle.getSourceFiles()
 						.addAll(FMUResourceUtil.createJavaFileProxies(fmuChildFile.listFiles()));
 				break;
 
@@ -148,6 +148,7 @@ public class FMUResource extends XMLResourceImpl {
 			saveModelDescription(zipOputputStream);
 			saveBinaries(zipOputputStream);
 			saveResources(zipOputputStream);
+			saveSources(zipOputputStream);
 			saveDocumentation(zipOputputStream);
 			saveRoot(zipOputputStream);
 			zipOputputStream.close();
@@ -211,7 +212,9 @@ public class FMUResource extends XMLResourceImpl {
 		addFiles(fmuBundle.getResourcesFiles(), zipOutputStream, FMUResourceUtil.FOLDER_RESOURCES);
 	}
 	
-	
+	private void saveSources(ZipOutputStream zipOutputStream) throws IOException {
+		addFiles(fmuBundle.getSourceFiles(), zipOutputStream, FMUResourceUtil.FOLDER_SOURCES);
+	}
 
 	private void addFile(AbstractFile fmuFile, ZipOutputStream zipOutputStream, String fmuFolder) throws IOException {
 		if (fmuFile instanceof JavaFileProxy && ((JavaFileProxy) fmuFile).getFile() != null
