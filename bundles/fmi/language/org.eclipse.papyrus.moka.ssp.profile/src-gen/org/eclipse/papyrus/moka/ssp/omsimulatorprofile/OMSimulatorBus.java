@@ -85,7 +85,7 @@ public interface OMSimulatorBus extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Signals</em>' reference list.
 	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.OMSimulatorPackage#getOMSimulatorBus_Signals()
-	 * @model ordered="false"
+	 * @model
 	 * @generated
 	 */
 	EList<Port> getSignals();

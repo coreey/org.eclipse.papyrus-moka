@@ -92,6 +92,15 @@ public interface OMSimulatorFactory extends EFactory {
 	TLMConnection createTLMConnection();
 
 	/**
+	 * Returns a new object of class '<em>Bus Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Bus Connector</em>'.
+	 * @generated
+	 */
+	BusConnector createBusConnector();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

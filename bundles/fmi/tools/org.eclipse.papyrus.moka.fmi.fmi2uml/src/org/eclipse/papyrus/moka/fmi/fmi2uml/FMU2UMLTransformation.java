@@ -64,7 +64,7 @@ public class FMU2UMLTransformation {
 
 	Package receivingPackage;
 	FmiModelDescriptionType modelDescription;
-	Package dependencyPackage;
+	//Package dependencyPackage;
 	Class fmuClass ;
 	EPackage fmiProfile;
 	
@@ -111,7 +111,7 @@ public class FMU2UMLTransformation {
 				FMIProfileUtil.applyProfileIfNeeded(receivingPackage, fmiProfile);
 				FMIProfileUtil.applyProfileIfNeeded(receivingPackage, sspProfile);
 				fmuClass = receivingPackage.createOwnedClass(cosim.getModelIdentifier(), false);
-				dependencyPackage = receivingPackage.createNestedPackage(cosim.getModelIdentifier()+FMI2UML.DEPENDENCIES_PACKAGE_SUFFIX);
+				//dependencyPackage = receivingPackage.createNestedPackage(cosim.getModelIdentifier()+FMI2UML.DEPENDENCIES_PACKAGE_SUFFIX);
 
 				CS_FMU csFMU = (CS_FMU) fmuClass.applyStereotype(FMIProfileUtil.getStereotype(receivingPackage, FMIProfileUtil.CS_FMU_STEREO_NAME, fmiProfile));
 
@@ -122,24 +122,24 @@ public class FMU2UMLTransformation {
 						createProperty(variable);
 					}
 				}
-				if (modelDescription.getModelStructure() != null){
-					if (modelDescription.getModelStructure().getDerivatives() != null){
-						for (UnknownType1 unknown :modelDescription.getModelStructure().getDerivatives().getUnknown() ){
-							createDerivativeDependency(unknown);
-						}
-					}
-					if (modelDescription.getModelStructure().getInitialUnknowns() != null){
-						for (UnknownType unknown :modelDescription.getModelStructure().getInitialUnknowns().getUnknown() ){
-							createInitialUnknwonDependency(unknown);
-						}
-					}
-					if (modelDescription.getModelStructure().getOutputs() != null){
-						for (UnknownType1 unknown :modelDescription.getModelStructure().getOutputs().getUnknown() ){
-							createOutputsDependency(unknown);
-						}
-					}
-
-				}
+//				if (modelDescription.getModelStructure() != null){
+//					if (modelDescription.getModelStructure().getDerivatives() != null){
+//						for (UnknownType1 unknown :modelDescription.getModelStructure().getDerivatives().getUnknown() ){
+//							createDerivativeDependency(unknown);
+//						}
+//					}
+//					if (modelDescription.getModelStructure().getInitialUnknowns() != null){
+//						for (UnknownType unknown :modelDescription.getModelStructure().getInitialUnknowns().getUnknown() ){
+//							createInitialUnknwonDependency(unknown);
+//						}
+//					}
+//					if (modelDescription.getModelStructure().getOutputs() != null){
+//						for (UnknownType1 unknown :modelDescription.getModelStructure().getOutputs().getUnknown() ){
+//							createOutputsDependency(unknown);
+//						}
+//					}
+//
+//				}
 
 
 			}
@@ -150,44 +150,42 @@ public class FMU2UMLTransformation {
 
 
 
-	private void createOutputsDependency(UnknownType1 unknown) {
-		createDependency(unknown.getIndex(), unknown.getDependencies(), outputDepStereo);	
-	}
+//	private void createOutputsDependency(UnknownType1 unknown) {
+//		createDependency(unknown.getIndex(), unknown.getDependencies(), outputDepStereo);	
+//	}
+//
+//	private void createInitialUnknwonDependency(UnknownType unknown) {
+//		createDependency(unknown.getIndex(), unknown.getDependencies(), initialUnknownDepStereo);		
+//	}
+//
+//	private void createDerivativeDependency(UnknownType1 unknown) {
+//		createDependency(unknown.getIndex(), unknown.getDependencies(), derivativeDepStereo);
+//	}
 
-	private void createInitialUnknwonDependency(UnknownType unknown) {
-		createDependency(unknown.getIndex(), unknown.getDependencies(), initialUnknownDepStereo);		
-	}
+//	private void createDependency(long clientIndex, List<Long> suppliersIndexes, Stereotype setereoToApply) {
+//
+//		if (clientIndex<= fmuClass.getOwnedAttributes().size() && suppliersIndexes != null){
+//			Property client = fmuClass.getOwnedAttributes().get(getInt(clientIndex)-1);
+//			List<NamedElement> suppliers = new ArrayList<NamedElement>();
+//			if (client != null){
+//				for (long dep : suppliersIndexes){
+//					if (dep <=fmuClass.getOwnedAttributes().size() ){
+//						suppliers.add(fmuClass.getOwnedAttributes().get(getInt(dep)-1));
+//					}
+//				}
+//				if (!suppliers.isEmpty()){
+//					Dependency dependency = UMLFactory.eINSTANCE.createDependency();
+//					dependencyPackage.getPackagedElements().add(dependency);
+//					dependency.applyStereotype(setereoToApply);
+//					dependency.getClients().add(client);
+//					dependency.getSuppliers().addAll(suppliers);
+//				}
+//			}
+//		}
+//
+//	}
 
-	private void createDerivativeDependency(UnknownType1 unknown) {
-		createDependency(unknown.getIndex(), unknown.getDependencies(), derivativeDepStereo);
-	}
 
-	private void createDependency(long clientIndex, List<Long> suppliersIndexes, Stereotype setereoToApply) {
-
-		if (clientIndex<= fmuClass.getOwnedAttributes().size() && suppliersIndexes != null){
-			Property client = fmuClass.getOwnedAttributes().get(getInt(clientIndex)-1);
-			List<NamedElement> suppliers = new ArrayList<NamedElement>();
-			if (client != null){
-				for (long dep : suppliersIndexes){
-					if (dep <=fmuClass.getOwnedAttributes().size() ){
-						suppliers.add(fmuClass.getOwnedAttributes().get(getInt(dep)-1));
-					}
-				}
-				if (!suppliers.isEmpty()){
-					Dependency dependency = UMLFactory.eINSTANCE.createDependency();
-					dependencyPackage.getPackagedElements().add(dependency);
-					dependency.applyStereotype(setereoToApply);
-					dependency.getClients().add(client);
-					dependency.getSuppliers().addAll(suppliers);
-				}
-			}
-		}
-
-	}
-
-	private int getInt(long longValue){
-		return new Long(longValue).intValue();
-	}
 
 	private void createProperty(Fmi2ScalarVariable variable) {
 		Type propType = getUMLType(variable);

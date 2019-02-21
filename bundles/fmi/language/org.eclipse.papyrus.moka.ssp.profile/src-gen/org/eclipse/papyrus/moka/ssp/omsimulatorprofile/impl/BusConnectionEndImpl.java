@@ -98,6 +98,7 @@ public class BusConnectionEndImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConnectorEnd getBase_ConnectorEnd() {
 		if (base_ConnectorEnd != null && base_ConnectorEnd.eIsProxy()) {
 			InternalEObject oldBase_ConnectorEnd = (InternalEObject)base_ConnectorEnd;
@@ -124,6 +125,7 @@ public class BusConnectionEndImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBase_ConnectorEnd(ConnectorEnd newBase_ConnectorEnd) {
 		ConnectorEnd oldBase_ConnectorEnd = base_ConnectorEnd;
 		base_ConnectorEnd = newBase_ConnectorEnd;
@@ -136,6 +138,7 @@ public class BusConnectionEndImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Port> getReferencedSignal() {
 		if (referencedSignal == null) {
 			referencedSignal = new EObjectResolvingEList<Port>(Port.class, this, OMSimulatorPackage.BUS_CONNECTION_END__REFERENCED_SIGNAL);

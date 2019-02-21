@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
-  <uml:Profile xmi:id="_zIAAYLgtEeizUOX0GlzCzg" name="OMSimulatorProfile" metaclassReference="_07maELgvEeizUOX0GlzCzg _07tu0LgvEeizUOX0GlzCzg __qTiIMVZEeiLVbFVoMGQrQ __3VcEMVaEeiLVbFVoMGQrQ _6JuGgOmMEeiRcfn1Mejhlg">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6PFF4bgvEeizUOX0GlzCzg" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+  <uml:Profile xmi:id="_zIAAYLgtEeizUOX0GlzCzg" name="OMSimulatorProfile" metaclassReference="_07maELgvEeizUOX0GlzCzg _07tu0LgvEeizUOX0GlzCzg __qTiIMVZEeiLVbFVoMGQrQ __3VcEMVaEeiLVbFVoMGQrQ _6JuGgOmMEeiRcfn1Mejhlg _Bv-WkCYwEemp-f1Vl6pDLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6PFF4bgvEeizUOX0GlzCzg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mN_-MCYBEemDsJKy8GtZKA" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mN_-MSYBEemDsJKy8GtZKA" key="Version" value="0.0.0"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mN_-MiYBEemDsJKy8GtZKA" key="Comment" value="&lt;undefined>"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mN_-MyYBEemDsJKy8GtZKA" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mN_-NCYBEemDsJKy8GtZKA" key="Date" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mN_-NSYBEemDsJKy8GtZKA" key="Author" value="&lt;undefined>"/>
+      </eAnnotations>
+    </eAnnotations>
     <ownedComment xmi:type="uml:Comment" xmi:id="_I8yvQMVcEeiLVbFVoMGQrQ" annotatedElement="_A48AsLguEeizUOX0GlzCzg">
       <body>TLMInterface will be used to defined all the predefined TLM physical types supported by OMSimulator.&#xD;
 More particularly, each TLM interface will have to list all the corresponding signals an FMU must own.&#xD;
@@ -33,6 +41,9 @@ The &quot;referencedSignals&quot; attribute shoud be a subset of the OMSimulator
     </elementImport>
     <elementImport xmi:type="uml:ElementImport" xmi:id="_6JuGgOmMEeiRcfn1Mejhlg" alias="Class">
       <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_Bv-WkCYwEemp-f1Vl6pDLw" alias="Property">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
     </elementImport>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_zSjDgLgtEeizUOX0GlzCzg">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -108,7 +119,7 @@ The &quot;referencedSignals&quot; attribute shoud be a subset of the OMSimulator
       <ownedAttribute xmi:type="uml:Property" xmi:id="_lu1pMcVaEeiLVbFVoMGQrQ" name="base_Port" association="_lusfQMVaEeiLVbFVoMGQrQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_pNXJEMVbEeiLVbFVoMGQrQ" name="signals">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_pNXJEMVbEeiLVbFVoMGQrQ" name="signals" isOrdered="true">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_t9OKcMVbEeiLVbFVoMGQrQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_t90AUMVbEeiLVbFVoMGQrQ" value="*"/>
@@ -166,6 +177,55 @@ The &quot;referencedSignals&quot; attribute shoud be a subset of the OMSimulator
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_izu84OmfEeiRcfn1Mejhlg" name="tlminterfacedefinition" type="_A48AsLguEeizUOX0GlzCzg" association="_iztuwOmfEeiRcfn1Mejhlg"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_XeSSkCYvEemDsJKy8GtZKA" name="BusConnector">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gzSTEiYvEemDsJKy8GtZKA" name="base_Connector" association="_gzSTECYvEemDsJKy8GtZKA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gzSTEyYvEemDsJKy8GtZKA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_jFtosCYvEemDsJKy8GtZKA" name="end1Component" isDerived="true">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_o4gGsCYvEemDsJKy8GtZKA" name="end1Signals" isOrdered="true">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G7BfICYwEemp-f1Vl6pDLw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G7WPQCYwEemp-f1Vl6pDLw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FCvH0CYwEemp-f1Vl6pDLw" name="end2Signals" isOrdered="true">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M2f_ECYwEemp-f1Vl6pDLw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M2nT0CYwEemp-f1Vl6pDLw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FCw9ACYwEemp-f1Vl6pDLw" name="end2Component" isDerived="true">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_dO04YCYwEemp-f1Vl6pDLw" name="getEnd1Component">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_i24GACYwEemp-f1Vl6pDLw" name="component" direction="return">
+          <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_oyw1oCYwEemp-f1Vl6pDLw" name="getEnd2Component">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_oyw1oSYwEemp-f1Vl6pDLw" name="component" direction="return">
+          <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_tBv-kCYwEemp-f1Vl6pDLw" name="getEnd1Signals">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tBv-kSYwEemp-f1Vl6pDLw" name="component" direction="return">
+          <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_x7X_8CYwEemp-f1Vl6pDLw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_x73IICYwEemp-f1Vl6pDLw" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_zV-8wCYwEemp-f1Vl6pDLw" name="getEnd2Signals">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zV-8wSYwEemp-f1Vl6pDLw" name="component" direction="return">
+          <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zV-8wiYwEemp-f1Vl6pDLw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zV-8wyYwEemp-f1Vl6pDLw" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_gzSTECYvEemDsJKy8GtZKA" name="E_BusConnector_Connector33" memberEnd="_gzSTESYvEemDsJKy8GtZKA _gzSTEiYvEemDsJKy8GtZKA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_gzSTESYvEemDsJKy8GtZKA" name="extension_BusConnector" type="_XeSSkCYvEemDsJKy8GtZKA" aggregation="composite" association="_gzSTECYvEemDsJKy8GtZKA"/>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_TifVwLguEeizUOX0GlzCzg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TijAILguEeizUOX0GlzCzg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
@@ -181,4 +241,10 @@ The &quot;referencedSignals&quot; attribute shoud be a subset of the OMSimulator
   </uml:Profile>
   <Ecore:EPackage xmi:id="_VEhgEOmNEeiRcfn1Mejhlg" base_Package="_zIAAYLgtEeizUOX0GlzCzg" packageName="omsimulatorprofile" nsPrefix="omsim" nsURI="http://www.eclipse.org/papyrus/OMSimulatorProfile/1.0.0" basePackage="org.eclipse.papyrus.moka.ssp" prefix="OMSimulator"/>
   <Ecore:EOperation xmi:id="_70azIOmfEeiRcfn1Mejhlg" base_Operation="_4LCRoOmfEeiRcfn1Mejhlg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_j1viACYwEemp-f1Vl6pDLw" base_Operation="_dO04YCYwEemp-f1Vl6pDLw" visibility="None"/>
+  <Ecore:EOperation xmi:id="_oy1HECYwEemp-f1Vl6pDLw" base_Operation="_oyw1oCYwEemp-f1Vl6pDLw" visibility="None"/>
+  <Ecore:EOperation xmi:id="_tBxzwCYwEemp-f1Vl6pDLw" base_Operation="_tBv-kCYwEemp-f1Vl6pDLw" visibility="None"/>
+  <Ecore:EOperation xmi:id="_zWEcUCYwEemp-f1Vl6pDLw" base_Operation="_zV-8wCYwEemp-f1Vl6pDLw" visibility="None"/>
+  <Ecore:EReference xmi:id="_danNcCY3Eemp-f1Vl6pDLw" isTransient="true" isVolatile="true" base_Property="_o4gGsCYvEemDsJKy8GtZKA"/>
+  <Ecore:EReference xmi:id="_eNHL8CY4Eemp-f1Vl6pDLw" isTransient="true" isVolatile="true" base_Property="_FCvH0CYwEemp-f1Vl6pDLw"/>
 </xmi:XMI>

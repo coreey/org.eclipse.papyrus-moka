@@ -1,13 +1,16 @@
-/*******************************************************************************
- * Copyright (c) 2015, CEA LITEN
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
- * which accompanies this distribution, and is available at 
- * http://www.eclipse.org/legal/epl-v10.html 
+/*****************************************************************************
+ * 
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors: 
- *     Thanh Liem PHAN - initial API and implementation 
- *******************************************************************************/
+ * Contributors:
+ *  CEA LIST Initial API and implementation
+ * 
+ *****************************************************************************/
 package org.eclipse.papyrus.moka.fmi.ui.handlers;
 
 import java.io.File;
@@ -15,6 +18,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.text.html.parser.TagElement;
 
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.resources.IFile;
@@ -56,7 +61,7 @@ public class ImportFMULibHandler
 		extends AbstractCommandHandler
 
 {
-
+	private static final String FMU_FOLDER_NAME="FMU";
 	private static final String DEFAULT_LIBRARY_NAME = "FMULibrary";
 
 	public String getLibraryName() {
@@ -136,6 +141,7 @@ public class ImportFMULibHandler
 		return false;
 	}
 
+	
 	@Override
 	protected Command getCommand(IEvaluationContext context) {
 		EObject selection = getSelectedElement();
@@ -184,6 +190,8 @@ public class ImportFMULibHandler
 					importFMUs(target, libName, libFolder, fmuAndSlxPaths);
 
 				}
+				
+				
 
 			};
 		}
@@ -204,7 +212,7 @@ public class ImportFMULibHandler
 				targetIFile.create(new FileInputStream(sourceFile), true, null);
 			} catch (CoreException e) {
 				errorDialog(e,
-					"Could not FMU File " + targetIFile.getName() + " in");
+					"Could not copy FMU File " + targetIFile.getName() + " in "+ targetIFile.getLocation());
 				cleanFolder(libFolder);
 				return;
 			} catch (FileNotFoundException e) {

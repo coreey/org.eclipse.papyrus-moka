@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnectionEnd;
+import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector;
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.Interpolation;
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.OMSimulatorBus;
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.OMSimulatorFactory;
@@ -91,6 +92,13 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * @generated
 	 */
 	private EClass tlmConnectionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass busConnectorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -177,6 +185,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTLMInterfaceDefinition() {
 		return tlmInterfaceDefinitionEClass;
 	}
@@ -186,6 +195,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTLMInterfaceDefinition_Interpolation() {
 		return (EAttribute)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -195,6 +205,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTLMInterfaceDefinition_Base_Interface() {
 		return (EReference)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(1);
 	}
@@ -204,6 +215,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTLMInterfaceDefinition_Base_Class() {
 		return (EReference)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(2);
 	}
@@ -213,6 +225,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTLMInterfaceDefinition_SignalDefinitions() {
 		return (EReference)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(3);
 	}
@@ -222,6 +235,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTLMInterfaceDefinition_Dimensions() {
 		return (EAttribute)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(4);
 	}
@@ -231,6 +245,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTLMInterfaceDefinition__GetSignalDefinitions() {
 		return tlmInterfaceDefinitionEClass.getEOperations().get(0);
 	}
@@ -240,6 +255,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTLMSignalDefinition() {
 		return tlmSignalDefinitionEClass;
 	}
@@ -249,6 +265,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTLMSignalDefinition_Base_Port() {
 		return (EReference)tlmSignalDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -258,6 +275,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTLMSignal() {
 		return tlmSignalEClass;
 	}
@@ -267,6 +285,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTLMSignal_Base_Port() {
 		return (EReference)tlmSignalEClass.getEStructuralFeatures().get(0);
 	}
@@ -276,6 +295,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTLMSignal_Definition() {
 		return (EReference)tlmSignalEClass.getEStructuralFeatures().get(1);
 	}
@@ -285,6 +305,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOMSimulatorBus() {
 		return omSimulatorBusEClass;
 	}
@@ -294,6 +315,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOMSimulatorBus_Base_Port() {
 		return (EReference)omSimulatorBusEClass.getEStructuralFeatures().get(0);
 	}
@@ -303,6 +325,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOMSimulatorBus_Signals() {
 		return (EReference)omSimulatorBusEClass.getEStructuralFeatures().get(1);
 	}
@@ -312,6 +335,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getOMSimulatorBus_Domain() {
 		return (EAttribute)omSimulatorBusEClass.getEStructuralFeatures().get(2);
 	}
@@ -321,6 +345,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBusConnectionEnd() {
 		return busConnectionEndEClass;
 	}
@@ -330,6 +355,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBusConnectionEnd_Base_ConnectorEnd() {
 		return (EReference)busConnectionEndEClass.getEStructuralFeatures().get(0);
 	}
@@ -339,6 +365,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBusConnectionEnd_ReferencedSignal() {
 		return (EReference)busConnectionEndEClass.getEStructuralFeatures().get(1);
 	}
@@ -348,6 +375,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTLMConnection() {
 		return tlmConnectionEClass;
 	}
@@ -357,6 +385,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTLMConnection_Timedelay() {
 		return (EAttribute)tlmConnectionEClass.getEStructuralFeatures().get(0);
 	}
@@ -366,6 +395,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTLMConnection_Impedance() {
 		return (EAttribute)tlmConnectionEClass.getEStructuralFeatures().get(1);
 	}
@@ -375,6 +405,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTLMConnection_Rotationalimpedance() {
 		return (EAttribute)tlmConnectionEClass.getEStructuralFeatures().get(2);
 	}
@@ -384,6 +415,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTLMConnection_Alpha() {
 		return (EAttribute)tlmConnectionEClass.getEStructuralFeatures().get(3);
 	}
@@ -393,6 +425,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTLMConnection_Base_Connector() {
 		return (EReference)tlmConnectionEClass.getEStructuralFeatures().get(4);
 	}
@@ -402,6 +435,107 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getBusConnector() {
+		return busConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBusConnector_Base_Connector() {
+		return (EReference)busConnectorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBusConnector_End1Component() {
+		return (EReference)busConnectorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBusConnector_End1Signals() {
+		return (EReference)busConnectorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBusConnector_End2Signals() {
+		return (EReference)busConnectorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBusConnector_End2Component() {
+		return (EReference)busConnectorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getBusConnector__GetEnd1Component() {
+		return busConnectorEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getBusConnector__GetEnd2Component() {
+		return busConnectorEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getBusConnector__GetEnd1Signals() {
+		return busConnectorEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getBusConnector__GetEnd2Signals() {
+		return busConnectorEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getInterpolation() {
 		return interpolationEEnum;
 	}
@@ -411,6 +545,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getTLMDomain() {
 		return tlmDomainEEnum;
 	}
@@ -420,6 +555,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OMSimulatorFactory getOMSimulatorFactory() {
 		return (OMSimulatorFactory)getEFactoryInstance();
 	}
@@ -473,6 +609,17 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 		createEAttribute(tlmConnectionEClass, TLM_CONNECTION__ROTATIONALIMPEDANCE);
 		createEAttribute(tlmConnectionEClass, TLM_CONNECTION__ALPHA);
 		createEReference(tlmConnectionEClass, TLM_CONNECTION__BASE_CONNECTOR);
+
+		busConnectorEClass = createEClass(BUS_CONNECTOR);
+		createEReference(busConnectorEClass, BUS_CONNECTOR__BASE_CONNECTOR);
+		createEReference(busConnectorEClass, BUS_CONNECTOR__END1_COMPONENT);
+		createEReference(busConnectorEClass, BUS_CONNECTOR__END1_SIGNALS);
+		createEReference(busConnectorEClass, BUS_CONNECTOR__END2_SIGNALS);
+		createEReference(busConnectorEClass, BUS_CONNECTOR__END2_COMPONENT);
+		createEOperation(busConnectorEClass, BUS_CONNECTOR___GET_END1_COMPONENT);
+		createEOperation(busConnectorEClass, BUS_CONNECTOR___GET_END2_COMPONENT);
+		createEOperation(busConnectorEClass, BUS_CONNECTOR___GET_END1_SIGNALS);
+		createEOperation(busConnectorEClass, BUS_CONNECTOR___GET_END2_SIGNALS);
 
 		// Create enums
 		interpolationEEnum = createEEnum(INTERPOLATION);
@@ -531,7 +678,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 
 		initEClass(omSimulatorBusEClass, OMSimulatorBus.class, "OMSimulatorBus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOMSimulatorBus_Base_Port(), theUMLPackage.getPort(), null, "base_Port", null, 1, 1, OMSimulatorBus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getOMSimulatorBus_Signals(), theUMLPackage.getPort(), null, "signals", null, 0, -1, OMSimulatorBus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getOMSimulatorBus_Signals(), theUMLPackage.getPort(), null, "signals", null, 0, -1, OMSimulatorBus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOMSimulatorBus_Domain(), this.getTLMDomain(), "domain", null, 0, -1, OMSimulatorBus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(busConnectionEndEClass, BusConnectionEnd.class, "BusConnectionEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -544,6 +691,21 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 		initEAttribute(getTLMConnection_Rotationalimpedance(), theTypesPackage.getReal(), "rotationalimpedance", null, 0, 1, TLMConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getTLMConnection_Alpha(), theTypesPackage.getReal(), "alpha", null, 0, 1, TLMConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getTLMConnection_Base_Connector(), theUMLPackage.getConnector(), null, "base_Connector", null, 1, 1, TLMConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
+		initEClass(busConnectorEClass, BusConnector.class, "BusConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBusConnector_Base_Connector(), theUMLPackage.getConnector(), null, "base_Connector", null, 0, 1, BusConnector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getBusConnector_End1Component(), theUMLPackage.getProperty(), null, "end1Component", null, 1, 1, BusConnector.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
+		initEReference(getBusConnector_End1Signals(), theUMLPackage.getPort(), null, "end1Signals", null, 0, -1, BusConnector.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBusConnector_End2Signals(), theUMLPackage.getPort(), null, "end2Signals", null, 0, -1, BusConnector.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBusConnector_End2Component(), theUMLPackage.getProperty(), null, "end2Component", null, 1, 1, BusConnector.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
+
+		initEOperation(getBusConnector__GetEnd1Component(), theUMLPackage.getProperty(), "getEnd1Component", 1, 1, IS_UNIQUE, !IS_ORDERED);
+
+		initEOperation(getBusConnector__GetEnd2Component(), theUMLPackage.getProperty(), "getEnd2Component", 1, 1, IS_UNIQUE, !IS_ORDERED);
+
+		initEOperation(getBusConnector__GetEnd1Signals(), theUMLPackage.getPort(), "getEnd1Signals", 0, -1, IS_UNIQUE, !IS_ORDERED);
+
+		initEOperation(getBusConnector__GetEnd2Signals(), theUMLPackage.getPort(), "getEnd2Signals", 0, -1, IS_UNIQUE, !IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(interpolationEEnum, Interpolation.class, "Interpolation");

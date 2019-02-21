@@ -66,9 +66,6 @@
                   checkEnabled="false">
             </visibleWhen>
          </command>
-         <menuContribution
-            allPopups="false"
-            locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu.moka.fmi">
          <command
                commandId="org.eclipse.papyrus.moka.fmi.ui.handlers.ImportFMUHandlerCommand"
                icon="platform:/plugin/org.eclipse.papyrus.uml.icons/resource/gif/Component.gif"
@@ -80,7 +77,16 @@
                   checkEnabled="false">
             </visibleWhen>
          </command>
-      </menuContribution>
+         <command
+               commandId="org.eclipse.papyrus.moka.fmi.ui.handlers.GroupPortsCommand"
+               id="org.eclipse.papyrus.moka.ui.utils.handlers.GroupPortsMenu"
+               label="GroupPorts"
+               style="push"
+               tooltip="Create Signal Bus">
+            <visibleWhen
+                  checkEnabled="false">
+            </visibleWhen>
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -91,6 +97,12 @@
             id="org.eclipse.papyrus.moka.fmi.ui.handlers.ImportFMUHandlerCommand"
             name="Import FMU">
       </command>
+       <command
+             categoryId="org.eclipse.papyrus.editor.category"
+             description="Group ports"
+             id="org.eclipse.papyrus.moka.fmi.ui.handlers.GroupPortsCommand"
+             name="Group ports">
+       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -107,6 +119,25 @@
                         type="org.eclipse.emf.ecore.EObject">
                      <instanceof
                            value="org.eclipse.uml2.uml.Package">
+                     </instanceof>
+                  </adapt>
+               </iterate>
+            </with>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="org.eclipse.papyrus.moka.fmi.ui.handlers.GroupPortsHanlder"
+            commandId="org.eclipse.papyrus.moka.fmi.ui.handlers.GroupPortsCommand">
+         <enabledWhen>
+            <with
+                  variable="selection">
+               <iterate
+                     ifEmpty="false"
+                     operator="and">
+                  <adapt
+                        type="org.eclipse.emf.ecore.EObject">
+                     <instanceof
+                           value="org.eclipse.uml2.uml.Port">
                      </instanceof>
                   </adapt>
                </iterate>

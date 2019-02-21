@@ -79,6 +79,7 @@ public class OMSimulatorFactoryImpl extends EFactoryImpl implements OMSimulatorF
 			case OMSimulatorPackage.OM_SIMULATOR_BUS: return createOMSimulatorBus();
 			case OMSimulatorPackage.BUS_CONNECTION_END: return createBusConnectionEnd();
 			case OMSimulatorPackage.TLM_CONNECTION: return createTLMConnection();
+			case OMSimulatorPackage.BUS_CONNECTOR: return createBusConnector();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -123,6 +124,7 @@ public class OMSimulatorFactoryImpl extends EFactoryImpl implements OMSimulatorF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TLMInterfaceDefinition createTLMInterfaceDefinition() {
 		TLMInterfaceDefinitionImpl tlmInterfaceDefinition = new TLMInterfaceDefinitionImpl();
 		return tlmInterfaceDefinition;
@@ -133,6 +135,7 @@ public class OMSimulatorFactoryImpl extends EFactoryImpl implements OMSimulatorF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TLMSignalDefinition createTLMSignalDefinition() {
 		TLMSignalDefinitionImpl tlmSignalDefinition = new TLMSignalDefinitionImpl();
 		return tlmSignalDefinition;
@@ -143,6 +146,7 @@ public class OMSimulatorFactoryImpl extends EFactoryImpl implements OMSimulatorF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TLMSignal createTLMSignal() {
 		TLMSignalImpl tlmSignal = new TLMSignalImpl();
 		return tlmSignal;
@@ -153,6 +157,7 @@ public class OMSimulatorFactoryImpl extends EFactoryImpl implements OMSimulatorF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OMSimulatorBus createOMSimulatorBus() {
 		OMSimulatorBusImpl omSimulatorBus = new OMSimulatorBusImpl();
 		return omSimulatorBus;
@@ -163,6 +168,7 @@ public class OMSimulatorFactoryImpl extends EFactoryImpl implements OMSimulatorF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BusConnectionEnd createBusConnectionEnd() {
 		BusConnectionEndImpl busConnectionEnd = new BusConnectionEndImpl();
 		return busConnectionEnd;
@@ -173,9 +179,21 @@ public class OMSimulatorFactoryImpl extends EFactoryImpl implements OMSimulatorF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TLMConnection createTLMConnection() {
 		TLMConnectionImpl tlmConnection = new TLMConnectionImpl();
 		return tlmConnection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BusConnector createBusConnector() {
+		BusConnectorImpl busConnector = new BusConnectorImpl();
+		return busConnector;
 	}
 
 	/**
@@ -223,6 +241,7 @@ public class OMSimulatorFactoryImpl extends EFactoryImpl implements OMSimulatorF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OMSimulatorPackage getOMSimulatorPackage() {
 		return (OMSimulatorPackage)getEPackage();
 	}

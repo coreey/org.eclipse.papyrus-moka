@@ -141,6 +141,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Interpolation getInterpolation() {
 		return interpolation;
 	}
@@ -150,6 +151,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInterpolation(Interpolation newInterpolation) {
 		Interpolation oldInterpolation = interpolation;
 		interpolation = newInterpolation == null ? INTERPOLATION_EDEFAULT : newInterpolation;
@@ -162,6 +164,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Interface getBase_Interface() {
 		if (base_Interface != null && base_Interface.eIsProxy()) {
 			InternalEObject oldBase_Interface = (InternalEObject)base_Interface;
@@ -188,6 +191,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBase_Interface(Interface newBase_Interface) {
 		Interface oldBase_Interface = base_Interface;
 		base_Interface = newBase_Interface;
@@ -200,6 +204,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.uml2.uml.Class getBase_Class() {
 		if (base_Class != null && base_Class.eIsProxy()) {
 			InternalEObject oldBase_Class = (InternalEObject)base_Class;
@@ -226,6 +231,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBase_Class(org.eclipse.uml2.uml.Class newBase_Class) {
 		org.eclipse.uml2.uml.Class oldBase_Class = base_Class;
 		base_Class = newBase_Class;
@@ -238,6 +244,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TLMSignalDefinition> getSignalDefinitions() {
 		return TLMInterfaceDefinitionOperations.getSignalDefinitions(this);
 	}
@@ -247,6 +254,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getDimensions() {
 		return dimensions;
 	}
@@ -256,6 +264,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDimensions(int newDimensions) {
 		int oldDimensions = dimensions;
 		dimensions = newDimensions;

@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.OMSimulatorBus;
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.OMSimulatorPackage;
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.TLMDomain;
-
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Type;
 
@@ -110,6 +109,7 @@ public class OMSimulatorBusImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Port getBase_Port() {
 		if (base_Port != null && base_Port.eIsProxy()) {
 			InternalEObject oldBase_Port = (InternalEObject)base_Port;
@@ -136,6 +136,7 @@ public class OMSimulatorBusImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBase_Port(Port newBase_Port) {
 		Port oldBase_Port = base_Port;
 		base_Port = newBase_Port;
@@ -148,6 +149,7 @@ public class OMSimulatorBusImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Port> getSignals() {
 		if (signals == null) {
 			signals = new EObjectResolvingEList<Port>(Port.class, this, OMSimulatorPackage.OM_SIMULATOR_BUS__SIGNALS);
@@ -185,6 +187,7 @@ public class OMSimulatorBusImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TLMDomain> getDomain() {
 		if (domain == null) {
 			domain = new EDataTypeUniqueEList<TLMDomain>(TLMDomain.class, this, OMSimulatorPackage.OM_SIMULATOR_BUS__DOMAIN);

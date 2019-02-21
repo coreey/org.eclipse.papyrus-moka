@@ -415,6 +415,115 @@ public interface OMSimulatorPackage extends EPackage {
 	int TLM_CONNECTION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.impl.BusConnectorImpl <em>Bus Connector</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.impl.BusConnectorImpl
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.impl.OMSimulatorPackageImpl#getBusConnector()
+	 * @generated
+	 */
+	int BUS_CONNECTOR = 6;
+
+	/**
+	 * The feature id for the '<em><b>Base Connector</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR__BASE_CONNECTOR = 0;
+
+	/**
+	 * The feature id for the '<em><b>End1 Component</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR__END1_COMPONENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>End1 Signals</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR__END1_SIGNALS = 2;
+
+	/**
+	 * The feature id for the '<em><b>End2 Signals</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR__END2_SIGNALS = 3;
+
+	/**
+	 * The feature id for the '<em><b>End2 Component</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR__END2_COMPONENT = 4;
+
+	/**
+	 * The number of structural features of the '<em>Bus Connector</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR_FEATURE_COUNT = 5;
+
+	/**
+	 * The operation id for the '<em>Get End1 Component</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR___GET_END1_COMPONENT = 0;
+
+	/**
+	 * The operation id for the '<em>Get End2 Component</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR___GET_END2_COMPONENT = 1;
+
+	/**
+	 * The operation id for the '<em>Get End1 Signals</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR___GET_END1_SIGNALS = 2;
+
+	/**
+	 * The operation id for the '<em>Get End2 Signals</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR___GET_END2_SIGNALS = 3;
+
+	/**
+	 * The number of operations of the '<em>Bus Connector</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS_CONNECTOR_OPERATION_COUNT = 4;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.Interpolation <em>Interpolation</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,7 +531,7 @@ public interface OMSimulatorPackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.impl.OMSimulatorPackageImpl#getInterpolation()
 	 * @generated
 	 */
-	int INTERPOLATION = 6;
+	int INTERPOLATION = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.TLMDomain <em>TLM Domain</em>}' enum.
@@ -432,7 +541,7 @@ public interface OMSimulatorPackage extends EPackage {
 	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.impl.OMSimulatorPackageImpl#getTLMDomain()
 	 * @generated
 	 */
-	int TLM_DOMAIN = 7;
+	int TLM_DOMAIN = 8;
 
 
 	/**
@@ -704,6 +813,111 @@ public interface OMSimulatorPackage extends EPackage {
 	EReference getTLMConnection_Base_Connector();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector <em>Bus Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Bus Connector</em>'.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector
+	 * @generated
+	 */
+	EClass getBusConnector();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getBase_Connector <em>Base Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Base Connector</em>'.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getBase_Connector()
+	 * @see #getBusConnector()
+	 * @generated
+	 */
+	EReference getBusConnector_Base_Connector();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd1Component <em>End1 Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>End1 Component</em>'.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd1Component()
+	 * @see #getBusConnector()
+	 * @generated
+	 */
+	EReference getBusConnector_End1Component();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd1Signals <em>End1 Signals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>End1 Signals</em>'.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd1Signals()
+	 * @see #getBusConnector()
+	 * @generated
+	 */
+	EReference getBusConnector_End1Signals();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd2Signals <em>End2 Signals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>End2 Signals</em>'.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd2Signals()
+	 * @see #getBusConnector()
+	 * @generated
+	 */
+	EReference getBusConnector_End2Signals();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd2Component <em>End2 Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>End2 Component</em>'.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd2Component()
+	 * @see #getBusConnector()
+	 * @generated
+	 */
+	EReference getBusConnector_End2Component();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd1Component() <em>Get End1 Component</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get End1 Component</em>' operation.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd1Component()
+	 * @generated
+	 */
+	EOperation getBusConnector__GetEnd1Component();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd2Component() <em>Get End2 Component</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get End2 Component</em>' operation.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd2Component()
+	 * @generated
+	 */
+	EOperation getBusConnector__GetEnd2Component();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd1Signals() <em>Get End1 Signals</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get End1 Signals</em>' operation.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd1Signals()
+	 * @generated
+	 */
+	EOperation getBusConnector__GetEnd1Signals();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd2Signals() <em>Get End2 Signals</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get End2 Signals</em>' operation.
+	 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector#getEnd2Signals()
+	 * @generated
+	 */
+	EOperation getBusConnector__GetEnd2Signals();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.Interpolation <em>Interpolation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -957,6 +1171,88 @@ public interface OMSimulatorPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TLM_CONNECTION__BASE_CONNECTOR = eINSTANCE.getTLMConnection_Base_Connector();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.impl.BusConnectorImpl <em>Bus Connector</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.impl.BusConnectorImpl
+		 * @see org.eclipse.papyrus.moka.ssp.omsimulatorprofile.impl.OMSimulatorPackageImpl#getBusConnector()
+		 * @generated
+		 */
+		EClass BUS_CONNECTOR = eINSTANCE.getBusConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Connector</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BUS_CONNECTOR__BASE_CONNECTOR = eINSTANCE.getBusConnector_Base_Connector();
+
+		/**
+		 * The meta object literal for the '<em><b>End1 Component</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BUS_CONNECTOR__END1_COMPONENT = eINSTANCE.getBusConnector_End1Component();
+
+		/**
+		 * The meta object literal for the '<em><b>End1 Signals</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BUS_CONNECTOR__END1_SIGNALS = eINSTANCE.getBusConnector_End1Signals();
+
+		/**
+		 * The meta object literal for the '<em><b>End2 Signals</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BUS_CONNECTOR__END2_SIGNALS = eINSTANCE.getBusConnector_End2Signals();
+
+		/**
+		 * The meta object literal for the '<em><b>End2 Component</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BUS_CONNECTOR__END2_COMPONENT = eINSTANCE.getBusConnector_End2Component();
+
+		/**
+		 * The meta object literal for the '<em><b>Get End1 Component</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BUS_CONNECTOR___GET_END1_COMPONENT = eINSTANCE.getBusConnector__GetEnd1Component();
+
+		/**
+		 * The meta object literal for the '<em><b>Get End2 Component</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BUS_CONNECTOR___GET_END2_COMPONENT = eINSTANCE.getBusConnector__GetEnd2Component();
+
+		/**
+		 * The meta object literal for the '<em><b>Get End1 Signals</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BUS_CONNECTOR___GET_END1_SIGNALS = eINSTANCE.getBusConnector__GetEnd1Signals();
+
+		/**
+		 * The meta object literal for the '<em><b>Get End2 Signals</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BUS_CONNECTOR___GET_END2_SIGNALS = eINSTANCE.getBusConnector__GetEnd2Signals();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.ssp.omsimulatorprofile.Interpolation <em>Interpolation</em>}' enum.

@@ -50,8 +50,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="base_Port" ordered="false"
         lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Port"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="signals" ordered="false"
-        upperBound="-1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Port"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain" ordered="false"
         upperBound="-1" eType="#//TLMDomain"/>
   </eClassifiers>
@@ -91,5 +91,41 @@
         eType="ecore:EDataType ../../org.eclipse.uml2.types/model/Types.ecore#//Real"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="base_Connector" ordered="false"
         lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Connector"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusConnector">
+    <eOperations name="getEnd1Component" ordered="false" lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getEnd2Component" ordered="false" lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getEnd1Signals" ordered="false" upperBound="-1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Port">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getEnd2Signals" ordered="false" upperBound="-1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Port">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Connector" ordered="false"
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Connector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end1Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Property"
+        volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end1Signals" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Port" volatile="true"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end2Signals" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Port" volatile="true"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end2Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Property"
+        volatile="true" transient="true" derived="true"/>
   </eClassifiers>
 </ecore:EPackage>

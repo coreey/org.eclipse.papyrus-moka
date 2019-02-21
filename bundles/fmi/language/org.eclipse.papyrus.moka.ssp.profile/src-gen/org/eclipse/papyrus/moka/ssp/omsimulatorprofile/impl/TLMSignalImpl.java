@@ -91,6 +91,7 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Port getBase_Port() {
 		if (base_Port != null && base_Port.eIsProxy()) {
 			InternalEObject oldBase_Port = (InternalEObject)base_Port;
@@ -117,6 +118,7 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBase_Port(Port newBase_Port) {
 		Port oldBase_Port = base_Port;
 		base_Port = newBase_Port;
@@ -129,6 +131,7 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TLMSignalDefinition getDefinition() {
 		if (definition != null && definition.eIsProxy()) {
 			InternalEObject oldDefinition = (InternalEObject)definition;
@@ -155,6 +158,7 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefinition(TLMSignalDefinition newDefinition) {
 		TLMSignalDefinition oldDefinition = definition;
 		definition = newDefinition;
