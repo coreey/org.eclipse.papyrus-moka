@@ -17,6 +17,9 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.infra.core.Activator;
+import org.eclipse.papyrus.infra.widgets.editors.AbstractEditor;
+import org.eclipse.papyrus.infra.widgets.editors.ICommitListener;
+import org.eclipse.papyrus.moka.trace.interfaces.format.ITraceFileFormater;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -36,6 +39,8 @@ public class MokaRunConfigurationTab extends AbstractLaunchConfigurationTab {
 
 	protected MokaExecutionEngineSelectionComponent executionEngineSelectionComp;
 
+	protected MokaTraceServiceComponent traceServiceComp;
+
 	protected Image image;
 
 	public void initializeFrom(ILaunchConfiguration configuration) {
@@ -46,9 +51,22 @@ public class MokaRunConfigurationTab extends AbstractLaunchConfigurationTab {
 				String init_fragment = configuration.getAttribute(MokaConstants.FRAGMENT_ATTRIBUTE_NAME, "");
 				this.executableSelectionComp.eligibleExecutableElement.selectByURIFragment(init_fragment);
 			}
-			String selectedExecutionEngine = configuration.getAttribute(MokaConstants.EXECUTION_ENGINE_ATTRIBUTE_NAME, "");
+			String selectedExecutionEngine = configuration.getAttribute(MokaConstants.EXECUTION_ENGINE_ATTRIBUTE_NAME,
+					"");
 			if (selectedExecutionEngine != null) {
 				this.executionEngineSelectionComp.eligibleExecutionEngineCombo.setText(selectedExecutionEngine);
+			}
+			boolean isTraceServiceActivate = configuration.getAttribute(MokaConstants.MOKA_TRACE_SERVICE_ACTIVATE,
+					false);
+			if (MokaTraceServiceComponent.shouldDisplay()) {
+				this.traceServiceComp.traceCheckBox.setSelection(isTraceServiceActivate);
+				this.traceServiceComp.enableTraceWidget(isTraceServiceActivate);
+				String selectedTraceFilePath = configuration.getAttribute(MokaConstants.MOKA_TRACE_FILE_PATH, "");
+				this.traceServiceComp.filePathSelector.getText().setText(selectedTraceFilePath);
+				String formaterId = configuration.getAttribute(MokaConstants.MOKA_TRACE_FORMATER, "");
+				this.traceServiceComp.setFormaterFromID(formaterId);
+				Boolean isTracepointMode = configuration.getAttribute(MokaConstants.MOKA_TRACE_TRACEPOINT_MODE, false);
+				this.traceServiceComp.traceTracepointModeCheckBox.setSelection(isTracepointMode);
 			}
 		} catch (CoreException e) {
 			Activator.log.error(e);
@@ -56,14 +74,28 @@ public class MokaRunConfigurationTab extends AbstractLaunchConfigurationTab {
 	}
 
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
-		configuration.setAttribute(MokaConstants.URI_ATTRIBUTE_NAME, this.projectSelectionComp.projectSelectionText.getText());
+		configuration.setAttribute(MokaConstants.URI_ATTRIBUTE_NAME,
+				this.projectSelectionComp.projectSelectionText.getText());
 		EObject selected = this.executableSelectionComp.eligibleExecutableElement.getSelected();
 		if (selected != null) {
-			configuration.setAttribute(MokaConstants.FRAGMENT_ATTRIBUTE_NAME, selected.eResource().getURIFragment(selected));
+			configuration.setAttribute(MokaConstants.FRAGMENT_ATTRIBUTE_NAME,
+					selected.eResource().getURIFragment(selected));
 		}
 		String executionEngine = this.executionEngineSelectionComp.eligibleExecutionEngineCombo.getText();
 		if (executionEngine != null) {
 			configuration.setAttribute(MokaConstants.EXECUTION_ENGINE_ATTRIBUTE_NAME, executionEngine);
+		}
+
+		if (MokaTraceServiceComponent.shouldDisplay() && this.traceServiceComp.traceCheckBox.getSelection()) {
+			configuration.setAttribute(MokaConstants.MOKA_TRACE_SERVICE_ACTIVATE, true);
+			String traceFilePath = this.traceServiceComp.getFilePath();
+			configuration.setAttribute(MokaConstants.MOKA_TRACE_FILE_PATH, traceFilePath);
+			ITraceFileFormater fileFormater = this.traceServiceComp.getFormater();
+			configuration.setAttribute(MokaConstants.MOKA_TRACE_FORMATER, fileFormater.getId());
+			Boolean isTracepointMode = this.traceServiceComp.traceTracepointModeCheckBox.getSelection();
+			configuration.setAttribute(MokaConstants.MOKA_TRACE_TRACEPOINT_MODE, isTracepointMode);
+		} else {
+			configuration.setAttribute(MokaConstants.MOKA_TRACE_SERVICE_ACTIVATE, false);
 		}
 	}
 
@@ -72,15 +104,35 @@ public class MokaRunConfigurationTab extends AbstractLaunchConfigurationTab {
 		this.mainContainer = new Composite(parent, SWT.FILL);
 		this.mainContainer.setLayout(new GridLayout());
 		this.projectSelectionComp = new MokaProjectSelectionComponent(this.mainContainer, SWT.FILL, "UML Model", 2);
-		this.executableSelectionComp = new MokaExecutableSelectionComponent(this.mainContainer, SWT.FILL, "Element to be executed", 2);
-		this.executionEngineSelectionComp = new MokaExecutionEngineSelectionComponent(this.mainContainer, SWT.FILL, "Execution Engine (if no selection, the default engine is used)", 2);
+		this.executableSelectionComp = new MokaExecutableSelectionComponent(this.mainContainer, SWT.FILL,
+				"Element to be executed", 2);
+		this.executionEngineSelectionComp = new MokaExecutionEngineSelectionComponent(this.mainContainer, SWT.FILL,
+				"Execution Engine (if no selection, the default engine is used)", 2);
+		if (MokaTraceServiceComponent.shouldDisplay()) {
+			this.traceServiceComp = new MokaTraceServiceComponent(this.mainContainer, SWT.FILL, "Generate trace", 1);
+		}
 		/* 2. Register Listeners */
 		MokaProjectSelection listener = new MokaProjectSelection(this.projectSelectionComp.projectSelectionText, this);
-		MokaTriggerComboPopulation comboPopulationTrigger = new MokaTriggerComboPopulation(this.executableSelectionComp.eligibleExecutableElement);
+		MokaTriggerComboPopulation comboPopulationTrigger = new MokaTriggerComboPopulation(
+				this.executableSelectionComp.eligibleExecutableElement);
 		this.projectSelectionComp.projectSelectionButton.addSelectionListener(listener);
 		this.projectSelectionComp.projectSelectionText.addModifyListener(comboPopulationTrigger);
-		this.executableSelectionComp.eligibleExecutableElement.addSelectionListener(new MokaExecutableElementSelection(this));
-		this.executionEngineSelectionComp.eligibleExecutionEngineCombo.addSelectionListener(new MokaExecutionEngineSelection(this));
+		this.executableSelectionComp.eligibleExecutableElement
+				.addSelectionListener(new MokaExecutableElementSelection(this));
+		this.executionEngineSelectionComp.eligibleExecutionEngineCombo
+				.addSelectionListener(new MokaExecutionEngineSelection(this));
+		if (MokaTraceServiceComponent.shouldDisplay()) {
+			this.traceServiceComp.traceCheckBox.addSelectionListener(new MokaTraceActivationListener(this));
+			this.traceServiceComp.filePathSelector.addCommitListener(new ICommitListener() {
+
+				@Override
+				public void commit(final AbstractEditor editor) {
+					updateLaunchConfigurationDialog();
+				}
+			});
+			this.traceServiceComp.addRadioListner(this);
+			this.traceServiceComp.addTracePointModeListner(this);
+		}
 		/* 3. Register component */
 		this.setControl(this.mainContainer);
 	}

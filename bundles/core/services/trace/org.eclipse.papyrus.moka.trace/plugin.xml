@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.eclipse.papyrus.moka.trace.capture" name="Capture Trace Data" schema="schema/org.eclipse.papyrus.moka.trace.capture.exsd"/>
+   <extension-point id="org.eclipse.papyrus.moka.trace.formater" name="Format Trace Data" schema="schema/org.eclipse.papyrus.moka.trace.formater.exsd"/>
+   <extension
+         point="org.eclipse.papyrus.moka.service.service">
+      <service
+            class="org.eclipse.papyrus.moka.trace.service.TraceGenerationService"
+            description="Moka Trace Generation Service">
+      </service>
+   </extension>
+
+</plugin>

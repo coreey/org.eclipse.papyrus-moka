@@ -141,6 +141,10 @@ public class MokaLaunchDelegate extends LaunchConfigurationDelegate implements I
 		monitor.subTask("Start execution engine");
 		this.debugTarget = new MokaDebugTarget(launch);
 		launch.addDebugTarget(debugTarget);
+		launch.setAttribute(MokaConstants.MOKA_TRACE_SERVICE_ACTIVATE, Boolean.toString(configuration.getAttribute(MokaConstants.MOKA_TRACE_SERVICE_ACTIVATE, false)));
+		launch.setAttribute(MokaConstants.MOKA_TRACE_FILE_PATH, configuration.getAttribute(MokaConstants.MOKA_TRACE_FILE_PATH, ""));
+		launch.setAttribute(MokaConstants.MOKA_TRACE_FORMATER, configuration.getAttribute(MokaConstants.MOKA_TRACE_FORMATER, ""));
+		launch.setAttribute(MokaConstants.MOKA_TRACE_TRACEPOINT_MODE, Boolean.toString(configuration.getAttribute(MokaConstants.MOKA_TRACE_TRACEPOINT_MODE, false)));
 		String arguments = configuration.getAttribute(MokaConstants.ARGS_ATTRIBUTE_NAME, "");
 		MokaExecutionEngineJob executionEngineJob = MokaExecutionEngineJob.getInstance();
 		executionEngineJob.initialize(launch, engine, executionEntryPoint, arguments.split("\\s+"));

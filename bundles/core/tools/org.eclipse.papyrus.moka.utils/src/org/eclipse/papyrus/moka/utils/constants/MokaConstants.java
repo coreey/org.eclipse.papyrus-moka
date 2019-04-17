@@ -164,7 +164,7 @@ public class MokaConstants {
 	// ////////////////////////
 	/** Prefix for a getValueString request. */
 	public final static String request_getValueString = "request_getValueString";
-	
+
 	/**
 	 * The attribute name for the resource uri associated with a launch configuration
 	 * The corresponding resource contains the EObject to be executed
@@ -182,18 +182,35 @@ public class MokaConstants {
 	 * This arguments are given to the execution engine for initialization, before actually starting execution.
 	 */
 	public static String ARGS_ATTRIBUTE_NAME = "ARGS_ATTRIBUTE";
-	
+
 	/**
 	 * The attribute name for the execution engine associated with the launch configuration
 	 */
-	public static String EXECUTION_ENGINE_ATTRIBUTE_NAME = "EXECUTION_ENGINE_ATTRIBUTE" ;
-	
+	public static String EXECUTION_ENGINE_ATTRIBUTE_NAME = "EXECUTION_ENGINE_ATTRIBUTE";
+
 	public static String EXECUTION_ENGINE_JOB_NAME = "Moka Execution Engine";
-	
+
 	/** The Constant LIBRAY_EXTENSION_POINT_ID. */
 	public final static String LIBRAY_EXTENSION_POINT_ID = "org.eclipse.papyrus.moka.fuml.library";
 
 	/** The Constant SERVICES_EXTENSION_POINT_ID. */
 	public final static String SERVICES_EXTENSION_POINT_ID = "org.eclipse.papyrus.moka.fuml.services";
 
+	/** The constant for the trace capture extension point */
+	public final static String MOKA_TRACE_CAPTURE_EXTENSION_POINT_ID = "org.eclipse.papyrus.moka.trace.capture";
+
+	/** The constant for the trace formater extension point */
+	public final static String MOKA_TRACE_FORMATER_EXTENSION_POINT_ID = "org.eclipse.papyrus.moka.trace.formater";
+
+	/** The constant for trace file path of the run configuration argument */
+	public static final String MOKA_TRACE_FILE_PATH = "MOKA_TRACE_FILE_PATH";
+
+	/** The constant for trace formater of the run configuration argument */
+	public static final String MOKA_TRACE_FORMATER = "MOKA_TRACE_FORMATER";
+
+	/** The constant to define in the configuration if the trace service is activate */
+	public static final String MOKA_TRACE_SERVICE_ACTIVATE = "MOKA_TRACE_SERVICE_ACTIVATE";
+
+	/** The constant to define in the configuration if the tracepoint mode should be is activate */
+	public static final String MOKA_TRACE_TRACEPOINT_MODE = "MOKA_TRACE_TRACEPOINT_MODE";
 }

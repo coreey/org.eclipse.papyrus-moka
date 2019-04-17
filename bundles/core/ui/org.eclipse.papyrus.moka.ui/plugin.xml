@@ -56,17 +56,6 @@
          </command>
       </menuContribution>
       <menuContribution
-            allPopups="true"
-            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.popup.moka.debug">
-         <command
-               commandId="org.eclipse.papyrus.moka.ui.runAsCommand"
-               icon="icons/run.gif"
-               label="Run"
-               style="push">
-            <visibleWhen checkEnabled="false"></visibleWhen>
-         </command>
-      </menuContribution>
-      <menuContribution
             allPopups="false"
             locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
          <menu

@@ -15,6 +15,7 @@ package org.eclipse.papyrus.moka.ui.perspectives.debug;
 
 import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.papyrus.moka.animation.presentation.control.AnimationControlView;
+import org.eclipse.papyrus.moka.ui.tracepoint.view.TracepointView;
 import org.eclipse.papyrus.moka.ui.views.MokaAnimationView;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
@@ -55,6 +56,7 @@ public class MokaDebugPerspective implements IPerspectiveFactory {
 		debugVariableFolder.addView("org.eclipse.debug.ui.VariableView");
 		IFolderLayout debugOtherFolder = relative.createFolder(DEBUG_OTHER_FOLDER, IPageLayout.RIGHT, 0.6f, DEBUG_VARIABLE_FOLDER);
 		debugOtherFolder.addView("org.eclipse.debug.ui.BreakpointView");
+		debugOtherFolder.addView(TracepointView.ID);
 	}
 	
 	public void buildProblemReport(IPageLayout relative){

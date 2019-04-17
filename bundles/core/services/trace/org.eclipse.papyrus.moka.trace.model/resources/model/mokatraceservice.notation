@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_VdHIkDUjEemVHtZ3Lbh08Q" type="PapyrusUMLClassDiagram" name="Trace" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_WF_GcDUjEemVHtZ3Lbh08Q" type="Class_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_WGA7oDUjEemVHtZ3Lbh08Q" type="Class_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_WGA7oTUjEemVHtZ3Lbh08Q" type="Class_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_WGA7ojUjEemVHtZ3Lbh08Q" y="15"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_WGA7ozUjEemVHtZ3Lbh08Q" type="Class_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_WGA7pDUjEemVHtZ3Lbh08Q"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_WGA7pTUjEemVHtZ3Lbh08Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_WGA7pjUjEemVHtZ3Lbh08Q"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WGA7pzUjEemVHtZ3Lbh08Q"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_WGA7qDUjEemVHtZ3Lbh08Q" type="Class_OperationCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_WGA7qTUjEemVHtZ3Lbh08Q"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_WGA7qjUjEemVHtZ3Lbh08Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_WGA7qzUjEemVHtZ3Lbh08Q"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WGA7rDUjEemVHtZ3Lbh08Q"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_WGA7rTUjEemVHtZ3Lbh08Q" type="Class_NestedClassifierCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_WGA7rjUjEemVHtZ3Lbh08Q"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_WGA7rzUjEemVHtZ3Lbh08Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_WGA7sDUjEemVHtZ3Lbh08Q"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WGA7sTUjEemVHtZ3Lbh08Q"/>
+    </children>
+    <element xmi:type="uml:Class" href="mokatraceservice.uml#_WF7cEDUjEemVHtZ3Lbh08Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WF_GcTUjEemVHtZ3Lbh08Q" x="200" y="80"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_VdHIkTUjEemVHtZ3Lbh08Q" name="diagram_compatibility_version" stringValue="1.4.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_VdHIkjUjEemVHtZ3Lbh08Q"/>
+  <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_VdHIkzUjEemVHtZ3Lbh08Q" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
+    <owner xmi:type="uml:Model" href="mokatraceservice.uml#_OBmN4DBwEem8OZ1fNwuYzQ"/>
+  </styles>
+  <element xmi:type="uml:Model" href="mokatraceservice.uml#_OBmN4DBwEem8OZ1fNwuYzQ"/>
+</notation:Diagram>

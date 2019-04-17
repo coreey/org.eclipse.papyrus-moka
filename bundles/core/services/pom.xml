@@ -22,6 +22,7 @@
 		<module>org.eclipse.papyrus.moka.service</module>
 		<module>org.eclipse.papyrus.moka.animation</module>
 		<module>org.eclipse.papyrus.moka.debug</module>
+		<module>trace</module>
 	</modules>
 	
 </project>
