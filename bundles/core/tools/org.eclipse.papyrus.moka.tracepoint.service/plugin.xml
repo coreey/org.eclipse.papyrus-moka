@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension-point id="traceMechanism" name="traceMechanism" schema="schema/traceMechanism.exsd"/>
+	
+	<extension
+		point="org.eclipse.ui.menus">
+		<menuContribution
+			allPopups="true"
+			locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup">
+			<menu
+				icon="icons/etool16/debug.gif"
+				id="org.eclipse.papyrus.views.modelexplorer.popup.tracing"
+				label="Trace and Debug">
+			</menu>
+		</menuContribution>
+		<menuContribution
+			allPopups="true"
+			locationURI="popup:org.eclipse.papyrus.views.modelexplorer.popup.tracing">
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.togglebreakpoint"
+				icon="icons/etool16/brkp_16x16.gif"
+				id="org.eclipse.papyrus.tracepoints.togglebreakpoint"
+				label="Toggle breakpoint">
+			</command>
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.togglebreakpointactivation"
+				icon="icons/etool16/brkpd_16x16.gif"
+				id="org.eclipse.papyrus.tracepoints.togglebreakpointactivation"
+				label="Toggle breakpoint activation">
+			</command>
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.toggletracepoint"
+				icon="icons/etool16/trcp_16x16.gif"
+				id="org.eclipse.papyrus.tracepoints.toggletracepoint"
+				label="Toggle tracepoint">
+			</command>
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.toggletracepointactivation"
+				icon="icons/etool16/trcpd_16x16.gif"
+				id="org.eclipse.papyrus.tracepoints.toggletracepointactivation"
+				label="Toggle tracepoint activation">
+			</command>
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.tracepointproperties"
+				icon="icons/etool16/properties.gif"
+				id="org.eclipse.papyrus.tracepoints.tracepointproperties"
+				label="Tracepoint properties">
+			</command>
+		</menuContribution>
+	</extension>
+	
+	<extension
+		point="org.eclipse.ui.menus">
+		<menuContribution
+			allPopups="true"
+			locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+			<menu
+				icon="icons/etool16/debug.gif"
+				id="org.eclipse.papyrus.views.gmf.popup.tracing"
+				label="Trace and Debug">
+			</menu>
+		</menuContribution>
+		<menuContribution
+			allPopups="true"
+			locationURI="popup:org.eclipse.papyrus.views.gmf.popup.tracing">
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.togglebreakpoint"
+				icon="icons/etool16/brkp_16x16.gif"
+				id="org.eclipse.papyrus.tracepoints.toggletracepoint"
+				label="Toggle breakpoint">
+			</command>
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.togglebreakpointactivation"
+				icon="icons/etool16/brkpd_16x16.gif"
+				id="org.eclipse.papyrus.tracepoints.togglebreakpointactivation"
+				label="Toggle breakpoint activation">
+			</command>
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.toggletracepoint"
+				icon="icons/etool16/trcp_16x16.gif"
+				id="org.eclipse.papyrus.tracepoints.toggletracepoint"
+				label="Toggle tracepoint">
+			</command>
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.toggletracepointactivation"
+				icon="icons/etool16/trcpd_16x16.gif"
+				id="org.eclipse.papyrus.tracepoints.toggletracepointactivation"
+				label="Toggle tracepoint activation">
+			</command>
+			<command
+				commandId="org.eclipse.papyrus.tracepoints.tracepointproperties"
+				icon="icons/etool16/properties.gif"
+				id="org.eclipse.papyrus.tracepoints.tracepointproperties"
+				label="Tracepoint properties">
+			</command>
+		</menuContribution>
+	</extension>
+	
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			categoryId="org.eclipse.papyrus.editor.category"
+			defaultHandler="org.eclipse.papyrus.moka.tracepoint.service.handler.ToggleBreakpointHandler"
+			description="ToggleBreakpoint"
+			id="org.eclipse.papyrus.tracepoints.togglebreakpoint"
+			name="ToggleBreakpoint">
+		</command>
+		<command
+			categoryId="org.eclipse.papyrus.editor.category"
+			defaultHandler="org.eclipse.papyrus.moka.tracepoint.service.handler.ToggleBreakpointActivationHandler"
+			description="ToggleBreakpointActivation"
+			id="org.eclipse.papyrus.tracepoints.togglebreakpointactivation"
+			name="ToggleBreakpointActivation">
+		</command>
+		<command
+			categoryId="org.eclipse.papyrus.editor.category"
+			defaultHandler="org.eclipse.papyrus.moka.tracepoint.service.handler.ToggleTracepointHandler"
+			description="ToggleTracepoint"
+			id="org.eclipse.papyrus.tracepoints.toggletracepoint"
+			name="ToggleTracepoint">
+		</command>
+		<command
+			categoryId="org.eclipse.papyrus.editor.category"
+			defaultHandler="org.eclipse.papyrus.moka.tracepoint.service.handler.ToggleTracepointActivationHandler"
+			description="ToggleTracepointActivation"
+			id="org.eclipse.papyrus.tracepoints.toggletracepointactivation"
+			name="ToggleTracepointActivation">
+		</command>
+		<command
+			categoryId="org.eclipse.papyrus.editor.category"
+			defaultHandler="org.eclipse.papyrus.moka.tracepoint.service.handler.TracepointPropertiesHandler"
+			description="TracepointPropertoes"
+			id="org.eclipse.papyrus.tracepoints.tracepointproperties"
+			name="TracepointProperties">
+		</command>
+	</extension>
+	
+	<extension
+    	point="org.eclipse.papyrus.infra.services.decoration.decorationSpecificFunctions">
+		<client
+			class="org.eclipse.papyrus.moka.tracepoint.service.TraceFunctions"
+			decorationType="org.eclipse.papyrus.tracepointmarker">
+		</client>
+	</extension>
+	
+	<extension
+		id="org.eclipse.papyrus.tracepointmarker"
+		name="tracepoint marker"
+		point="org.eclipse.core.resources.markers">
+		<super
+			type="org.eclipse.papyrus.modelmarker">
+		</super>
+		<attribute
+			name="isActive">
+		</attribute>
+		<attribute
+			name="isTracepoint">
+		</attribute>
+		<attribute
+			name="traceAction">
+		</attribute>
+		<attribute
+			name="traceMechanism">
+		</attribute>
+		<persistent
+			value="true">
+		</persistent>
+	</extension>
+	
+	<extension
+		point="org.eclipse.ui.preferencePages">
+		<page
+			category="org.eclipse.papyrus.infra.core.sasheditor.preferences.generalcategory"
+			class="org.eclipse.papyrus.moka.tracepoint.service.preferences.TPPreferencePage"
+			id="org.eclipse.papyrus.moka.tracepoint.service.preferences.TPPreferencePage_ID"
+			name="Tracepoint preferences">
+		</page>
+	</extension>
+</plugin>

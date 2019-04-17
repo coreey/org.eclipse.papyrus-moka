@@ -19,6 +19,7 @@
 	<modules>
 		<module>org.eclipse.papyrus.moka.feature</module>
 		<module>org.eclipse.papyrus.moka.fmi.feature</module>
+		<module>org.eclipse.papyrus.moka.tracepoint.feature</module>
 	</modules>
 	
 </project>

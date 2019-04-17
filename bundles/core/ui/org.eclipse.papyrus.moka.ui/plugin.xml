@@ -54,38 +54,10 @@
                   checkEnabled="false">
             </visibleWhen>
          </command>
-         <menu
-               icon="icons/brkp_16x16.gif"
-               id="org.eclipse.papyrus.views.modelexplorer.popup.moka.debug"
-               label="Breakpoints">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </menu>
       </menuContribution>
       <menuContribution
             allPopups="true"
             locationURI="popup:org.eclipse.papyrus.views.modelexplorer.popup.moka.debug">
-         <command
-               commandId="org.eclipse.papyrus.moka.togglebreakpoint"
-               icon="icons/brkp_16x16.gif"
-               id="org.eclipse.papyrus.moka.togglebreakpoint"
-               label="Toggle breakpoint"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.eclipse.papyrus.moka.togglebreakpointactivation"
-               icon="icons/brkpd_16x16.gif"
-               id="org.eclipse.papyrus.moka.togglebreakpointactivation"
-               label="Toggle breakpoint activation"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
          <command
                commandId="org.eclipse.papyrus.moka.ui.runAsCommand"
                icon="icons/run.gif"
@@ -127,56 +99,10 @@
                   checkEnabled="false">
             </visibleWhen>
          </command>
-         <menu
-               icon="icons/brkp_16x16.gif"
-               id="org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu.moka.debug"
-               label="Breakpoints">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </menu>
-      </menuContribution>
-      <menuContribution
-            allPopups="true"
-            locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu.moka.debug">
-         <command
-               commandId="org.eclipse.papyrus.moka.togglebreakpoint"
-               icon="icons/brkp_16x16.gif"
-               id="org.eclipse.papyrus.moka.togglebreakpoint.diagram"
-               label="Toggle breakpoint"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.eclipse.papyrus.moka.togglebreakpointactivation"
-               icon="icons/brkpd_16x16.gif"
-               id="org.eclipse.papyrus.moka.togglebreakpointactivation.diagram"
-               label="Toggle breakpoint activation"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
       </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
-      <command
-            categoryId="org.eclipse.papyrus.editor.category"
-            defaultHandler="org.eclipse.papyrus.moka.ui.breakpoint.handlers.ToggleBreakpointHandler"
-            description="ToggleBreakpoint"
-            id="org.eclipse.papyrus.moka.togglebreakpoint"
-            name="ToggleBreakpoing">
-      </command>
-      <command
-            categoryId="org.eclipse.papyrus.editor.category"
-            defaultHandler="org.eclipse.papyrus.moka.ui.breakpoint.handlers.ToggleBreakpointActivationHandler"
-            description="ToggleBreakpointActivation"
-            id="org.eclipse.papyrus.moka.togglebreakpointactivation"
-            name="ToggleBreakpointActivation">
-      </command>
       <command
             categoryId="org.eclipse.papyrus.editor.category"
             description="DebugAsCommand"

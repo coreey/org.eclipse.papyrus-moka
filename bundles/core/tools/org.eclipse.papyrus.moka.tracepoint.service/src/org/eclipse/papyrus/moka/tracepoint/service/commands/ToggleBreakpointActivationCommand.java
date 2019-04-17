@@ -1,44 +1,51 @@
 /*****************************************************************************
- * Copyright (c) 2013 CEA LIST.
+ * Copyright (c) 2012, 2019 CEA LIST.
  *
  *
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  CEA LIST - Initial API and implementation
+ *  Ansgar Radermacher (CEA LIST) - Initial API and implementation
+ *  Pauline DEVILLe (CEA LIST ) - Bug 546467
  *
  *****************************************************************************/
-package org.eclipse.papyrus.moka.ui.breakpoint.handlers;
 
-import org.eclipse.core.commands.ExecutionEvent;
+package org.eclipse.papyrus.moka.tracepoint.service.commands;
+
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.IBreakpointManager;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.papyrus.infra.core.Activator;
 import org.eclipse.papyrus.moka.debug.breakpoint.MokaBreakpoint;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 
 /**
- * An handler for managing activation/deactivation of a Moka Breakpoint
- *
+ * Command to toggle a breakpoint activation
  */
-public class ToggleBreakpointActivationHandler extends MokaAbstractHandler implements IHandler {
+public class ToggleBreakpointActivationCommand extends AbstractTracepointCommand {
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+	public ToggleBreakpointActivationCommand(EObject selectedElement) {
+		super("Toggle breakpoint activation", TransactionUtil.getEditingDomain(selectedElement), selectedElement); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
 	 */
-	public Object execute(ExecutionEvent event) throws ExecutionException {
-		EObject selectedElement = this.getSelectedElement();
+	@Override
+	public CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		String selectedElementURI = EcoreUtil.getURI(selectedElement).toString();
 		if (selectedElement != null) {
 			IBreakpointManager breakpointManager = DebugPlugin.getDefault().getBreakpointManager();
@@ -66,5 +73,4 @@ public class ToggleBreakpointActivationHandler extends MokaAbstractHandler imple
 
 		return null;
 	}
-
 }

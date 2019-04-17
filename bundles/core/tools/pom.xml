@@ -30,6 +30,8 @@
 		<module>org.eclipse.papyrus.moka.modeling.utils</module>
 		<module>org.eclipse.papyrus.moka.externalcontrol</module>
 		<module>org.eclipse.papyrus.moka.ui.table.instancespecification</module>
+		<module>org.eclipse.papyrus.moka.ui.tracepoint.view</module>
+		<module>org.eclipse.papyrus.moka.tracepoint.service</module>
 	</modules>
 	
 </project>
