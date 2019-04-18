@@ -30,7 +30,7 @@ http://www.eclipse.org/legal/epl-v10.html
 
    <requires>
 	  <import feature="org.eclipse.papyrus.moka.tracepoint.feature"/>
-      <import feature="org.eclipse.papyrus.sdk.feature" version="4.2.0" match="compatible"/>
+      <import feature="org.eclipse.papyrus.sdk.feature" version="0.0.0"/>
       <import plugin="org.eclipse.debug.core" version="3.12.0" match="compatible"/>
       <import plugin="org.eclipse.core.runtime" version="3.14.0" match="compatible"/>
       <import plugin="org.eclipse.uml2.uml" version="5.4.0" match="compatible"/>
