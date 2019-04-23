@@ -113,6 +113,11 @@
 				<updatePolicy>daily</updatePolicy>
 			</snapshots>
 		</repository>
+		<repository>
+            <id>license-feature</id>
+            <url>http://download.eclipse.org/cbi/updates/license/</url>
+            <layout>p2</layout>
+        </repository>
 	</repositories>
 
 	<pluginRepositories>

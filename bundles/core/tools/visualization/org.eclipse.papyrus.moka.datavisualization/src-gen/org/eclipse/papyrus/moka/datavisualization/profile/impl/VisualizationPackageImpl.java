@@ -2,9 +2,11 @@
  * Copyright (c) 2016 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -16,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -44,7 +47,7 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2016 CEA LIST.\r\n\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License v1.0\r\n which accompanies this distribution, and is available at\r\n http://www.eclipse.org/legal/epl-v10.html\r\n\r\n Contributors:\r\n  CEA LIST - Initial API and implementation";
+	public static final String copyright = "Copyright (c) 2016 CEA LIST.\r\n\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License 2.0\r\n which accompanies this distribution, and is available at\r\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\r\n\r\n Contributors:\r\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,7 +119,7 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link VisualizationPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -130,11 +133,14 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 		if (isInited) return (VisualizationPackage)EPackage.Registry.INSTANCE.getEPackage(VisualizationPackage.eNS_URI);
 
 		// Obtain or create and register package
-		VisualizationPackageImpl theVisualizationPackage = (VisualizationPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof VisualizationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new VisualizationPackageImpl());
+		Object registeredVisualizationPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		VisualizationPackageImpl theVisualizationPackage = registeredVisualizationPackage instanceof VisualizationPackageImpl ? (VisualizationPackageImpl)registeredVisualizationPackage : new VisualizationPackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
+		TypesPackage.eINSTANCE.eClass();
 		UMLPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -146,7 +152,6 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 		// Mark meta-data to indicate it can't be changed
 		theVisualizationPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(VisualizationPackage.eNS_URI, theVisualizationPackage);
 		return theVisualizationPackage;
@@ -220,8 +225,8 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getValueSeries__GetStringValue__int() {
-		return valueSeriesEClass.getEOperations().get(1);
+	public EOperation getValueSeries__GetSize() {
+		return valueSeriesEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -229,8 +234,8 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getValueSeries__GetSize() {
-		return valueSeriesEClass.getEOperations().get(0);
+	public EOperation getValueSeries__GetStringValue__int() {
+		return valueSeriesEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -436,12 +441,12 @@ public class VisualizationPackageImpl extends EPackageImpl implements Visualizat
 	 * @generated
 	 */
 	protected void createUMLAnnotations() {
-		String source = "http://www.eclipse.org/uml2/2.0.0/UML";	
+		String source = "http://www.eclipse.org/uml2/2.0.0/UML";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "originalName", "DataVisualizationProfile"
+			   "originalName", "DataVisualizationProfile"
 		   });
 	}
 

@@ -2,9 +2,11 @@
  * Copyright (c) 2016 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -12,6 +14,7 @@
 package org.eclipse.papyrus.moka.datavisualization.profile;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.uml2.uml.Property;
 
 /**
@@ -38,7 +41,7 @@ public interface ValueSeries extends EObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2016 CEA LIST.\r\n\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License v1.0\r\n which accompanies this distribution, and is available at\r\n http://www.eclipse.org/legal/epl-v10.html\r\n\r\n Contributors:\r\n  CEA LIST - Initial API and implementation";
+	String copyright = "Copyright (c) 2016 CEA LIST.\r\n\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License 2.0\r\n which accompanies this distribution, and is available at\r\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\r\n\r\n Contributors:\r\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * Returns the value of the '<em><b>Binary String</b></em>' attribute.
@@ -121,17 +124,17 @@ public interface ValueSeries extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" indexRequired="true" indexOrdered="false"
-	 * @generated
-	 */
-	String getStringValue(int index);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true" ordered="false"
 	 * @generated
 	 */
 	int getSize();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" indexRequired="true" indexOrdered="false"
+	 * @generated
+	 */
+	String getStringValue(int index);
 
 } // ValueSeries

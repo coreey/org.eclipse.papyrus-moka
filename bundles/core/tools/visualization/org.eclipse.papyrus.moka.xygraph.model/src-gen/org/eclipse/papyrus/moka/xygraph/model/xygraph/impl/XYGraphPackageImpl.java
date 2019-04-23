@@ -1,4 +1,15 @@
 /**
+ * Copyright (c) 2016 CEA LIST.
+ * 
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License 2.0
+ *  which accompanies this distribution, and is available at
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ *  Contributors:
+ *   CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.xygraph.model.xygraph.impl;
 
@@ -9,6 +20,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.papyrus.moka.xygraph.model.xygraph.AxisDescriptor;
 import org.eclipse.papyrus.moka.xygraph.model.xygraph.ColorDescriptor;
 import org.eclipse.papyrus.moka.xygraph.model.xygraph.FontDescriptor;
@@ -135,7 +147,7 @@ public class XYGraphPackageImpl extends EPackageImpl implements XYGraphPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link XYGraphPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -149,7 +161,8 @@ public class XYGraphPackageImpl extends EPackageImpl implements XYGraphPackage {
 		if (isInited) return (XYGraphPackage)EPackage.Registry.INSTANCE.getEPackage(XYGraphPackage.eNS_URI);
 
 		// Obtain or create and register package
-		XYGraphPackageImpl theXYGraphPackage = (XYGraphPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof XYGraphPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new XYGraphPackageImpl());
+		Object registeredXYGraphPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		XYGraphPackageImpl theXYGraphPackage = registeredXYGraphPackage instanceof XYGraphPackageImpl ? (XYGraphPackageImpl)registeredXYGraphPackage : new XYGraphPackageImpl();
 
 		isInited = true;
 
@@ -162,7 +175,6 @@ public class XYGraphPackageImpl extends EPackageImpl implements XYGraphPackage {
 		// Mark meta-data to indicate it can't be changed
 		theXYGraphPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(XYGraphPackage.eNS_URI, theXYGraphPackage);
 		return theXYGraphPackage;

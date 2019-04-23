@@ -2,9 +2,11 @@
  * Copyright (c) 2018 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -49,7 +51,7 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n  CEA LIST - Initial API and implementation";
+	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License 2.0\n which accompanies this distribution, and is available at\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\n\n Contributors:\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,7 +187,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EClass getTLMInterfaceDefinition() {
 		return tlmInterfaceDefinitionEClass;
 	}
@@ -195,7 +196,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getTLMInterfaceDefinition_Interpolation() {
 		return (EAttribute)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -205,7 +205,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getTLMInterfaceDefinition_Base_Interface() {
 		return (EReference)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(1);
 	}
@@ -215,7 +214,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getTLMInterfaceDefinition_Base_Class() {
 		return (EReference)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(2);
 	}
@@ -225,7 +223,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getTLMInterfaceDefinition_SignalDefinitions() {
 		return (EReference)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(3);
 	}
@@ -235,7 +232,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getTLMInterfaceDefinition_Dimensions() {
 		return (EAttribute)tlmInterfaceDefinitionEClass.getEStructuralFeatures().get(4);
 	}
@@ -245,7 +241,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EOperation getTLMInterfaceDefinition__GetSignalDefinitions() {
 		return tlmInterfaceDefinitionEClass.getEOperations().get(0);
 	}
@@ -255,7 +250,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EClass getTLMSignalDefinition() {
 		return tlmSignalDefinitionEClass;
 	}
@@ -265,7 +259,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getTLMSignalDefinition_Base_Port() {
 		return (EReference)tlmSignalDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -275,7 +268,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EClass getTLMSignal() {
 		return tlmSignalEClass;
 	}
@@ -285,7 +277,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getTLMSignal_Base_Port() {
 		return (EReference)tlmSignalEClass.getEStructuralFeatures().get(0);
 	}
@@ -295,7 +286,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getTLMSignal_Definition() {
 		return (EReference)tlmSignalEClass.getEStructuralFeatures().get(1);
 	}
@@ -305,7 +295,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EClass getOMSimulatorBus() {
 		return omSimulatorBusEClass;
 	}
@@ -315,7 +304,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getOMSimulatorBus_Base_Port() {
 		return (EReference)omSimulatorBusEClass.getEStructuralFeatures().get(0);
 	}
@@ -325,7 +313,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getOMSimulatorBus_Signals() {
 		return (EReference)omSimulatorBusEClass.getEStructuralFeatures().get(1);
 	}
@@ -335,7 +322,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getOMSimulatorBus_Domain() {
 		return (EAttribute)omSimulatorBusEClass.getEStructuralFeatures().get(2);
 	}
@@ -345,7 +331,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EClass getBusConnectionEnd() {
 		return busConnectionEndEClass;
 	}
@@ -355,7 +340,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getBusConnectionEnd_Base_ConnectorEnd() {
 		return (EReference)busConnectionEndEClass.getEStructuralFeatures().get(0);
 	}
@@ -365,7 +349,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getBusConnectionEnd_ReferencedSignal() {
 		return (EReference)busConnectionEndEClass.getEStructuralFeatures().get(1);
 	}
@@ -375,7 +358,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EClass getTLMConnection() {
 		return tlmConnectionEClass;
 	}
@@ -385,7 +367,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getTLMConnection_Timedelay() {
 		return (EAttribute)tlmConnectionEClass.getEStructuralFeatures().get(0);
 	}
@@ -395,7 +376,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getTLMConnection_Impedance() {
 		return (EAttribute)tlmConnectionEClass.getEStructuralFeatures().get(1);
 	}
@@ -405,7 +385,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getTLMConnection_Rotationalimpedance() {
 		return (EAttribute)tlmConnectionEClass.getEStructuralFeatures().get(2);
 	}
@@ -415,7 +394,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getTLMConnection_Alpha() {
 		return (EAttribute)tlmConnectionEClass.getEStructuralFeatures().get(3);
 	}
@@ -425,7 +403,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getTLMConnection_Base_Connector() {
 		return (EReference)tlmConnectionEClass.getEStructuralFeatures().get(4);
 	}
@@ -435,7 +412,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EClass getBusConnector() {
 		return busConnectorEClass;
 	}
@@ -445,7 +421,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getBusConnector_Base_Connector() {
 		return (EReference)busConnectorEClass.getEStructuralFeatures().get(0);
 	}
@@ -455,7 +430,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getBusConnector_End1Component() {
 		return (EReference)busConnectorEClass.getEStructuralFeatures().get(1);
 	}
@@ -465,7 +439,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getBusConnector_End1Signals() {
 		return (EReference)busConnectorEClass.getEStructuralFeatures().get(2);
 	}
@@ -475,7 +448,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getBusConnector_End2Signals() {
 		return (EReference)busConnectorEClass.getEStructuralFeatures().get(3);
 	}
@@ -485,7 +457,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EReference getBusConnector_End2Component() {
 		return (EReference)busConnectorEClass.getEStructuralFeatures().get(4);
 	}
@@ -495,7 +466,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EOperation getBusConnector__GetEnd1Component() {
 		return busConnectorEClass.getEOperations().get(0);
 	}
@@ -505,7 +475,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EOperation getBusConnector__GetEnd2Component() {
 		return busConnectorEClass.getEOperations().get(1);
 	}
@@ -515,7 +484,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EOperation getBusConnector__GetEnd1Signals() {
 		return busConnectorEClass.getEOperations().get(2);
 	}
@@ -525,7 +493,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EOperation getBusConnector__GetEnd2Signals() {
 		return busConnectorEClass.getEOperations().get(3);
 	}
@@ -535,7 +502,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EEnum getInterpolation() {
 		return interpolationEEnum;
 	}
@@ -545,7 +511,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EEnum getTLMDomain() {
 		return tlmDomainEEnum;
 	}
@@ -555,7 +520,6 @@ public class OMSimulatorPackageImpl extends EPackageImpl implements OMSimulatorP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public OMSimulatorFactory getOMSimulatorFactory() {
 		return (OMSimulatorFactory)getEFactoryInstance();
 	}

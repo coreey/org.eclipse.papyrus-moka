@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.papyrus.moka.feature"
-      label="Moka Core (Incubation)"
+      label="%featureName"
       version="4.0.0.qualifier"
-      provider-name="Eclipse Modeling Project">
+      provider-name="%providerName"
+      license-feature="org.eclipse.license"
+      license-feature-version="2.0.0">
 
-   <description url="http://www.example.com/description">
-      MOKA is a framework for executing/simulating debugging fUML models. 
-      It implements:
-       1 - The execution semantics of Foundational UML
-       2 - The extension of the fUML semantics for Composite Structures
-      It provides the following possibilities:
-       1 - Execute models built from the UML subset considered by fUML (i.e. Classes, Actions, Activities, Composite Structures, Parts, Ports and Connectors)
-       2 - At runtime models are animated (i.e. current executed nodes are hilighted in a specific way)
-       3 - At runtime models can be debugged. According to breakpoints placed on a model, the execution engines stops and the UI provides variables snapshops which are presented to the user.
+   <description url="https://wiki.eclipse.org/Papyrus/UserGuide/ModelExecution">
+      Enable execution, animation and debugging of fUML/PSCS/PSSM conformant models
    </description>
-
-   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
-      Copyright (c) 2016 CEA LIST.
-All rights reserved.   This program and the accompanying materials
-are made available under the terms of the Eclipse Public License
-v1.0 which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html
+   
+   <copyright>
+      %copyright
    </copyright>
 
    <license url="%licenseURL">

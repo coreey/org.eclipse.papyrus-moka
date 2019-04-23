@@ -1,9 +1,11 @@
 /**
  *  Copyright (c) 2018,  IncQuery Labs Ltd and CEA List.
  *  All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  *  
  * Contributors:
  *  IncQuery Labs Ltd - initial API and implementation
@@ -29,6 +31,6 @@ public interface SsdConnectorAndFmiPort extends FMIPort, SsdConnector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = " Copyright (c) 2018,  IncQuery Labs Ltd and CEA List.\n All rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n \nContributors:\n IncQuery Labs Ltd - initial API and implementation\n CEA List ";
+	String copyright = " Copyright (c) 2018,  IncQuery Labs Ltd and CEA List.\n All rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License 2.0\nwhich accompanies this distribution, and is available at\nhttps://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\n \nContributors:\n IncQuery Labs Ltd - initial API and implementation\n CEA List ";
 
 } // SsdConnectorAndFmiPort

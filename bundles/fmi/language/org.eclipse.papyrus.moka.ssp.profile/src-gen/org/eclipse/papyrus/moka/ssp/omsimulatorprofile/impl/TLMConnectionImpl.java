@@ -2,9 +2,11 @@
  * Copyright (c) 2018 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -47,7 +49,7 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n  CEA LIST - Initial API and implementation";
+	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License 2.0\n which accompanies this distribution, and is available at\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\n\n Contributors:\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * The default value of the '{@link #getTimedelay() <em>Timedelay</em>}' attribute.
@@ -163,7 +165,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public double getTimedelay() {
 		return timedelay;
 	}
@@ -173,7 +174,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setTimedelay(double newTimedelay) {
 		double oldTimedelay = timedelay;
 		timedelay = newTimedelay;
@@ -186,7 +186,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public double getImpedance() {
 		return impedance;
 	}
@@ -196,7 +195,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setImpedance(double newImpedance) {
 		double oldImpedance = impedance;
 		impedance = newImpedance;
@@ -209,7 +207,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public double getRotationalimpedance() {
 		return rotationalimpedance;
 	}
@@ -219,7 +216,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setRotationalimpedance(double newRotationalimpedance) {
 		double oldRotationalimpedance = rotationalimpedance;
 		rotationalimpedance = newRotationalimpedance;
@@ -232,7 +228,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public double getAlpha() {
 		return alpha;
 	}
@@ -242,7 +237,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setAlpha(double newAlpha) {
 		double oldAlpha = alpha;
 		alpha = newAlpha;
@@ -255,7 +249,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Connector getBase_Connector() {
 		if (base_Connector != null && base_Connector.eIsProxy()) {
 			InternalEObject oldBase_Connector = (InternalEObject)base_Connector;
@@ -282,7 +275,6 @@ public class TLMConnectionImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setBase_Connector(Connector newBase_Connector) {
 		Connector oldBase_Connector = base_Connector;
 		base_Connector = newBase_Connector;

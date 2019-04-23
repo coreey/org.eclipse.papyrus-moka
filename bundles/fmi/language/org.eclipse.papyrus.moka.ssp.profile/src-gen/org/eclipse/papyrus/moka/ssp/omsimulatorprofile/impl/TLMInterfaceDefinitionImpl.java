@@ -2,9 +2,11 @@
  * Copyright (c) 2018 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -55,7 +57,7 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n  CEA LIST - Initial API and implementation";
+	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License 2.0\n which accompanies this distribution, and is available at\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\n\n Contributors:\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * The default value of the '{@link #getInterpolation() <em>Interpolation</em>}' attribute.
@@ -141,7 +143,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Interpolation getInterpolation() {
 		return interpolation;
 	}
@@ -151,7 +152,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setInterpolation(Interpolation newInterpolation) {
 		Interpolation oldInterpolation = interpolation;
 		interpolation = newInterpolation == null ? INTERPOLATION_EDEFAULT : newInterpolation;
@@ -164,7 +164,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Interface getBase_Interface() {
 		if (base_Interface != null && base_Interface.eIsProxy()) {
 			InternalEObject oldBase_Interface = (InternalEObject)base_Interface;
@@ -191,7 +190,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setBase_Interface(Interface newBase_Interface) {
 		Interface oldBase_Interface = base_Interface;
 		base_Interface = newBase_Interface;
@@ -204,7 +202,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public org.eclipse.uml2.uml.Class getBase_Class() {
 		if (base_Class != null && base_Class.eIsProxy()) {
 			InternalEObject oldBase_Class = (InternalEObject)base_Class;
@@ -231,7 +228,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setBase_Class(org.eclipse.uml2.uml.Class newBase_Class) {
 		org.eclipse.uml2.uml.Class oldBase_Class = base_Class;
 		base_Class = newBase_Class;
@@ -244,7 +240,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EList<TLMSignalDefinition> getSignalDefinitions() {
 		return TLMInterfaceDefinitionOperations.getSignalDefinitions(this);
 	}
@@ -254,7 +249,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getDimensions() {
 		return dimensions;
 	}
@@ -264,7 +258,6 @@ public class TLMInterfaceDefinitionImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setDimensions(int newDimensions) {
 		int oldDimensions = dimensions;
 		dimensions = newDimensions;

@@ -2,9 +2,11 @@
  * Copyright (c) 2016 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -40,7 +42,7 @@ public interface VisualizationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2016 CEA LIST.\r\n\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License v1.0\r\n which accompanies this distribution, and is available at\r\n http://www.eclipse.org/legal/epl-v10.html\r\n\r\n Contributors:\r\n  CEA LIST - Initial API and implementation";
+	String copyright = "Copyright (c) 2016 CEA LIST.\r\n\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License 2.0\r\n which accompanies this distribution, and is available at\r\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\r\n\r\n Contributors:\r\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * The package name.
@@ -598,16 +600,6 @@ public interface VisualizationPackage extends EPackage {
 	EReference getValueSeries_Dependent();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getStringValue(int) <em>Get String Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get String Value</em>' operation.
-	 * @see org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getStringValue(int)
-	 * @generated
-	 */
-	EOperation getValueSeries__GetStringValue__int();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getSize() <em>Get Size</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -616,6 +608,16 @@ public interface VisualizationPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getValueSeries__GetSize();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getStringValue(int) <em>Get String Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get String Value</em>' operation.
+	 * @see org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries#getStringValue(int)
+	 * @generated
+	 */
+	EOperation getValueSeries__GetStringValue__int();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.datavisualization.profile.StringSeries <em>String Series</em>}'.
@@ -785,20 +787,20 @@ public interface VisualizationPackage extends EPackage {
 		EReference VALUE_SERIES__DEPENDENT = eINSTANCE.getValueSeries_Dependent();
 
 		/**
-		 * The meta object literal for the '<em><b>Get String Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation VALUE_SERIES___GET_STRING_VALUE__INT = eINSTANCE.getValueSeries__GetStringValue__int();
-
-		/**
 		 * The meta object literal for the '<em><b>Get Size</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EOperation VALUE_SERIES___GET_SIZE = eINSTANCE.getValueSeries__GetSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Get String Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation VALUE_SERIES___GET_STRING_VALUE__INT = eINSTANCE.getValueSeries__GetStringValue__int();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.papyrus.moka.datavisualization.profile.impl.StringSeriesImpl <em>String Series</em>}' class.

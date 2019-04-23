@@ -2,9 +2,11 @@
  * Copyright (c) 2018 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -45,7 +47,7 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n  CEA LIST - Initial API and implementation";
+	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License 2.0\n which accompanies this distribution, and is available at\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\n\n Contributors:\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * The cached value of the '{@link #getBase_Port() <em>Base Port</em>}' reference.
@@ -91,7 +93,6 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Port getBase_Port() {
 		if (base_Port != null && base_Port.eIsProxy()) {
 			InternalEObject oldBase_Port = (InternalEObject)base_Port;
@@ -118,7 +119,6 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setBase_Port(Port newBase_Port) {
 		Port oldBase_Port = base_Port;
 		base_Port = newBase_Port;
@@ -131,7 +131,6 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public TLMSignalDefinition getDefinition() {
 		if (definition != null && definition.eIsProxy()) {
 			InternalEObject oldDefinition = (InternalEObject)definition;
@@ -158,7 +157,6 @@ public class TLMSignalImpl extends MinimalEObjectImpl.Container implements TLMSi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setDefinition(TLMSignalDefinition newDefinition) {
 		TLMSignalDefinition oldDefinition = definition;
 		definition = newDefinition;

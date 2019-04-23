@@ -2,9 +2,11 @@
  * Copyright (c) 2016 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -18,13 +20,14 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.papyrus.moka.datavisualization.profile.ValueSeries;
 import org.eclipse.papyrus.moka.datavisualization.profile.VisualizationPackage;
+
 import org.eclipse.uml2.uml.Property;
 
 /**
@@ -48,7 +51,7 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2016 CEA LIST.\r\n\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License v1.0\r\n which accompanies this distribution, and is available at\r\n http://www.eclipse.org/legal/epl-v10.html\r\n\r\n Contributors:\r\n  CEA LIST - Initial API and implementation";
+	public static final String copyright = "Copyright (c) 2016 CEA LIST.\r\n\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License 2.0\r\n which accompanies this distribution, and is available at\r\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\r\n\r\n Contributors:\r\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * The default value of the '{@link #getBinaryString() <em>Binary String</em>}' attribute.
@@ -211,7 +214,7 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getStringValue(int index) {
+	public int getSize() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -222,7 +225,7 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSize() {
+	public String getStringValue(int index) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -333,7 +336,7 @@ public class ValueSeriesImpl extends MinimalEObjectImpl.Container implements Val
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (binaryString: ");
 		result.append(binaryString);
 		result.append(')');

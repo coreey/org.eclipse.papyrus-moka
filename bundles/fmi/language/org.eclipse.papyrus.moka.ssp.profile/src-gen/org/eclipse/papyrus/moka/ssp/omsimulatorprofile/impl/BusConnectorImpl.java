@@ -2,9 +2,11 @@
  * Copyright (c) 2018 CEA LIST.
  * 
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ *  https://www.eclipse.org/legal/epl-2.0 
+ * 
+ * SPDX-License-Identifier: EPL-2.0
  * 
  *  Contributors:
  *   CEA LIST - Initial API and implementation
@@ -22,10 +24,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.BusConnector;
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.OMSimulatorPackage;
 
 import org.eclipse.papyrus.moka.ssp.omsimulatorprofile.operations.BusConnectorOperations;
+
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
@@ -54,7 +58,7 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n  CEA LIST - Initial API and implementation";
+	public static final String copyright = "Copyright (c) 2018 CEA LIST.\n\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License 2.0\n which accompanies this distribution, and is available at\n https://www.eclipse.org/legal/epl-2.0 \r\n\r\nSPDX-License-Identifier: EPL-2.0\n\n Contributors:\n  CEA LIST - Initial API and implementation";
 
 	/**
 	 * The cached value of the '{@link #getBase_Connector() <em>Base Connector</em>}' reference.
@@ -90,7 +94,6 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Connector getBase_Connector() {
 		if (base_Connector != null && base_Connector.eIsProxy()) {
 			InternalEObject oldBase_Connector = (InternalEObject)base_Connector;
@@ -117,7 +120,6 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setBase_Connector(Connector newBase_Connector) {
 		Connector oldBase_Connector = base_Connector;
 		base_Connector = newBase_Connector;
@@ -130,7 +132,6 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Property getEnd1Component() {
 		Property end1Component = basicGetEnd1Component();
 		return end1Component != null && end1Component.eIsProxy() ? (Property)eResolveProxy((InternalEObject)end1Component) : end1Component;
@@ -150,7 +151,6 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setEnd1Component(Property newEnd1Component) {
 		// TODO: implement this method to set the 'End1 Component' reference
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -162,7 +162,6 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EList<Port> getEnd1Signals() {
 		return BusConnectorOperations.getEnd1Signals(this);
 	}
@@ -197,7 +196,6 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EList<Port> getEnd2Signals() {
 		return BusConnectorOperations.getEnd2Signals(this);
 	}
@@ -232,7 +230,6 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Property getEnd2Component() {
 		Property end2Component = basicGetEnd2Component();
 		return end2Component != null && end2Component.eIsProxy() ? (Property)eResolveProxy((InternalEObject)end2Component) : end2Component;
@@ -252,7 +249,6 @@ public class BusConnectorImpl extends MinimalEObjectImpl.Container implements Bu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setEnd2Component(Property newEnd2Component) {
 		// TODO: implement this method to set the 'End2 Component' reference
 		// Ensure that you remove @generated or mark it @generated NOT
