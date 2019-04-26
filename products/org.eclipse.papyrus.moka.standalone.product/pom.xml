@@ -4,9 +4,9 @@
 
 	<!-- Parent POM (i.e., the one owned by the releng folder) -->
 	<parent>
+		<version>4.0.0-SNAPSHOT</version>
 		<groupId>org.eclipse.papyrus.moka</groupId>
 		<artifactId>org.eclipse.papyrus.moka.products</artifactId>
-		<version>4.0.0-SNAPSHOT</version>
 	</parent>
 
 	<!-- POM Description -->

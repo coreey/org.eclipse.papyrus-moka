@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<environment:Environment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:environment="http://www.eclipse.org/papyrus/properties/environment/0.9" xmi:id="_nzoL0CiyEeaZYvwPs2eqUw">
-  <modelElementFactories xmi:id="_pK5gwCiyEeaZYvwPs2eqUw" name="XYGraphModelElementFactory" factoryClass="org.eclipse.papyrus.moka.xygraph.properties.modelelement.XYGraphModelElementFactory"/>
-</environment:Environment>

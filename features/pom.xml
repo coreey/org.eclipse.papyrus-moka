@@ -18,7 +18,6 @@
 	<!-- Modules to build -->
 	<modules>
 		<module>org.eclipse.papyrus.moka.feature</module>
-		<module>org.eclipse.papyrus.moka.fmi.feature</module>
 	</modules>
 	
 </project>

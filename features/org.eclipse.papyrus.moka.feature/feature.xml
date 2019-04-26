@@ -109,13 +109,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.papyrus.moka.simex"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.papyrus.moka.composites.interfaces"
          download-size="0"
          install-size="0"
@@ -215,55 +208,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.papyrus.moka.datavisualization"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.papyrus.moka.datavisualization.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.papyrus.moka.xygraph.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.papyrus.moka.xygraph.mapping"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.papyrus.moka.xygraph.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.papyrus.moka.xygraph.modelexplorer"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.papyrus.moka.xygraph.properties"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.papyrus.moka.fuml.statemachines"
          download-size="0"
          install-size="0"
@@ -293,13 +237,6 @@
 
    <plugin
          id="org.eclipse.papyrus.moka.externalcontrol"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.papyrus.moka.ui.table.instancespecification"
          download-size="0"
          install-size="0"
          version="0.0.0"

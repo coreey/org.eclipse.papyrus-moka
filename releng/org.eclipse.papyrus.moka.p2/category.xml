@@ -3,9 +3,6 @@
    <feature url="features/org.eclipse.papyrus.moka.feature_4.0.0.qualifier.jar" id="org.eclipse.papyrus.moka.feature" version="4.0.0.qualifier">
       <category name="org.eclipse.papyrus.moka"/>
    </feature>
-   <feature url="features/org.eclipse.papyrus.moka.fmi.feature_4.0.0.qualifier.jar" id="org.eclipse.papyrus.moka.fmi.feature" version="4.0.0.qualifier">
-      <category name="org.eclipse.papyrus.moka"/>
-   </feature>
    <category-def name="org.eclipse.papyrus.moka" label="Moka">
       <description>
          Papyrus Model Execution Tool
