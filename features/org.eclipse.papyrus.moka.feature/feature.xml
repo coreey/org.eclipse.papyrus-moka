@@ -21,29 +21,55 @@
 
    <requires>
       <import feature="org.eclipse.papyrus.sdk.feature" version="0.0.0"/>
-      <import plugin="org.eclipse.debug.core" version="3.12.0" match="compatible"/>
-      <import plugin="org.eclipse.core.runtime" version="3.14.0" match="compatible"/>
-      <import plugin="org.eclipse.uml2.uml" version="5.4.0" match="compatible"/>
-      <import plugin="org.eclipse.ui" version="3.109.0" match="compatible"/>
-      <import plugin="org.eclipse.ui.console" version="3.8.0" match="compatible"/>
       <import plugin="org.aspectj.runtime" version="1.9.0" match="compatible"/>
       <import plugin="org.apache.commons.lang" version="2.6.0" match="compatible"/>
-      <import plugin="org.eclipse.jface" version="3.14.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.14.0" match="compatible"/>
+      <import plugin="org.eclipse.debug.core" version="3.12.0" match="compatible"/>
       <import plugin="org.eclipse.debug.ui" version="3.13.0" match="compatible"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.8.0" match="compatible"/>
-      <import plugin="org.eclipse.gef" version="3.11.0" match="compatible"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.type.core" version="1.9.0" match="compatible"/>
-      <import plugin="org.eclipse.equinox.registry" version="3.8.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.validation" version="1.8.0" match="compatible"/>
-      <import plugin="org.aspectj.runtime" version="1.9.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.osgi" version="3.10.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.common.ui" version="2.13.0" match="compatible"/>
-      <import plugin="org.eclipse.papyrus.infra.properties" version="3.0.0" match="compatible"/>
       <import plugin="org.eclipse.draw2d" version="3.10.100" match="compatible"/>
-      <import plugin="org.eclipse.nebula.visualization.xygraph" version="3.1.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.common.ui" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore" version="2.13.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.validation" version="1.8.0" match="compatible"/>
+      <import plugin="org.eclipse.equinox.registry" version="3.8.0" match="compatible"/>
+      <import plugin="org.eclipse.gef" version="3.11.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.8.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.type.core" version="1.9.0" match="compatible"/>
+      <import plugin="org.eclipse.jface" version="3.14.0" match="compatible"/>
+      <import plugin="org.eclipse.osgi" version="3.10.0" match="compatible"/>
       <import plugin="org.eclipse.swt"/>
+      <import plugin="org.eclipse.ui" version="3.109.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.console" version="3.8.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.uml" version="5.4.0" match="compatible"/>
    </requires>
+
+   <plugin
+         id="org.aspectj.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.aspectj.weaver"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.weaving.aspectj"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.weaving.hook"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
 
    <plugin
          id="org.eclipse.papyrus.moka"
@@ -151,35 +177,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.aspectj.runtime"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.aspectj.weaver"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.equinox.weaving.aspectj"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.equinox.weaving.hook"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.papyrus.moka.discreteevent"
          download-size="0"
          install-size="0"
@@ -216,13 +213,6 @@
 
    <plugin
          id="org.eclipse.papyrus.moka.fuml.statemachines.interfaces"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.nebula.visualization.xygraph"
          download-size="0"
          install-size="0"
          version="0.0.0"
