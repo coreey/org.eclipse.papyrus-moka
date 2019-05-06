@@ -1,0 +1,40 @@
+target "Moka 2019-03 Target Platform" with source requirements
+
+location "http://download.eclipse.org/releases/2019-03" eclipse {
+	org.eclipse.platform.feature.group lazy
+	org.eclipse.rcp.feature.group lazy
+	org.eclipse.jdt.feature.group lazy
+	org.eclipse.equinox.p2.discovery.feature.feature.group lazy
+	org.eclipse.equinox.executable.feature.group lazy
+}
+location "https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-03/4.3.0/main/" papyrus {
+	org.eclipse.papyrus.sdk.feature.feature.group lazy
+}
+
+location "https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-03/4.3.0/toolsmiths/" papyrus-toolsmith {
+	org.eclipse.papyrus.junit.feature.feature.group lazy
+}
+
+location "http://download.eclipse.org/tools/ajdt/48/dev/update/" aspectj {
+	org.aspectj.feature.group lazy
+	org.eclipse.ajdt.feature.group lazy
+	org.eclipse.equinox.weaving.sdk.feature.group lazy
+}
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository" orbit {
+	com.fasterxml.jackson.core.jackson-annotations lazy
+	com.fasterxml.jackson.core.jackson-core lazy
+	com.github.jnr.constants lazy
+	com.github.jnr.enxio lazy
+	com.github.jnr.ffi lazy
+	com.github.jnr.jffi lazy
+}
+
+location "http://download.eclipse.org/nebula/releases/2.0.1" nebula {
+	org.eclipse.nebula.widgets.xviewer.feature.feature.group lazy
+	org.eclipse.nebula.visualization.feature.feature.group lazy
+}
+
+location "https://download.eclipse.org/modeling/mdt/papyrus/components/sysml14/2018-09/" sysml {
+	org.eclipse.papyrus.sysml14.feature.feature.group lazy
+}

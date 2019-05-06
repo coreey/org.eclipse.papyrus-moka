@@ -17,7 +17,8 @@
 
 	<!-- Modules to build -->
 	<modules>
-		<module>org.eclipse.papyrus.moka.targetplatform.photon</module>
+		<module>org.eclipse.papyrus.moka.targetplatform.master</module>
+		<module>org.eclipse.papyrus.moka.targetplatform.2019-03</module>
 	</modules>
 
 </project>

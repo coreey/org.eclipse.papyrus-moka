@@ -1,4 +1,4 @@
-target "Moka Photon Target Platform" with source requirements
+target "Moka Master Target Platform" with source requirements
 
 location "http://download.eclipse.org/releases/2018-12" eclipse {
 	org.eclipse.platform.feature.group lazy
@@ -19,4 +19,22 @@ location "http://download.eclipse.org/tools/ajdt/48/dev/update/" aspectj {
 	org.aspectj.feature.group lazy
 	org.eclipse.ajdt.feature.group lazy
 	org.eclipse.equinox.weaving.sdk.feature.group lazy
+}
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository" orbit {
+	com.fasterxml.jackson.core.jackson-annotations lazy
+	com.fasterxml.jackson.core.jackson-core lazy
+	com.github.jnr.constants lazy
+	com.github.jnr.enxio lazy
+	com.github.jnr.ffi lazy
+	com.github.jnr.jffi lazy
+}
+
+location "http://download.eclipse.org/nebula/releases/2.0.1" nebula {
+	org.eclipse.nebula.widgets.xviewer.feature.feature.group lazy
+	org.eclipse.nebula.visualization.feature.feature.group lazy
+}
+
+location "https://hudson.eclipse.org/papyrus/job/papyrus-sysml-master/lastSuccessfulBuild/artifact/releng/org.eclipse.papyrus.sysml14.p2/target/repository/" sysml {
+	org.eclipse.papyrus.sysml14.feature.feature.group lazy
 }

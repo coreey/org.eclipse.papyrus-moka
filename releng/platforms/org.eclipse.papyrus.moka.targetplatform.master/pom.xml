@@ -10,8 +10,8 @@
 	</parent>
 	
 	<!-- POM description -->
-	<artifactId>org.eclipse.papyrus.moka.targetplatform.photon</artifactId>
+	<artifactId>org.eclipse.papyrus.moka.targetplatform.master</artifactId>
 	<packaging>eclipse-target-definition</packaging>
-	<name>Moka Photon Target Platform</name>
+	<name>Moka Master Target Platform</name>
 	
 </project>

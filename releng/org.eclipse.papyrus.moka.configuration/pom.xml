@@ -29,7 +29,7 @@
 		<component.bugzilla.name>Moka</component.bugzilla.name>
 		<component.package.rootname>org.eclipse.papyrus.moka</component.package.rootname>
 		<component.apibaseline.url>http://download.eclipse.org/modeling/mdt/papyrus/components/moka/</component.apibaseline.url>
-		<eclipse.targetrelease>photon</eclipse.targetrelease>
+		<eclipse.targetrelease>2019-03</eclipse.targetrelease>
 		<target.version>4.0.0-SNAPSHOT</target.version>
 	</properties>
 

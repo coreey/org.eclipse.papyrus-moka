@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="Moka 2019-03 Target Platform" sequenceNumber="1547738508">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.rcp.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <repository id="eclipse" location="http://download.eclipse.org/releases/2018-12"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="0.0.0"/>
+      <repository id="papyrus" location="https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-03/4.3.0/main/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.papyrus.junit.feature.feature.group" version="0.0.0"/>
+      <repository id="papyrus-toolsmith" location="https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-03/4.3.0/toolsmiths/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.aspectj.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.ajdt.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.weaving.sdk.feature.group" version="0.0.0"/>
+      <repository id="aspectj" location="http://download.eclipse.org/tools/ajdt/48/dev/update/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.fasterxml.jackson.core.jackson-annotations" version="0.0.0"/>
+      <unit id="com.fasterxml.jackson.core.jackson-core" version="0.0.0"/>
+      <unit id="com.github.jnr.constants" version="0.0.0"/>
+      <unit id="com.github.jnr.enxio" version="0.0.0"/>
+      <unit id="com.github.jnr.ffi" version="0.0.0"/>
+      <unit id="com.github.jnr.jffi" version="0.0.0"/>
+      <repository id="orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.nebula.widgets.xviewer.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.nebula.visualization.feature.feature.group" version="0.0.0"/>
+      <repository id="nebula" location="http://download.eclipse.org/nebula/releases/2.0.1"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.papyrus.sysml14.feature.feature.group" version="0.0.0"/>
+      <repository id="sysml" location="https://download.eclipse.org/modeling/mdt/papyrus/components/sysml14/2018-09/"/>
+    </location>
+  </locations>
+</target>
