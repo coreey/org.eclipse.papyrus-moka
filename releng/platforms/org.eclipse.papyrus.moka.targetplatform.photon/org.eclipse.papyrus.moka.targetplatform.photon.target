@@ -13,11 +13,8 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="0.0.0"/>
-      <repository id="papyrus" location="https://hudson.eclipse.org/papyrus/view/Master/job/Papyrus-Master/lastSuccessfulBuild/artifact/repository/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.papyrus.junit.feature.feature.group" version="0.0.0"/>
-      <repository id="papyrus-toolsmith" location="https://hudson.eclipse.org/papyrus/job/Papyrus-Master-Toolsmiths/lastSuccessfulBuild/artifact/repository/"/>
+      <repository id="papyrus" location="http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2018-12"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.aspectj.feature.group" version="0.0.0"/>
