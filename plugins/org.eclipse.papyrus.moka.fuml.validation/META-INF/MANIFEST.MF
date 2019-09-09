@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui;bundle-version="[3.109.0,4.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.14.0,4.0.0)",
+ org.eclipse.emf.validation;bundle-version="[1.8.0,2.0.0)",
+ org.eclipse.uml2.uml;bundle-version="[5.4.0,6.0.0)"
+Bundle-Vendor: Eclipse Modeling Project
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 4.0.0.qualifier
+Bundle-Name: Moka Validation Rules for fUML models
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.eclipse.papyrus.moka.fuml.validation.Activator
+Bundle-SymbolicName: org.eclipse.papyrus.moka.fuml.validation;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.eclipse.papyrus.moka.fuml.validation,
+ org.eclipse.papyrus.moka.fuml.validation.constraints
+Automatic-Module-Name: org.eclipse.papyrus.moka.fuml.validation

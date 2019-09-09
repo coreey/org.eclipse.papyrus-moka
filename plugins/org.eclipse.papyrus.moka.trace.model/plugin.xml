@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated fumltracemodel -->
+      <package
+            uri="http://www.eclipse.org/papyrus/moka/trace"
+            class="org.eclipse.papyrus.moka.trace.model.mokatraceservice.MokaTraceServicePackage"
+            genModel="resources/model/fumltracemodel.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://MOKA_TRACE/"
+            target="platform:/plugin/org.eclipse.papyrus.moka.trace.model/resources/model/">
+      </mapping>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
+      <library
+            iconpath="resources/icons/moka_icon.png"
+            name="Moka Trace Metamodel"
+            path="pathmap://MOKA_TRACE/mokatraceservice.uml">
+      </library>
+   </extension>
+
+</plugin>

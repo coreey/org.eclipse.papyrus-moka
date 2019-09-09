@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui;bundle-version="[3.113.0,4.0.0)",
+ org.eclipse.ui.workbench;bundle-version="[3.112.0,4.0.0)",
+ org.eclipse.jface;bundle-version="[3.16.0,4.0.0)",
+ org.eclipse.debug.core;bundle-version="[3.12.0,4.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.14.0,4.0.0)",
+ org.eclipse.uml2.uml;bundle-version="[5.4.0,6.0.0)",
+ org.eclipse.papyrus.moka.utils;bundle-version="4.0.0",
+ org.eclipse.papyrus.moka.fuml.interfaces,
+ org.eclipse.paho.client.mqttv3;bundle-version="[1.2.0,2.0.0)"
+Export-Package: org.eclipse.papyrus.moka.kernel,
+ org.eclipse.papyrus.moka.kernel.engine,
+ org.eclipse.papyrus.moka.kernel.process,
+ org.eclipse.papyrus.moka.kernel.service
+Bundle-Vendor: Eclipse Modeling Project
+Bundle-Version: 4.0.0.qualifier
+Bundle-Name: org.eclipse.papyrus.moka.kernel
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.eclipse.papyrus.moka.kernel.MokaKernelActivator
+Bundle-Description: %pluginDescription
+Bundle-SymbolicName: org.eclipse.papyrus.moka.kernel;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.eclipse.papyrus.moka
+Bundle-ActivationPolicy: lazy

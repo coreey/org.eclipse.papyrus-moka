@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.papyrus.moka.engine.uml.animation
+Bundle-SymbolicName: org.eclipse.papyrus.moka.engine.uml.animation;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: Eclipse Modeling Project
+Automatic-Module-Name: org.eclipse.papyrus.moka.engine.uml.animation
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.papyrus.moka.kernel.animation,
+ org.eclipse.papyrus.moka.engine.uml.debug,
+ org.eclipse.papyrus.moka.fuml.interfaces,
+ org.eclipse.papyrus.moka.utils,
+ org.eclipse.papyrus.moka.pssm.interfaces,
+ org.eclipse.papyrus.moka.pscs.interfaces,
+ org.eclipse.papyrus.moka.kernel,
+ org.eclipse.gmf.runtime.notation.edit;bundle-version="[1.7.0,2.0.0)"
+Export-Package: org.eclipse.papyrus.moka.engine.uml.animation.animators,
+ org.eclipse.papyrus.moka.engine.uml.animation.service

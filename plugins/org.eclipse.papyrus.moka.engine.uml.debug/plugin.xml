@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.papyrus.moka.kernel.service">
+      <service
+            class="org.eclipse.papyrus.moka.engine.uml.debug.service.UMLDebugService"
+            description="UML Debug Service">
+         <context
+               engineID="org.eclipse.papyrus.moka.engine.uml">
+         </context>
+         <context
+               engineID="org.eclipse.papyrus.moka.engine.uml.time">
+         </context>
+      </service>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="org.eclipse.papyrus.moka.engine.uml.debug.data.presentation.UMLDebugModelPresentation"
+            id="org.eclipse.papyrus.moka.engine.uml.debug.presentation">
+      </debugModelPresentation>
+   </extension>
+
+</plugin>

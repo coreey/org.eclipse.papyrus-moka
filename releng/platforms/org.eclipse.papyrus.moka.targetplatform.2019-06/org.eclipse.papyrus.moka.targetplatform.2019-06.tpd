@@ -1,0 +1,30 @@
+target "Moka Photon Target Platform" with source requirements
+
+location "http://download.eclipse.org/releases/2019-06" eclipse {
+	org.eclipse.platform.feature.group lazy
+	org.eclipse.rcp.feature.group lazy
+	org.eclipse.jdt.feature.group lazy
+	org.eclipse.equinox.p2.discovery.feature.feature.group lazy
+	org.eclipse.equinox.executable.feature.group lazy
+	org.eclipse.json lazy
+}
+
+location "https://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/4.5/" papyrus {
+	org.eclipse.papyrus.sdk.feature.feature.group lazy
+	org.eclipse.papyrus.junit.feature.feature.group lazy
+}
+
+location "http://download.eclipse.org/tools/ajdt/410/dev/update/" aspectj {
+	org.aspectj.feature.group lazy
+	org.eclipse.ajdt.feature.group lazy
+	org.eclipse.equinox.weaving.sdk.feature.group lazy
+}
+
+location "http://download.eclipse.org/nebula/releases/2.0.1" nebula {
+	org.eclipse.nebula.widgets.xviewer.feature.feature.group lazy
+	org.eclipse.nebula.visualization.feature.feature.group lazy
+}
+
+location "https://download.eclipse.org/paho/releases/1.2.0/Java" paho{
+	org.eclipse.paho.client.mqttv3 lazy
+}

@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="org.eclipse.papyrus.moka.fuml.validation.normative"
+            mandatory="false"
+            name="Moka fUML">
+      </category>
+      <category
+            id="org.eclipse.papyrus.moka.fuml.validation.nonnormative"
+            mandatory="false"
+            name="Moka Non-normative">
+      </category>
+      <constraintProvider
+            cache="true"
+            mode="Batch">
+         <package
+               namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
+         </package>
+         <constraints
+               categories="org.eclipse.papyrus.moka.fuml.validation.normative">				
+            <constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlAssociationOwnsMemberEndsConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_association_owns_memberEnds"
+                lang="java"
+                mode="Batch"
+                name="fuml_association_owns_memberEnds"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+An association must own all its memberEnds.
+self.memberEnd->symmetricDifference(self.ownedEnd)->isEmpty()
+
+             </description>
+             <target
+                   class="Association">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlAssociationNoDerivationConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_association_no_derivation"
+                lang="java"
+                mode="Batch"
+                name="fuml_association_no_derivation"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isDerived must be false
+not self.isDerived
+
+             </description>
+             <target
+                   class="Association">
+             </target>
+          </constraint>
+		  <constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlBehavioralFeatureSequentialityConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_behavioral_feature_sequentiality"
+                lang="java"
+                mode="Batch"
+                name="fuml_behavioral_feature_sequentiality"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+concurrency must be sequential
+self.concurrency = CallConcurrencyKind::sequential
+
+             </description>
+             <target
+                   class="BehavioralFeature">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlClassAbstractClassConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_class_abstract_class"
+                lang="java"
+                mode="Batch"
+                name="fuml_class_abstract_class"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+Only an abstract class may have abstract behavioral features.
+self.member->select(oclIsKindOf(BehavioralFeature))->exists(isAbstract) implies self.isAbstract
+
+             </description>
+             <target
+                   class="Class">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlClassActiveClassSpecializationConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_class_active_class_specialization"
+                lang="java"
+                mode="Batch"
+                name="fuml_class_active_class_specialization"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+Only an active class may specialize an active class.
+self.parents()->exist(isActive) implies self.isActive
+
+             </description>
+             <target
+                   class="Class">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlClassAbstractBehavioralFeatureConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_class_abstract_behavioral_feature"
+                lang="java"
+                mode="Batch"
+                name="fuml_class_abstract_behavioral_feature"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+Only an abstract class may have abstract behavioral features.
+self.member->select(oclIsKindOf(BehavioralFeature))->exists(isAbstract) implies self.isAbstract
+
+             </description>
+             <target
+                   class="Class">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlFeatureNonStaticConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_feature_non_static"
+                lang="java"
+                mode="Batch"
+                name="fuml_feature_non_static"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isStatic must be false
+not self.isStatic
+
+             </description>
+             <target
+                   class="Feature">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlInstanceSpecificationPossibleClassifiersConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_instance_specification_possible_classifiers"
+                lang="java"
+                mode="Batch"
+                name="fuml_instance_specification_possible_classifiers"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+Either all the classifiers are classes, or there is one classifier that is a data type
+self.classifier->forAll(oclIsKindOf(Class)) or
+self.classifier->size() = 1 and self.classifier->forAll(oclIsKindOf(DataType))
+
+             </description>
+             <target
+                   class="InstanceSpecification">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlMultiplicityElementRequiredLowerAndUpperConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_multiplicity_element_required_lower_and_upper"
+                lang="java"
+                mode="Batch"
+                name="fuml_multiplicity_element_required_lower_and_upper"
+                severity="WARNING"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+upperValue must be a LiteralUnlimitedNatural and lowerValue must be a LiteralInteger. Both are required.
+self.upperValue->notEmpty() and
+self.upperValue->asSequence()->first().oclIsKindOf(LiteralUnlimitedNatural) and
+self.lowerValue->notEmpty() and
+self.lowerValue->asSequence()->first().oclIsKindOf(LiteralInteger) 
+
+             </description>
+             <target
+                   class="MultiplicityElement">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlOperationHasAtMostOneMethodConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_operation_has_at_most_one_method"
+                lang="java"
+                mode="Batch"
+                name="fuml_operation_has_at_most_one_method"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+If an operation is abstract it must have no method. Otherwise it must have exactly one method.
+(self.isAbstract and self.method->isEmpty()) xor (not self.isAbstract and self.method->size() = 1)
+             </description>
+             <target
+                   class="Operation">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlParameterNotExceptionNotStreamingConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_parameter_not_exception_not_streaming"
+                lang="java"
+                mode="Batch"
+                name="fuml_parameter_not_exception_not_streaming"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isException and isStream must be false
+not self.isException and not self.isStream
+
+             </description>
+             <target
+                   class="Parameter">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlPropertyNoDerivationConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_property_no_derivation"
+                lang="java"
+                mode="Batch"
+                name="fuml_property_no_derivation"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isDerived and isDerivedUnion must be false
+not self.isDerived and not self.isDerivedUnion
+
+             </description>
+             <target
+                   class="Property">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlReentrantBehaviorConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_behavior_reentrant"
+                lang="java"
+                mode="Batch"
+                name="fuml_behavior_reentrant"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+In this specification, a fUML instance model must have Behavior.isReentrant
+self.isReentrant
+
+             </description>
+             <target
+                   class="Behavior">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlOpaqueActionEmptyBodyAndLanguageConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_opaque_behavior_empty_body_and_language"
+                lang="java"
+                mode="Batch"
+                name="fuml_opaque_behavior_empty_body_and_language"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+body and language must be empty
+self.language->isEmpty() and self.body->isEmpty()
+
+             </description>
+             <target
+                   class="OpaqueBehavior">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlOpaqueBehaviorInactiveConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_opaque_behavior_inactive"
+                lang="java"
+                mode="Batch"
+                name="fuml_opaque_behavior_inactive"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+             
+An opaque behavior cannot be active.
+not self.isActive
+
+             </description>
+             <target
+                   class="OpaqueBehavior">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlReceptionNoMethodConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_reception_no_method"
+                lang="java"
+                mode="Batch"
+                name="fuml_reception_no_method"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+A reception must not have an associated method.
+self.method->isEmpty()
+
+             </description>
+             <target
+                   class="Reception">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlReceptionNotAbstractConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_reception_not_abstract"
+                lang="java"
+                mode="Batch"
+                name="fuml_reception_not_abstract"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+             
+A reception may not be abstract.
+not self.isAbstract
+
+             </description>
+             <target
+                   class="Reception">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlActivityNoClassifierBehaviorConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_activity_no_classifier_behavior"
+                lang="java"
+                mode="Batch"
+                name="fuml_activity_no_classifier_behavior"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+An activity may be active, but cannot have a classifier behavior.
+self.classifierBehavior->isEmpty()
+
+             </description>
+             <target
+                   class="Activity">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlActivityNotSingleExecutionConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_activity_not_single_execution"
+                lang="java"
+                mode="Batch"
+                name="fuml_activity_not_single_execution"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isSingleExecution must be false.
+not self.isExecution
+
+             </description>
+             <target
+                   class="Activity">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlActivityEdgeAllowedGuardsConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_activity_edge_allowed_guards"
+                lang="java"
+                mode="Batch"
+                name="fuml_activity_edge_allowed_guards"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+A guard is only allowed if the source of the edge is a DecisionNode.
+self.guard->notEmpty() implies self.source.oclIsKindOf(DecisionNode)
+
+             </description>
+             <target
+                   class="ActivityEdge">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlJoinNodeNotCombineDuplicateConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_join_node_not_combine_duplicate"
+                lang="java"
+                mode="Batch"
+                name="fuml_join_node_not_combine_duplicate"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isCombineDuplicate must be false
+not self.isCombineDuplicate
+
+             </description>
+             <target
+                   class="JoinNode">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlObjectFlowNotMultiConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_object_flow_not_multi"
+                lang="java"
+                mode="Batch"
+                name="fuml_object_flow_not_multi"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isMulticast and isMultireceive must be false
+not self.isMulticast and not self.isMultireceive
+
+             </description>
+             <target
+                   class="ObjectFlow">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlObjectNodeFifoOrderingConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_object_node_fifo_ordering"
+                lang="java"
+                mode="Batch"
+                name="fuml_object_node_fifo_ordering"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+ordering must be FIFO
+self.ordering = ObjectNodeOrderingKind::FIFO
+
+             </description>
+             <target
+                   class="ObjectNode">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlObjectNodeNotControlTypeConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_object_node_not_control_type"
+                lang="java"
+                mode="Batch"
+                name="fuml_object_node_not_control_type"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isControlType must be false
+not self.isControlType
+
+             </description>
+             <target
+                   class="ObjectNode">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlLoopNodeNoSetupPartsConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_loop_node_no_setup_part"
+                lang="java"
+                mode="Batch"
+                name="fuml_loop_node_no_setup_part"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+no setupParts in fUML
+self.setupPart->isEmpty()
+
+             </description>
+             <target
+                   class="LoopNode">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlExpansionRegionNoCrossingEdgesConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_expansion_region_no_crossing_edges"
+                lang="java"
+                mode="Batch"
+                name="fuml_expansion_region_no_crossing_edges"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+Edges may not cross into or out of an expansion region.
+self.edge->forAll(self.node->includes(source) and self.node->includes(target))
+
+             </description>
+             <target
+                   class="ExpansionRegion">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlExpansionRegionModeCannotBeStreamConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_expansion_region_mode_cannot_be_stream"
+                lang="java"
+                mode="Batch"
+                name="fuml_expansion_region_mode_cannot_be_stream"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+mode cannot be stream
+self.mode != ExpansionKind::stream
+
+             </description>
+             <target
+                   class="ExpansionRegion">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlExpansionRegionNoOutputPinsConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fUML_ExpansionRegion_no_output_pins"
+                lang="java"
+                mode="Batch"
+                name="fUML_ExpansionRegion_no_output_pins"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+An expansion region may not have output pins.
+self.output->isEmpty()
+
+             </description>
+             <target
+                   class="ExpansionRegion">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlCallBehaviorActionIsSynchronousConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_call_behavior_action_is_synchronous"
+                lang="java"
+                mode="Batch"
+                name="fuml_call_behavior_action_is_synchronous"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isSynchronous must be true
+self.isSynchronous
+
+             </description>
+             <target
+                   class="CallBehaviorAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlCallBehaviorActionInactiveBehaviorConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_call_behavior_action_inactive_behavior"
+                lang="java"
+                mode="Batch"
+                name="fuml_call_behavior_action_inactive_behavior"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+The behavior may not be active. 
+not self.behavior.isActive
+
+             </description>
+             <target
+                   class="CallBehaviorAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlCallBehaviorActionProperContextConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_call_behavior_action_proper_context"
+                lang="java"
+                mode="Batch"
+                name="fuml_call_behavior_action_proper_context"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+If the behavior has a context, it must be the same as the context of the enclosing activity or a (direct or indirect)
+superclass of it.
+self.behavior.context->notEmpty() implies
+self.context->union(self.context.allParents())->includes(self.behavior.context)
+
+             </description>
+             <target
+                   class="CallBehaviorAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlCallOperationActionIsSynchronousConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_call_operation_action_is_synchronous"
+                lang="java"
+                mode="Batch"
+                name="fuml_call_operation_action_is_synchronous"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isSynchronous must be true
+self.isSynchronous
+
+             </description>
+             <target
+                   class="CallOperationAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlSendSignalActionTargetSignalReceptionConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_send_signal_action_target_signal_reception"
+                lang="java"
+                mode="Batch"
+                name="fuml_send_signal_action_target_signal_reception"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+The target input pin must have a type that has a reception for the signal.
+self.target.type.oclAsType(Classifier).allFeatures()->select(oclIsKindOf(Reception))->exists(f:Feature|self.
+       signal.conformsTo(f.oclAsType(Reception).signal))
+
+             </description>
+             <target
+                   class="SendSignalAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlCreateObjectActionIsClassConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_create_object_action_is_class"
+                lang="java"
+                mode="Batch"
+                name="fuml_create_object_action_is_class"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+The given classifier must be a class.
+self.classifier.oclIsKindOf(Class)
+
+             </description>
+             <target
+                   class="CreateObjectAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlAcceptEventActionActiveContextConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_accept_event_action_active_context"
+                lang="java"
+                mode="Batch"
+                name="fuml_accept_event_action_active_context"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+The context of the containing activity of the accept event action must be an active class. 
+self.context.oclAsType(Class).isActive
+
+             </description>
+             <target
+                   class="AcceptEventAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlAcceptEventOnlySignalEventTriggersConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_accept_event_only_signal_event_triggers"
+                lang="java"
+                mode="Batch"
+                name="fuml_accept_event_only_signal_event_triggers"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+All triggers must be for signal events.
+self.trigger.event->forAll(oclIsKindOf(SignalEvent))
+
+             </description>
+             <target
+                   class="AcceptEventAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlAcceptEventReceiveAllTriggeringSignalsConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_accept_event_receive_all_triggering_signals"
+                lang="java"
+                mode="Batch"
+                name="fuml_accept_event_receive_all_triggering_signals"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+The context class must have receptions for all triggering signals.
+let cls:Class = self.context.oclAsType(Class) in
+let classes:Bag(Class) = cls.allParents()->select(oclIsKindOf(Class))->collect(oclAsType(Class))->union(cls->asBag()) in
+classes.ownedReception.signal->includesAll(self.trigger.event->collect(oclAsType(SignalEvent)).signal)
+
+             </description>
+             <target
+                   class="AcceptEventAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlAcceptCallActionCallEventOperationsConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_accept_call_action_call_event_operations"
+                lang="java"
+                mode="Batch"
+                name="fuml_accept_call_action_call_event_operations"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+The operations of the call events on the triggers of an accept call action must be owned or inherited by the context class of
+the action.
+let cls: Class = self.context.oclAsType(Class) in
+let classes:Bag(Class) = cls.allParents()->select(oclIsKindOf(Class))->collect(oclAsType(Class))->union(cls->asBag()) in
+classes.ownedOperation→includesAll(self.trigger.event→collect(oclAsType(CallEvent)).operation)
+
+             </description>
+             <target
+                   class="AcceptCallAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlAcceptEventNoAcceptEventActionInTestsConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_accept_event_no_accept_event_action_in_tests"
+                lang="java"
+                mode="Batch"
+                name="fuml_accept_event_no_accept_event_action_in_tests"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+An accept event action may not be contained directly or indirectly in the test part of a clause or loop node.
+self->closure(inStructuredNode.oclAsType(ActivityNode))->forAll(n |
+let s : StructuredActivityNode = n.inStructuredNode in
+s->notEmpty() implies
+(s.ocllsTypeOf(ConditionalNode) implies s.oclAsType(ConditionalNode).clause.test->
+excludes(n.oclAsType(ExecutableNode)) and
+s.ocllsTypeOf(LoopNode) implies s.oclAsType(LoopNode).test->excludes(n.oclAsType(ExecutableNode))))
+
+             </description>
+             <target
+                   class="AcceptEventAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlReadExtentActionIsClassConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_read_extent_action_is_class"
+                lang="java"
+                mode="Batch"
+                name="fuml_read_extent_action_is_class"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+The classifier must be a class.
+self.classifier.oclIsKindOf(Class)
+
+             </description>
+             <target
+                   class="ReadExtentAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlReclassifyObjectActionOldNewClassesConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_reclassify_object_action_old_new_classes"
+                lang="java"
+                mode="Batch"
+                name="fuml_reclassify_object_action_old_new_classes"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+All the old and new classifiers must be classes.
+self.oldClassifier->forAll(oclIsKindOf(Class)) and self.newClassifier->forAll(oclIsKindOf(Class))
+
+             </description>
+             <target
+                   class="ReclassifyObjectAction">
+             </target>
+          </constraint>
+				<constraint
+                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlStartObjectBehaviorActionIsAsynchronousConstraint"
+                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_start_object_behavior_action_is_asynchronous"
+                lang="java"
+                mode="Batch"
+                name="fuml_start_object_behavior_action_is_asynchronous"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][fuml] {0}
+             </message>
+             <description>
+                
+isSynchronous must be false.
+not self.isSynchronous
+
+             </description>
+             <target
+                   class="StartObjectBehaviorAction">
+             </target>
+          </constraint>
+            
+            
+            </constraints>
+         <constraints
+               categories="org.eclipse.papyrus.moka.fuml.validation.nonnormative">
+            
+            <constraint
+                  class="org.eclipse.papyrus.moka.fuml.validation.constraints.ActiveClassHasClassifierBehavior_Constraint"
+                  id="org.eclipse.papyrus.moka.fuml.validation.constraint.active_class_shall_have_a_classifier_behavior"
+                  lang="java"
+                  mode="Batch"
+                  name="active_class_shall_have_a_classifier_behavior"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  [Moka] {0}
+               </message>
+               <description>
+                  An active class shall have a classifier behavior
+               </description>
+               <target
+                     class="Class">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.eclipse.papyrus.moka.fuml.validation.constraints.ArgumentAndResultPinsOfCallActions_Constraint"
+                  id="org.eclipse.papyrus.moka.fuml.validation.argument_and_result_pins_of_call_actions"
+                  lang="java"
+                  mode="Batch"
+                  name="argument_and_result_pins_of_call_actions"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  [Moka] {0}
+               </message>
+               <description>
+                  Argument / result pins of call actions shall match parameters of invoked Operation/Behavior, or sent Signal
+               </description>
+               <target
+                     class="CallAction">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.eclipse.papyrus.moka.fuml.validation.constraints.NoDelegationConnectorOnNonBehaviorPort_Constraint"
+                  id="org.eclipse.papyrus.moka.fuml.validation.no_delegation_connectors_on_behavior_port"
+                  lang="java"
+                  mode="Batch"
+                  name="no_delegation_connectors_on_behavior_port"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  [Moka] {0}
+               </message>
+               <description>
+                  Non-behavior ports shall have delegation connectors
+               </description>
+               <target
+                     class="Port">
+               </target>
+            </constraint>
+         </constraints>
+         
+      </constraintProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      <clientContext
+            id="org.eclipse.papyrus.moka.fuml.validation.context">
+         <selector
+               class="org.eclipse.papyrus.moka.fuml.validation.ElementSelector">
+         </selector>
+      </clientContext>
+      <binding
+            context="org.eclipse.papyrus.moka.fuml.validation.context">
+         <category
+               ref="org.eclipse.papyrus.moka.fuml.validation.normative">
+         </category>
+         <category
+               ref="org.eclipse.papyrus.moka.fuml.validation.nonnormative">
+         </category>
+      </binding>
+   </extension>
+
+</plugin>

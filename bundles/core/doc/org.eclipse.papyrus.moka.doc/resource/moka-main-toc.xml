@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<toc label="Model Execution" link_to="../org.eclipse.papyrus.infra.doc/toc.xml#PapyrusDocUser">
-   <topic href="target/generated-eclipse-help/moka.html" label="Execute UML Models using MOKA">
-      <link toc="target/generated-eclipse-help/moka-toc.xml"/>
-      <anchor id="ModelExecution"/>
-   </topic>	
-</toc>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.papyrus.moka.kernel.engine">
+      <engine
+            class="org.eclipse.papyrus.moka.engine.uml.time.UMLTimedExecutionEngine"
+            description="Timed Executable UML Execution Engine"
+            id="org.eclipse.papyrus.moka.engine.uml.time">
+      </engine>
+   </extension>
+
+</plugin>

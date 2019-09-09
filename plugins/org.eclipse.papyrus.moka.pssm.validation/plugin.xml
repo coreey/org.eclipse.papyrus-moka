@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      <binding
+            context="org.eclipse.papyrus.moka.pssm.validation.context">
+         <category
+               ref="org.eclipse.papyrus.moka.pssm.validation.normative">
+         </category>
+      </binding>
+      <clientContext
+            id="org.eclipse.papyrus.moka.pssm.validation.context">
+         <selector
+               class="org.eclipse.papyrus.moka.pssm.validation.selector.ElementSelector">
+         </selector>
+      </clientContext>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="org.eclipse.papyrus.moka.pssm.validation.normative"
+            mandatory="false"
+            name="Moka PSSM">
+      </category>
+      <constraintProvider
+            cache="true"
+            mode="Batch">
+         <package
+               namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
+         </package>
+         <constraints
+               categories="org.eclipse.papyrus.moka.pssm.validation.normative">
+            <constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmConstraintIsGuardConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_constraint_is_guard"
+                lang="java"
+                mode="Batch"
+                name="pssm_constraint_is_guard"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+A Constraint must be owned as a guard by a Transition and its constrainedElements must be empty.
+context UML::CommonStructure::Constraint inv:
+self.owner.oclIsKindOf(UML::StateMachines::Transition) and
+self.constrainedElement->isEmpty()
+
+             </description>
+             <target
+                   class="Constraint">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmOpaqueExpressionHasBehaviorConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_opaque_expression_has_behavior"
+                lang="java"
+                mode="Batch"
+                name="pssm_opaque_expression_has_behavior"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+The OpaqueExpression must have a behavior.
+context UML::Values::OpaqueExpression inv:
+self.behavior != null
+
+             </description>
+             <target
+                   class="OpaqueExpression">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmExpressionOnlyForElseConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_expression_only_for_else"
+                lang="java"
+                mode="Batch"
+                name="pssm_expression_only_for_else"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+The Expression must have no operands and its symbol must be “else”.
+context UML::Values::Expression inv:
+self.symbol = 'else' and self.operand->isEmpty()
+
+             </description>
+             <target
+                   class="Expression">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmOperationHasAtMostOneMethodConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_operation_has_at_most_one_method"
+                lang="java"
+                mode="Batch"
+                name="pssm_operation_has_at_most_one_method"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+If an Operation is abstract, it must have no method. Otherwise it must not have more than one method and it must have 
+exactly one method unless owned by an active Class.
+context UML::Classification::Operation inv:
+if self.isAbstract then self.method->isEmpty()
+else
+self.method->size() [inferior or equal] 1 and
+((self.class = null or not self.class.isActive) implies
+self.method->size() = 1)
+endif
+
+             </description>
+             <target
+                   class="Operation">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmCallEventOperationHasNoMethodConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_call_event_operation_has_no_method"
+                lang="java"
+                mode="Batch"
+                name="pssm_call_event_operation_has_no_method"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+The operation of the CallEvent must not have any methods.
+context UML::CommonBehavior::CallEvent inv:
+self.operation.method->isEmpty()
+
+             </description>
+             <target
+                   class="CallEvent">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmStateMachineContextConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_state_machine_context"
+                lang="java"
+                mode="Batch"
+                name="pssm_state_machine_context"
+                severity="WARNING"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+A StateMachine may not be a method and, if it has a context, it must be a classifierBehavior for that context.
+context UML::StateMachines::StateMachine inv:
+self.specification = null and
+self._'context' [non equal] null implies self._'context'.classifierBehavior = self
+
+             </description>
+             <target
+                   class="StateMachine">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmTransitionTriggersConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_transition_triggers"
+                lang="java"
+                mode="Batch"
+                name="pssm_transition_triggers"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+The triggers of a Transition must all be for CallEvents or SignalEvents.
+context UML::StateMachines::Transition inv:
+self.trigger.event->forAll(
+oclIsKindOf(UML::CommonBehavior::CallEvent) or
+oclIsKindOf(UML::CommonBehavior::SignalEvent)
+)
+
+             </description>
+             <target
+                   class="Transition">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmTransitionCallEventOperationsConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_transition_call_event_operations"
+                lang="java"
+                mode="Batch"
+                name="pssm_transition_call_event_operations"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+The Operations of any CallEvents on the triggers of a Transition must be owned or inherited by the context of the 
+containing StateMachine.
+context UML::StateMachines::Transition inv:
+let stateMachine = self.containingStateMachine() in
+let context_ =
+if stateMachine._'context' = null then stateMachine
+else stateMachine._'context'
+endif in
+context_.allFeatures()->includesAll(
+self.trigger->select(oclIsKindOf(UML::CommonBehavior::CallEvent)).
+oclAsType(UML::CommonBehavior::CallEvent).operation
+)
+
+             </description>
+             <target
+                   class="Transition">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmTransitionSignalEventReceptionsConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_transition_signal_event_receptions"
+                lang="java"
+                mode="Batch"
+                name="pssm_transition_signal_event_receptions"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+The Signals of any SignalEvents on the triggers of a Transition must have matching Receptions that are owned or 
+inherited by the context of the containing StateMachine of the Transition.
+context UML::StateMachines::Transition inv:
+let stateMachine = self.containingStateMachine() in
+let context_ =
+if stateMachine._'context' = null then stateMachine
+else stateMachine._'context'
+endif in
+context_.allFeatures()->select(oclIsKindOf(UML::SimpleClassifiers::Reception)).
+oclAsType(UML::SimpleClassifiers::Reception).signal->includesAll(
+self.trigger->select(oclIsKindOf(UML::CommonBehavior::SignalEvent)).
+oclAsType(UML::CommonBehavior::SignalEvent).signal)
+
+             </description>
+             <target
+                   class="Transition">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmStateHasNoSubmachineConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_state_has_no_submachine"
+                lang="java"
+                mode="Batch"
+                name="pssm_state_has_no_submachine"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+A State must not have a submachine.
+context UML::StateMachines::State inv:
+not self.isSubmachineState
+
+             </description>
+             <target
+                   class="State">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmStateHasNoInvariantConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_state_has_no_invariant"
+                lang="java"
+                mode="Batch"
+                name="pssm_state_has_no_invariant"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+A State must not have a stateInvariant.
+context UML::StateMachines::State inv:
+self.stateInvariant = null
+
+             </description>
+             <target
+                   class="State">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmStateDoActivityParametersConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_state_do_activity_parameters"
+                lang="java"
+                mode="Batch"
+                name="pssm_state_do_activity_parameters"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+A doActivity Behavior of a State can only have in parameters.
+context UML::StateMachines::State inv:
+self.doActivity [non equal] null implies
+self.doActivity.ownedParameter->forAll(direction =
+ParameterDirectionKind::_'in')
+
+             </description>
+             <target
+                   class="State">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmStateBehaviorParametersConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_state_behavior_parameters"
+                lang="java"
+                mode="Batch"
+                name="pssm_state_behavior_parameters"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+The definition of this constraint is given below, followed by the definition of two helper operations it uses.
+The entry and doActivity Behaviors of a State must conform to all the Triggers of Transitions that might cause the 
+State to be entered. The exit Behavior of a State must conform to all the Triggers of Transitions that might cause the 
+State to be exited. The effect and guard Behaviors of an outgoing Transition of a State must conform to all the 
+Triggers of the Transition. (Note that only Transitions outgoing from a State may have triggers.)
+
+             </description>
+             <target
+                   class="State">
+             </target>
+          </constraint>
+		<constraint
+                class="org.eclipse.papyrus.moka.pssm.validation.constraints.PssmStateMachineExtendsAtMostOneConstraint"
+                id="org.eclipse.papyrus.moka.pssm.validation.constraint.pssm_state_machine_extends_at_most_one"
+                lang="java"
+                mode="Batch"
+                name="pssm_state_machine_extends_at_most_one"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pssm] {0}
+             </message>
+             <description>
+                
+A StateMachine must not have more than one extendedStateMachine.
+context UML::StateMachines::StateMachine inv:
+self.extendedStateMachine->size() [inferior or equal] 1
+             </description>
+             <target
+                   class="StateMachine">
+             </target>
+          </constraint>
+
+         </constraints>
+      </constraintProvider>
+   </extension>
+
+</plugin>

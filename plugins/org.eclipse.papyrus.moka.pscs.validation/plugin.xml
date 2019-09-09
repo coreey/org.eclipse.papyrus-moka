@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="org.eclipse.papyrus.moka.pscs.validation.normative"
+            mandatory="false"
+            name="Moka PSCS">
+      </category>
+      <constraintProvider
+            cache="true"
+            mode="Batch">
+         <package
+               namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
+         </package>
+         <constraints
+               categories="org.eclipse.papyrus.moka.pscs.validation.normative">				
+            <constraint
+                class="org.eclipse.papyrus.moka.pscs.validation.constraints.PscsBehaviorPortBelongsToAnActiveClass"
+                id="org.eclipse.papyrus.moka.spcs.validation.constraint.pscs_behavior_port_belongs_to_an_active_class"
+                lang="java"
+                mode="Batch"
+                name="pscs_behavior_port_belongs_to_an_active_class"
+                severity="ERROR"
+                statusCode="1">
+             <message>
+                [Moka][pscs] {0}
+             </message>
+             <description>
+                
+pscs_behavior_port_belongs_to_an_active_classisBehavior  implies(encapsulatedClassifier&lt;&gt;null  and  encapsulatedClassifier.oclIsKindOf(Class)  and  encapsulatedClassifier.isActive)
+
+             </description>
+             <target
+                   class="Port">
+             </target>
+          </constraint>
+            <constraint
+                  class="org.eclipse.papyrus.moka.pscs.validation.constraints.PscsConnectorIsTyped"
+                  id="org.eclipse.papyrus.moka.spcs.validation.constraint.pscs_connector_is_typed"
+                  lang="java"
+                  mode="Batch"
+                  name="pscs_connector_is_typed"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  [Moka][pscs] {0}
+               </message>
+               <description>
+                  pscs_connector_is_typed type != null
+                  pscs_behavior_port_belongs_to_an_active_classisBehavior  implies(encapsulatedClassifier != null  and  encapsulatedClassifier.oclIsKindOf(Class)  and  encapsulatedClassifier.isActive)
+               </description>
+               <target
+                  class="Connector">
+               </target>
+            </constraint>
+         </constraints>
+         
+      </constraintProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      <clientContext
+            id="org.eclipse.papyrus.moka.pscs.validation.context">
+         <selector
+               class="org.eclipse.papyrus.moka.pscs.validation.ElementSelector">
+         </selector>
+      </clientContext>
+      <binding
+            context="org.eclipse.papyrus.moka.pscs.validation.context">
+         <category
+               ref="org.eclipse.papyrus.moka.pscs.validation.normative">
+         </category>
+      </binding>
+   </extension>
+
+</plugin>

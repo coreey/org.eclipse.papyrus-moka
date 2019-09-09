@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.papyrus.moka.pscs.interfaces
+Bundle-SymbolicName: org.eclipse.papyrus.moka.pscs.interfaces
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.eclipse.papyrus.moka.pscs.Activator
+Require-Bundle: org.eclipse.papyrus.moka.fuml.interfaces
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Eclipse Modeling Project
+Automatic-Module-Name: org.eclipse.papyrus.moka.composites.interfaces
+Export-Package: org.eclipse.papyrus.moka.pscs,
+ org.eclipse.papyrus.moka.pscs.actions,
+ org.eclipse.papyrus.moka.pscs.commonbehavior,
+ org.eclipse.papyrus.moka.pscs.structuredclassifiers,
+ org.eclipse.papyrus.moka.pscs.structuredclassifiers.additions,
+ org.eclipse.papyrus.moka.pscs.values

@@ -31,6 +31,7 @@
 							<excludes>
 								<plugin id="org.eclipse.equinox.weaving.aspectj" />
 								<plugin id="org.eclipse.equinox.weaving.hook" />
+								<plugin id="org.eclipse.paho.client.mqttv3" />
 							</excludes>
 						</configuration>
 					</execution>

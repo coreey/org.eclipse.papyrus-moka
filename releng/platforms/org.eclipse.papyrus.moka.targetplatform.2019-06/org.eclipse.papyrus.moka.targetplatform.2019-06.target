@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="Moka Photon Target Platform" sequenceNumber="1568039573">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.rcp.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.json" version="0.0.0"/>
+      <repository id="eclipse" location="http://download.eclipse.org/releases/2019-06"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.papyrus.junit.feature.feature.group" version="0.0.0"/>
+      <repository id="papyrus" location="https://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/4.5/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.aspectj.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.ajdt.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.weaving.sdk.feature.group" version="0.0.0"/>
+      <repository id="aspectj" location="http://download.eclipse.org/tools/ajdt/410/dev/update/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.nebula.widgets.xviewer.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.nebula.visualization.feature.feature.group" version="0.0.0"/>
+      <repository id="nebula" location="http://download.eclipse.org/nebula/releases/2.0.1"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.paho.client.mqttv3" version="0.0.0"/>
+      <repository id="paho" location="https://download.eclipse.org/paho/releases/1.2.0/Java"/>
+    </location>
+  </locations>
+</target>

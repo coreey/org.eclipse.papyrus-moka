@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension-point id="org.eclipse.papyrus.moka.engine.uml.library" name="org.eclipse.papyrus.moka.engine.uml.library" schema="schema/org.eclipse.papyrus.moka.engine.uml.library.exsd"/>
+<extension
+      point="org.eclipse.papyrus.moka.kernel.engine">
+   <engine
+         class="org.eclipse.papyrus.moka.engine.uml.UMLExecutionEngine"
+         description="Executable Execution Engine for UML"
+         id="org.eclipse.papyrus.moka.engine.uml">
+   </engine>
+</extension>
+</plugin>

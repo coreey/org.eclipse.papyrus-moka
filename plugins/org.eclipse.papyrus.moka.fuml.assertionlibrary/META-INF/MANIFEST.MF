@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.papyrus.uml.extensionpoints;bundle-version="[1.3.0,2.0.0)",
+ org.eclipse.papyrus.infra.core.log;bundle-version="[1.2.0,2.0.0)",
+ org.eclipse.papyrus.moka.fuml,
+ org.eclipse.papyrus.moka.fuml.interfaces,
+ org.eclipse.papyrus.moka.engine.uml
+Export-Package: org.eclipse.papyrus.moka.fuml.assertionlibrary,
+ org.eclipse.papyrus.moka.fuml.assertionlibrary.basic,
+ org.eclipse.papyrus.moka.fuml.assertionlibrary.reporting,
+ org.eclipse.papyrus.moka.fuml.assertionlibrary.utils
+Bundle-Vendor: Eclipse Modeling Project
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 4.0.0.qualifier
+Bundle-Name: org.eclipse.papyrus.moka.fuml.assertionlibrary
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.eclipse.papyrus.moka.fuml.assertionlibrary.Activator
+Bundle-SymbolicName: org.eclipse.papyrus.moka.fuml.assertionlibrary;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.eclipse.papyrus.moka.fuml.assertionlibrary

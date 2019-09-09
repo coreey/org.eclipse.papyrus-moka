@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.papyrus.moka.kernel.service">
+      <service
+            class="org.eclipse.papyrus.moka.engine.uml.animation.service.UMLAnimationService"
+            description="UML Animation Service">
+         <context
+               engineID="org.eclipse.papyrus.moka.engine.uml">
+         </context>
+         <context
+               engineID="org.eclipse.papyrus.moka.engine.uml.time">
+         </context>
+      </service>
+   </extension>
+	 <extension
+         point="org.eclipse.papyrus.moka.kernel.animation.animator">
+      <animator
+            class="org.eclipse.papyrus.moka.engine.uml.animation.animators.StateMachineAnimator"
+            priority="0">
+      </animator>
+      <animator
+            class="org.eclipse.papyrus.moka.engine.uml.animation.animators.ActivityAnimator"
+            priority="0">
+      </animator>
+      <animator
+            class="org.eclipse.papyrus.moka.engine.uml.animation.animators.StructuralAnimator"
+            priority="0">
+      </animator>
+   </extension>
+</plugin>

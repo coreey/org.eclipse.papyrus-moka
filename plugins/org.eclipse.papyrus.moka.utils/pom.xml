@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM (Tools) -->
+	<parent>
+		<groupId>org.eclipse.papyrus.moka</groupId>
+		<artifactId>org.eclipse.papyrus.moka.plugins</artifactId>
+		<version>4.0.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- POM Description -->
+	<artifactId>org.eclipse.papyrus.moka.utils</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<name>org.eclipse.papyrus.moka.utils</name>
+	<description>Common set of helpers and constants shared between the different parts of Moka</description>
+
+</project>

@@ -13,7 +13,7 @@
 	<!-- POM Description -->
 	<artifactId>org.eclipse.papyrus.moka.features</artifactId>
 	<packaging>pom</packaging>
-	<name>Moka Features (Features folder)</name>
+	<name>Moka Features</name>
 	
 	<!-- Modules to build -->
 	<modules>
