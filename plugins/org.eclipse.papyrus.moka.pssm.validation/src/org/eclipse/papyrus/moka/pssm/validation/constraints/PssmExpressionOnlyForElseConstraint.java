@@ -16,25 +16,29 @@ package org.eclipse.papyrus.moka.pssm.validation.constraints;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Expression;
+import org.eclipse.uml2.uml.Transition;
 
 /**
  * pssm_expression_only_for_else
  * 
- * The Expression must have no operands and its symbol must be “else”.
- * context UML::Values::Expression inv:
- * self.symbol = 'else' and self.operand->isEmpty()
+ * The Expression must have no operands and its symbol must be “else”. context
+ * UML::Values::Expression inv: self.symbol = 'else' and self.operand->isEmpty()
  */
 public class PssmExpressionOnlyForElseConstraint extends AbstractModelConstraint {
 
 	@Override
 	public IStatus validate(IValidationContext ctx) {
 		Expression target = (Expression) ctx.getTarget();
-		Boolean expression = target.getSymbol().equals("else") 
-				&& target.getOperands().isEmpty();
-		if (!expression) {
-			return ctx.createFailureStatus("Expression - The Expression must have no operands and its symbol must be “else”.");
+		if (target.getOwner() instanceof Constraint && target.getOwner().getOwner() instanceof Transition) { // ADD from original constraint
+			Boolean expression = "else".equals(target.getSymbol()) && target.getOperands().isEmpty();
+			if (!expression) {
+				return ctx.createFailureStatus(
+						"Expression - The Expression must have no operands and its symbol must be “else”.");
+			}
 		}
 		return ctx.createSuccessStatus();
 	}
+	
 }

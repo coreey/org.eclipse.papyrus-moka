@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.113.0,4.0.0)",
 Export-Package: org.eclipse.papyrus.moka.kernel,
  org.eclipse.papyrus.moka.kernel.engine,
  org.eclipse.papyrus.moka.kernel.process,
- org.eclipse.papyrus.moka.kernel.service
+ org.eclipse.papyrus.moka.kernel.service,
+ org.eclipse.papyrus.moka.kernel.validation
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-Version: 4.0.0.qualifier
 Bundle-Name: org.eclipse.papyrus.moka.kernel

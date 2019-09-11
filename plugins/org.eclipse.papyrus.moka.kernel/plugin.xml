@@ -3,6 +3,7 @@
 <plugin>
    <extension-point id="engine" name="ExecutionEngine" schema="schema/engine.exsd"/>
    <extension-point id="service" name="service" schema="schema/service.exsd"/>
+   <extension-point id="validation" name="Validation" schema="schema/validation.exsd"/>
    <extension
          point="org.eclipse.ui.startup">
       <startup

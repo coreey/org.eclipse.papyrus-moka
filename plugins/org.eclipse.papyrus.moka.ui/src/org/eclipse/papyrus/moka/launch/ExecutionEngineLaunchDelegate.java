@@ -91,7 +91,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 		return canRunServer;
 	}
 
-	private boolean isValidationOk(EngineConfiguration engineConfiguration, IProgressMonitor monitor) {
+	private boolean isValidationOk(EngineConfiguration engineConfiguration, IProgressMonitor monitor, String engineID) {
 		// If the preference allow to run model validation before the launch, the
 		// validation is run. If there are errors, the system ask the user if he/she
 		// still wants to run the simulation.
@@ -101,7 +101,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 		boolean mustValidate = store.getBoolean(MODEL_VALIDATION_ON_LAUNCH);
 		boolean continueSimulation = true;
 		if (mustValidate) {
-			continueSimulation = ValidationUtil.validateModel(engineConfiguration, monitor);
+			continueSimulation = ValidationUtil.validateModel(engineConfiguration, monitor, engineID);
 		}
 		return continueSimulation;
 	}
@@ -130,7 +130,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 					modelSet = initializeModelingEnvironment(cr, progressMonitor.split(2));
 					if (modelSet != null) {
 						engineConfiguration = createConfiguration(cr, modelSet);
-						if (isValidationOk(engineConfiguration, progressMonitor)) {
+						if (isValidationOk(engineConfiguration, progressMonitor, reader.getExecutionEngineID())) {
 							prechecks = true;
 						}
 					} else {

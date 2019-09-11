@@ -286,5 +286,28 @@
             name="Moka Debug Perspective">
       </perspective>
    </extension>
+   <extension
+         point="org.eclipse.papyrus.moka.kernel.validation">
+      <validation>
+	      <context
+	            engineID="org.eclipse.papyrus.moka.engine.uml">
+	      </context>
+	      <context
+	            engineID="org.eclipse.papyrus.moka.engine.uml.time">
+	      </context>
+	      <category
+	            categoryID="org.eclipse.papyrus.moka.fuml.validation.nonnormative">
+	      </category>
+	      <category
+	            categoryID="org.eclipse.papyrus.moka.fuml.validation.normative">
+	      </category>
+	      <category
+	            categoryID="org.eclipse.papyrus.moka.pscs.validation.normative">
+	      </category>
+	      <category
+	            categoryID="org.eclipse.papyrus.moka.pssm.validation.normative">
+	      </category>
+      </validation>
+   </extension>
 
 </plugin>
