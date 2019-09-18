@@ -17,6 +17,8 @@ package org.eclipse.papyrus.moka.ui.validation;
 
 import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MODEL_VALIDATION_ON_LAUNCH;
 
+import java.io.IOException;
+
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -83,6 +85,11 @@ public class ValidationDiagnosticDialog extends DiagnosticDialog {
 			ScopedPreferenceStore store = new ScopedPreferenceStore(ConfigurationScope.INSTANCE,
 					IKernelPreferences.KERNEL_PREFERENCES_ID);
 			store.setValue(MODEL_VALIDATION_ON_LAUNCH, !dontValidateAnymoreBeforeLaunchButton);
+			try {
+				store.save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		super.buttonPressed(id);
 	}
