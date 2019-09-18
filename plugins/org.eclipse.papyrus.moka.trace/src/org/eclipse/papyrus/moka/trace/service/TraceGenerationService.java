@@ -43,7 +43,7 @@ import org.eclipse.papyrus.moka.trace.model.mokatraceservice.MokaTrace;
 import org.eclipse.papyrus.moka.tracepoint.service.MarkerUtils;
 import org.eclipse.papyrus.moka.tracepoint.service.TracepointConstants;
 
-public class TraceGenerationService extends ExecutionEngineService<IExecutionEngine> implements UMLSemanticVisitorExecutionListener{
+public class TraceGenerationService extends ExecutionEngineService<IExecutionEngine> implements UMLSemanticVisitorExecutionListener {
 
 	public static final String FILE_NAME = "trace";
 

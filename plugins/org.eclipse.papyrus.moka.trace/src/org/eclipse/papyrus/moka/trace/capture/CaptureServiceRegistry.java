@@ -69,10 +69,6 @@ public class CaptureServiceRegistry {
 				Activator.log.error(e);
 			}
 		}
-		// Moka capture service factory
-		MokaCaptureServiceFactory engine = new MokaCaptureServiceFactory();
-		engine.setName("Moka Trace Engine");
-		captures.put(MokaCaptureServiceFactory.MOKA_ENGINE_ID, engine);
 		return captures;
 	}
 

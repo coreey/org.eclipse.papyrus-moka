@@ -72,13 +72,6 @@ public class TraceFileFormaterRegistry {
 				Activator.log.error(e);
 			}
 		}
-		// Moka json trace formater
-		ITraceFileFormater mokaJsonFormater = new MokaJsonTraceFileFormater();
-		mokaJsonFormater.setName("Moka json formater"); //$NON-NLS-1$
-		mokaJsonFormater.setCaptureId(MokaCaptureServiceFactory.MOKA_ENGINE_ID); //$NON-NLS-1$
-		mokaJsonFormater.setId(MokaJsonTraceFileFormater.MOKA_JSON_FORMATER_ID);
-		mokaJsonFormater.setFileExtension("json"); //$NON-NLS-1$
-		formaters.put(mokaJsonFormater.getCaptureId(), mokaJsonFormater);
 		return formaters;
 	}
 

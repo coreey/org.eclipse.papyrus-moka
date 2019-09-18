@@ -22,4 +22,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse Modeling Project
 Export-Package: org.eclipse.papyrus.moka.trace,
  org.eclipse.papyrus.moka.trace.capture,
- org.eclipse.papyrus.moka.trace.formater
+ org.eclipse.papyrus.moka.trace.formater,
+ org.eclipse.papyrus.moka.trace.service
