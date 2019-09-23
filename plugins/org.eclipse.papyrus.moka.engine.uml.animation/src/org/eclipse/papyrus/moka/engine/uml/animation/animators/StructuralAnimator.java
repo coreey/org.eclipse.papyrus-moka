@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2017 CEA LIST and others.
+ * Copyright (c) 2017, 2019 CEA LIST and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -10,6 +10,7 @@
  *
  * Contributors:
  *   CEA LIST - Initial API and implementation
+ *   CEA LIST - Bug 551906
  *   
  *****************************************************************************/
 
@@ -54,6 +55,26 @@ public class StructuralAnimator extends UMLAnimator {
 			// strategy.
 			IFeatureValueWrapper featureValue = (IFeatureValueWrapper) nodeVisitor;
 			this.engine.renderAs(featureValue.getFeature(), featureValue.getContext(), AnimationKind.VISITED);
+		}
+	}
+
+	@Override
+	public void nodeSuspended_(ISemanticVisitor nodeVisitor) {
+		if (nodeVisitor instanceof ICS_InteractionPoint) {
+			// The visitor is for a port. A port is visited when a event occurrence
+			// or an operation call flows in or out of the port
+			this.engine.renderAs(((ICS_InteractionPoint) nodeVisitor).getDefiningPort(),
+					((ICS_InteractionPoint) nodeVisitor).getOwner().getReferent(), AnimationKind.SUSPENDED);
+		} else if (nodeVisitor instanceof ICS_ConnectorLink) {
+			// The visitor is for a connector. A connector is visited when an event
+			// occurrence or an operation call flows on the connector
+			this.engine.renderAs(((ICS_ConnectorLink) nodeVisitor).getConnector(), null, AnimationKind.SUSPENDED);
+		} else if (nodeVisitor instanceof IFeatureValueWrapper) {
+			// The visitor is for a feature value. A feature value is visited when
+			// a value is added in its set of value through the PSCS default construct
+			// strategy.
+			IFeatureValueWrapper featureValue = (IFeatureValueWrapper) nodeVisitor;
+			this.engine.renderAs(featureValue.getFeature(), featureValue.getContext(), AnimationKind.SUSPENDED);
 		}
 	}
 
@@ -133,9 +154,9 @@ public class StructuralAnimator extends UMLAnimator {
 	public void valueCreated(IValue value) {
 		// When a value is created and this value is an object then all
 		// classifiers typing this object are marked as being visited
-		if(value instanceof IObject_) {
-			for(Classifier classifier : ((IObject_)value).getTypes()) {
-				this.engine.renderAs(classifier, (IObject_)value, AnimationKind.VISITED);
+		if (value instanceof IObject_) {
+			for (Classifier classifier : ((IObject_) value).getTypes()) {
+				this.engine.renderAs(classifier, (IObject_) value, AnimationKind.VISITED);
 			}
 		}
 	}
@@ -146,10 +167,10 @@ public class StructuralAnimator extends UMLAnimator {
 		// classifiers typing this object are freed from any rendering
 		// constraints (i.e., any ongoing animation gets stopped). This only
 		// apply if no instance of the classifier can be found at the locus.
-		if(value instanceof IObject_) {
-			for(Classifier classifier : ((IObject_)value).getTypes()) {
-				ILocus locus = ((IObject_)value).getLocus();
-				if(locus != null && locus.getExtent(classifier).isEmpty()) {
+		if (value instanceof IObject_) {
+			for (Classifier classifier : ((IObject_) value).getTypes()) {
+				ILocus locus = ((IObject_) value).getLocus();
+				if (locus != null && locus.getExtent(classifier).isEmpty()) {
 					this.engine.removeRenderingRules(classifier);
 				}
 			}

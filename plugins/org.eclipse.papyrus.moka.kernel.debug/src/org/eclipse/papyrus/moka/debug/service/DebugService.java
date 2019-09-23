@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2016 CEA LIST.
+ * Copyright (c) 2016, 2019 CEA LIST.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -10,6 +10,8 @@
  *
  * Contributors:
  *  CEA LIST Initial API and implementation
+ *  CEA LIST - Bug 551906
+ *  
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debug.service;
 
@@ -99,6 +101,7 @@ public abstract class DebugService<T, C> extends ExecutionEngineService<IDebugga
 		threadTerminateRequest = new ArrayList<String>();
 		threadTerminateRequestLock = new ReentrantLock(true);
 		initClient();
+		initDebugAssistant();
 	}
 
 	private void initClient() {
@@ -107,6 +110,8 @@ public abstract class DebugService<T, C> extends ExecutionEngineService<IDebugga
 		client = new DebugServiceClient("tcp://localhost:" + port, "Debug Service Client", this);
 		client.run();
 	}
+
+	protected abstract void initDebugAssistant();
 
 	protected boolean shouldEngineSuspend() {
 		boolean flag = false;

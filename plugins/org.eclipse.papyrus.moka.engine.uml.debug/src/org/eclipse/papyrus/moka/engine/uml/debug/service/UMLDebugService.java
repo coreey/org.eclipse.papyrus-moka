@@ -10,9 +10,13 @@
  *
  * Contributors:
  *   CEA LIST - Initial API and implementation
+ *   CEA LIST - Bug 551906
  *   
  *****************************************************************************/
 package org.eclipse.papyrus.moka.engine.uml.debug.service;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
 import org.eclipse.papyrus.moka.debug.service.DebugService;
@@ -21,10 +25,14 @@ import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLValueLifecyleListe
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
+import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 
 public class UMLDebugService extends DebugService<IObject_, ISemanticVisitor>
 		implements UMLSemanticVisitorExecutionListener, UMLValueLifecyleListener {
 
+	protected Set<String> debugAssistants = new HashSet<String>();
+	
 	/**
 	 * Called each time a model element is executed by the execution engine. It
 	 * enables the execution engine to : (1) account for requests received from the
@@ -33,10 +41,10 @@ public class UMLDebugService extends DebugService<IObject_, ISemanticVisitor>
 	@Override
 	public void nodeVisited(ISemanticVisitor visitor) {
 		IObject_ context = DebugServiceUtils.getExecutionContext(visitor);
-		IDebuggableExecutionEngineThread<IObject_, ISemanticVisitor> debuggableThread =  null;
-		if(context != null) {
+		IDebuggableExecutionEngineThread<IObject_, ISemanticVisitor> debuggableThread = null;
+		if (context != null) {
 			debuggableThread = engine.getThread(context.getIdentifier());
-			if(debuggableThread != null) {
+			if (debuggableThread != null) {
 				debuggableThread.setSuspensionContext(visitor);
 			}
 			if (shouldEngineSuspend()) {
@@ -55,7 +63,7 @@ public class UMLDebugService extends DebugService<IObject_, ISemanticVisitor>
 				if (debuggableThread != null) {
 					if (DebugServiceUtils.hasBreakpoint(visitor)) {
 						// (3) Suspend the thread executing this model element
-						client.fireSuspendThreadEvent(context, visitor);
+						client.fireSuspendThreadEvent(context, visitor, SuspensionReasons.BREAKPOINT);
 						suspendThread(debuggableThread);
 					} else {
 						threadSuspendRequestLock.lock();
@@ -83,6 +91,20 @@ public class UMLDebugService extends DebugService<IObject_, ISemanticVisitor>
 	}
 
 	@Override
+	public void nodeSuspended(ISemanticVisitor visitor, Suspension suspension) {
+		IObject_ context = DebugServiceUtils.getExecutionContext(visitor);
+		if (context != null) {
+			client.fireSuspendThreadEvent(context, visitor, suspension.getSuspensionReason());
+			IDebuggableExecutionEngineThread<IObject_, ISemanticVisitor> thread = engine
+					.getThread(context.getIdentifier());
+			if (thread != null) {
+				thread.setSuspensionContext(visitor);
+				suspendThread(thread);
+			}
+		}
+	}
+
+	@Override
 	public void nodeLeft(ISemanticVisitor visitor) {
 		// TODO Auto-generated method stub
 
@@ -102,6 +124,18 @@ public class UMLDebugService extends DebugService<IObject_, ISemanticVisitor>
 			engine.removeDebugThread(new UMLDebuggableExecutionEngineThread((IObject_) value));
 			client.fireTerminateThreadEvent((IObject_) value);
 		}
+	}
+
+	@Override
+	protected void initDebugAssistant() {
+		debugAssistants.add("org.eclipse.papyrus.moka.fuml.profiling.debug.NullStructuredValueProfiler");
+		debugAssistants.add("org.eclipse.papyrus.moka.fuml.profiling.debug.NullTokenPropagationProfiler");
+		debugAssistants.add("org.eclipse.papyrus.moka.pscs.profiling.debug.NullStructuredValueProfiler");
+	}
+
+	@Override
+	public boolean shouldContinueInDebugAssistant(Suspension suspension) {
+		return debugAssistants.contains(suspension.getDebugAssistant().getAssistantID());
 	}
 
 }

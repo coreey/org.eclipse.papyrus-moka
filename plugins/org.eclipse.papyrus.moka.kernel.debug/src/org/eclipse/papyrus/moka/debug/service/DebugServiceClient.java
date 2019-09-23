@@ -11,6 +11,7 @@
  *
  * Contributors:
  *  CEA LIST - Initial API and implementation
+ *  CEA LIST - Bug 551906
  *
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debug.service;
@@ -31,6 +32,7 @@ import org.eclipse.papyrus.moka.debug.messages.ThreadRequest;
 import org.eclipse.papyrus.moka.debug.messages.impl.MessagesFactoryImpl;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
 import org.eclipse.papyrus.moka.kernel.service.ServiceMqttClient;
 
 public class DebugServiceClient extends ServiceMqttClient{
@@ -152,6 +154,25 @@ public class DebugServiceClient extends ServiceMqttClient{
 	 * @return true if the notification was received and false otherwise
 	 */
 	public boolean fireSuspendThreadEvent(IObject_ object, ISemanticVisitor visitor) {
+		return fireSuspendThreadEvent(object, visitor, null);
+	}
+
+	/**
+	 * Notifies the debug target about the suspension of a thread in
+	 * the execution engine
+	 *  
+	 * @param object
+	 * 		the thread to be suspended
+	 * 
+	 * @param visitor
+	 * 		the visitor on which the thread is suspended
+	 * 
+	 * @param reason
+	 * 		the reason of the suspension 
+	 * 
+	 * @return true if the notification was received and false otherwise
+	 */
+	public boolean fireSuspendThreadEvent(IObject_ object, ISemanticVisitor visitor, SuspensionReasons reason) {
 		boolean published = true;
 		if (client != null && client.isConnected()) {
 			MqttMessage message = new MqttMessage();
@@ -161,6 +182,7 @@ public class DebugServiceClient extends ServiceMqttClient{
 			request.setEventDetail(DebugEvent.BREAKPOINT);
 			request.setThreadId(object.getIdentifier());
 			request.setSuspensionPoint(visitor.hashCode());
+			request.setSuspensionReason(reason);
 			message.setPayload(request.toJson().getBytes());
 			IMqttDeliveryToken token = null;
 			try {

@@ -10,6 +10,7 @@
  *
  * Contributors:
  *   CEA LIST - Initial API and implementation
+ *   CEA LIST - Bug 551906
  *   
  *****************************************************************************/
 package org.eclipse.papyrus.moka.trace.service;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLSemanticVisitorExecutionListener;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
+import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 import org.eclipse.papyrus.moka.kernel.service.ExecutionEngineService;
@@ -157,6 +159,11 @@ public class TraceGenerationService extends ExecutionEngineService<IExecutionEng
 		return isTraceServiceActivate && ((tracepointMode
 				&& captureServiceFactory.isVisitorConcernedByTracepoints(this.tracepoints, nodeVisitor))
 				|| !tracepointMode);
+	}
+
+	@Override
+	public void nodeSuspended(ISemanticVisitor visitor, Suspension suspension) {
+		// do nothing
 	}
 
 }

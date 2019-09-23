@@ -1,4 +1,16 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.debug.messages.impl;
 
@@ -91,6 +103,9 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 
 		isInited = true;
 
+		// Initialize simple dependencies
+		org.eclipse.papyrus.moka.kernel.KernelPackage.eINSTANCE.eClass();
+
 		// Create package meta-data objects
 		theMessagesPackage.createPackageContents();
 
@@ -110,6 +125,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getThreadRequest() {
 		return threadRequestEClass;
 	}
@@ -119,6 +135,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getThreadRequest_ThreadId() {
 		return (EAttribute)threadRequestEClass.getEStructuralFeatures().get(0);
 	}
@@ -128,6 +145,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getThreadRequest_SuspensionPoint() {
 		return (EAttribute)threadRequestEClass.getEStructuralFeatures().get(1);
 	}
@@ -137,6 +155,17 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getThreadRequest_SuspensionReason() {
+		return (EAttribute)threadRequestEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EOperation getThreadRequest__ToJson() {
 		return threadRequestEClass.getEOperations().get(0);
 	}
@@ -146,6 +175,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDebugRequest() {
 		return debugRequestEClass;
 	}
@@ -155,6 +185,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDebugRequest_EventKind() {
 		return (EAttribute)debugRequestEClass.getEStructuralFeatures().get(0);
 	}
@@ -164,6 +195,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDebugRequest_EventDetail() {
 		return (EAttribute)debugRequestEClass.getEStructuralFeatures().get(1);
 	}
@@ -173,6 +205,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDebugRequest_ContextKind() {
 		return (EAttribute)debugRequestEClass.getEStructuralFeatures().get(2);
 	}
@@ -182,6 +215,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDebugRequest__ToJson() {
 		return debugRequestEClass.getEOperations().get(0);
 	}
@@ -191,6 +225,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getDebugEventContextKind() {
 		return debugEventContextKindEEnum;
 	}
@@ -200,6 +235,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MessagesFactory getMessagesFactory() {
 		return (MessagesFactory)getEFactoryInstance();
 	}
@@ -226,6 +262,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 		threadRequestEClass = createEClass(THREAD_REQUEST);
 		createEAttribute(threadRequestEClass, THREAD_REQUEST__THREAD_ID);
 		createEAttribute(threadRequestEClass, THREAD_REQUEST__SUSPENSION_POINT);
+		createEAttribute(threadRequestEClass, THREAD_REQUEST__SUSPENSION_REASON);
 		createEOperation(threadRequestEClass, THREAD_REQUEST___TO_JSON);
 
 		debugRequestEClass = createEClass(DEBUG_REQUEST);
@@ -261,6 +298,9 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		org.eclipse.papyrus.moka.kernel.KernelPackage theKernelPackage = (org.eclipse.papyrus.moka.kernel.KernelPackage)EPackage.Registry.INSTANCE.getEPackage(org.eclipse.papyrus.moka.kernel.KernelPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -272,6 +312,7 @@ public class MessagesPackageImpl extends EPackageImpl implements MessagesPackage
 		initEClass(threadRequestEClass, ThreadRequest.class, "ThreadRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getThreadRequest_ThreadId(), ecorePackage.getEString(), "threadId", null, 0, 1, ThreadRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getThreadRequest_SuspensionPoint(), ecorePackage.getEInt(), "suspensionPoint", null, 0, 1, ThreadRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadRequest_SuspensionReason(), theKernelPackage.getSuspensionReasons(), "suspensionReason", null, 0, 1, ThreadRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getThreadRequest__ToJson(), ecorePackage.getEString(), "toJson", 0, 1, IS_UNIQUE, IS_ORDERED);
 

@@ -11,6 +11,7 @@
  *
  * Contributors:
  *  CEA LIST - Initial API and implementation
+ *  CEA LIST - Bug 551906
  *
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debug.communication;
@@ -22,6 +23,7 @@ import org.eclipse.papyrus.moka.debug.messages.DebugRequest;
 import org.eclipse.papyrus.moka.debug.messages.MessagesPackage;
 import org.eclipse.papyrus.moka.debug.messages.ThreadRequest;
 import org.eclipse.papyrus.moka.debug.messages.impl.MessagesFactoryImpl;
+import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
 
 public class MessagesReader {
 
@@ -34,7 +36,7 @@ public class MessagesReader {
 		return request;
 	}
 	
-	public static ThreadRequest geThreadRequest(final MqttMessage message) {
+	public static ThreadRequest getThreadRequest(final MqttMessage message) {
 		ThreadRequest request = MessagesFactoryImpl.eINSTANCE.createThreadRequest();
 		DebugRequest debugRequest = getDebugRequest(message);
 		request.setContextKind(debugRequest.getContextKind());
@@ -43,6 +45,7 @@ public class MessagesReader {
 		JsonObject content = JsonObject.readFrom(new String(message.getPayload()));
 		request.setThreadId(content.getString(MessagesPackage.eINSTANCE.getThreadRequest_ThreadId().getName(), null));
 		request.setSuspensionPoint(content.getInt(MessagesPackage.eINSTANCE.getThreadRequest_SuspensionPoint().getName(), -1));
+		request.setSuspensionReason(SuspensionReasons.get(content.getString(MessagesPackage.eINSTANCE.getThreadRequest_SuspensionReason().getName(), null)));
 		return request;
 	}
 

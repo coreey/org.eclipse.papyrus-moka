@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="org.eclipse.papyrus.moka.debug.messages" nsURI="Debug" nsPrefix="Debug">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="messages" nsURI="Debug" nsPrefix="Debug">
   <eClassifiers xsi:type="ecore:EClass" name="ThreadRequest" eSuperTypes="#//DebugRequest">
     <eOperations name="toJson" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="threadId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="suspensionPoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suspensionReason" eType="ecore:EEnum ../../../org.eclipse.papyrus.moka.kernel/resources/models/Kernel.ecore#//SuspensionReasons"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DebugRequest">
     <eOperations name="toJson" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

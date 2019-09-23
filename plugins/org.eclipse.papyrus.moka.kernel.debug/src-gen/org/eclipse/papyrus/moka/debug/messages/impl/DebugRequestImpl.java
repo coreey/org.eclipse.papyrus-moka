@@ -1,4 +1,16 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.debug.messages.impl;
 
@@ -117,6 +129,7 @@ public class DebugRequestImpl extends MinimalEObjectImpl.Container implements De
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getEventKind() {
 		return eventKind;
 	}
@@ -126,6 +139,7 @@ public class DebugRequestImpl extends MinimalEObjectImpl.Container implements De
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventKind(int newEventKind) {
 		int oldEventKind = eventKind;
 		eventKind = newEventKind;
@@ -138,6 +152,7 @@ public class DebugRequestImpl extends MinimalEObjectImpl.Container implements De
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getEventDetail() {
 		return eventDetail;
 	}
@@ -147,6 +162,7 @@ public class DebugRequestImpl extends MinimalEObjectImpl.Container implements De
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventDetail(int newEventDetail) {
 		int oldEventDetail = eventDetail;
 		eventDetail = newEventDetail;
@@ -159,6 +175,7 @@ public class DebugRequestImpl extends MinimalEObjectImpl.Container implements De
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DebugEventContextKind getContextKind() {
 		return contextKind;
 	}
@@ -168,6 +185,7 @@ public class DebugRequestImpl extends MinimalEObjectImpl.Container implements De
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setContextKind(DebugEventContextKind newContextKind) {
 		DebugEventContextKind oldContextKind = contextKind;
 		contextKind = newContextKind == null ? CONTEXT_KIND_EDEFAULT : newContextKind;
@@ -180,6 +198,7 @@ public class DebugRequestImpl extends MinimalEObjectImpl.Container implements De
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public String toJson() {
 		String json = "";
 		if(!eIsProxy()) {

@@ -10,6 +10,7 @@
  *
  * Contributors:
  *   CEA LIST - Initial API and implementation
+ *   CEA LIST - Bug 551906
  *   
  *****************************************************************************/
 package org.eclipse.papyrus.moka.engine.uml.animation.service;
@@ -29,6 +30,7 @@ import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
+import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 
@@ -62,6 +64,19 @@ public class UMLAnimationService extends AnimationService implements UMLSemantic
 			UMLAnimator animator = (UMLAnimator) this.getAnimator(nodeVisitor);
 			if (animator != null) {
 				animator.nodeLeft(nodeVisitor);
+			}
+		}
+	}
+
+	@Override
+	public void nodeSuspended(ISemanticVisitor nodeVisitor, Suspension suspension) {
+		// Find a registered animator to perform animation when a node gets exited by the execution engine.
+		// If one is found, then the realization of the animation is delegated to this latter. If no
+		// animator could be found then no animation is performed
+		if (MokaConstants.MOKA_AUTOMATIC_ANIMATION) {
+			UMLAnimator animator = (UMLAnimator) this.getAnimator(nodeVisitor);
+			if (animator != null) {
+				animator.nodeSuspended(nodeVisitor, suspension);
 			}
 		}
 	}

@@ -16,4 +16,12 @@
             class="org.eclipse.papyrus.moka.kernel.preferences.PapyrusSimulationPreferencePageInitializer">
       </initializer>
    </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Kernel -->
+      <package
+            uri="Kernel"
+            class="org.eclipse.papyrus.moka.kernel.KernelPackage"
+            genModel="resources/models/Kernel.genmodel"/>
+   </extension>
+
 </plugin>

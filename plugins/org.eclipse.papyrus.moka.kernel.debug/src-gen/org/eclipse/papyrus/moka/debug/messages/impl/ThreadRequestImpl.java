@@ -1,4 +1,16 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.debug.messages.impl;
 
@@ -10,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.json.provisonnal.com.eclipsesource.json.JsonObject;
 import org.eclipse.papyrus.moka.debug.messages.MessagesPackage;
 import org.eclipse.papyrus.moka.debug.messages.ThreadRequest;
+import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +34,7 @@ import org.eclipse.papyrus.moka.debug.messages.ThreadRequest;
  * <ul>
  *   <li>{@link org.eclipse.papyrus.moka.debug.messages.impl.ThreadRequestImpl#getThreadId <em>Thread Id</em>}</li>
  *   <li>{@link org.eclipse.papyrus.moka.debug.messages.impl.ThreadRequestImpl#getSuspensionPoint <em>Suspension Point</em>}</li>
+ *   <li>{@link org.eclipse.papyrus.moka.debug.messages.impl.ThreadRequestImpl#getSuspensionReason <em>Suspension Reason</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +81,26 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 	protected int suspensionPoint = SUSPENSION_POINT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getSuspensionReason() <em>Suspension Reason</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuspensionReason()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SuspensionReasons SUSPENSION_REASON_EDEFAULT = SuspensionReasons.NONE;
+
+	/**
+	 * The cached value of the '{@link #getSuspensionReason() <em>Suspension Reason</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuspensionReason()
+	 * @generated
+	 * @ordered
+	 */
+	protected SuspensionReasons suspensionReason = SUSPENSION_REASON_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -90,6 +124,7 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getThreadId() {
 		return threadId;
 	}
@@ -99,6 +134,7 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setThreadId(String newThreadId) {
 		String oldThreadId = threadId;
 		threadId = newThreadId;
@@ -111,6 +147,7 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getSuspensionPoint() {
 		return suspensionPoint;
 	}
@@ -120,11 +157,35 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSuspensionPoint(int newSuspensionPoint) {
 		int oldSuspensionPoint = suspensionPoint;
 		suspensionPoint = newSuspensionPoint;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MessagesPackage.THREAD_REQUEST__SUSPENSION_POINT, oldSuspensionPoint, suspensionPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SuspensionReasons getSuspensionReason() {
+		return suspensionReason;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSuspensionReason(SuspensionReasons newSuspensionReason) {
+		SuspensionReasons oldSuspensionReason = suspensionReason;
+		suspensionReason = newSuspensionReason == null ? SUSPENSION_REASON_EDEFAULT : newSuspensionReason;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MessagesPackage.THREAD_REQUEST__SUSPENSION_REASON, oldSuspensionReason, suspensionReason));
 	}
 
 	/**
@@ -139,6 +200,8 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 				return getThreadId();
 			case MessagesPackage.THREAD_REQUEST__SUSPENSION_POINT:
 				return getSuspensionPoint();
+			case MessagesPackage.THREAD_REQUEST__SUSPENSION_REASON:
+				return getSuspensionReason();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -156,6 +219,9 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 				return;
 			case MessagesPackage.THREAD_REQUEST__SUSPENSION_POINT:
 				setSuspensionPoint((Integer)newValue);
+				return;
+			case MessagesPackage.THREAD_REQUEST__SUSPENSION_REASON:
+				setSuspensionReason((SuspensionReasons)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -175,6 +241,9 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 			case MessagesPackage.THREAD_REQUEST__SUSPENSION_POINT:
 				setSuspensionPoint(SUSPENSION_POINT_EDEFAULT);
 				return;
+			case MessagesPackage.THREAD_REQUEST__SUSPENSION_REASON:
+				setSuspensionReason(SUSPENSION_REASON_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -191,6 +260,8 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 				return THREAD_ID_EDEFAULT == null ? threadId != null : !THREAD_ID_EDEFAULT.equals(threadId);
 			case MessagesPackage.THREAD_REQUEST__SUSPENSION_POINT:
 				return suspensionPoint != SUSPENSION_POINT_EDEFAULT;
+			case MessagesPackage.THREAD_REQUEST__SUSPENSION_REASON:
+				return suspensionReason != SUSPENSION_REASON_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -205,6 +276,7 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 			JsonObject request = JsonObject.readFrom(super.toJson());
 			request.add(MessagesPackage.eINSTANCE.getThreadRequest_ThreadId().getName(), threadId);
 			request.add(MessagesPackage.eINSTANCE.getThreadRequest_SuspensionPoint().getName(), suspensionPoint);
+			request.add(MessagesPackage.eINSTANCE.getThreadRequest_SuspensionReason().getName(), suspensionReason.toString());
 			json = request.toString();
 		}
 		return json;
@@ -224,6 +296,8 @@ public class ThreadRequestImpl extends DebugRequestImpl implements ThreadRequest
 		result.append(threadId);
 		result.append(", suspensionPoint: ");
 		result.append(suspensionPoint);
+		result.append(", suspensionReason: ");
+		result.append(suspensionReason);
 		result.append(')');
 		return result.toString();
 	}

@@ -11,6 +11,7 @@
  *
  * Contributors:
  *  CEA LIST - Initial API and implementation
+ *  CEA LIST - Bug 551906
  *
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debugtarget;
@@ -31,6 +32,7 @@ import org.eclipse.papyrus.moka.debug.messages.DebugEventContextKind;
 import org.eclipse.papyrus.moka.debug.messages.DebugRequest;
 import org.eclipse.papyrus.moka.debug.messages.MessagesFactory;
 import org.eclipse.papyrus.moka.debug.messages.ThreadRequest;
+import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
 import org.eclipse.papyrus.moka.kernel.service.ServiceMqttClient;
 
 public class ExecutionEngineDebugTargetClient extends ServiceMqttClient implements IExecutionEngineDebugTargetClient {
@@ -135,6 +137,7 @@ public class ExecutionEngineDebugTargetClient extends ServiceMqttClient implemen
 			request.setEventKind(DebugEvent.SUSPEND);
 			request.setEventDetail(DebugEvent.CLIENT_REQUEST);
 			request.setThreadId(thread.getID());
+			request.setSuspensionReason(SuspensionReasons.USER_ACTION);
 			suspendEngineThread.setPayload(request.toJson().getBytes());
 			suspendEngineThread.setQos(1);
 			IMqttDeliveryToken token = null;
@@ -161,6 +164,7 @@ public class ExecutionEngineDebugTargetClient extends ServiceMqttClient implemen
 			request.setEventKind(DebugEvent.RESUME);
 			request.setEventDetail(DebugEvent.CLIENT_REQUEST);
 			request.setThreadId(thread.getID());
+			request.setSuspensionReason(SuspensionReasons.NONE);
 			resumedEngineThread.setPayload(request.toJson().getBytes());
 			resumedEngineThread.setQos(1);
 			IMqttDeliveryToken token = null;

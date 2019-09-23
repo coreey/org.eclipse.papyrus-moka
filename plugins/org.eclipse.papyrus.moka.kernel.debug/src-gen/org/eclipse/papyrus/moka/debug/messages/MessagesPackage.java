@@ -1,4 +1,16 @@
 /**
+ * Copyright (c) 2019 CEA LIST.
+ * 
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.moka.debug.messages;
 
@@ -177,13 +189,22 @@ public interface MessagesPackage extends EPackage {
 	int THREAD_REQUEST__SUSPENSION_POINT = DEBUG_REQUEST_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Suspension Reason</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_REQUEST__SUSPENSION_REASON = DEBUG_REQUEST_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Thread Request</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int THREAD_REQUEST_FEATURE_COUNT = DEBUG_REQUEST_FEATURE_COUNT + 2;
+	int THREAD_REQUEST_FEATURE_COUNT = DEBUG_REQUEST_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>To Json</em>' operation.
@@ -212,7 +233,6 @@ public interface MessagesPackage extends EPackage {
 	 * @generated
 	 */
 	int DEBUG_EVENT_CONTEXT_KIND = 2;
-
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.papyrus.moka.debug.messages.ThreadRequest <em>Thread Request</em>}'.
@@ -245,6 +265,17 @@ public interface MessagesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getThreadRequest_SuspensionPoint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.papyrus.moka.debug.messages.ThreadRequest#getSuspensionReason <em>Suspension Reason</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Suspension Reason</em>'.
+	 * @see org.eclipse.papyrus.moka.debug.messages.ThreadRequest#getSuspensionReason()
+	 * @see #getThreadRequest()
+	 * @generated
+	 */
+	EAttribute getThreadRequest_SuspensionReason();
 
 	/**
 	 * Returns the meta object for the '{@link org.eclipse.papyrus.moka.debug.messages.ThreadRequest#toJson() <em>To Json</em>}' operation.
@@ -367,6 +398,14 @@ public interface MessagesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute THREAD_REQUEST__SUSPENSION_POINT = eINSTANCE.getThreadRequest_SuspensionPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Suspension Reason</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_REQUEST__SUSPENSION_REASON = eINSTANCE.getThreadRequest_SuspensionReason();
 
 		/**
 		 * The meta object literal for the '<em><b>To Json</b></em>' operation.

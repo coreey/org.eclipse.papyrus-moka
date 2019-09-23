@@ -16,6 +16,13 @@
             type="org.eclipse.debug.core.breakpointMarker">
       </super>
    </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="org.eclipse.papyrus.moka.debugtarget.ExecutionEngineThreadModelPresentation"
+            id="org.eclipse.papyrus.moka.kernel.debug.model.presentation">
+      </debugModelPresentation>
+   </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Debug -->

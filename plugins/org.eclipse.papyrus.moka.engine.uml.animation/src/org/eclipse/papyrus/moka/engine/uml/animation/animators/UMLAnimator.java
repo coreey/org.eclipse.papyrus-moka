@@ -10,6 +10,7 @@
  *
  * Contributors:
  *   CEA LIST - Initial API and implementation
+ *   CEA LIST - Bug 551906
  *   
  *****************************************************************************/
 package org.eclipse.papyrus.moka.engine.uml.animation.animators;
@@ -22,6 +23,7 @@ import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLValueLifecyleListe
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
+import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 
 public abstract class UMLAnimator extends Animator implements UMLSemanticVisitorExecutionListener, UMLRTCStepListener, UMLValueLifecyleListener{
 
@@ -62,6 +64,25 @@ public abstract class UMLAnimator extends Animator implements UMLSemanticVisitor
 	}
 	
 	public abstract void nodeLeft_(ISemanticVisitor nodeVisitor);
+	
+	@Override
+	public void nodeSuspended(ISemanticVisitor nodeVisitor, Suspension suspension) {
+		// Apply PRE and POST actions attached to the animator when
+		// an acceptable node is suspended.
+		for(DerivedAnimationAction derivedAction : this.derivedAnimationAction) {
+			if(derivedAction.accept(nodeVisitor)) {
+				derivedAction.preSuspendAction(this.engine, nodeVisitor);
+			}
+		}
+		this.nodeSuspended_(nodeVisitor);
+		for(DerivedAnimationAction derivedAction : this.derivedAnimationAction) {
+			if(derivedAction.accept(nodeVisitor)) {
+				derivedAction.postSuspendAction(this.engine, nodeVisitor);
+			}
+		}
+	}
+	
+	public abstract void nodeSuspended_(ISemanticVisitor nodeVisitor);
 	
 	@Override
 	public void valueCreated(IValue value) {

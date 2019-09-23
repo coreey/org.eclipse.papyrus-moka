@@ -11,6 +11,7 @@
  *
  * Contributors:
  *  CEA LIST - Initial API and implementation
+ *  CEA LIST - Bug 551906
  *
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debugtarget;
@@ -22,6 +23,7 @@ import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
+import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
 
 public class ExecutionEngineThread extends ExecutionEngineDebugElement implements IExecutionEngineThread {
 
@@ -29,6 +31,11 @@ public class ExecutionEngineThread extends ExecutionEngineDebugElement implement
 	 * ID of the thread running the active object
 	 */
 	private String id;
+	
+	/**
+	 * The suspension reason
+	 */
+	private SuspensionReasons suspensionReason;
 	
 	/**
 	 * The stack frame of the thread
@@ -67,6 +74,7 @@ public class ExecutionEngineThread extends ExecutionEngineDebugElement implement
 			IExecutionEngineDebugTargetClient client = target.getClient();
 			if (client != null) {
 				client.fireResumeThreadEvent(this);
+				this.suspensionReason = SuspensionReasons.NONE;
 			}
 		}
 	}
@@ -202,6 +210,11 @@ public class ExecutionEngineThread extends ExecutionEngineDebugElement implement
 	public void stepReturn() throws DebugException {
 
 	}
+	
+	@Override
+	public String getModelIdentifier() {
+		return ExecutionEngineThreadModelPresentation.MODEL_ID;
+	}
 
 	/**
 	 * 
@@ -260,6 +273,14 @@ public class ExecutionEngineThread extends ExecutionEngineDebugElement implement
 	
 	public void setID(String id) {
 		this.id = id;
+	}
+
+	public SuspensionReasons getSuspensionReason() {
+		return suspensionReason;
+	}
+
+	public void setSuspensionReason(SuspensionReasons suspensionReason) {
+		this.suspensionReason = suspensionReason;
 	}
 
 }

@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2017 CEA LIST.
+ * Copyright (c) 2017, 2019 CEA LIST.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -10,6 +10,7 @@
  *
  * Contributors:
  *  CEA LIST Initial API and implementation
+ *  CEA LIST - Bug 551906
  *****************************************************************************/
 package org.eclipse.papyrus.moka.engine.uml.animation.animators;
 
@@ -33,8 +34,8 @@ public class ActivityAnimator extends UMLAnimator {
 		// 1] If the visitor is for an activity node then if its an accept event action
 		// or a synchronous call action then the representation of this node gets the
 		// ANIMATED style applied. If it is any other kind of activity node activation
-		// it also gets the ANIMATED style but for a given period of time. After this 
-		// period of time the VISITED style gets automatically  applied.
+		// it also gets the ANIMATED style but for a given period of time. After this
+		// period of time the VISITED style gets automatically applied.
 		// 2] If the visitor is for an object flow or a control flow then it gets the
 		// ANIMTED style applied.
 		if (nodeVisitor instanceof IActivityNodeActivation) {
@@ -73,7 +74,7 @@ public class ActivityAnimator extends UMLAnimator {
 		// is done), the following animation logic applies:
 		// 1] If the visitor is for a node that is either an accept event action or a
 		// synchronous call action then the VISITED style gets applied. For any other
-		// node the style remain  unchanged.
+		// node the style remain unchanged.
 		// 2] If the visitor is for an object flow or a control flow then the VISITED
 		// style gets applied.
 		if (nodeVisitor instanceof IActivityNodeActivation) {
@@ -92,6 +93,30 @@ public class ActivityAnimator extends UMLAnimator {
 				if (edgeInstance.getEdge() != null) {
 					this.engine.renderAs(edgeInstance.getEdge(),
 							edgeInstance.getGroup().getActivityExecution().getContext(), AnimationKind.VISITED);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void nodeSuspended_(ISemanticVisitor nodeVisitor) {
+		// When a node is suspended by the execution engine (i.e., the execution of this
+		// node is done), the following animation logic applies:
+		// 1] If the visitor is for a node then the SUSPENDED style gets applied.
+		// 2] If the visitor is for an object flow or a control flow then the SUSPENDED
+		// style gets applied.
+		if (nodeVisitor instanceof IActivityNodeActivation) {
+			IActivityNodeActivation activation = (IActivityNodeActivation) nodeVisitor;
+			ActivityNode activityNode = activation.getNode();
+			if (activityNode != null) {
+				this.engine.renderAs(activation.getNode(), activation.getExecutionContext(), AnimationKind.SUSPENDED);
+			}
+		} else {
+			if (nodeVisitor instanceof IActivityEdgeInstance) {
+				IActivityEdgeInstance edgeInstance = (IActivityEdgeInstance) nodeVisitor;
+				if (edgeInstance.getEdge() != null) {
+					this.engine.renderAs(edgeInstance.getEdge(),
+							edgeInstance.getGroup().getActivityExecution().getContext(), AnimationKind.SUSPENDED);
 				}
 			}
 		}

@@ -11,12 +11,14 @@
  *
  * Contributors:
  *  CEA LIST - Initial API and implementation
+ *  CEA LIST - Bug 551906
  *
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debugtarget;
 
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IThread;
+import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
 
 public interface IExecutionEngineThread extends IThread{
 	
@@ -34,5 +36,11 @@ public interface IExecutionEngineThread extends IThread{
 	 * @throws DebugException
 	 */
 	void handleSuspendEvent(int supensionDetail);
+	
+	/**
+	 * Return the suspension reason
+	 * @return the suspension reason
+	 */
+	SuspensionReasons getSuspensionReason();
 	
 }

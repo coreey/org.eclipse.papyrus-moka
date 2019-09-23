@@ -11,6 +11,7 @@
  *
  * Contributors:
  *  CEA LIST - Initial API and implementation
+ *  CEA LIST - Bug 551906
  *
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debugtarget;
@@ -52,11 +53,12 @@ public class ExecutionEngineDebugTargetClientListener implements IMqttMessageLis
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		if (debugTarget != null) {
 			if (topic.equals(DEBUG_SERVICE_THREAD_TOPIC)) {
-				ThreadRequest request = MessagesReader.geThreadRequest(message);
+				ThreadRequest request = MessagesReader.getThreadRequest(message);
 				switch (request.getEventKind()) {
 				case DebugEvent.SUSPEND: {
 					ExecutionEngineThread thread = debugTarget.getThread(request.getThreadId());
 					if (thread != null) {
+						thread.setSuspensionReason(request.getSuspensionReason());
 						thread.handleSuspendEvent(request.getEventDetail());
 					}
 				}

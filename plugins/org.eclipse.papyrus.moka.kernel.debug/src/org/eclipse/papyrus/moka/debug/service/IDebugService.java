@@ -11,11 +11,13 @@
  *
  * Contributors:
  *  CEA LIST - Initial API and implementation
+ *  CEA LIST - Bug 551906
  *
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debug.service;
 
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
+import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 
 public interface IDebugService<ThreadType, ContextType>{
 
@@ -98,5 +100,12 @@ public interface IDebugService<ThreadType, ContextType>{
 	 */
 	void fireTerminateEngineEvent();
 	
+	/**
+	 * Get if this given assistant is manage by this debug service
+	 * 
+	 * @param suspension
+	 * @return true if this given assistant is manage by this debug service
+	 */
+	boolean shouldContinueInDebugAssistant(Suspension suspension);
 	
 }
