@@ -23,7 +23,7 @@ import org.eclipse.uml2.uml.CallBehaviorAction;
 import org.eclipse.uml2.uml.Classifier;
 
 /**
- * proper_context
+ * fuml_call_behavior_action_proper_context
  * 
  * If the behavior has a context, it must be the same as the context of the enclosing
  * activity or a (direct or indirect) superclass of it.
@@ -36,7 +36,7 @@ public class FumlCallBehaviorActionProperContextConstraint extends AbstractModel
 	public IStatus validate(IValidationContext ctx) {
 		CallBehaviorAction callBehaviorAction = (CallBehaviorAction) ctx.getTarget();
 		if (callBehaviorAction.getBehavior() != null) {
-			if (callBehaviorAction.getContext() != null) {
+			if (callBehaviorAction.getBehavior().getContext() != null) {
 				List<Classifier> inheritedContext = new ArrayList<>();
 				inheritedContext.add(callBehaviorAction.getContext());
 				inheritedContext.addAll(callBehaviorAction.getContext().allParents());
