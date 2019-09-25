@@ -29,11 +29,17 @@ public class ExecutionEngineThread extends ExecutionEngineDebugElement implement
 	 * ID of the thread running the active object
 	 */
 	private String id;
+	
+	/**
+	 * The stack frame of the thread
+	 */
+	private ExecutionEngineStackFrame stackFrame;
 
 	public ExecutionEngineThread(IDebugTarget target) {
 		super(target);
 		status = DebugElementStatus.RUNNING;
 		statusLock = new ReentrantLock(true);
+		stackFrame = new ExecutionEngineStackFrame(this);
 	}
 
 	/**
@@ -203,7 +209,7 @@ public class ExecutionEngineThread extends ExecutionEngineDebugElement implement
 	@Override
 	public IStackFrame[] getStackFrames() throws DebugException {
 		if (isSuspended()) {
-			return new IStackFrame[]{new ExecutionEngineStackFrame(this)};
+			return new IStackFrame[]{stackFrame};
 		}
 		return new IStackFrame[0];
 	}
@@ -227,7 +233,7 @@ public class ExecutionEngineThread extends ExecutionEngineDebugElement implement
 	public IStackFrame getTopStackFrame() throws DebugException {
 		IStackFrame top = null;
 		if (isSuspended()) {
-			top = new ExecutionEngineStackFrame(this);
+			top = stackFrame;
 		}
 		return top;
 	}
