@@ -65,7 +65,7 @@ public class ValidationUtil {
 
 	public static boolean validateModel(EngineConfiguration engineConfiguration, IProgressMonitor monitor,
 			String engineID) {
-		// This method run the validation and should return true if the validation
+		// This method run the validation and should return true if the simulation
 		// should continue of false otherwise.
 		// (from the validation result we remove rules which are mandatory according to
 		// the EMF framework)
@@ -75,42 +75,47 @@ public class ValidationUtil {
 		// the user can still decide to continue the simulation :
 		// 2.1] the user cancel, then the simulation is stopped
 		// 2.2] the user click on the user button the validation continue
-		Diagnostic diagnostic = validate(monitor, engineConfiguration.getExecutionSource().getModel(), engineID);
-
-		List<Diagnostic> filteredConstraints = new ArrayList<>(diagnostic.getChildren());
-		filteredConstraints = filteredConstraints.stream().filter(d -> valideRules.contains(d.getSource()))
-				.collect(Collectors.toList());
-		Diagnostic filteredDiagnostics = new BasicDiagnostic(diagnostic.getSource(), diagnostic.getCode(),
-				filteredConstraints, diagnostic.getMessage(), diagnostic.getData().toArray());
-		boolean isThereErrors = filteredDiagnostics.getChildren().stream()
-				.anyMatch(d -> d.getSeverity() == Diagnostic.ERROR);
+		Set<ValidationDescriptor> validationDescriptors = org.eclipse.papyrus.moka.kernel.validation.ValidationRegistry
+				.getInstance().getValidationDescriptors(engineID);
 		dialogResult = true;
-		if (isThereErrors) {
-			Display.getDefault().syncExec(new Runnable() {
-				@Override
-				public void run() {
-					ValidationDiagnosticDialog dialog = new ValidationDiagnosticDialog(
-							Display.getCurrent().getActiveShell(), "Moka Validation",
-							"The moka validation detect errors on the model. Do you still want to launch the simulation ?",
-							filteredDiagnostics, IStatus.ERROR);
-					if (dialog.open() == Window.OK) {
-						ValidationUtil.dialogResult = true;
-					} else {
-						ValidationUtil.dialogResult = false;
+		if (validationDescriptors != null) {
+			Diagnostic diagnostic = validate(monitor, engineConfiguration.getExecutionSource().getModel(), engineID,
+					validationDescriptors);
+			List<Diagnostic> filteredConstraints = new ArrayList<>(diagnostic.getChildren());
+			filteredConstraints = filteredConstraints.stream().filter(d -> valideRules.contains(d.getSource()))
+					.collect(Collectors.toList());
+			Diagnostic filteredDiagnostics = new BasicDiagnostic(diagnostic.getSource(), diagnostic.getCode(),
+					filteredConstraints, diagnostic.getMessage(), diagnostic.getData().toArray());
+			boolean isThereErrors = filteredDiagnostics.getChildren().stream()
+					.anyMatch(d -> d.getSeverity() == Diagnostic.ERROR);
+			if (isThereErrors) {
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						ValidationDiagnosticDialog dialog = new ValidationDiagnosticDialog(
+								Display.getCurrent().getActiveShell(), "Moka Validation",
+								"The moka validation detect errors on the model. Do you still want to launch the simulation ?",
+								filteredDiagnostics, IStatus.ERROR);
+						if (dialog.open() == Window.OK) {
+							ValidationUtil.dialogResult = true;
+						} else {
+							ValidationUtil.dialogResult = false;
+						}
 					}
-				}
-			});
+				});
+			}
 		}
 		return dialogResult;
 	}
 
-	protected static Diagnostic validate(IProgressMonitor progressMonitor, EObject validateElement, String engineID) {
+	protected static Diagnostic validate(IProgressMonitor progressMonitor, EObject validateElement, String engineID,
+			Set<ValidationDescriptor> validationDescriptors) {
 		// ValidateThe model according to moka validation rules
 		// 1] disable non moka validation rules in preferences (save old preferences)
 		// 2] validate
 		// 3] restore validation preference
 		clear();
-		setValidationPreferencesForMokaSimulation(engineID);
+		setValidationPreferencesForMokaSimulation(engineID, validationDescriptors);
 		int validationSteps = 0;
 		for (Iterator<?> i = validateElement.eAllContents(); i.hasNext(); i.next()) {
 			++validationSteps;
@@ -138,13 +143,12 @@ public class ValidationUtil {
 		return diagnostic;
 	}
 
-	protected static void setValidationPreferencesForMokaSimulation(String engineID) {
+	protected static void setValidationPreferencesForMokaSimulation(String engineID,
+			Set<ValidationDescriptor> validationDescriptors) {
 		// Since we should run only moka validation then we have to modified preferences
 		// to keep only moka constraints, at the same time the old values of preferences
 		// are store to be reused later
 		SortedSet<Category> categories = CategoryManager.getInstance().getTopLevelCategories();
-		Set<ValidationDescriptor> validationDescriptors = org.eclipse.papyrus.moka.kernel.validation.ValidationRegistry
-				.getInstance().getValidationDescriptors(engineID);
 		Iterator<Category> categoryIter = categories.iterator();
 		while (categoryIter.hasNext()) {
 			Category category = (Category) categoryIter.next();
@@ -174,7 +178,7 @@ public class ValidationUtil {
 				categoryFound = true;
 			}
 		}
-		if(false == categoryFound) {
+		if (false == categoryFound) {
 			excludeCategory(category);
 		}
 	}
@@ -191,7 +195,7 @@ public class ValidationUtil {
 	}
 
 	protected static void excludeCategory(Category category) {
-		// Exclude every constraint directly or not owned by this category  
+		// Exclude every constraint directly or not owned by this category
 		// 1] Disable every constraints
 		for (Iterator<IConstraintDescriptor> constrainIter = category.getConstraints().iterator(); constrainIter
 				.hasNext();) {
@@ -216,7 +220,8 @@ public class ValidationUtil {
 	}
 
 	protected static void excludeConstraint(IConstraintDescriptor constraintDescriptor) {
-		storePreferenceValue.put(constraintDescriptor.getId(), EMFModelValidationPreferences.isConstraintDisabled(constraintDescriptor.getId()));
+		storePreferenceValue.put(constraintDescriptor.getId(),
+				EMFModelValidationPreferences.isConstraintDisabled(constraintDescriptor.getId()));
 		EMFModelValidationPreferences.setConstraintDisabled(constraintDescriptor.getId(), true);
 	}
 
@@ -228,7 +233,7 @@ public class ValidationUtil {
 			EMFModelValidationPreferences.setConstraintDisabled(entry.getKey(), entry.getValue());
 		}
 	}
-	
+
 	protected static void clear() {
 		storePreferenceValue.clear();
 		valideRules.clear();
