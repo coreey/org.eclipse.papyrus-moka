@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2016 CEA LIST.
+ * Copyright (c) 2016, 2019 CEA LIST.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -10,6 +10,7 @@
  *
  * Contributors:
  *  CEA LIST Initial API and implementation
+ *  CEA LIST - Bug 551917 
  *****************************************************************************/
 package org.eclipse.papyrus.moka.animation.engine.rendering;
 
@@ -79,14 +80,21 @@ public class DiagramHandler {
 	public void init(EObject modelElement) {
 		// Initialize the animated diagrams manager. The initialize process consist in:
 		// 1 - Identifying diagrams located in a model
-		// 2 - Build a cache linking a model element to a list of diagrams in which it appears
-		if (modelElement instanceof Element) {
+		// 2 - Build a cache linking a model element to a list of diagrams in which it
+		// appears
+		Model model = null;
+		if (modelElement instanceof Model) {
+			model = (Model) modelElement;
+		} else if (modelElement instanceof Element) {
 			// Find all diagrams available in this model
-			Element owner = ((Element)modelElement).getOwner();
-			while(owner.getOwner() != null) {
+			Element owner = ((Element) modelElement).getOwner();
+			while (owner != null && owner.getOwner() != null) {
 				owner = owner.getOwner();
 			}
-			Job diagramsLoading = new InitiliazeDiagramManagerJob(owner.getModel());
+			model = owner.getModel();
+		}
+		if (model != null) {
+			Job diagramsLoading = new InitiliazeDiagramManagerJob(model);
 			diagramsLoading.schedule();
 			try {
 				diagramsLoading.join();
@@ -119,8 +127,8 @@ public class DiagramHandler {
 	private IViewPart getView(final String ID, boolean restore) {
 		// Find out a view using the specified ID
 		IViewPart view = null;
-		IViewReference viewReferences[] = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getViewReferences();
+		IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getViewReferences();
 		int i = 0;
 		while (view == null && i < viewReferences.length) {
 			if (viewReferences[i].getId().equals(ID)) {
@@ -135,7 +143,8 @@ public class DiagramHandler {
 		// Find the set of diagrams in which the given model element appears
 		List<Diagram> associatedDiagrams = new ArrayList<Diagram>();
 		if (notationResource != null && modelElement != null) {
-			for(Diagram diagram : DiagramUtils.getAssociatedDiagramsFromNotationResource(modelElement, notationResource)){
+			for (Diagram diagram : DiagramUtils.getAssociatedDiagramsFromNotationResource(modelElement,
+					notationResource)) {
 				associatedDiagrams.add(diagram);
 			}
 		}
@@ -143,7 +152,8 @@ public class DiagramHandler {
 	}
 
 	private void searchDiagrams(Model model, IProgressMonitor monitor) {
-		// Identify all diagrams that are available in a model. The unique place from which
+		// Identify all diagrams that are available in a model. The unique place from
+		// which
 		// this operation is called is the job in charge of executing the search.
 		Resource resource = model.eResource();
 		ResourceSet resourceSet = resource.getResourceSet();
@@ -155,12 +165,14 @@ public class DiagramHandler {
 		Iterator<EObject> modelContentIterator = model.eAllContents();
 		while (modelContentIterator.hasNext()) {
 			EObject currentModelElement = modelContentIterator.next();
-			if(currentModelElement instanceof PackageImport && ((PackageImport)currentModelElement).getImportedPackage() instanceof Model) {
-				searchDiagrams((Model)((PackageImport)currentModelElement).getImportedPackage() , monitor);
+			if (currentModelElement instanceof PackageImport
+					&& ((PackageImport) currentModelElement).getImportedPackage() instanceof Model) {
+				searchDiagrams((Model) ((PackageImport) currentModelElement).getImportedPackage(), monitor);
 			}
 			// Find the associated diagrams
 			List<Diagram> diagrams = this.getAssociatedDiagrams(currentModelElement, notationResource);
-			// Build the cache to relate the model element the set of diagrams where it is shown
+			// Build the cache to relate the model element the set of diagrams where it is
+			// shown
 			if (!diagrams.isEmpty()) {
 				// Add newly found diagrams to the set
 				this.modelDiagrams.addAll(diagrams);
@@ -217,7 +229,8 @@ public class DiagramHandler {
 	}
 
 	public boolean hasOpenedDiagram(EObject modelElement) {
-		// Determine if a model element has at least one of its diagrams opened (i.e., visible to the user)
+		// Determine if a model element has at least one of its diagrams opened (i.e.,
+		// visible to the user)
 		boolean opened = false;
 		Set<Diagram> diagramSet = this.modelDiagramMapping.get(modelElement);
 		if (diagramSet != null) {
@@ -270,7 +283,8 @@ public class DiagramHandler {
 
 	public boolean isRegistered(IObject_ instance) {
 		// Verifies if a particular instance is allowed to trigger animation
-		// An instance is allowed to trigger animation if it is part of the "AnimatedDiagramTree"
+		// An instance is allowed to trigger animation if it is part of the
+		// "AnimatedDiagramTree"
 		// Note that users may have decided to manually disallow a particular instance
 		// to trigger animation. In this case even if previously presented preconditions
 		// are full filled this operation returns false
@@ -364,7 +378,8 @@ public class DiagramHandler {
 	}
 
 	public void deleteRenderable(IObject_ instance) {
-		// Removes the relation existing between this instance and any diagram. This relationship
+		// Removes the relation existing between this instance and any diagram. This
+		// relationship
 		// is formalized through the data model.
 		if (instance != null && this.animatedDiagrams != null) {
 			Iterator<IAnimationTreeNode> nodesIterator = this.animatedDiagrams.getRoot().getChildren().iterator();
