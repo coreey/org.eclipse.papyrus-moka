@@ -11,6 +11,7 @@
  * Contributors:
  *  CEA LIST Initial API and implementation
  *  CEA LIST - Bug 551917 
+ *  CEA LIST - Bug 551976 
  *****************************************************************************/
 package org.eclipse.papyrus.moka.animation.engine.rendering;
 
@@ -237,7 +238,8 @@ public class DiagramHandler {
 			Iterator<Diagram> diagramIterator = diagramSet.iterator();
 			while (!opened && diagramIterator.hasNext()) {
 				Diagram diagram = diagramIterator.next();
-				IEditorPart editorPart = EditorUtils.getEditorPart(diagram);
+				final String resourceDiURI = diagram.eResource().getURI().toString().replaceAll("\\.notation$", ".di");
+				IEditorPart editorPart = EditorUtils.getEditorPart(resourceDiURI);
 				ServicesRegistry servicesRegistry = (ServicesRegistry) editorPart.getAdapter(ServicesRegistry.class);
 				IPageManager pageManager = null;
 				try {
@@ -258,7 +260,8 @@ public class DiagramHandler {
 		HashSet<Diagram> diagrams = this.modelDiagramMapping.get(modelElement);
 		if (!diagrams.isEmpty()) {
 			for (Diagram diagram : diagrams) {
-				IEditorPart editorPart = EditorUtils.getEditorPart(diagram);
+				final String resourceDiURI = diagram.eResource().getURI().toString().replaceAll("\\.notation$", ".di");
+				IEditorPart editorPart = EditorUtils.getEditorPart(resourceDiURI);
 				ServicesRegistry servicesRegistry = (ServicesRegistry) editorPart.getAdapter(ServicesRegistry.class);
 				IPageManager pageManager = null;
 				try {
@@ -268,6 +271,27 @@ public class DiagramHandler {
 				}
 				if (pageManager != null) {
 					pageManager.openPage(diagram);
+					pageManager.selectPage(diagram);
+				}
+			}
+		}
+	}
+
+	public void selectDiagrams(EObject modelElement) {
+		// Select every diagrams on which the specify on which this model element appear
+		HashSet<Diagram> diagrams = this.modelDiagramMapping.get(modelElement);
+		if (!diagrams.isEmpty()) {
+			for (Diagram diagram : diagrams) {
+				final String resourceDiURI = diagram.eResource().getURI().toString().replaceAll("\\.notation$", ".di");
+				IEditorPart editorPart = EditorUtils.getEditorPart(resourceDiURI);
+				ServicesRegistry servicesRegistry = (ServicesRegistry) editorPart.getAdapter(ServicesRegistry.class);
+				IPageManager pageManager = null;
+				try {
+					pageManager = ServiceUtils.getInstance().getIPageManager(servicesRegistry);
+				} catch (ServiceException e) {
+					e.printStackTrace();
+				}
+				if (pageManager != null) {
 					pageManager.selectPage(diagram);
 				}
 			}
