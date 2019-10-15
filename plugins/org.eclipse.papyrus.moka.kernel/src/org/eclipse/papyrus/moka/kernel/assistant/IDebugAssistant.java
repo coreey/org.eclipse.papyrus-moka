@@ -14,6 +14,9 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.kernel.assistant;
 
+import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
+import org.eclipse.uml2.uml.Element;
+
 public interface IDebugAssistant {
 
 	/**
@@ -22,5 +25,12 @@ public interface IDebugAssistant {
 	 * @return the ID of this assistant
 	 */
 	public String getAssistantID();
+	
+	/**
+	 * Get the node from the given visitor
+	 * @param visitor the visitor
+	 * @return the visitor node
+	 */
+	public Element getVisitorNode(ISemanticVisitor visitor);
 	
 }

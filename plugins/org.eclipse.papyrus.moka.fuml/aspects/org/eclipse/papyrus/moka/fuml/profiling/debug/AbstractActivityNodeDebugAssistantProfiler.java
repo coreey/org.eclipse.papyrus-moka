@@ -15,12 +15,13 @@ package org.eclipse.papyrus.moka.fuml.profiling.debug;
 
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
+import org.eclipse.papyrus.moka.kernel.assistant.IDebugAssistant;
 import org.eclipse.uml2.uml.Element;
 
-public abstract class AbstractActivityNodeDebugAssistantProfiler extends AbstractDebugAssistantProfiler {
+public abstract class AbstractActivityNodeDebugAssistantProfiler implements IDebugAssistant {
 
 	@Override
-	protected Element getVisitorNode(ISemanticVisitor visitor) {
+	public Element getVisitorNode(ISemanticVisitor visitor) {
 		if(visitor instanceof IActivityNodeActivation) {
 			return ((IActivityNodeActivation) visitor).getNode();
 		}

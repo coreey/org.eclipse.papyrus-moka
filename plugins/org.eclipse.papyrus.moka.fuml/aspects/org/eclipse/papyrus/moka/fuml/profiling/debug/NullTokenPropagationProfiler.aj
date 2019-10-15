@@ -15,6 +15,7 @@ package org.eclipse.papyrus.moka.fuml.profiling.debug;
 
 import java.util.List;
 
+import org.eclipse.papyrus.moka.debug.assistant.DebugAssistantException;
 import org.eclipse.papyrus.moka.fuml.actions.OutputPinActivation;
 import org.eclipse.papyrus.moka.fuml.activities.IObjectNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.IToken;
@@ -34,10 +35,10 @@ public aspect NullTokenPropagationProfiler extends AbstractActivityNodeDebugAssi
 	
 	after(OutputPinActivation objectNode) returning(List<IToken> tokens): getUnofferedTokens(objectNode){
 		if(tokens.isEmpty() && ((OutputPin)objectNode.getNode()).getLower()> 0){
-			fireDebugEvent(objectNode);
+			throw new DebugAssistantException(this, objectNode);
 		}
 	}
-	
+
 	@Override
 	public String getAssistantID() {
 		return ASSISTANT_ID;

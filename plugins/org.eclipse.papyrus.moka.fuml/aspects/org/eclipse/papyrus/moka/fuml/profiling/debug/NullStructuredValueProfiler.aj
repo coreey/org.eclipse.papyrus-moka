@@ -13,6 +13,7 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.profiling.debug;
 
+import org.eclipse.papyrus.moka.debug.assistant.DebugAssistantException;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IStructuredValue;
@@ -34,7 +35,8 @@ public aspect NullStructuredValueProfiler extends AbstractActivityNodeDebugAssis
 	after(IStructuredValue structuredValue, StructuralFeature feature) returning(IFeatureValue featureValue): getFeatureValue(structuredValue, feature){
 		if (featureValue == null) {
 			if (thisJoinPoint.getThis() instanceof IActivityNodeActivation) {
-				fireDebugEvent((IActivityNodeActivation)thisJoinPoint.getThis());
+				IActivityNodeActivation visitor = (IActivityNodeActivation) thisJoinPoint.getThis();
+				throw new DebugAssistantException(this, visitor);
 			}
 		}
 	}

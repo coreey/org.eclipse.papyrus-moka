@@ -27,6 +27,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.eclipse.papyrus.moka.debug,
+ org.eclipse.papyrus.moka.debug.assistant,
  org.eclipse.papyrus.moka.debug.breakpoint,
  org.eclipse.papyrus.moka.debug.communication,
  org.eclipse.papyrus.moka.debug.engine,

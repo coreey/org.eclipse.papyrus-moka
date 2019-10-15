@@ -10,6 +10,8 @@
  *
  * Contributors:
  *  CEA LIST Initial API and implementation
+ *  CEA List - Bug 551906
+ *  
  *****************************************************************************/
 package org.eclipse.papyrus.moka.animation.engine;
 
@@ -66,6 +68,10 @@ public abstract class AnimationService extends ExecutionEngineService<IExecution
 			}
 		}
 		return animator;
+	}
+	
+	public AnimationEngine getEngine() {
+		return engine;
 	}
 
 }
