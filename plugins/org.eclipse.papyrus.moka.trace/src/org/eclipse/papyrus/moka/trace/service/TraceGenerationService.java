@@ -10,7 +10,7 @@
  *
  * Contributors:
  *   CEA LIST - Initial API and implementation
- *   CEA LIST - Bug 551906
+ *   CEA LIST - Bug 551906, Bug 552564
  *   
  *****************************************************************************/
 package org.eclipse.papyrus.moka.trace.service;
@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -45,7 +46,8 @@ import org.eclipse.papyrus.moka.trace.model.mokatraceservice.MokaTrace;
 import org.eclipse.papyrus.moka.tracepoint.service.MarkerUtils;
 import org.eclipse.papyrus.moka.tracepoint.service.TracepointConstants;
 
-public class TraceGenerationService extends ExecutionEngineService<IExecutionEngine> implements UMLSemanticVisitorExecutionListener {
+public class TraceGenerationService extends ExecutionEngineService<IExecutionEngine>
+		implements UMLSemanticVisitorExecutionListener {
 
 	public static final String FILE_NAME = "trace";
 
@@ -117,22 +119,33 @@ public class TraceGenerationService extends ExecutionEngineService<IExecutionEng
 	}
 
 	private String getDirectoryPath(ITraceFileFormater formater) {
-		// Search the file in the workspace
 		IWorkspaceRoot workspace = ResourcesPlugin.getWorkspace().getRoot();
 		String workspacePath = workspace.getLocation().toFile().getPath().toString();
+		IFile currentFile = null;
+		
+		// Search a file in the workspace
+		try {
+			currentFile = workspace.getFileForLocation(new Path(workspacePath + traceDirectory));
+		} catch (IllegalArgumentException ex) {
+			// Ignore
+		}
+		if(currentFile != null) {
+			return workspacePath + traceDirectory;
+		}
+		
+		// Search a folder in the workspace
 		IContainer currentFolder = null;
 		try {
 			currentFolder = workspace.getContainerForLocation(new Path(workspacePath + traceDirectory));
 		} catch (IllegalArgumentException ex) {
 			// Ignore
 		}
-
-		// Then search it on the disk
-		if (currentFolder == null || !currentFolder.exists()) {
-			return traceDirectory;
-		} else {
+		if (currentFolder != null && currentFolder.exists()) {
 			return workspacePath + traceDirectory;
 		}
+
+		// The folder or the file is in the disk
+		return traceDirectory;
 	}
 
 	@Override

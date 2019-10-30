@@ -132,7 +132,7 @@ public class MokaRunConfigurationTab extends AbstractLaunchConfigurationTab {
 					updateLaunchConfigurationDialog();
 				}
 			});
-			this.traceServiceComp.addRadioListner(this);
+			this.traceServiceComp.addRadioListener(this);
 			this.traceServiceComp.addTracePointModeListner(this);
 		}
 		/* 3. Register component */

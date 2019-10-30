@@ -10,6 +10,7 @@
  *
  * Contributors:
  *   CEA LIST - Initial API and implementation
+ *   CEA LIST - Bug 552564
  *   
  *****************************************************************************/
 package org.eclipse.papyrus.moka.ui.launch;
@@ -17,12 +18,12 @@ package org.eclipse.papyrus.moka.ui.launch;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.papyrus.infra.widgets.editors.StringDirectorySelector;
 import org.eclipse.papyrus.moka.trace.capture.CaptureServiceRegistry;
 import org.eclipse.papyrus.moka.trace.formater.TraceFileFormaterRegistry;
 import org.eclipse.papyrus.moka.trace.interfaces.capture.ICaptureServiceFactory;
@@ -30,6 +31,7 @@ import org.eclipse.papyrus.moka.trace.interfaces.format.ITraceFileFormater;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -43,10 +45,10 @@ import org.eclipse.ui.forms.widgets.ExpandableComposite;
 public class MokaTraceServiceComponent extends Composite {
 
 	protected Button traceCheckBox;
-	protected StringDirectorySelector filePathSelector;
+	protected MokaStringFileSelector filePathSelector;
 	protected Button traceSelectionButton;
 	protected Map<String, Button> captureEngineRadioButtons;
-	Map<String, List<ITraceFileFormater>> mapCaptureIdToFormatersId;
+	protected Map<String, List<ITraceFileFormater>> mapCaptureIdToFormatersId;
 	protected Map<String, Combo> formaterComboBoxs;
 	protected Button traceTracepointModeCheckBox;
 
@@ -63,7 +65,8 @@ public class MokaTraceServiceComponent extends Composite {
 	}
 
 	protected Composite createExpandableComposite(Composite parent, String name, int columns) {
-		ExpandableComposite expandableComposite = new ExpandableComposite(parent, ExpandableComposite.TWISTIE | ExpandableComposite.CLIENT_INDENT);
+		ExpandableComposite expandableComposite = new ExpandableComposite(parent,
+				ExpandableComposite.TWISTIE | ExpandableComposite.CLIENT_INDENT);
 		expandableComposite.setText(name);
 		expandableComposite.setExpanded(false);
 		expandableComposite.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, false, 1, 1));
@@ -93,9 +96,8 @@ public class MokaTraceServiceComponent extends Composite {
 	}
 
 	protected void createFilePathText(Composite parent) {
-		filePathSelector = new StringDirectorySelector(parent, SWT.NONE);
-		filePathSelector.setLabel("Output folder");
-		filePathSelector.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false));
+		this.filePathSelector = new MokaStringFileSelector(parent, SWT.NONE, "Trace file path", getDefaultFileName());
+		this.filePathSelector.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false));
 	}
 
 	protected void createFileFormatList(Composite parent) {
@@ -107,7 +109,6 @@ public class MokaTraceServiceComponent extends Composite {
 		fileFormatGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 		Map<String, ICaptureServiceFactory> captureEngine = CaptureServiceRegistry.INSTANCE.getCaptureServices();
 		captureEngineRadioButtons = new LinkedHashMap<String, Button>();
-
 
 		mapCaptureIdToFormatersId = new HashMap<>();
 		Collection<ITraceFileFormater> formaters = TraceFileFormaterRegistry.INSTANCE.getTraceFileFormater();
@@ -137,14 +138,47 @@ public class MokaTraceServiceComponent extends Composite {
 		if (combo.getItemCount() != 0) {
 			combo.select(0);
 		}
+		combo.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (e.getSource() instanceof Combo) {
+					ITraceFileFormater formater = getFormaterFromComboBox((Combo) e.getSource());
+					if (formater != null) {
+						filePathSelector.setFileExtension(formater.getFileExtension());
+					}
+				}
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+		});
 		formaterComboBoxs.put(captureId, combo);
+	}
+
+	protected ITraceFileFormater getFormaterFromComboBox(Combo combo) {
+		int selection = combo.getSelectionIndex();
+		String formaterName = combo.getItem(selection);
+		ITraceFileFormater formater = null;
+		Iterator<Entry<String, List<ITraceFileFormater>>> iter = mapCaptureIdToFormatersId.entrySet().iterator();
+		while (iter.hasNext()) {
+			Map.Entry<String, List<ITraceFileFormater>> entry = (Map.Entry<String, List<ITraceFileFormater>>) iter
+					.next();
+			formater = entry.getValue().stream().filter(f -> f.getName().equals(formaterName)).findFirst().orElse(null);
+			if (formater != null) {
+				return formater;
+			}
+		}
+		return formater;
 	}
 
 	protected void createTracepointModeCheckbox(Composite parent) {
 		this.traceTracepointModeCheckBox = new Button(parent, SWT.CHECK);
 		this.traceTracepointModeCheckBox.setEnabled(true);
 		this.traceTracepointModeCheckBox.setText("Tracepoint mode");
-		this.traceTracepointModeCheckBox.setToolTipText("When the tracepoint mode is activate, only nodes which have a tracepoint marker are traced (right click on the node, tracing, add tracepoint)");
+		this.traceTracepointModeCheckBox.setToolTipText(
+				"When the tracepoint mode is activate, only nodes which have a tracepoint marker are traced (right click on the node, tracing, add tracepoint)");
 	}
 
 	public String getFilePath() {
@@ -153,6 +187,10 @@ public class MokaTraceServiceComponent extends Composite {
 
 	public void setFilePath(String text) {
 		this.filePathSelector.getText().setText(text);
+	}
+
+	private String getDefaultFileName() {
+		return "trace";
 	}
 
 	public ICaptureServiceFactory getCaptureServiceFactory() {
@@ -195,6 +233,9 @@ public class MokaTraceServiceComponent extends Composite {
 			List<ITraceFileFormater> formaterList = mapCaptureIdToFormatersId.get(captureId);
 			int index = formaterList.indexOf(formater);
 			formaterComboBoxs.get(captureId).select(index);
+			if (filePathSelector != null) {
+				filePathSelector.setFileExtension(formater.getFileExtension());
+			}
 		} else {
 			// Select the first of the list
 			for (Button button : captureEngineRadioButtons.values()) {
@@ -208,13 +249,20 @@ public class MokaTraceServiceComponent extends Composite {
 	protected void enabledComboBoxs() {
 		for (Entry<String, Button> button : captureEngineRadioButtons.entrySet()) {
 			Combo combo = formaterComboBoxs.get(button.getKey());
-			combo.setEnabled(button.getValue().getSelection());
+			if (button.getValue().getSelection()) {
+				combo.setEnabled(true);
+				ITraceFileFormater formater = getFormaterFromComboBox(combo);
+				if (formater != null) {
+					filePathSelector.setFileExtension(formater.getFileExtension());
+				}
+			} else {
+				combo.setEnabled(false);
+			}
 		}
 	}
 
 	public void enableTraceWidget(boolean enable) {
-		this.filePathSelector.setAllowFileSystem(enable);
-		this.filePathSelector.setAllowWorkspace(enable);
+		this.filePathSelector.setReadOnly(!enable);
 		captureEngineRadioButtons.values().stream().forEach(button -> button.setEnabled(enable));
 		if (enable) {
 			enabledComboBoxs();
@@ -224,12 +272,22 @@ public class MokaTraceServiceComponent extends Composite {
 		this.traceTracepointModeCheckBox.setEnabled(enable);
 	}
 
-	public void addRadioListner(MokaRunConfigurationTab tab) {
+	public void addRadioListener(MokaRunConfigurationTab tab) {
 		SelectionAdapter selectionAdapter = new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				tab.updateLaunchConfigurationDialog();
 				MokaTraceServiceComponent.this.enabledComboBoxs();
+				if (e.getSource() instanceof Button) {
+					Button button = (Button) e.getSource();
+					Entry<String, Button> captureIdEntry = captureEngineRadioButtons.entrySet().stream()
+							.filter(entry -> entry.getValue().equals(button)).findFirst().orElse(null);
+					Combo formaterCombo = formaterComboBoxs.get(captureIdEntry.getKey());
+					ITraceFileFormater formater = getFormaterFromComboBox(formaterCombo);
+					if (formater != null) {
+						filePathSelector.setFileExtension(formater.getFileExtension());
+					}
+				}
 			}
 		};
 		captureEngineRadioButtons.values().stream().forEach(button -> button.addSelectionListener(selectionAdapter));

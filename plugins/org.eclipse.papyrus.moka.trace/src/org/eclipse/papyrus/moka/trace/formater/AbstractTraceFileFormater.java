@@ -10,10 +10,18 @@
  *
  * Contributors:
  *   CEA LIST - Initial API and implementation
+ *   CEA LIST - Bug 552564
  *   
  *****************************************************************************/
 package org.eclipse.papyrus.moka.trace.formater;
 
+import java.util.StringTokenizer;
+
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.papyrus.moka.trace.interfaces.format.ITraceFileFormater;
 
 public abstract class AbstractTraceFileFormater implements ITraceFileFormater {
@@ -68,6 +76,29 @@ public abstract class AbstractTraceFileFormater implements ITraceFileFormater {
 	@Override
 	public void setCaptureId(String id) {
 		this.captureId = id;
+	}
+
+	/**
+	 * Refresh the workspace in order to make appears the created file.
+	 * 
+	 * @param outputFolder the folder to refresh (ex:
+	 *                     /projectName/folderName1/folderName2)
+	 */
+	public void refreshWorkspace(String outputFolder) {
+		IContainer container;
+
+		int nbToken = new StringTokenizer(outputFolder, "/").countTokens(); //$NON-NLS-1$
+		if (nbToken == 1) {// it is a project
+			container = ResourcesPlugin.getWorkspace().getRoot().getProject(outputFolder); // only one /
+		} else {// it is a folder in a project
+			container = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(outputFolder));
+		}
+
+		try {
+			container.refreshLocal(2, new NullProgressMonitor());
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
