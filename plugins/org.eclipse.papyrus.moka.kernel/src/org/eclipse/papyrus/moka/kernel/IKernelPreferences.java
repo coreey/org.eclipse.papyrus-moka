@@ -17,6 +17,6 @@ package org.eclipse.papyrus.moka.kernel;
 
 public interface IKernelPreferences {
 	
-	final static String KERNEL_PREFERENCES_ID = "org.eclipse.papyrus.moka.kernel";
+	final static String KERNEL_PREFERENCES_ID = "org.eclipse.papyrus.moka.kernel.preferences";
 
 }

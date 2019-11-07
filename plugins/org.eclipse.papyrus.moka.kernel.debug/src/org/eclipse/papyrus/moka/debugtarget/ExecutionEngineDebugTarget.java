@@ -15,7 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debugtarget;
 
-import static org.eclipse.papyrus.moka.kernel.IKernelPreferences.KERNEL_PREFERENCES_ID;
 import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.eclipse.core.resources.IMarkerDelta;
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.ILaunch;
@@ -35,10 +33,11 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IMemoryBlock;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IThread;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngine;
 import org.eclipse.papyrus.moka.debug.messages.ThreadRequest;
+import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
 import org.eclipse.papyrus.moka.kernel.process.ExecutionEngineProcess;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 public class ExecutionEngineDebugTarget extends ExecutionEngineDebugElement implements IExecutionEngineDebugTarget {
 
@@ -87,7 +86,7 @@ public class ExecutionEngineDebugTarget extends ExecutionEngineDebugElement impl
 	}
 
 	private void initClient() {
-		ScopedPreferenceStore store = new ScopedPreferenceStore(ConfigurationScope.INSTANCE, KERNEL_PREFERENCES_ID);
+		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
 		String port = store.getString(MQTT_SERVER_PORT);
 		client = new ExecutionEngineDebugTargetClient("tcp://localhost:" + port, "Debug Target", this);
 		client.run();

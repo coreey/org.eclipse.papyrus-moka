@@ -15,15 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.kernel.process;
 
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
-import org.eclipse.debug.core.DebugException;
-import org.eclipse.debug.core.DebugPlugin;
-import org.eclipse.debug.core.ILaunch;
-import org.eclipse.debug.core.ILaunchesListener2;
-import org.eclipse.debug.core.model.IStreamsProxy;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
-
-import static org.eclipse.papyrus.moka.kernel.IKernelPreferences.KERNEL_PREFERENCES_ID;
 import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PATH;
 import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
 
@@ -33,6 +24,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import org.eclipse.debug.core.DebugException;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunch;
+import org.eclipse.debug.core.ILaunchesListener2;
+import org.eclipse.debug.core.model.IStreamsProxy;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
 
 public class ServerMqttProcess extends BaseProcess<Process> implements ILaunchesListener2 {
 
@@ -97,7 +96,7 @@ public class ServerMqttProcess extends BaseProcess<Process> implements ILaunches
 
 	@Override
 	public void run() {
-		ScopedPreferenceStore store = new ScopedPreferenceStore(ConfigurationScope.INSTANCE, KERNEL_PREFERENCES_ID);
+		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
 		File serverExecutable = new File(store.getString(MQTT_SERVER_PATH));
 		if (serverExecutable.exists() && serverExecutable.isFile()) {
 			ProcessBuilder builder = new ProcessBuilder().inheritIO();

@@ -15,7 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.launch;
 
-import static org.eclipse.papyrus.moka.kernel.IKernelPreferences.KERNEL_PREFERENCES_ID;
 import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MODEL_VALIDATION_ON_LAUNCH;
 import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PATH;
 import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
@@ -27,12 +26,12 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.papyrus.infra.core.resource.ModelSet;
 import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
@@ -40,6 +39,7 @@ import org.eclipse.papyrus.infra.gmfdiag.common.model.NotationUtils;
 import org.eclipse.papyrus.moka.animation.css.MokaCSSDiagram;
 import org.eclipse.papyrus.moka.debugtarget.ExecutionEngineDebugTarget;
 import org.eclipse.papyrus.moka.kernel.IKernelPreferences;
+import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.EngineRegistry;
 import org.eclipse.papyrus.moka.kernel.process.ExecutionEngineProcess;
@@ -52,7 +52,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.dialogs.PreferencesUtil;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.eclipse.uml2.uml.Class;
 
 public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
@@ -84,7 +83,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 
 	private boolean canRunServer() {
 		boolean canRunServer = false;
-		ScopedPreferenceStore store = new ScopedPreferenceStore(ConfigurationScope.INSTANCE, KERNEL_PREFERENCES_ID);
+		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
 		if (store != null) {
 			canRunServer = !store.getString(MQTT_SERVER_PATH).isEmpty() && store.getInt(MQTT_SERVER_PORT) > 0;
 		}
@@ -96,8 +95,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 		// validation is run. If there are errors, the system ask the user if he/she
 		// still wants to run the simulation.
 		// Return true if the simulation must continue, false otherwise
-		ScopedPreferenceStore store = new ScopedPreferenceStore(ConfigurationScope.INSTANCE,
-				IKernelPreferences.KERNEL_PREFERENCES_ID);
+		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
 		boolean mustValidate = store.getBoolean(MODEL_VALIDATION_ON_LAUNCH);
 		boolean continueSimulation = true;
 		if (mustValidate) {

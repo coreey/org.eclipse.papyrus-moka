@@ -15,20 +15,18 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.ui.preferences;
 
+import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MODEL_VALIDATION_ON_LAUNCH;
+import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PATH;
+import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
+
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.IntegerFieldEditor;
-import org.eclipse.papyrus.moka.kernel.IKernelPreferences;
+import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
-
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PATH;
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MODEL_VALIDATION_ON_LAUNCH;
-
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
 
 public class PapyrusSimulationPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
@@ -45,8 +43,8 @@ public class PapyrusSimulationPreferencePage extends FieldEditorPreferencePage i
 	}
 
 	public void init(IWorkbench workbench) {
-		setPreferenceStore(
-				new ScopedPreferenceStore(ConfigurationScope.INSTANCE, IKernelPreferences.KERNEL_PREFERENCES_ID));
+		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
+		setPreferenceStore(store);
 		setDescription(DESCRIPTION);
 	}
 

@@ -15,7 +15,7 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debug.service;
 
-import static org.eclipse.papyrus.moka.kernel.IKernelPreferences.KERNEL_PREFERENCES_ID;
+import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,15 +24,13 @@ import java.util.Map;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.debug.core.DebugException;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngine;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
+import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
 import org.eclipse.papyrus.moka.kernel.service.ExecutionEngineService;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
-
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
 
 public abstract class DebugService<T, C> extends ExecutionEngineService<IDebuggableExecutionEngine<T, C>>
 		implements IDebugService<T, C> {
@@ -105,7 +103,7 @@ public abstract class DebugService<T, C> extends ExecutionEngineService<IDebugga
 	}
 
 	private void initClient() {
-		ScopedPreferenceStore store = new ScopedPreferenceStore(ConfigurationScope.INSTANCE, KERNEL_PREFERENCES_ID);
+		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
 		String port = store.getString(MQTT_SERVER_PORT);
 		client = new DebugServiceClient("tcp://localhost:" + port, "Debug Service Client", this);
 		client.run();
