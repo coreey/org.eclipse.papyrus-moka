@@ -13,12 +13,16 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.profiling.debug;
 
+import org.eclipse.papyrus.moka.debug.service.IDebugService;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
+import org.eclipse.papyrus.moka.fuml.profiling.MokaObservable;
 import org.eclipse.papyrus.moka.kernel.assistant.IDebugAssistant;
+import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
+import org.eclipse.papyrus.moka.kernel.service.IExecutionEngineService;
 import org.eclipse.uml2.uml.Element;
 
-public abstract class AbstractActivityNodeDebugAssistantProfiler implements IDebugAssistant {
+public abstract class AbstractActivityNodeDebugAssistantProfiler extends MokaObservable implements IDebugAssistant {
 
 	@Override
 	public Element getVisitorNode(ISemanticVisitor visitor) {
@@ -26,6 +30,22 @@ public abstract class AbstractActivityNodeDebugAssistantProfiler implements IDeb
 			return ((IActivityNodeActivation) visitor).getNode();
 		}
 		return null;
+	}
+	
+	/**
+	 * Ask to the debug service if the current assistant is valid in this context
+	 * 
+	 * WARNING: this method should be called by each subclass before throwing exceptions 
+	 * 
+	 * @return true if the current assistant is valid in this context, false otherwise
+	 */
+	protected boolean checkAssistantValidity() {
+		for (IExecutionEngineService<IExecutionEngine> service : getListeners()) {
+			if (service instanceof IDebugService) {
+				return ((IDebugService<?, ?>) service).shouldContinueInDebugAssistant(getAssistantID());
+			}
+		}
+		return false;
 	}
 
 }

@@ -134,8 +134,8 @@ public class UMLDebugService extends DebugService<IObject_, ISemanticVisitor>
 	}
 
 	@Override
-	public boolean shouldContinueInDebugAssistant(Suspension suspension) {
-		return debugAssistants.contains(suspension.getDebugAssistant().getAssistantID());
+	public boolean shouldContinueInDebugAssistant(String assistantID) {
+		return debugAssistants.contains(assistantID);
 	}
 
 }

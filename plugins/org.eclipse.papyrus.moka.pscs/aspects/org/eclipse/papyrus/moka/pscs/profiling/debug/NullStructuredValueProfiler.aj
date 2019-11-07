@@ -34,10 +34,12 @@ public aspect NullStructuredValueProfiler extends AbstractActivityNodeDebugAssis
 		call(IFeatureValue IStructuredValue.getFeatureValue(StructuralFeature));
 
 	after(IStructuredValue structuredValue, StructuralFeature feature) returning(IFeatureValue featureValue): getFeatureValue(structuredValue, feature){
-		if (featureValue == null) {
-			if (thisJoinPoint.getThis() instanceof IActivityNodeActivation) {
-				IActivityNodeActivation visitor = (IActivityNodeActivation) thisJoinPoint.getThis();
-				throw new DebugAssistantException(this, visitor);
+		if (checkAssistantValidity()) {
+			if (featureValue == null) {
+				if (thisJoinPoint.getThis() instanceof IActivityNodeActivation) {
+					IActivityNodeActivation visitor = (IActivityNodeActivation) thisJoinPoint.getThis();
+					throw new DebugAssistantException(this, visitor);
+				}
 			}
 		}
 	}

@@ -24,7 +24,7 @@ import org.eclipse.uml2.uml.OutputPin;
 public aspect NullTokenPropagationProfiler extends AbstractActivityNodeDebugAssistantProfiler {
 
 	public static final String ASSISTANT_ID = "org.eclipse.papyrus.moka.fuml.profiling.debug.NullTokenPropagationProfiler";
-	
+
 	public NullTokenPropagationProfiler() {
 		super();
 	}
@@ -32,10 +32,12 @@ public aspect NullTokenPropagationProfiler extends AbstractActivityNodeDebugAssi
 	pointcut getUnofferedTokens(OutputPinActivation objectNode):
 		target(objectNode) &&
 		call(List<IToken> IObjectNodeActivation.getUnofferedTokens());
-	
+
 	after(OutputPinActivation objectNode) returning(List<IToken> tokens): getUnofferedTokens(objectNode){
-		if(tokens.isEmpty() && ((OutputPin)objectNode.getNode()).getLower()> 0){
-			throw new DebugAssistantException(this, objectNode);
+		if (checkAssistantValidity()) {
+			if (tokens.isEmpty() && ((OutputPin) objectNode.getNode()).getLower() > 0) {
+				throw new DebugAssistantException(this, objectNode);
+			}
 		}
 	}
 
@@ -43,5 +45,5 @@ public aspect NullTokenPropagationProfiler extends AbstractActivityNodeDebugAssi
 	public String getAssistantID() {
 		return ASSISTANT_ID;
 	}
-	
+
 }

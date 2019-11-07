@@ -129,7 +129,7 @@ public class UMLEventDispatchLoopExecution extends UMLTaskExecution implements I
 			DebugAssistantException debugAssistantException) {
 		Suspension suspension = new Suspension(debugAssistantException.getDebugAssistant(),
 				SuspensionReasons.ERROR_DETECTION);
-		if (executionEngineService.shouldContinueInDebugAssistant(suspension)) {
+		if (executionEngineService.shouldContinueInDebugAssistant(debugAssistantException.getDebugAssistant().getAssistantID())) {
 			Element node = debugAssistantException.getVisitorNode();
 			ISemanticVisitor visitor = debugAssistantException.getVisitor();
 			if (node != null) {

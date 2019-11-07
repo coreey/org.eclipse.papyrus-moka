@@ -17,7 +17,6 @@
 package org.eclipse.papyrus.moka.debug.service;
 
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
-import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 
 public interface IDebugService<ThreadType, ContextType>{
 
@@ -103,9 +102,9 @@ public interface IDebugService<ThreadType, ContextType>{
 	/**
 	 * Get if this given assistant is manage by this debug service
 	 * 
-	 * @param suspension
+	 * @param assistantID
 	 * @return true if this given assistant is manage by this debug service
 	 */
-	boolean shouldContinueInDebugAssistant(Suspension suspension);
+	boolean shouldContinueInDebugAssistant(String assistantID);
 	
 }

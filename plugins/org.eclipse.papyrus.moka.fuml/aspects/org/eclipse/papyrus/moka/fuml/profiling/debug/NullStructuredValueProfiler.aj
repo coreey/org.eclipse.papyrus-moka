@@ -22,7 +22,7 @@ import org.eclipse.uml2.uml.StructuralFeature;
 public aspect NullStructuredValueProfiler extends AbstractActivityNodeDebugAssistantProfiler {
 
 	public static final String ASSISTANT_ID = "org.eclipse.papyrus.moka.fuml.profiling.debug.NullStructuredValueProfiler";
-	
+
 	public NullStructuredValueProfiler() {
 		super();
 	}
@@ -33,14 +33,16 @@ public aspect NullStructuredValueProfiler extends AbstractActivityNodeDebugAssis
 		call(IFeatureValue IStructuredValue.getFeatureValue(StructuralFeature));
 
 	after(IStructuredValue structuredValue, StructuralFeature feature) returning(IFeatureValue featureValue): getFeatureValue(structuredValue, feature){
-		if (featureValue == null) {
-			if (thisJoinPoint.getThis() instanceof IActivityNodeActivation) {
-				IActivityNodeActivation visitor = (IActivityNodeActivation) thisJoinPoint.getThis();
-				throw new DebugAssistantException(this, visitor);
+		if (checkAssistantValidity()) {
+			if (featureValue == null) {
+				if (thisJoinPoint.getThis() instanceof IActivityNodeActivation) {
+					IActivityNodeActivation visitor = (IActivityNodeActivation) thisJoinPoint.getThis();
+					throw new DebugAssistantException(this, visitor);
+				}
 			}
 		}
 	}
-	
+
 	@Override
 	public String getAssistantID() {
 		return ASSISTANT_ID;
