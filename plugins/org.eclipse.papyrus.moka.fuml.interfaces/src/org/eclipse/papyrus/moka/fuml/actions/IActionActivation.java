@@ -18,6 +18,7 @@ package org.eclipse.papyrus.moka.fuml.actions;
 import java.util.List;
 
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
+import org.eclipse.papyrus.moka.fuml.activities.IExceptionHandlerActivation;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IBooleanValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.ILink;
@@ -46,5 +47,11 @@ public interface IActionActivation extends IActivityNodeActivation {
 	public Boolean valueParticipatesInLink(IValue value, ILink link);
 
 	public IBooleanValue makeBooleanValue(Boolean value);
+	
+	public void propagateException(IValue exception);
+	
+	public void catchException(IValue exception, IExceptionHandlerActivation handler);
+	
+	public List<IExceptionHandlerActivation> getExceptionHandler(IValue exception);
 
 }

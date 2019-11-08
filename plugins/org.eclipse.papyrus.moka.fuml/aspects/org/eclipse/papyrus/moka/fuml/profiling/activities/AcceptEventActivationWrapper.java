@@ -23,6 +23,7 @@ import org.eclipse.papyrus.moka.fuml.activities.IActivityEdgeInstance;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityExecution;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivationGroup;
+import org.eclipse.papyrus.moka.fuml.activities.IExceptionHandlerActivation;
 import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.loci.ILocus;
@@ -282,6 +283,21 @@ public class AcceptEventActivationWrapper extends TriggeredVisitorWrapper implem
 	@Override
 	public IAcceptEventActionEventAccepter getEventAccepter() {
 		return this.acceptEventActivation.getEventAccepter();
+	}
+
+	@Override
+	public void propagateException(IValue exception) {
+		acceptEventActivation.propagateException(exception);
+	}
+
+	@Override
+	public void catchException(IValue exception, IExceptionHandlerActivation handler) {
+		acceptEventActivation.catchException(exception, handler);
+	}
+
+	@Override
+	public List<IExceptionHandlerActivation> getExceptionHandler(IValue exception) {
+		return acceptEventActivation.getExceptionHandler(exception);
 	}
 
 }

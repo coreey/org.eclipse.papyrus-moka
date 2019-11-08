@@ -41,9 +41,23 @@ public abstract class Execution extends Object_ implements IExecution {
 	 * is executed.
 	 */
 	public List<IParameterValue> parameterValues = new ArrayList<IParameterValue>();
+	
+	/*
+	 * The exception that implied the execution termination
+	 */
+	public IValue exception;
 
 	public abstract void execute();
 
+	public void propagateException(IValue exception) {
+		this.exception = exception;
+	}
+	
+	@Override
+	public IValue getException() {
+		return exception;
+	}
+	
 	public void terminate() {
 		// Terminate an ongoing execution. By default, do nothing.
 		return;

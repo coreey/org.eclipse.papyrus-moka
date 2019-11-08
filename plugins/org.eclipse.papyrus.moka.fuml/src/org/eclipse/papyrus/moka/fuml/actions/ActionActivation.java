@@ -21,19 +21,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.actions.IActionActivation;
-import org.eclipse.papyrus.moka.fuml.actions.IPinActivation;
 import org.eclipse.papyrus.moka.fuml.activities.ActivityEdgeInstance;
 import org.eclipse.papyrus.moka.fuml.activities.ActivityNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.ControlToken;
+import org.eclipse.papyrus.moka.fuml.activities.ExceptionHandlerActivation;
 import org.eclipse.papyrus.moka.fuml.activities.ForkNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityEdgeInstance;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivationGroup;
+import org.eclipse.papyrus.moka.fuml.activities.IExceptionHandlerActivation;
 import org.eclipse.papyrus.moka.fuml.activities.IObjectToken;
 import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.activities.ObjectToken;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
+import org.eclipse.papyrus.moka.fuml.loci.IChoiceStrategy;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.BooleanValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
@@ -41,6 +42,7 @@ import org.eclipse.papyrus.moka.fuml.structuredclassifiers.ILink;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ConditionalNode;
+import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LoopNode;
@@ -50,24 +52,30 @@ import org.eclipse.uml2.uml.UMLFactory;
 
 public abstract class ActionActivation extends ActivityNodeActivation implements IActionActivation {
 
+	protected List<IExceptionHandlerActivation> exceptionHandlerActivations = new ArrayList<IExceptionHandlerActivation>();
+
 	/*
-	 * The activations of the pins owned by the action of this action
-	 * activation.
+	 * The activations of the pins owned by the action of this action activation.
 	 */
 	public List<IPinActivation> pinActivations = new ArrayList<IPinActivation>();
 
 	/*
-	 * Whether this action activation is already firing. This attribute is only
-	 * used if the action for this action activation has isLocallyReentrant =
-	 * false (the default). If isLocallyReentrant=true, then firing always just
-	 * remains false.
+	 * Whether this action activation is already firing. This attribute is only used
+	 * if the action for this action activation has isLocallyReentrant = false (the
+	 * default). If isLocallyReentrant=true, then firing always just remains false.
 	 */
 	public Boolean firing;
 
 	@Override
 	public void run() {
-		// Run this action activation and any outoging fork node attached to it.
+		// Run this action activation and any outgoing fork node attached to it.
 		super.run();
+		for (ExceptionHandler handler : ((Action) node).getHandlers()) {
+			IExceptionHandlerActivation handlerActivation = new ExceptionHandlerActivation();
+			handlerActivation.setDeclaringActionActivation(this);
+			handlerActivation.setHandler(handler);
+			exceptionHandlerActivations.add(handlerActivation);
+		}
 		if (this.outgoingEdges.size() > 0) {
 			this.outgoingEdges.get(0).getTarget().run();
 		}
@@ -120,7 +128,8 @@ public abstract class ActionActivation extends ActivityNodeActivation implements
 		// offered to it.
 		do {
 			Debug.println("[fire] Action " + this.node.getName() + "...");
-			Debug.println("[event] Fire activity=" + this.getActivityExecution().getBehavior().getName() + " action=" + this.node.getName());
+			Debug.println("[event] Fire activity=" + this.getActivityExecution().getBehavior().getName() + " action="
+					+ this.node.getName());
 			this.doAction();
 			incomingTokens = this.completeAction();
 		} while (incomingTokens.size() > 0);
@@ -245,7 +254,8 @@ public abstract class ActionActivation extends ActivityNodeActivation implements
 		IActivityNodeActivation forkNodeActivation;
 		if (this.outgoingEdges.size() == 0) {
 			forkNodeActivation = new ForkNodeActivation();
-			forkNodeActivation.setRunning(false); // fUML12-10 certain boolean flags are not properly initialized in come cases
+			forkNodeActivation.setRunning(false); // fUML12-10 certain boolean flags are not properly initialized in
+													// come cases
 			IActivityEdgeInstance newEdge = new ActivityEdgeInstance();
 			super.addOutgoingEdge(newEdge);
 			forkNodeActivation.addIncomingEdge(newEdge);
@@ -384,6 +394,46 @@ public abstract class ActionActivation extends ActivityNodeActivation implements
 	}
 
 	protected static List<OutputPin> getOutputs(Action action) {
-		return action instanceof LoopNode ? ((LoopNode) action).getResults() : action instanceof ConditionalNode ? ((ConditionalNode) action).getResults() : action.getOutputs();
+		return action instanceof LoopNode ? ((LoopNode) action).getResults()
+				: action instanceof ConditionalNode ? ((ConditionalNode) action).getResults() : action.getOutputs();
+	}
+
+	@Override
+	public void propagateException(IValue exception) {
+		List<IExceptionHandlerActivation> matchingHandlers = getExceptionHandler(exception);
+		if (matchingHandlers.isEmpty()) {
+			terminate();
+			if (getGroup() != null) {
+				if (getGroup().getContainingActivation() != null) {
+					getGroup().getContainingActivation().propagateException(exception);
+				} else {
+					getGroup().getActivityExecution().propagateException(exception);
+					getGroup().getActivityExecution().terminate();
+				}
+			}
+		} else {
+			IChoiceStrategy strategy = (IChoiceStrategy) getExecutionLocus().getFactory().getStrategy("choice");
+			if (strategy != null) {
+				catchException(exception, matchingHandlers.get(strategy.choose(matchingHandlers.size()) - 1));
+			}
+		}
+	}
+
+	@Override
+	public void catchException(IValue exception, IExceptionHandlerActivation handler) {
+		if (exception != null && handler != null) {
+			handler.handle(exception);
+		}
+	}
+
+	@Override
+	public List<IExceptionHandlerActivation> getExceptionHandler(IValue exception) {
+		List<IExceptionHandlerActivation> matchingHandlers = new ArrayList<IExceptionHandlerActivation>();
+		for (IExceptionHandlerActivation handler : exceptionHandlerActivations) {
+			if (handler.match(exception)) {
+				matchingHandlers.add(handler);
+			}
+		}
+		return matchingHandlers;
 	}
 }

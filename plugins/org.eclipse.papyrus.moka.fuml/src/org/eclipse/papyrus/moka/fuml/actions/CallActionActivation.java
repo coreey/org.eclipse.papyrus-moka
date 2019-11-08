@@ -24,6 +24,7 @@ import org.eclipse.papyrus.moka.fuml.actions.ICallActionActivation;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.ParameterValue;
+import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.uml2.uml.CallAction;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.OutputPin;
@@ -54,6 +55,7 @@ public abstract class CallActionActivation extends InvocationActionActivation im
 			List<Parameter> parameters = callExecution.getBehavior().getOwnedParameters();
 			int pinNumber = 1;
 			int i = 1;
+			IValue exception = null;
 			while (i <= parameters.size()) {
 				Parameter parameter = parameters.get(i - 1);
 				if (parameter.getDirection() == ParameterDirectionKind.IN_LITERAL | parameter.getDirection() == ParameterDirectionKind.INOUT_LITERAL) {
@@ -66,22 +68,27 @@ public abstract class CallActionActivation extends InvocationActionActivation im
 				i = i + 1;
 			}
 			callExecution.execute();
-			List<IParameterValue> outputParameterValues = callExecution.getOutputParameterValues();
-			pinNumber = 1;
-			i = 1;
-			while (i <= parameters.size()) {
-				Parameter parameter = parameters.get(i - 1);
-				if ((parameter.getDirection() == ParameterDirectionKind.INOUT_LITERAL) | (parameter.getDirection() == ParameterDirectionKind.OUT_LITERAL) | (parameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL)) {
-					for (int j = 0; j < outputParameterValues.size(); j++) {
-						IParameterValue outputParameterValue = outputParameterValues.get(j);
-						if (outputParameterValue.getParameter() == parameter) {
-							OutputPin resultPin = resultPins.get(pinNumber - 1);
-							this.putTokens(resultPin, outputParameterValue.getValues());
+			exception = callExecution.getException();
+			if(callExecution.getException() != null) {
+				propagateException(exception);
+			} else {
+				List<IParameterValue> outputParameterValues = callExecution.getOutputParameterValues();
+				pinNumber = 1;
+				i = 1;
+				while (i <= parameters.size()) {
+					Parameter parameter = parameters.get(i - 1);
+					if ((parameter.getDirection() == ParameterDirectionKind.INOUT_LITERAL) | (parameter.getDirection() == ParameterDirectionKind.OUT_LITERAL) | (parameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL)) {
+						for (int j = 0; j < outputParameterValues.size(); j++) {
+							IParameterValue outputParameterValue = outputParameterValues.get(j);
+							if (outputParameterValue.getParameter() == parameter) {
+								OutputPin resultPin = resultPins.get(pinNumber - 1);
+								this.putTokens(resultPin, outputParameterValue.getValues());
+							}
 						}
+						pinNumber = pinNumber + 1;
 					}
-					pinNumber = pinNumber + 1;
+					i = i + 1;
 				}
-				i = i + 1;
 			}
 			callExecution.destroy();
 			this.removeCallExecution(callExecution);

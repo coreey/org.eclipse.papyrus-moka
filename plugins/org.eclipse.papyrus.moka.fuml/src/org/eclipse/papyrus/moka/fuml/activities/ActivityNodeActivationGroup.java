@@ -24,11 +24,6 @@ import org.eclipse.papyrus.moka.fuml.actions.IActionActivation;
 import org.eclipse.papyrus.moka.fuml.actions.IExpansionNodeActivation;
 import org.eclipse.papyrus.moka.fuml.actions.IPinActivation;
 import org.eclipse.papyrus.moka.fuml.actions.IStructuredActivityNodeActivation;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityEdgeInstance;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityExecution;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivationGroup;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityParameterNodeActivation;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.ActivityEdge;
@@ -49,29 +44,31 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 	public List<IActivityNodeActivation> nodeActivations = new ArrayList<IActivityNodeActivation>();
 
 	/*
-	 * The activity execution to which this group belongs. (This will be empty
-	 * if the group is for a structured activity node activation.)
+	 * The activity execution to which this group belongs. (This will be empty if
+	 * the group is for a structured activity node activation.)
 	 */
 	public IActivityExecution activityExecution;
 
 	/*
-	 * The structured activity node activation to which this group belongs.
-	 * (This will be empty if the group is for an activity execution.)
+	 * The structured activity node activation to which this group belongs. (This
+	 * will be empty if the group is for an activity execution.)
 	 */
 	public IStructuredActivityNodeActivation containingNodeActivation;
 
 	/*
-	 * Activity node activations in this activation group that are suspended
-	 * waiting for an event occurrence. If an activation group has a containing
-	 * node activation and any suspended activations, then the containing node
-	 * activation will also be suspended.
+	 * Activity node activations in this activation group that are suspended waiting
+	 * for an event occurrence. If an activation group has a containing node
+	 * activation and any suspended activations, then the containing node activation
+	 * will also be suspended.
 	 */
 	public List<IActivityNodeActivation> suspendedActivations = new ArrayList<IActivityNodeActivation>();
 
 	public void run(List<IActivityNodeActivation> activations) {
-		// Run the given node activations. 
-		// Then concurrently send offers to all input activity parameter node activations (if any). 
-		// Finally, concurrently send offers to all activations of other kinds of nodes that have 
+		// Run the given node activations.
+		// Then concurrently send offers to all input activity parameter node
+		// activations (if any).
+		// Finally, concurrently send offers to all activations of other kinds of nodes
+		// that have
 		// no incoming edges with the given set (if any).
 		for (int i = 0; i < activations.size(); i++) {
 			IActivityNodeActivation activation = activations.get(i);
@@ -83,7 +80,7 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 		for (int i = 0; i < activations.size(); i++) {
 			IActivityNodeActivation activation = activations.get(i);
 			Debug.println("[run] Checking node " + activation.getNode().getName() + "...");
-			if (!(activation instanceof IPinActivation |activation instanceof IExpansionNodeActivation)) {
+			if (!(activation instanceof IPinActivation | activation instanceof IExpansionNodeActivation)) {
 				boolean isEnabled = this.checkIncomingEdges(activation.getIncomingEdges(), activations);
 				// For an action activation, also consider incoming edges to
 				// input pins
@@ -92,7 +89,8 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 					int j = 1;
 					while (j <= inputPins.size() & isEnabled) {
 						InputPin inputPin = inputPins.get(j - 1);
-						List<IActivityEdgeInstance> inputEdges = ((IActionActivation) activation).getPinActivation(inputPin).getIncomingEdges();
+						List<IActivityEdgeInstance> inputEdges = ((IActionActivation) activation)
+								.getPinActivation(inputPin).getIncomingEdges();
 						isEnabled = this.checkIncomingEdges(inputEdges, activations);
 						j = j + 1;
 					}
@@ -100,17 +98,17 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 				if (isEnabled) {
 					Debug.println("[run] Node " + activation.getNode().getName() + " is enabled.");
 					if (activation instanceof ActivityParameterNodeActivation) {
-					    enabledParameterNodeActivations.add(activation);
+						enabledParameterNodeActivations.add(activation);
 					} else {
-					    enabledOtherActivations.add(activation);
+						enabledOtherActivations.add(activation);
 					}
 				}
 			}
 		}
 		// *** Send offers to all enabled activity parameter nodes concurrently. ***
 		for (Iterator<IActivityNodeActivation> i = enabledParameterNodeActivations.iterator(); i.hasNext();) {
-		    IActivityNodeActivation activation = (IActivityNodeActivation) i.next();
-		    activation.receiveOffer();
+			IActivityNodeActivation activation = (IActivityNodeActivation) i.next();
+			activation.receiveOffer();
 		}
 		// Debug.println("[run] " + enabledActivations.size() +
 		// " node(s) are enabled.");
@@ -122,7 +120,8 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 		}
 	}
 
-	public Boolean checkIncomingEdges(List<IActivityEdgeInstance> incomingEdges, List<IActivityNodeActivation> activations) {
+	public Boolean checkIncomingEdges(List<IActivityEdgeInstance> incomingEdges,
+			List<IActivityNodeActivation> activations) {
 		// Check if any incoming edges have a source in a given set of
 		// activations.
 		int j = 1;
@@ -178,7 +177,7 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 		// group and create edge instances between them.
 		for (int i = 0; i < nodes.size(); i++) {
 			ActivityNode node = nodes.get(i);
-			Debug.println("[createNodeActivations] Creating a node activation for " + node.getName() + "...");
+			System.out.println("[createNodeActivations] Creating a node activation for " + node.getName() + "...");
 			this.createNodeActivation(node);
 		}
 	}
@@ -189,7 +188,8 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 
 		// fUML12-10 certain boolean flags are not properly initialized in come cases
 
-		IActivityNodeActivation activation = (IActivityNodeActivation) (this.getActivityExecution().getLocus().getFactory().instantiateVisitor(node));
+		IActivityNodeActivation activation = (IActivityNodeActivation) (this.getActivityExecution().getLocus()
+				.getFactory().instantiateVisitor(node));
 		activation.initialize(node, this);
 		this.nodeActivations.add(activation);
 		activation.createNodeActivations();
@@ -223,9 +223,11 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 
 		for (int i = 0; i < edges.size(); i++) {
 			ActivityEdge edge = edges.get(i);
-			Debug.println("[createEdgeInstances] Creating an edge instance from " + edge.getSource().getName() + " to " + edge.getTarget().getName() + ".");
+			Debug.println("[createEdgeInstances] Creating an edge instance from " + edge.getSource().getName() + " to "
+					+ edge.getTarget().getName() + ".");
 			// Note creation of visitors for edge instance is made by the execution factory
-			IActivityEdgeInstance edgeInstance = (IActivityEdgeInstance) (this.getActivityExecution().getLocus().getFactory().instantiateVisitor(edge));
+			IActivityEdgeInstance edgeInstance = (IActivityEdgeInstance) (this.getActivityExecution().getLocus()
+					.getFactory().instantiateVisitor(edge));
 			edgeInstance.setEdge(edge);
 			edgeInstance.setGroup(this);
 			this.edgeInstances.add(edgeInstance);
@@ -340,7 +342,7 @@ public class ActivityNodeActivationGroup implements IActivityNodeActivationGroup
 
 	public void setActivityExecution_(IActivityExecution execution) {
 		this.activityExecution = execution;
-		
+
 	}
 
 	public IActivityExecution getActivityExecution_() {

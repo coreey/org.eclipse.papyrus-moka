@@ -36,7 +36,7 @@ public aspect NullTokenPropagationProfiler extends AbstractActivityNodeDebugAssi
 	after(OutputPinActivation objectNode) returning(List<IToken> tokens): getUnofferedTokens(objectNode){
 		if (checkAssistantValidity()) {
 			if (tokens.isEmpty() && ((OutputPin) objectNode.getNode()).getLower() > 0) {
-				throw new DebugAssistantException(this, objectNode);
+				//throw new DebugAssistantException(this, objectNode);
 			}
 		}
 	}

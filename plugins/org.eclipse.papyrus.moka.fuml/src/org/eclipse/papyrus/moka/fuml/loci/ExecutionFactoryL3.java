@@ -21,6 +21,7 @@ import org.eclipse.papyrus.moka.fuml.actions.ConditionalNodeActivation;
 import org.eclipse.papyrus.moka.fuml.actions.ExpansionNodeActivation;
 import org.eclipse.papyrus.moka.fuml.actions.ExpansionRegionActivation;
 import org.eclipse.papyrus.moka.fuml.actions.LoopNodeActivation;
+import org.eclipse.papyrus.moka.fuml.actions.RaiseExceptionActionActivation;
 import org.eclipse.papyrus.moka.fuml.actions.ReadExtentActionActivation;
 import org.eclipse.papyrus.moka.fuml.actions.ReadIsClassifiedObjectActionActivation;
 import org.eclipse.papyrus.moka.fuml.actions.ReclassifyObjectActionActivation;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExpansionNode;
 import org.eclipse.uml2.uml.ExpansionRegion;
 import org.eclipse.uml2.uml.LoopNode;
+import org.eclipse.uml2.uml.RaiseExceptionAction;
 import org.eclipse.uml2.uml.ReadExtentAction;
 import org.eclipse.uml2.uml.ReadIsClassifiedObjectAction;
 import org.eclipse.uml2.uml.ReclassifyObjectAction;
@@ -95,6 +97,8 @@ public class ExecutionFactoryL3 extends ExecutionFactoryL2 {
 			visitor = new ReplyActionActivation();
  		} else if (element instanceof ReduceAction) {
 			visitor = new ReduceActionActivation();
+		} else if(element instanceof RaiseExceptionAction) {
+			visitor = new RaiseExceptionActionActivation();
 		} else {
 			visitor = super.instantiateVisitor(element);
 		}

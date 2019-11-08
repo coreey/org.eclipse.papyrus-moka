@@ -421,4 +421,14 @@ public abstract class UMLTaskExecution extends TaskExecution implements IUMLTask
 
 	}
 	
+	@Override
+	public void propagateException(IValue exception) {
+		
+	}
+	
+	@Override
+	public IValue getException() {
+		return null;
+	}
+	
 }

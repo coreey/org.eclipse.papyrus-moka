@@ -17,6 +17,7 @@ package org.eclipse.papyrus.moka.fuml.commonbehavior;
 
 import java.util.List;
 
+import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Parameter;
@@ -36,6 +37,10 @@ public interface IExecution extends IObject_ {
 	public Behavior getBehavior();
 
 	public void terminate();
+	
+	public void propagateException(IValue exception);
+	
+	public IValue getException();
 
 	public void setContext(IObject_ context);
 
