@@ -85,27 +85,6 @@ self.concurrency = CallConcurrencyKind::sequential
              </target>
           </constraint>
 				<constraint
-                class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlClassAbstractClassConstraint"
-                id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_class_abstract_class"
-                lang="java"
-                mode="Batch"
-                name="fuml_class_abstract_class"
-                severity="ERROR"
-                statusCode="1">
-             <message>
-                [Moka][fuml] {0}
-             </message>
-             <description>
-                
-Only an abstract class may have abstract behavioral features.
-self.member->select(oclIsKindOf(BehavioralFeature))->exists(isAbstract) implies self.isAbstract
-
-             </description>
-             <target
-                   class="Class">
-             </target>
-          </constraint>
-				<constraint
                 class="org.eclipse.papyrus.moka.fuml.validation.constraints.FumlClassActiveClassSpecializationConstraint"
                 id="org.eclipse.papyrus.moka.fuml.validation.constraint.fuml_class_active_class_specialization"
                 lang="java"
