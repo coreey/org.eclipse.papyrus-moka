@@ -19,6 +19,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: org.eclipse.papyrus.moka.tracepoint.service
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.papyrus.moka.tracepoint.service,
- org.eclipse.papyrus.moka.tracepoint.service.commands,
  org.eclipse.papyrus.moka.tracepoint.service.dialogs,
  org.eclipse.papyrus.moka.tracepoint.service.preferences

@@ -23,7 +23,7 @@ import org.eclipse.papyrus.infra.emf.utils.BusinessModelResolver;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * An abstract handler, used as a basis for ToggleBreakpointActivationHandler, and ToggleBreakpointHandler.
+ * An abstract handler, used as a basis for DebugAsHandler, and RunAsHandler.
  *
  */
 public abstract class MokaAbstractHandler extends AbstractHandler {

@@ -14,16 +14,16 @@
  *
  *****************************************************************************/
 
-package org.eclipse.papyrus.moka.tracepoint.service.handler;
+package org.eclipse.papyrus.moka.ui.breakpoint.handlers;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
-import org.eclipse.papyrus.moka.tracepoint.service.commands.ToggleTracepointActivationCommand;
+import org.eclipse.papyrus.moka.ui.breakpoint.commands.ToggleTracepointActivationCommand;
 
 /**
  * Handler for toggling tracepoint activation. Delegates to associated command
  */
-public class ToggleTracepointActivationHandler extends AbstractCommandHandler {
+public class ToggleTracepointActivationHandler extends AbstractTraceAndDebugCommandHandler {
 
 	@Override
 	protected Command getCommand() {

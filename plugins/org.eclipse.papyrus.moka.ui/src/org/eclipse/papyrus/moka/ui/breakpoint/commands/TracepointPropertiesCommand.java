@@ -14,7 +14,7 @@
  *
  *****************************************************************************/
 
-package org.eclipse.papyrus.moka.tracepoint.service.commands;
+package org.eclipse.papyrus.moka.ui.breakpoint.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IMarker;
@@ -30,8 +30,7 @@ import org.eclipse.papyrus.moka.tracepoint.service.dialogs.TraceActionSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.uml.Element;
 
-
-public class TracepointPropertiesCommand extends AbstractTracepointCommand {
+public class TracepointPropertiesCommand extends AbstractTraceAndDebugCommand {
 
 	public TracepointPropertiesCommand(EObject selectedElement) {
 		super("Tracepoint properties", TransactionUtil.getEditingDomain(selectedElement), selectedElement); //$NON-NLS-1$

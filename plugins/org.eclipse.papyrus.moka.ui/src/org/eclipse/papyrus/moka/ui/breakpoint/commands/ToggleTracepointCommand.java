@@ -13,7 +13,7 @@
  *  Ansgar Radermacher (CEA LIST) - Initial API and implementation
  *
  *****************************************************************************/
-package org.eclipse.papyrus.moka.tracepoint.service.commands;
+package org.eclipse.papyrus.moka.ui.breakpoint.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IMarker;
@@ -28,7 +28,7 @@ import org.eclipse.papyrus.moka.tracepoint.service.TraceMechanism;
 import org.eclipse.papyrus.moka.tracepoint.service.TracepointConstants;
 
 
-public class ToggleTracepointCommand extends AbstractTracepointCommand {
+public class ToggleTracepointCommand extends AbstractTraceAndDebugCommand {
 
 	public ToggleTracepointCommand(EObject selectedElement) {
 		super("Toggle tracepoint", TransactionUtil.getEditingDomain(selectedElement), selectedElement); //$NON-NLS-1$

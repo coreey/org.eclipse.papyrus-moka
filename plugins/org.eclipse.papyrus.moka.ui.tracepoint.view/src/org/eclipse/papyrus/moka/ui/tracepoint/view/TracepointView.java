@@ -54,6 +54,7 @@ import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.papyrus.moka.tracepoint.service.MarkerUtils;
+import org.eclipse.papyrus.moka.tracepoint.service.TraceMechanism;
 import org.eclipse.papyrus.moka.tracepoint.service.TraceState;
 import org.eclipse.papyrus.moka.tracepoint.service.TracepointConstants;
 import org.eclipse.papyrus.moka.tracepoint.service.dialogs.TraceActionSelection;
@@ -473,6 +474,12 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 		actionTraceSelect.setText("Trace Action"); //$NON-NLS-1$
 		actionTraceSelect.setToolTipText("Select Trace Action"); //$NON-NLS-1$
 		actionTraceSelect.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+
+		if (TraceMechanism.getTraceMechanisms().isEmpty()) {
+			actionTraceSelect.setEnabled(false);
+			String tooltip = actionTraceSelect.getToolTipText();
+			actionTraceSelect.setToolTipText(tooltip + " (no plugins provide trace extension mechanism)"); //$NON-NLS-1$
+		}
 	}
 
 	protected void hookDoubleClickAction() {

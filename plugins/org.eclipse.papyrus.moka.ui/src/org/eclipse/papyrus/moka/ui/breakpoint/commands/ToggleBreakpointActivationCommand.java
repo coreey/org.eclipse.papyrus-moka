@@ -15,7 +15,7 @@
  *
  *****************************************************************************/
 
-package org.eclipse.papyrus.moka.tracepoint.service.commands;
+package org.eclipse.papyrus.moka.ui.breakpoint.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
@@ -35,7 +35,7 @@ import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 /**
  * Command to toggle a breakpoint activation
  */
-public class ToggleBreakpointActivationCommand extends AbstractTracepointCommand {
+public class ToggleBreakpointActivationCommand extends AbstractTraceAndDebugCommand {
 
 	public ToggleBreakpointActivationCommand(EObject selectedElement) {
 		super("Toggle breakpoint activation", TransactionUtil.getEditingDomain(selectedElement), selectedElement); //$NON-NLS-1$

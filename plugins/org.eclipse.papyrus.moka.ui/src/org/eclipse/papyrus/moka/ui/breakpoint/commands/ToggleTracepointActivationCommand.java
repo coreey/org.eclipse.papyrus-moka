@@ -14,7 +14,7 @@
  *
  *****************************************************************************/
 
-package org.eclipse.papyrus.moka.tracepoint.service.commands;
+package org.eclipse.papyrus.moka.ui.breakpoint.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -24,7 +24,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 
 
-public class ToggleTracepointActivationCommand extends AbstractTracepointCommand {
+public class ToggleTracepointActivationCommand extends AbstractTraceAndDebugCommand {
 
 	public ToggleTracepointActivationCommand(EObject selectedElement) {
 		super("Toggle tracepoint activation", TransactionUtil.getEditingDomain(selectedElement), selectedElement); //$NON-NLS-1$

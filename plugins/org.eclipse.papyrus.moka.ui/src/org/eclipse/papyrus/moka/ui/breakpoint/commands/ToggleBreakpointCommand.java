@@ -14,7 +14,7 @@
  *  Pauline DEVILLe (CEA LIST ) - Bug 546467
  *
  *****************************************************************************/
-package org.eclipse.papyrus.moka.tracepoint.service.commands;
+package org.eclipse.papyrus.moka.ui.breakpoint.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
@@ -35,7 +35,7 @@ import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 /**
  * Command to toggle a breakpoint
  */
-public class ToggleBreakpointCommand extends AbstractTracepointCommand {
+public class ToggleBreakpointCommand extends AbstractTraceAndDebugCommand {
 
 	public ToggleBreakpointCommand(EObject selectedElement) {
 		super("Toggle Breakpoint", TransactionUtil.getEditingDomain(selectedElement), selectedElement); //$NON-NLS-1$

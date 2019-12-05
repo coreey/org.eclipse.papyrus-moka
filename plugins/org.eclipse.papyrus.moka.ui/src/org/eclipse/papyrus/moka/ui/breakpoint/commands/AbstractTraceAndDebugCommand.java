@@ -13,7 +13,7 @@
  *  Ansgar Radermarcher (CEA LIST) - Initial API and implementation
  *
  *****************************************************************************/
-package org.eclipse.papyrus.moka.tracepoint.service.commands;
+package org.eclipse.papyrus.moka.ui.breakpoint.commands;
 
 import java.util.Collections;
 
@@ -44,7 +44,7 @@ import org.eclipse.uml2.uml.State;
  *
  * @author Ansgar Radermacher (CEA LIST)
  */
-abstract public class AbstractTracepointCommand extends AbstractTransactionalCommand {
+abstract public class AbstractTraceAndDebugCommand extends AbstractTransactionalCommand {
 
 	protected TransactionalEditingDomain domain;
 
@@ -60,7 +60,7 @@ abstract public class AbstractTracepointCommand extends AbstractTransactionalCom
 	 * @param selectedElement
 	 *            a selected element
 	 */
-	public AbstractTracepointCommand(String label, TransactionalEditingDomain domain, EObject selectedElement) {
+	public AbstractTraceAndDebugCommand(String label, TransactionalEditingDomain domain, EObject selectedElement) {
 		super(domain, label, Collections.EMPTY_LIST);
 		this.domain = domain;
 		this.selectedElement = selectedElement;
