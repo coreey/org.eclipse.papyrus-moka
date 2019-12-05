@@ -2,15 +2,5 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="org.eclipse.papyrus.moka.fuml.services" name="SystemServices" schema="schema/org.eclipse.papyrus.moka.fuml.services.exsd"/>
-   <extension
-         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
-      <library
-            description="fUML Semantics"
-            iconpath="resources/icons/moka_icon.png"
-            name="fUMLSemantics"
-            path="pathmap://PAPYRUS_MOKA_FUML_TYPES/fUML_Semantics.uml"
-            provider="CEA LIST - 2013">
-      </library>
-   </extension>
 
 </plugin>

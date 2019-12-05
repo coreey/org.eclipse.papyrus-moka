@@ -12,6 +12,7 @@
          point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
       <library
             description="Assertions specified with fUML"
+            iconpath="resources/icons/moka_icon.png"
             name="AssertionLibrary"
             path="pathmap://PAPYRUS_ASSERTION_LIBRARY/AssertionLibrary.uml"
             provider="CEA LIST">

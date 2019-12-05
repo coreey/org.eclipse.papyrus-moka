@@ -8,25 +8,21 @@
             target="platform:/plugin/org.eclipse.papyrus.moka.fuml.statemachines/resources/">
       </mapping>
    </extension>
-   <extension
-         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
-      <library
-            description="Precise Semantics of UML StateMachines"
-            iconpath="resources/icons/moka_icon.png"
-            name="StateMachines Semantics"
-            path="pathmap://PAPYRUS_MOKA_FUML_STATEMACHINES/UML_StateMachines_Semantics.uml"
-            provider="CEA LIST - 2014">
-      </library>
-   </extension>
     <extension
-         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
-      <library
-            description="UML StateMachines Test Suite"
-            iconpath="resources/icons/moka_icon.png"
-            name="StateMachines Test Suite"
-            path="pathmap://PAPYRUS_MOKA_FUML_STATEMACHINES/tests/StateMachines_TestSuite.uml"
-            provider="CEA LIST - 2014">
-      </library>
-   </extension>
+          point="org.eclipse.emf.common.ui.examples">
+       <example
+             id="org.eclipse.papyrus.moka.pssm.examples.PSSMTestSuite"
+             pageImage="resources/icons/moka_icon.png"
+             wizardID="org.eclipse.papyrus.moka.kernel.wizard.examples">
+          <projectDescriptor
+                contentURI="resources/tests/"
+                description="This example is based on the PSSM Test Suite"
+                name="StateMachineTestSuite">
+          </projectDescriptor>
+          <fileToOpen
+                location="StateMachineTestSuite/PSSM_TestSuite.di">
+          </fileToOpen>
+       </example>
+    </extension>
 
 </plugin>

@@ -21,13 +21,5 @@
             target="platform:/plugin/org.eclipse.papyrus.moka.trace.model/resources/model/">
       </mapping>
    </extension>
-   <extension
-         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
-      <library
-            iconpath="resources/icons/moka_icon.png"
-            name="Moka Trace Metamodel"
-            path="pathmap://MOKA_TRACE/mokatraceservice.uml">
-      </library>
-   </extension>
 
 </plugin>

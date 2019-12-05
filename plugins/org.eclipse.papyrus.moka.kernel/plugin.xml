@@ -23,5 +23,18 @@
             class="org.eclipse.papyrus.moka.kernel.KernelPackage"
             genModel="resources/models/Kernel.genmodel"/>
    </extension>
+    <extension
+          point="org.eclipse.ui.newWizards">
+       <wizard
+             category="org.eclipse.ui.Examples/org.eclipse.papyrus.examples"
+             class="org.eclipse.papyrus.uml.diagram.wizards.wizards.PapyrusExampleInstallerWizard"
+             finalPerspective="org.eclipse.papyrus.infra.core.perspective"
+             icon="resources/icons/moka_icon.png"
+             id="org.eclipse.papyrus.moka.kernel.wizard.examples"
+             name="Papyrus Moka Examples"
+             preferredPerspectives="org.eclipse.papyrus.infra.core.perspective,org.eclipse.papyrus.moka.ui.debug.perspectives.moka.debug"
+             project="true">
+       </wizard>
+    </extension>
 
 </plugin>
