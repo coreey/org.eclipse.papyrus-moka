@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLTaskExecutionFactory;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.ICallEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Reference;
@@ -145,7 +143,7 @@ public class CallEventExecution extends Execution implements ICallEventExecution
 		// Wait for an indeterminate amount of time to allow other concurrent
 		// executions to proceed.
 		// [There is no further formal specification for this operation.]
-		IExecutionLoop executionLoop = UMLTaskExecutionFactory.getFactory().getExecutionLoop();
+		IExecutionLoop executionLoop = UMLTaskExecutionFactory.getInstance().getExecutionLoop();
 		if(executionLoop != null) {
 			executionLoop.step();
 		}

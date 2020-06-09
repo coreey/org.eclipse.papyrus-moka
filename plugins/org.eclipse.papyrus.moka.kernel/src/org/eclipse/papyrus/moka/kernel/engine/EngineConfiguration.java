@@ -20,10 +20,10 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.moka.kernel.service.ServiceOperatingMode;
-import org.eclipse.uml2.uml.Class;
 
-public class EngineConfiguration {
+public class EngineConfiguration<SourceElementType extends EObject> {
 
 	// The project containing the model to be executed
 	protected IProject project;
@@ -35,7 +35,7 @@ public class EngineConfiguration {
 	protected URI modelURI;
 	
 	// The model element that is used as a starting point for the execution
-	protected Class source;
+	protected SourceElementType source;
 
 	// The list of parameter passed to the execution engine
 	protected Map<String, String> parameters;
@@ -53,13 +53,13 @@ public class EngineConfiguration {
 		parameters = new HashMap<String, String>();
 	}
 
-	public EngineConfiguration(Class src, ServiceOperatingMode m) {
+	public EngineConfiguration(SourceElementType src, ServiceOperatingMode m) {
 		source = src;
 		mode = m;
 		parameters = new HashMap<String, String>();
 	}
 	
-	public EngineConfiguration(EngineConfiguration ec) {
+	public EngineConfiguration(EngineConfiguration<SourceElementType> ec) {
 		source = ec.getExecutionSource();
 		mode = ec.getMode();
 		parameters = new HashMap<String, String>();
@@ -74,11 +74,11 @@ public class EngineConfiguration {
 		tracepointMode = ec.isTracepointMode();
 	}
 
-	public void setExecutionSource(final Class src) {
+	public void setExecutionSource(final SourceElementType src) {
 		source = src;
 	}
 
-	public Class getExecutionSource() {
+	public SourceElementType getExecutionSource() {
 		return source;
 	}
 

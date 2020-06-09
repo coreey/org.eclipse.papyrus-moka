@@ -30,28 +30,28 @@ public abstract class ExecutionEngine implements IExecutionEngine {
 	/**
 	 * Initialization task message
 	 */
-	private static final String INITIALIZATION_TASK = "Initialize execution engine resources";
-	
+	private static final String INITIALIZATION_TASK = "Initialize execution engine resources"; //$NON-NLS-1$
+
 	/**
 	 * Dispose task message
 	 */
-	private static final String DISPOSE_TASK = "Dispose execution engine resources";
-	
+	private static final String DISPOSE_TASK = "Dispose execution engine resources"; //$NON-NLS-1$
+
 	/**
 	 * Engine ID
 	 */
 	protected String identifier;
-	
+
 	/**
 	 * Configuration used to parameterize the engine
 	 */
-	protected EngineConfiguration configuration;
-	
+	protected EngineConfiguration<?> configuration;
+
 	/**
 	 * Status associated with this engine
 	 */
 	protected ExecutionEngineStatus status;
-	
+
 	/**
 	 * Enable safe access and update of the status
 	 */
@@ -61,23 +61,23 @@ public abstract class ExecutionEngine implements IExecutionEngine {
 		status = ExecutionEngineStatus.NONE;
 		statusLock = new ReentrantLock(true);
 	}
-	
+
 	@Override
 	public void setID(String id) {
 		identifier = id;
 	}
-	
+
 	@Override
 	public String getID() {
 		return identifier;
 	}
-	
+
 	protected void setStatus(ExecutionEngineStatus s) {
 		statusLock.lock();
 		status = s;
 		statusLock.unlock();
 	}
-	
+
 	protected ExecutionEngineStatus getStatus() {
 		ExecutionEngineStatus s = null;
 		statusLock.lock();
@@ -85,20 +85,20 @@ public abstract class ExecutionEngine implements IExecutionEngine {
 		statusLock.unlock();
 		return s;
 	}
-	
-	public EngineConfiguration getConfiguration() {
+
+	public EngineConfiguration<?> getConfiguration() {
 		return configuration;
 	}
 
 	/**
 	 * @see {@link IExecutionEngine#run(EngineConfiguration, SubMonitor)}
 	 * 
-	 * Initialize, start and dispose the execution engine.
+	 *      Initialize, start and dispose the execution engine.
 	 * 
-	 * Clients are not intended to override this operation.
+	 *      Clients are not intended to override this operation.
 	 */
 	@Override
-	public void run(final EngineConfiguration configuration, SubMonitor monitor) {
+	public void run(final EngineConfiguration<?> configuration, SubMonitor monitor) throws ExecutionEngineException {
 		setStatus(ExecutionEngineStatus.INITIALIZING);
 		init(configuration, monitor);
 		setStatus(ExecutionEngineStatus.RUNNING);
@@ -113,9 +113,9 @@ public abstract class ExecutionEngine implements IExecutionEngine {
 	 * 
 	 * @param configuration of this engine
 	 * 
-	 * @param monitor to report progress
+	 * @param monitor       to report progress
 	 */
-	protected void init(final EngineConfiguration configuration, SubMonitor monitor) {
+	protected void init(final EngineConfiguration<?> configuration, SubMonitor monitor) {
 		this.configuration = configuration;
 		if (configuration.getMode().equals(ServiceOperatingMode.NORMAL)) {
 			ServiceRegistry registry = ServiceRegistry.getInstance();
@@ -131,7 +131,7 @@ public abstract class ExecutionEngine implements IExecutionEngine {
 	}
 
 	/**
-	 * Start the execution engine. 
+	 * Start the execution engine.
 	 * 
 	 * Clients are intended to override this operation.
 	 * 
@@ -139,7 +139,7 @@ public abstract class ExecutionEngine implements IExecutionEngine {
 	 * 
 	 * @param monitor to report progress
 	 */
-	protected abstract void start(SubMonitor monitor);
+	protected abstract void start(SubMonitor monitor) throws ExecutionEngineException;
 
 	/**
 	 * Stop the execution engine
@@ -175,7 +175,7 @@ public abstract class ExecutionEngine implements IExecutionEngine {
 	public boolean canTerminate() {
 		return false;
 	}
-	
+
 	/**
 	 * see {@link ITerminate#isTerminated()}
 	 */
@@ -183,7 +183,7 @@ public abstract class ExecutionEngine implements IExecutionEngine {
 	public boolean isTerminated() {
 		return getStatus().equals(ExecutionEngineStatus.TERMINATED);
 	}
-	
+
 	/**
 	 * see {@link ITerminate#terminate()}
 	 */

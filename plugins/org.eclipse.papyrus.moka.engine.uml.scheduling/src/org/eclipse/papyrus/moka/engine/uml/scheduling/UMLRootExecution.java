@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2019 CEA LIST and others.
+ * Copyright (c) 2019, 2020 CEA LIST and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -19,63 +19,27 @@ import java.util.List;
 
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionLoop;
-import org.eclipse.uml2.uml.Activity;
-import org.eclipse.uml2.uml.Behavior;
-import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
-import org.eclipse.uml2.uml.StateMachine;
 
-public class UMLRootExecution extends UMLTaskExecution implements IUMLRootExecution{
+public abstract class UMLRootExecution<RootElementType extends Element> extends UMLTaskExecution{
 
 	/**
-	 * Model element considered as the root of the execution
+	 * Model element from which the execution starts
 	 */
-	protected Class root;
+	protected RootElementType root;
 
 	/**
 	 * Root execution parameter values
 	 */
 	protected List<IParameterValue> parameterValues;
 
-	public UMLRootExecution(IExecutionLoop loop) {
+	public UMLRootExecution(IExecutionLoop loop, RootElementType executionRoot) {
 		super(loop);
+		root = executionRoot;
 		parameterValues = new ArrayList<IParameterValue>();
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public void setRoot(Class r) {
-		root = r;
-	}
-
-	/**
-	 * @see {@linkIExecution#setParameterValue(IParameterValue)}
-	 */
-	@Override
-	public Class getRoot() {
-		return root;
-	}
-
-	@Override
-	public boolean canExecute() {
-		if (root != null) {
-			if (!root.isAbstract()) {
-				if (isBehavior()) {
-					if (root instanceof Activity) {
-						return true;
-					} else
-						return root instanceof StateMachine && root.isActive();
-				}
-			} else if (root instanceof Class) {
-				return root.isActive();
-			}
-		}
-		return false;
 	}
 
 	/***
@@ -166,32 +130,6 @@ public class UMLRootExecution extends UMLTaskExecution implements IUMLRootExecut
 			setParameterValue(inputParameterValue);
 		}
 	}
-
-	private boolean isBehavior() {
-		return root instanceof Behavior;
-	}
-
-	/**
-	 * see {@link IExecution#execute()}
-	 * 
-	 * Execution of the root takes place in two situations: (1) the root is active -
-	 * it is either a behavior or a class (2) the root is a behavior Output
-	 * parameter values may only be returned if (2) occurs.
-	 */
-	@Override
-	public void execute() {
-		if (root != null) {
-			if (root.isActive()) {
-				locus.getExecutor().start(root, parameterValues);
-			} else if (isBehavior()) {
-				List<IParameterValue> outputParameterValues = locus.getExecutor().execute((Behavior) root, null,
-						parameterValues);
-				for (IParameterValue outputParameterValue : outputParameterValues) {
-					setParameterValue(outputParameterValue);
-				}
-			}
-		}
-	}
 	
 	@Override
 	public void suspend() {
@@ -203,15 +141,8 @@ public class UMLRootExecution extends UMLTaskExecution implements IUMLRootExecut
 	}
 
 	@Override
-	public IValue new_() {
-		IUMLRootExecution rootExecution = new UMLRootExecution(executionLoop);
-		rootExecution.setRoot(root);
-		return rootExecution;
-	}
-
-	@Override
 	public String toString() {
-		return "RootExecution()";
+		return "RootExecution()"; //$NON-NLS-1$
 	}
 
 }

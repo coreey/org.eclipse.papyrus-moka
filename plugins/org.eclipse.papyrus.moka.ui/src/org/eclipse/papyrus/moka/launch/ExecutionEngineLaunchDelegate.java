@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2013 CEA LIST.
+ * Copyright (c) 2013, 2020 CEA LIST.
  *
  *
  * All rights reserved. This program and the accompanying materials
@@ -30,6 +30,7 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.papyrus.infra.core.resource.ModelSet;
@@ -52,14 +53,22 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.dialogs.PreferencesUtil;
-import org.eclipse.uml2.uml.Class;
 
 public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
 
-	// The project containing the model for which
-	// the execution is launched
+	/**
+	 * The project containing the model from which the execution is started
+	 */
 	protected IProject project;
-	private EngineConfiguration engineConfiguration;
+	
+	/**
+	 * The user defined engine configuration
+	 */
+	private EngineConfiguration<?> engineConfiguration;
+	
+	/**
+	 * The model set containing the model that is executed
+	 */
 	private ModelSet modelSet;
 
 	private boolean canOpenProject(final IExecutionEngineLaunchConfigurationReader reader) {
@@ -90,7 +99,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 		return canRunServer;
 	}
 
-	private boolean isValidationOk(EngineConfiguration engineConfiguration, IProgressMonitor monitor, String engineID) {
+	private boolean isValidationOk(EngineConfiguration<?> engineConfiguration, IProgressMonitor monitor, String engineID) {
 		// If the preference allow to run model validation before the launch, the
 		// validation is run. If there are errors, the system ask the user if he/she
 		// still wants to run the simulation.
@@ -213,10 +222,10 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 					engineProcess.run();
 				}
 			} else {
-				MokaUIActivator.getDefault().getLogger().error("Server execution failed", serverProcess.getError());
+				MokaUIActivator.getDefault().getLogger().error("Server execution failed", serverProcess.getError()); //$NON-NLS-1$
 			}
 		} else {
-			MokaUIActivator.getDefault().getLogger().error("Modeling environment could not be initialized", null);
+			MokaUIActivator.getDefault().getLogger().error("Modeling environment could not be initialized", null); //$NON-NLS-1$
 		}
 	}
 
@@ -224,16 +233,15 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 		return new ExecutionEngineLaunchConfigurationReader(configuration);
 	}
 
-	protected EngineConfiguration createConfiguration(IExecutionEngineLaunchConfigurationReader cr, ModelSet ms) {
+	protected EngineConfiguration<?> createConfiguration(IExecutionEngineLaunchConfigurationReader cr, ModelSet ms) {
 		// Return a configuration containing the information required by
 		// the engine to perform the execution
-		EngineConfiguration ec = new EngineConfiguration();
+		EngineConfiguration<EObject> ec = new EngineConfiguration<EObject>();
 		ec.setProject(project);
 		ec.setModelURI(cr.getModelURI());
 		Resource resource = ms.getResource(cr.getModelURI(), true);
 		if (resource != null) {
-			Class target = (Class) resource.getEObject(cr.getExecutionSourceURI().toString());
-			ec.setExecutionSource(target);
+			ec.setExecutionSource(resource.getEObject(cr.getExecutionSourceURI().toString()));
 		}
 		ec.setTraceEnabled(cr.isTraceServiceEnabled());
 		ec.setTraceFilePath(cr.getTraceFile());
@@ -268,7 +276,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 	}
 
 	protected final ExecutionEngineProcess initializeExecutionProcess(ILaunch l,
-			IExecutionEngineLaunchConfigurationReader cr, EngineConfiguration ec) {
+			IExecutionEngineLaunchConfigurationReader cr, EngineConfiguration<?> ec) {
 		ExecutionEngineProcess process = new ExecutionEngineProcess(l, cr.getEngine(), ec);
 		ExecutionEngineDebugTarget debugTarget = new ExecutionEngineDebugTarget(l, process);
 		l.addProcess(process);

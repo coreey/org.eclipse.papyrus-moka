@@ -129,7 +129,8 @@ public class UMLEventDispatchLoopExecution extends UMLTaskExecution implements I
 			DebugAssistantException debugAssistantException) {
 		Suspension suspension = new Suspension(debugAssistantException.getDebugAssistant(),
 				SuspensionReasons.ERROR_DETECTION);
-		if (executionEngineService.shouldContinueInDebugAssistant(debugAssistantException.getDebugAssistant().getAssistantID())) {
+		if (executionEngineService
+				.shouldContinueInDebugAssistant(debugAssistantException.getDebugAssistant().getAssistantID())) {
 			Element node = debugAssistantException.getVisitorNode();
 			ISemanticVisitor visitor = debugAssistantException.getVisitor();
 			if (node != null) {
@@ -202,12 +203,11 @@ public class UMLEventDispatchLoopExecution extends UMLTaskExecution implements I
 
 	@Override
 	public String toString() {
-		return "EventDispatchLoopExecution(" + dispatchLoop + ")";
+		return "EventDispatchLoopExecution(" + dispatchLoop + ")"; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	@Override
 	public void suspend() {
-		System.out.println("Suspend -> " + this);
 		if (!dispatchLoopLock.isHeldByCurrentThread()) {
 			dispatchLoopLock.lock();
 		}
@@ -223,7 +223,6 @@ public class UMLEventDispatchLoopExecution extends UMLTaskExecution implements I
 
 	@Override
 	public void resume() {
-		System.out.println("Resume -> " + this);
 	}
 
 	@Override

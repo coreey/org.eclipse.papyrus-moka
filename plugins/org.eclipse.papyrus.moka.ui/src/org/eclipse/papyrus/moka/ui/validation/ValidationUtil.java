@@ -48,6 +48,8 @@ import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.validation.ValidationDescriptor;
 import org.eclipse.swt.widgets.Display;
 
+import org.eclipse.uml2.uml.Element;
+
 @SuppressWarnings("restriction")
 public class ValidationUtil {
 
@@ -63,7 +65,7 @@ public class ValidationUtil {
 		ModelValidationService.getInstance().loadXmlConstraintDeclarations();
 	}
 
-	public static boolean validateModel(EngineConfiguration engineConfiguration, IProgressMonitor monitor,
+	public static boolean validateModel(EngineConfiguration<?> engineConfiguration, IProgressMonitor monitor,
 			String engineID) {
 		// This method run the validation and should return true if the simulation
 		// should continue of false otherwise.
@@ -79,7 +81,7 @@ public class ValidationUtil {
 				.getInstance().getValidationDescriptors(engineID);
 		dialogResult = true;
 		if (validationDescriptors != null) {
-			Diagnostic diagnostic = validate(monitor, engineConfiguration.getExecutionSource().getModel(), engineID,
+			Diagnostic diagnostic = validate(monitor, ((Element)engineConfiguration.getExecutionSource()).getModel(), engineID,
 					validationDescriptors);
 			List<Diagnostic> filteredConstraints = new ArrayList<>(diagnostic.getChildren());
 			filteredConstraints = filteredConstraints.stream().filter(d -> valideRules.contains(d.getSource()))
@@ -93,8 +95,8 @@ public class ValidationUtil {
 					@Override
 					public void run() {
 						ValidationDiagnosticDialog dialog = new ValidationDiagnosticDialog(
-								Display.getCurrent().getActiveShell(), "Moka Validation",
-								"The moka validation detect errors on the model. Do you still want to launch the simulation ?",
+								Display.getCurrent().getActiveShell(), "Moka Validation", //$NON-NLS-1$
+								"The moka validation detect errors on the model. Do you still want to launch the simulation ?", //$NON-NLS-1$
 								filteredDiagnostics, IStatus.ERROR);
 						if (dialog.open() == Window.OK) {
 							ValidationUtil.dialogResult = true;

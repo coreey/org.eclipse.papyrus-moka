@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2019 CEA LIST.
+ * Copyright (c) 2019, 2020 CEA LIST.
  *
  *
  * All rights reserved. This program and the accompanying materials
@@ -25,6 +25,7 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.papyrus.moka.debug.service.IDebugService;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.ExecutionEngine;
+import org.eclipse.papyrus.moka.kernel.engine.ExecutionEngineException;
 import org.eclipse.papyrus.moka.kernel.engine.ExecutionEngineStatus;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.ExecutionController;
@@ -33,8 +34,8 @@ import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionController;
 import org.eclipse.papyrus.moka.kernel.service.IExecutionEngineService;
 import org.eclipse.papyrus.moka.kernel.service.ServiceRegistry;
 
-public abstract class DebuggableExecutionEngine<T, C> extends ExecutionEngine
-		implements IDebuggableExecutionEngine<T, C> {
+public abstract class DebuggableExecutionEngine<TThreadType, ContextType>extends ExecutionEngine
+		implements IDebuggableExecutionEngine<TThreadType, ContextType> {
 
 	/**
 	 * Controller in charge of the execution task management
@@ -44,7 +45,7 @@ public abstract class DebuggableExecutionEngine<T, C> extends ExecutionEngine
 	/**
 	 * Map of thread for which debugging is enabled;
 	 */
-	protected Map<String, IDebuggableExecutionEngineThread<T, C>> debuggableThread;
+	protected Map<String, IDebuggableExecutionEngineThread<TThreadType, ContextType>> debuggableThread;
 
 	/**
 	 * Enable safe access and modification of the thread map.
@@ -53,25 +54,28 @@ public abstract class DebuggableExecutionEngine<T, C> extends ExecutionEngine
 
 	public DebuggableExecutionEngine() {
 		super();
-		debuggableThread = new HashMap<String, IDebuggableExecutionEngineThread<T, C>>();
+		debuggableThread = new HashMap<String, IDebuggableExecutionEngineThread<TThreadType, ContextType>>();
 		debuggableThreadLock = new ReentrantLock(true);
 	}
 
 	@Override
-	public void init(EngineConfiguration configuration, SubMonitor monitor) {
+	public void init(EngineConfiguration<?> configuration, SubMonitor monitor) {
 		super.init(configuration, monitor);
 		controller = createController();
 	}
 
-	public void run(final EngineConfiguration configuration, SubMonitor monitor) {
+	public void run(final EngineConfiguration<?> configuration, SubMonitor monitor) throws ExecutionEngineException {
 		setStatus(ExecutionEngineStatus.INITIALIZING);
 		init(configuration, monitor);
 		setStatus(ExecutionEngineStatus.RUNNING);
-		start(monitor);
-		fireTerminateExecutionEvent();
-		setStatus(ExecutionEngineStatus.DISPOSING);
-		dispose(monitor);
-		setStatus(ExecutionEngineStatus.TERMINATED);
+		try {
+			start(monitor);
+		} finally {
+			fireTerminateExecutionEvent();
+			setStatus(ExecutionEngineStatus.DISPOSING);
+			dispose(monitor);
+			setStatus(ExecutionEngineStatus.TERMINATED);
+		}
 	}
 
 	/**
@@ -87,7 +91,7 @@ public abstract class DebuggableExecutionEngine<T, C> extends ExecutionEngine
 	/**
 	 *  @see {@link IDebuggableExecutionEngine#addDebugThread(IDebuggableExecutionEngineThread)}
 	 */
-	public boolean addDebugThread(IDebuggableExecutionEngineThread<T, C> t) {
+	public boolean addDebugThread(IDebuggableExecutionEngineThread<TThreadType, ContextType> t) {
 		boolean added = false;
 		if(t != null) {
 			if(!debuggableThreadLock.isHeldByCurrentThread()) {
@@ -105,7 +109,7 @@ public abstract class DebuggableExecutionEngine<T, C> extends ExecutionEngine
 	/**
 	 *  @see {@link IDebuggableExecutionEngine#removeDebugThread(IDebuggableExecutionEngineThread)}
 	 */
-	public boolean removeDebugThread(IDebuggableExecutionEngineThread<T, C> t) {
+	public boolean removeDebugThread(IDebuggableExecutionEngineThread<TThreadType, ContextType> t) {
 		boolean removed = false;
 		if(t != null) {
 			if(!debuggableThreadLock.isHeldByCurrentThread()) {
@@ -198,20 +202,20 @@ public abstract class DebuggableExecutionEngine<T, C> extends ExecutionEngine
 	}
 
 	private void fireTerminateExecutionEvent() {
-		IDebugService<T, C> service = getDebugService();
+		IDebugService<TThreadType, ContextType> service = getDebugService();
 		if (service != null) {
 			service.fireTerminateEngineEvent();
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public final IDebugService<T, C> getDebugService() {
+	public final IDebugService<TThreadType, ContextType> getDebugService() {
 		// Note: an execution engine has at most a single debug service
-		IDebugService<T, C> debugService = null;
+		IDebugService<TThreadType, ContextType> debugService = null;
 		Iterator<IExecutionEngineService<IExecutionEngine>> it = ServiceRegistry.getInstance()
 				.getService(IDebugService.class).iterator();
 		if (it.hasNext()) {
-			debugService = (IDebugService<T, C>) it.next();
+			debugService = (IDebugService<TThreadType, ContextType>) it.next();
 		}
 		return debugService;
 	}

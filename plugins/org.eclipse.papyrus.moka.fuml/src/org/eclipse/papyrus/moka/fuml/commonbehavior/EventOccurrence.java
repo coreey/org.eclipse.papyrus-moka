@@ -65,7 +65,7 @@ public abstract class EventOccurrence implements IEventOccurrence{
 	public void _startObjectBehavior() {
 		// When the sending behavior starts, the current event
 		// occurrence is is forwarded to the target object.
-		IUMLEventSendingExecution execution = UMLTaskExecutionFactory.getFactory().createEventSendingExecution();
+		IUMLEventSendingExecution execution = UMLTaskExecutionFactory.getInstance().createEventSendingExecution();
 		execution.setEvent(this);
 		execution.schedule();
 	}

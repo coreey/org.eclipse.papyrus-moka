@@ -39,7 +39,7 @@ public interface IExecutionEngine extends ITerminate {
 	 * 
 	 * @return the configuration
 	 */
-	EngineConfiguration getConfiguration();
+	EngineConfiguration<?> getConfiguration();
 	
 	/**
 	 * Run this engine based on the provided configuration
@@ -50,7 +50,9 @@ public interface IExecutionEngine extends ITerminate {
 	 * 
 	 * @param monitor
 	 *  provide the opportunity to report progress
+	 *  
+	 * @exception ExecutionEngineException
 	 */
-	void run(final EngineConfiguration configuration, SubMonitor monitor);
+	void run(final EngineConfiguration<?> configuration, SubMonitor monitor) throws ExecutionEngineException;
 	
 }

@@ -18,6 +18,10 @@ Require-Bundle: org.eclipse.papyrus.moka.kernel,
  org.eclipse.papyrus.moka.engine.uml.scheduling,
  org.eclipse.papyrus.moka.kernel.debug,
  org.eclipse.papyrus.moka.engine.uml.debug,
- org.eclipse.papyrus.moka.kernel.scheduling
+ org.eclipse.papyrus.moka.kernel.scheduling,
+ org.eclipse.papyrus.infra.core.log;bundle-version="[1.2.0,2.0.0)",
+ org.eclipse.jface
 Export-Package: org.eclipse.papyrus.moka.engine.uml,
  org.eclipse.papyrus.moka.engine.uml.libraries
+Bundle-Activator: org.eclipse.papyrus.moka.engine.uml.Activator
+Bundle-ActivationPolicy: lazy

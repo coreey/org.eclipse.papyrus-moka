@@ -197,7 +197,7 @@ public class ObjectActivation implements IObjectActivation {
 	public void _startObjectBehavior() {
 		// *** This should start the EventDispatchLoop ***
 		if(dispatchLoopExecution == null){
-			dispatchLoopExecution = UMLTaskExecutionFactory.getFactory().createEventDispatchLoopExecution();
+			dispatchLoopExecution = UMLTaskExecutionFactory.getInstance().createEventDispatchLoopExecution();
 			dispatchLoopExecution.setObjectActivation(this);
 		}
 		dispatchLoopExecution.newSignalArrival();

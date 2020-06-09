@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2019 CEA LIST and others.
+ * Copyright (c) 2019, 2020 CEA LIST and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -21,8 +21,9 @@ import org.eclipse.papyrus.moka.debug.engine.DebuggableExecutionEngine;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngine;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
 import org.eclipse.papyrus.moka.engine.uml.libraries.LibraryRegistry;
-import org.eclipse.papyrus.moka.engine.uml.scheduling.IUMLRootExecution;
+import org.eclipse.papyrus.moka.engine.uml.scheduling.IUMLTaskExecutionFactory;
 import org.eclipse.papyrus.moka.engine.uml.scheduling.IsTargetThreadCondition;
+import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLRootExecution;
 import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLTaskExecutionFactory;
 import org.eclipse.papyrus.moka.fuml.actions.DefaultCreateObjectActionStrategy;
 import org.eclipse.papyrus.moka.fuml.actions.DefaultGetAssociationStrategy;
@@ -33,6 +34,7 @@ import org.eclipse.papyrus.moka.fuml.loci.ILocus;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
+import org.eclipse.papyrus.moka.kernel.engine.ExecutionEngineException;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.Scheduler;
 import org.eclipse.papyrus.moka.pscs.actions.additions.CS_NotNormativeDefaultConstructStrategy;
 import org.eclipse.papyrus.moka.pscs.loci.CS_Executor;
@@ -42,7 +44,7 @@ import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_NameBased_Structur
 import org.eclipse.papyrus.moka.pssm.loci.SM_ExecutionFactory;
 import org.eclipse.papyrus.moka.pssm.loci.SM_Locus;
 import org.eclipse.papyrus.moka.utils.UMLPrimitiveTypesUtils;
-import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Element;
 
 public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISemanticVisitor>
 		implements IUMLExecutionEngine {
@@ -53,19 +55,36 @@ public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISem
 	protected ILocus locus;
 
 	/**
+	 * Factory enabling the creation of the appropriate root task for this engine
+	 */
+	protected IUMLTaskExecutionFactory rootTaskFactory;
+	
+	/**
 	 * Behave as the super class. In addition, instantiate the locus and
 	 * parameterize it with the appropriate execution factory and executor. Finally,
 	 * built in types, libraries and semantic strategies are installed at the locus
 	 */
 	@Override
-	public void init(EngineConfiguration configuration, SubMonitor monitor) {
+	public void init(EngineConfiguration<?> configuration, SubMonitor monitor) {
 		super.init(configuration, monitor);
+		rootTaskFactory = createUMLTaskFactory();
 		locus = createLocus();
 		installBuiltInTypes();
 		installLibraries();
 		installSemanticStrategies();
 	}
 
+	/**
+	 * Create the UML task factory used by this engine
+	 * 
+	 * @return the task factory
+	 */
+	protected IUMLTaskExecutionFactory createUMLTaskFactory() {
+		UMLTaskExecutionFactory factory = UMLTaskExecutionFactory.getInstance();
+		factory.setExecutionLoop(controller.getExecutionLoop());
+		return factory;
+	}
+	
 	/**
 	 * Create and parameterize the locus
 	 */
@@ -82,20 +101,25 @@ public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISem
 	 * execution to the execution queue controlled by the execution controller
 	 */
 	@Override
-	public void start(SubMonitor monitor) {
-		Class source = configuration.getExecutionSource();
+	public void start(SubMonitor monitor) throws ExecutionEngineException {
+		Element source = (Element) configuration.getExecutionSource();
 		if (locus != null && source != null) {
-			UMLTaskExecutionFactory factory = UMLTaskExecutionFactory.getFactory();
-			factory.setExecutionLoop(controller.getExecutionLoop());
-			IUMLRootExecution rootExecution = factory.createRootExecution();
-			rootExecution.setRoot(source);
-			rootExecution.setLocus(locus);
-			rootExecution.setInputParameterValues(new ArrayList<IParameterValue>());
-			controller.getExecutionLoop().init(rootExecution, new Scheduler());
-			SubMonitor progress = monitor.split(1);
-			progress.subTask("Run model");
-			controller.start();
-			progress.worked(1);
+			UMLRootExecution<?> rootExecution = rootTaskFactory.createRootExecution(source);
+			if(rootExecution != null) {
+				rootExecution.setLocus(locus);
+				rootExecution.setInputParameterValues(new ArrayList<IParameterValue>());
+				if(rootExecution.canExecute()) {
+					controller.getExecutionLoop().init(rootExecution, new Scheduler());
+					SubMonitor progress = monitor.split(1);
+					progress.subTask("Run model"); //$NON-NLS-1$
+					controller.start();
+					progress.worked(1);
+				} else {
+					throw new ExecutionEngineException(identifier, status, "Could not start the execution from the specified model element"); //$NON-NLS-1$
+				}
+			} else {
+				throw new ExecutionEngineException(identifier, status, "Could not instantiate an execution from the specified element"); //$NON-NLS-1$
+			}
 		}
 	}
 
@@ -104,7 +128,7 @@ public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISem
 	 */
 	@Override
 	public void installBuiltInTypes() {
-		Class source = configuration.getExecutionSource();
+		Element source = (Element) configuration.getExecutionSource();
 		if (locus != null && source != null) {
 			locus.getFactory().addBuiltInType(UMLPrimitiveTypesUtils.getReal(source));
 			locus.getFactory().addBuiltInType(UMLPrimitiveTypesUtils.getInteger(source));
@@ -118,7 +142,7 @@ public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISem
 	 */
 	@Override
 	public void installLibraries() {
-		Class source = configuration.getExecutionSource();
+		Element source = (Element) configuration.getExecutionSource();
 		if (locus != null && source.eResource() != null && source.eResource().getResourceSet() != null) {
 			LibraryRegistry.getInstance().loadLibraryFactories(source.eResource().getResourceSet());
 			LibraryRegistry.getInstance().installLibraries(locus);

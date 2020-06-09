@@ -14,12 +14,14 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.engine.uml.scheduling;
 
+import org.eclipse.uml2.uml.Element;
+
 public interface IUMLTaskExecutionFactory {
 
 	IUMLEventDispatchLoopExecution createEventDispatchLoopExecution();
 	
 	IUMLEventSendingExecution createEventSendingExecution();
 	
-	IUMLRootExecution createRootExecution();
+	UMLRootExecution<?> createRootExecution(final Element executionRoot);
 	
 }
