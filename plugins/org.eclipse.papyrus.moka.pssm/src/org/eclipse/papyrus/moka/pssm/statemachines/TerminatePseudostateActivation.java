@@ -17,8 +17,6 @@ package org.eclipse.papyrus.moka.pssm.statemachines;
 
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
-import org.eclipse.papyrus.moka.pssm.statemachines.IRegionActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.ITransitionActivation;
 
 public class TerminatePseudostateActivation extends PseudostateActivation {
 

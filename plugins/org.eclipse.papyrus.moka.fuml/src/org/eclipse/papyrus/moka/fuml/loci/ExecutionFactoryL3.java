@@ -30,7 +30,6 @@ import org.eclipse.papyrus.moka.fuml.actions.StartClassifierBehaviorActionActiva
 import org.eclipse.papyrus.moka.fuml.actions.StartObjectBehaviorActionActivation;
 import org.eclipse.papyrus.moka.fuml.actions.StructuredActivityNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.DataStoreNodeActivation;
-import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.uml2.uml.AcceptCallAction;
 import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.ConditionalNode;

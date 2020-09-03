@@ -22,8 +22,6 @@ import org.eclipse.papyrus.moka.fuml.commonbehavior.EventOccurrence;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
 import org.eclipse.papyrus.moka.pssm.commonbehavior.ISM_ObjectActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.ICompletionEventOccurrence;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateActivation;
 import org.eclipse.uml2.uml.Trigger;
 
 public class CompletionEventOccurrence extends EventOccurrence implements ICompletionEventOccurrence {

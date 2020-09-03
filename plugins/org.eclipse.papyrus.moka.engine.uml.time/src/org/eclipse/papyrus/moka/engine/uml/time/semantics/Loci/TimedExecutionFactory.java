@@ -16,6 +16,7 @@
 package org.eclipse.papyrus.moka.engine.uml.time.semantics.Loci;
 
 import org.eclipse.papyrus.moka.engine.uml.time.UMLTimedExecutionEngineUtils;
+import org.eclipse.papyrus.moka.engine.uml.time.activities.Timed_ActivityExecution;
 import org.eclipse.papyrus.moka.engine.uml.time.semantics.Timed_OpaqueActionActivation;
 import org.eclipse.papyrus.moka.engine.uml.time.semantics.Timed_SendSignalActionActivation;
 import org.eclipse.papyrus.moka.engine.uml.time.semantics.Actions.CompleteActions.TimedAcceptEventActionActivation;
@@ -24,6 +25,7 @@ import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.pssm.loci.SM_ExecutionFactory;
 import org.eclipse.uml2.uml.AcceptCallAction;
 import org.eclipse.uml2.uml.AcceptEventAction;
+import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.SendSignalAction;
@@ -46,6 +48,8 @@ public class TimedExecutionFactory extends SM_ExecutionFactory {
 			visitor = new Timed_SendSignalActionActivation();
 		} else if(element instanceof StateMachine){
 			visitor = new TimedStateMachineExecution();
+		} else if(element instanceof Activity) {
+			visitor = new Timed_ActivityExecution();
 		} else {
 			visitor = super.instantiateVisitor(element);
 		}

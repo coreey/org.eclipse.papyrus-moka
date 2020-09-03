@@ -18,10 +18,6 @@ package org.eclipse.papyrus.moka.fuml.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.activities.IActivityEdgeInstance;
-import org.eclipse.papyrus.moka.fuml.activities.IForkNodeActivation;
-import org.eclipse.papyrus.moka.fuml.activities.IForkedToken;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 
 public class ForkNodeActivation extends ControlNodeActivation implements IForkNodeActivation {

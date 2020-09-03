@@ -19,12 +19,13 @@ import java.util.List;
 
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLRootTaskExecution;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionLoop;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 
-public abstract class UMLRootExecution<RootElementType extends Element> extends UMLTaskExecution{
+public abstract class UMLRootTaskExecution<RootElementType extends Element> extends UMLTaskExecution implements IUMLRootTaskExecution<RootElementType>{
 
 	/**
 	 * Model element from which the execution starts
@@ -36,12 +37,17 @@ public abstract class UMLRootExecution<RootElementType extends Element> extends 
 	 */
 	protected List<IParameterValue> parameterValues;
 
-	public UMLRootExecution(IExecutionLoop loop, RootElementType executionRoot) {
+	public UMLRootTaskExecution(IExecutionLoop loop, RootElementType executionRoot) {
 		super(loop);
 		root = executionRoot;
 		parameterValues = new ArrayList<IParameterValue>();
 	}
 
+	@Override
+	public RootElementType getRoot() {
+		return root;
+	}
+	
 	/***
 	 * @see {@link IExecution#setParameterValue(IParameterValue)}
 	 * 

@@ -19,9 +19,6 @@ package org.eclipse.papyrus.moka.fuml.commonbehavior;
 import java.util.List;
 
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IClassifierBehaviorInvocationEventAccepter;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IObjectActivation;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
 

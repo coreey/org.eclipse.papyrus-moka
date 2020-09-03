@@ -21,9 +21,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import org.eclipse.papyrus.moka.fuml.loci.IExecutionFactory;
-import org.eclipse.papyrus.moka.fuml.loci.IExecutor;
-import org.eclipse.papyrus.moka.fuml.loci.ILocus;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IExtensionalValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Object_;

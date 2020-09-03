@@ -22,12 +22,9 @@ import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IOpaqueBehaviorExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.OpaqueBehaviorExecution;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
-import org.eclipse.papyrus.moka.fuml.loci.IExecutionFactory;
-import org.eclipse.papyrus.moka.fuml.loci.ILocus;
-import org.eclipse.papyrus.moka.fuml.loci.ISemanticStrategy;
-import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IEvaluation;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecutionFactory;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.OpaqueBehavior;
@@ -62,6 +59,11 @@ public abstract class ExecutionFactory implements IExecutionFactory {
 	 * factory.
 	 */
 	public List<ISemanticStrategy> strategies;
+	
+	/*
+	 * Task factory 
+	 */
+	public IUMLTaskExecutionFactory taskFactory;
 
 	public ExecutionFactory() {
 		super();
@@ -193,4 +195,15 @@ public abstract class ExecutionFactory implements IExecutionFactory {
 	public void setLocus(ILocus locus) {
 		this.locus = locus;
 	}
+	
+	@Override
+	public void setTaskFactory(IUMLTaskExecutionFactory factory) {
+		this.taskFactory = factory;
+	}
+	
+	@Override
+	public IUMLTaskExecutionFactory getTaskFactory() {
+		return taskFactory;
+	}
+	
 }

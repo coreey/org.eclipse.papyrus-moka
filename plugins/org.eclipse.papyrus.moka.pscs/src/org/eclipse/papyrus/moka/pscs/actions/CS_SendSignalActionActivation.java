@@ -68,7 +68,7 @@ public class CS_SendSignalActionActivation extends SendSignalActionActivation {
 				ISignalInstance signalInstance = new SignalInstance();
 				signalInstance.setType(signal);
 
-				List<Property> attributes = signal.getOwnedAttributes();
+				List<Property> attributes = signal.getAllAttributes();
 				List<InputPin> argumentPins = action.getArguments();
 				Integer i = 0;
 				while (i < attributes.size()) {

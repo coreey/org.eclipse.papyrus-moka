@@ -15,8 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.commonbehavior;
 
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
-
 public class FIFOGetNextEventStrategy extends GetNextEventStrategy {
 
 	@Override

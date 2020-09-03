@@ -15,8 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.activities;
 
-import org.eclipse.papyrus.moka.fuml.activities.IObjectToken;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 
 public class ObjectToken extends Token implements IObjectToken {

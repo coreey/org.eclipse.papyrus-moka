@@ -17,10 +17,6 @@ package org.eclipse.papyrus.moka.pssm.statemachines;
 
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
-import org.eclipse.papyrus.moka.pssm.statemachines.IRegionActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateMachineExecution;
-import org.eclipse.papyrus.moka.pssm.statemachines.IVertexActivation;
 import org.eclipse.uml2.uml.Vertex;
 
 public class LocalTransitionActivation extends TransitionActivation {

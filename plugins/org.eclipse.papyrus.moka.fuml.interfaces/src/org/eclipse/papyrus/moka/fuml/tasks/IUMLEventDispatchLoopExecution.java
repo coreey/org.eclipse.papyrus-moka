@@ -12,23 +12,20 @@
  *   CEA LIST - Initial API and implementation
  *   
  *****************************************************************************/
-package org.eclipse.papyrus.moka.engine.uml.scheduling;
+package org.eclipse.papyrus.moka.fuml.tasks;
 
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
+import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 
-public interface IUMLEventSendingExecution extends IUMLTaskExecution{
-
-	/**
-	 * Set the event to be sent
-	 * 
-	 * @param eventOcccurence
-	 * 		the event to be sent
-	 */
-	void setEvent(IEventOccurrence eventOcccurence);
+public interface IUMLEventDispatchLoopExecution extends IExecution{
 	
 	/**
-	 * Enable to forward the event to the specified target
+	 * Make the event dispatch loop to dispatch the next event
 	 */
-	void sendEvent();
+	void dispatchNextEvent();
+	
+	/**
+	 * Let the event dispatch loop account for the arrival of a new signal
+	 */
+	public void newSignalArrival();
 	
 }

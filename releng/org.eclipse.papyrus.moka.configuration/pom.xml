@@ -4,115 +4,57 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Moka depends on generic Papyrus component POM file -->
-	<parent>
-		<groupId>org.eclipse.papyrus.components</groupId>
-		<artifactId>org.eclipse.papyrus.components.parent</artifactId>
-		<version>0.0.27</version>
-		<relativePath></relativePath>
-	</parent>
-
-	<!-- Moka root POM: general information -->
 	<groupId>org.eclipse.papyrus.moka</groupId>
 	<artifactId>org.eclipse.papyrus.moka.releng.configuration</artifactId>
 	<version>4.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Moka</name>
+	<name>org.eclipse.papyrus.moka</name>
 	<description>Papyrus Model Execution Platform</description>
 	<inceptionYear>2012</inceptionYear>
 
-	<!-- Moka properties -->
 	<properties>
-		<component.shortname>moka</component.shortname>
-		<component.hudson.tabname>Moka</component.hudson.tabname>
-		<component.fullartifactId>org.eclipse.papyrus.moka</component.fullartifactId>
-		<component.bugzilla.name>Moka</component.bugzilla.name>
-		<component.package.rootname>org.eclipse.papyrus.moka</component.package.rootname>
-		<component.apibaseline.url>http://download.eclipse.org/modeling/mdt/papyrus/components/moka/</component.apibaseline.url>
-		<eclipse.targetrelease>2019-06</eclipse.targetrelease>
-		<target.version>4.0.0-SNAPSHOT</target.version>
+		<tycho.version>1.7.0</tycho.version>
+		<tycho.extras.version>1.7.0</tycho.extras.version>
+		<xtend.version>2.21.0</xtend.version>
+		<maven.resources.version>3.1.0</maven.resources.version>
+		<maven.clean.version>3.1.0</maven.clean.version>
+		<maven.compiler.version>3.8.0</maven.compiler.version>
+		<java.source.version>1.8</java.source.version>
+		<java.target.version>1.8</java.target.version>
 	</properties>
-
-	<!-- Moka CI system -->
-	<ciManagement>
-		<system>Hudson</system>
-		<url>https://hudson.eclipse.org/papyrus/view/${component.hudson.tabname}/</url>
-	</ciManagement>
-
-	<!-- Moka Bugzilla -->
-	<issueManagement>
-		<url>https://bugs.eclipse.org/bugs/buglist.cgi?product=Papyrus&amp;component=${component.bugzilla.name}</url>
-	</issueManagement>
-
-	<!-- Moka Developpers -->
-	<developers>
-		<developer>
-			<name>Sebastien REVOL</name>
-			<organization>CEA Tech LIST</organization>
-			<organizationUrl>http://www-list.cea.fr/</organizationUrl>
-			<id>srevol</id>
-		</developer>
-		<developer>
-			<name>Arnaud CUCCURU</name>
-			<organization>CEA Tech LIST</organization>
-			<organizationUrl>http://www-list.cea.fr/</organizationUrl>
-			<id>acucurru</id>
-		</developer>
-		<developer>
-			<name>Jeremie TATIBOUET</name>
-			<organization>CEA Tech LIST</organization>
-			<organizationUrl>http://www-list.cea.fr/</organizationUrl>
-			<id>jtatibouet</id>
-		</developer>
-	</developers>
-
-	<!-- Moka Contributors -->
-	<contributors>
-		<contributor>
-			<name>David LOPEZ BETANCUR</name>
-		</contributor>
-	</contributors>
 
 	<scm>
 		<url>http://git.eclipse.org/c/papyrus/org.eclipse.papyrus-moka.git/</url>
-		<connection>scm:git:http://git.eclipse.org/gitroot/papyrus/org.eclipse.papyrus-moka.git</connection>
-		<developerConnection>scm:git:ssh://git.eclipse.org/gitroot/papyrus/org.eclipse.papyrus-moka.git</developerConnection>
 	</scm>
 
-	<distributionManagement>
-		<site>
-			<id>git.eclipse.org.server</id>
-			<url>scm:git:https://git.eclipse.org/gitroot/www.eclipse.org/papyrus/components/${component.shortname}</url>
-		</site>
-	</distributionManagement>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>https://ci.eclipse.org/papyrus/view/Moka/job/papyrus-moka-master/</url>
+	</ciManagement>
 
+	<issueManagement>
+		<url>https://bugs.eclipse.org/bugs/buglist.cgi?product=Papyrus&amp;component=moka</url>
+	</issueManagement>
 
-	<!-- Location to resolve Papyrus tools -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>tycho-snapshots</id>
+			<url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<repositories>
-		<repository>
-			<id>pap.repo.eclipse.org</id>
-			<name>Papyrus Repository - Releases</name>
-			<url>https://repo.eclipse.org/content/repositories/papyrus-releases/</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>paps.repo.eclipse.org</id>
-			<name>Papyrus Repository - Snapshots</name>
-			<url>https://repo.eclipse.org/content/repositories/papyrus-snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-		</repository>
 		<repository>
 			<id>license-feature</id>
 			<url>http://download.eclipse.org/cbi/updates/license/</url>
@@ -120,27 +62,96 @@
 		</repository>
 	</repositories>
 
-	<pluginRepositories>
-		<!-- Location to find out maven plugins -->
-		<pluginRepository>
-			<id>org.eclipse.cbi.maven.plugins</id>
-			<name>Eclipse CBI</name>
-			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Repository Group</name>
-			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<source>${java.source.version}</source>
+					<target>${java.target.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${maven.clean.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<version>${xtend.version}</version>
+			</plugin>
+
+			<!-- Integration between Tycho and Maven -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- Tycho compiler -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<source>${java.source.version}</source>
+					<target>${java.target.version}</target>
+					<optimize>true</optimize>
+					<showWarnings>true</showWarnings>
+					<!-- Tycho build using the project's JDT settings. -->
+					<useProjectSettings>true</useProjectSettings>
+				</configuration>
+			</plugin>
+			
+			<!-- Tycho extras -->
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tycho.extras.version}</version>
+			</plugin>
+
+			<!-- Target platform based build -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<!-- Enabled target platform -->
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.papyrus.moka</groupId>
+							<artifactId>org.eclipse.papyrus.moka.targetplatform</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

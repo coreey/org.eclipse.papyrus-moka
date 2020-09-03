@@ -12,8 +12,9 @@
  *   CEA LIST - Initial API and implementation
  *   
  *****************************************************************************/
-package org.eclipse.papyrus.moka.engine.uml.scheduling;
+package org.eclipse.papyrus.moka.fuml.tasks;
 
+import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionLoop;
 import org.eclipse.uml2.uml.Element;
 
 public interface IUMLTaskExecutionFactory {
@@ -22,6 +23,8 @@ public interface IUMLTaskExecutionFactory {
 	
 	IUMLEventSendingExecution createEventSendingExecution();
 	
-	UMLRootExecution<?> createRootExecution(final Element executionRoot);
+	IUMLRootTaskExecution<?> createRootExecution(final Element executionRoot);
+	
+	IExecutionLoop getExecutionLoop();
 	
 }

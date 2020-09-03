@@ -20,8 +20,6 @@ import java.util.List;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
-import org.eclipse.papyrus.moka.fuml.loci.IExecutor;
-import org.eclipse.papyrus.moka.fuml.loci.ILocus;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;

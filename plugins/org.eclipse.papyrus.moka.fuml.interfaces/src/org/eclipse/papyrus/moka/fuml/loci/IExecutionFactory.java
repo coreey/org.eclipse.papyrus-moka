@@ -19,6 +19,7 @@ import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IOpaqueBehaviorExecution;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IEvaluation;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecutionFactory;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.OpaqueBehavior;
@@ -37,6 +38,10 @@ public interface IExecutionFactory {
 
 	public void addPrimitiveBehaviorPrototype(IOpaqueBehaviorExecution execution);
 
+	public void setTaskFactory(IUMLTaskExecutionFactory factory);
+	
+	public IUMLTaskExecutionFactory getTaskFactory();
+	
 	public void setStrategy(ISemanticStrategy strategy);
 
 	public ISemanticStrategy getStrategy(String name);

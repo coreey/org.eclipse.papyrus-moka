@@ -16,8 +16,6 @@
 package org.eclipse.papyrus.moka.pssm.statemachines;
 
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
-import org.eclipse.papyrus.moka.pssm.statemachines.IConditionalPseudostateActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.ITransitionActivation;
 import org.eclipse.uml2.uml.Expression;
 import org.eclipse.uml2.uml.Transition;
 

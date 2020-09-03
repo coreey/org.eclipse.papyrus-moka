@@ -44,7 +44,6 @@ import org.eclipse.papyrus.moka.fuml.activities.ForkNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.InitialNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.JoinNodeActivation;
 import org.eclipse.papyrus.moka.fuml.activities.MergeNodeActivation;
-import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityFinalNode;

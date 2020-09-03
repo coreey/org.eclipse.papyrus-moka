@@ -21,9 +21,7 @@ import org.eclipse.papyrus.moka.debug.engine.DebuggableExecutionEngine;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngine;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
 import org.eclipse.papyrus.moka.engine.uml.libraries.LibraryRegistry;
-import org.eclipse.papyrus.moka.engine.uml.scheduling.IUMLTaskExecutionFactory;
 import org.eclipse.papyrus.moka.engine.uml.scheduling.IsTargetThreadCondition;
-import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLRootExecution;
 import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLTaskExecutionFactory;
 import org.eclipse.papyrus.moka.fuml.actions.DefaultCreateObjectActionStrategy;
 import org.eclipse.papyrus.moka.fuml.actions.DefaultGetAssociationStrategy;
@@ -33,6 +31,8 @@ import org.eclipse.papyrus.moka.fuml.loci.FirstChoiceStrategy;
 import org.eclipse.papyrus.moka.fuml.loci.ILocus;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLRootTaskExecution;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecutionFactory;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.ExecutionEngineException;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.Scheduler;
@@ -67,8 +67,9 @@ public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISem
 	@Override
 	public void init(EngineConfiguration<?> configuration, SubMonitor monitor) {
 		super.init(configuration, monitor);
-		rootTaskFactory = createUMLTaskFactory();
 		locus = createLocus();
+		rootTaskFactory = createUMLTaskFactory();
+		locus.getFactory().setTaskFactory(rootTaskFactory);
 		installBuiltInTypes();
 		installLibraries();
 		installSemanticStrategies();
@@ -80,9 +81,7 @@ public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISem
 	 * @return the task factory
 	 */
 	protected IUMLTaskExecutionFactory createUMLTaskFactory() {
-		UMLTaskExecutionFactory factory = UMLTaskExecutionFactory.getInstance();
-		factory.setExecutionLoop(controller.getExecutionLoop());
-		return factory;
+		return new UMLTaskExecutionFactory(controller.getExecutionLoop());
 	}
 	
 	/**
@@ -104,7 +103,7 @@ public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISem
 	public void start(SubMonitor monitor) throws ExecutionEngineException {
 		Element source = (Element) configuration.getExecutionSource();
 		if (locus != null && source != null) {
-			UMLRootExecution<?> rootExecution = rootTaskFactory.createRootExecution(source);
+			IUMLRootTaskExecution<?> rootExecution = rootTaskFactory.createRootExecution(source);
 			if(rootExecution != null) {
 				rootExecution.setLocus(locus);
 				rootExecution.setInputParameterValues(new ArrayList<IParameterValue>());

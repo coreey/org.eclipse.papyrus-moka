@@ -27,11 +27,8 @@ import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Object_;
 import org.eclipse.papyrus.moka.pssm.commonbehavior.ISM_ObjectActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IDeferredEventOccurrence;
-import org.eclipse.papyrus.moka.pssm.statemachines.IDoActivityContextObject;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateActivation;
-import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.StructuralFeature;
 
 public class DoActivityContextObject extends Object_ implements IDoActivityContextObject{

@@ -15,6 +15,7 @@
 package org.eclipse.papyrus.moka.engine.uml.scheduling;
 
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecution;
 import org.eclipse.papyrus.moka.kernel.scheduling.execution.ITaskExecution;
 import org.eclipse.papyrus.moka.kernel.scheduling.execution.ITaskExecutionCondition;
 

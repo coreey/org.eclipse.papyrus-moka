@@ -18,8 +18,6 @@ package org.eclipse.papyrus.moka.pssm.statemachines;
 import java.util.Iterator;
 
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
-import org.eclipse.papyrus.moka.pssm.statemachines.IRegionActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.ITransitionActivation;
 
 public class ForkPseudostateActivation extends PseudostateActivation {
 
@@ -41,7 +39,7 @@ public class ForkPseudostateActivation extends PseudostateActivation {
 	
 	private boolean _canPropagateExecution(ITransitionActivation enteringTransition, IEventOccurrence eventOccurrence, IRegionActivation leastCommonAncestor){
 		// Convenience method. Java does no allow a call to an explicit super class method. For documentation
-		// developpers must have a look to: VertexActivation::canPropagateExecution(...)
+		// developers must have a look to: VertexActivation::canPropagateExecution(...)
 		boolean propagate = true;
 		if(leastCommonAncestor != null){
 			IRegionActivation parentRegionActivation = this.getOwningRegionActivation();

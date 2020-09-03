@@ -15,10 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.simpleclassifiers;
 
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IUnlimitedNaturalValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IntegerValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.PrimitiveValue;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.ValueSpecification;

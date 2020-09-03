@@ -24,8 +24,6 @@ import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
 import org.eclipse.papyrus.moka.pssm.commonbehavior.ISM_ObjectActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IDeferredEventOccurrence;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateActivation;
 import org.eclipse.uml2.uml.Trigger;
 
 public class DeferredEventOccurrence extends EventOccurrence implements IDeferredEventOccurrence {

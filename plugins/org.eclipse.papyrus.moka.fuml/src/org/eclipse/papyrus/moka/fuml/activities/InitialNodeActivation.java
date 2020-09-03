@@ -18,8 +18,6 @@ package org.eclipse.papyrus.moka.fuml.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
-
 public class InitialNodeActivation extends ControlNodeActivation {
 
 	@Override

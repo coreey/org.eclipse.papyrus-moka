@@ -17,8 +17,6 @@ package org.eclipse.papyrus.moka.fuml.activities;
 
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.activities.IActivityParameterNodeActivation;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;

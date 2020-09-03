@@ -19,7 +19,6 @@ package org.eclipse.papyrus.moka.fuml.commonbehavior;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.commonbehavior.ISignalEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.ISignalInstance;
 import org.eclipse.uml2.uml.SignalEvent;

@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.eclipse.papyrus.moka.fuml.actions.ExpansionActivationGroup;
 import org.eclipse.papyrus.moka.fuml.actions.IExpansionActivationGroup;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 
 public class ActivityFinalNodeActivation extends ControlNodeActivation {

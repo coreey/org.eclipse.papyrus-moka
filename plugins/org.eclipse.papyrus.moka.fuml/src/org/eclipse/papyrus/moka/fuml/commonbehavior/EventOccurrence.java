@@ -18,20 +18,19 @@ package org.eclipse.papyrus.moka.fuml.commonbehavior;
 
 import java.util.List;
 
-import org.eclipse.papyrus.moka.engine.uml.scheduling.IUMLEventSendingExecution;
-import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLTaskExecutionFactory;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLEventSendingExecution;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecutionFactory;
 import org.eclipse.uml2.uml.Trigger;
 
 /**
  * An event occurrence represents a single occurrence of a specific kind of
  * event.
  */
-public abstract class EventOccurrence implements IEventOccurrence{
+public abstract class EventOccurrence implements IEventOccurrence {
 
 	public IReference target;
-	
+
 	public abstract boolean match(Trigger trigger);
 
 	public boolean matchAny(List<Trigger> triggers) {
@@ -49,31 +48,34 @@ public abstract class EventOccurrence implements IEventOccurrence{
 	}
 
 	public abstract List<IParameterValue> getParameterValues();
-	
-	public void sendTo(IReference target){
-		// Set the target reference and start the SendingBehavior, which 
+
+	public void sendTo(IReference target) {
+		// Set the target reference and start the SendingBehavior, which
 		// will send this event occurrence to the target.
 		this.target = target;
 		this._startObjectBehavior();
 	}
-	
-	public void doSend(){
+
+	public void doSend() {
 		// Send this event occurrence to the target reference.
 		this.target.send(this);
 	}
-	
+
 	public void _startObjectBehavior() {
 		// When the sending behavior starts, the current event
 		// occurrence is is forwarded to the target object.
-		IUMLEventSendingExecution execution = UMLTaskExecutionFactory.getInstance().createEventSendingExecution();
-		execution.setEvent(this);
-		execution.schedule();
+		IUMLTaskExecutionFactory taskFactory = target.getReferent().getLocus().getFactory().getTaskFactory();
+		if (taskFactory != null) {
+			IUMLEventSendingExecution execution = taskFactory.createEventSendingExecution();
+			execution.setEvent(this);
+			execution.schedule();
+		}
 	}
-	
+
 	public void setTarget(IReference target) {
 		this.target = target;
 	}
-	
+
 	public IReference getTarget() {
 		return this.target;
 	}

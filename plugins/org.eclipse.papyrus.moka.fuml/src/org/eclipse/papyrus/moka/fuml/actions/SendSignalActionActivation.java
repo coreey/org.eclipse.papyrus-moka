@@ -40,7 +40,7 @@ public class SendSignalActionActivation extends InvocationActionActivation {
 			Signal signal = action.getSignal();
 			SignalInstance signalInstance = new SignalInstance();
 			signalInstance.type = signal;
-			List<Property> attributes = signal.getOwnedAttributes();
+			List<Property> attributes = signal.getAllAttributes();
 			List<InputPin> argumentPins = action.getArguments();
 			for (int i = 0; i < attributes.size(); i++) {
 				Property attribute = attributes.get(i);

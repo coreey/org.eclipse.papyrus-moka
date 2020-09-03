@@ -15,7 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.activities;
 
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.values.Value;
 
 public class ControlToken extends Token {

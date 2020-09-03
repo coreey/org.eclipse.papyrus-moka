@@ -6,10 +6,11 @@ Bundle-Version: 4.0.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
 Automatic-Module-Name: org.eclipse.papyrus.moka.engine.uml.scheduling
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.papyrus.moka.kernel.scheduling,
- org.eclipse.papyrus.moka.fuml.interfaces,
- org.eclipse.papyrus.moka.kernel,
- org.eclipse.papyrus.moka.kernel.debug,
- org.eclipse.papyrus.moka.kernel.animation,
- org.eclipse.papyrus.moka.engine.uml.debug
+Require-Bundle: org.eclipse.papyrus.moka.kernel.scheduling;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.papyrus.moka.fuml.interfaces;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.papyrus.moka.kernel;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.papyrus.moka.kernel.debug;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.papyrus.moka.kernel.animation;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.papyrus.moka.engine.uml.debug;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)"
 Export-Package: org.eclipse.papyrus.moka.engine.uml.scheduling

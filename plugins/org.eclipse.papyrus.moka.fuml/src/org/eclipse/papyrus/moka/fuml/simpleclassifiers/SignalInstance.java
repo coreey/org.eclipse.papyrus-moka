@@ -18,7 +18,6 @@ package org.eclipse.papyrus.moka.fuml.simpleclassifiers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.CompoundValue;
 import org.eclipse.papyrus.moka.fuml.values.Value;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Signal;

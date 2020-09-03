@@ -17,10 +17,6 @@ package org.eclipse.papyrus.moka.fuml.activities;
 
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.activities.IActivityExecution;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivationGroup;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityParameterNodeActivation;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.Execution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.ParameterValue;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;

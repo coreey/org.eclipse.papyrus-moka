@@ -19,11 +19,6 @@ package org.eclipse.papyrus.moka.fuml.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.activities.IActivityEdgeInstance;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
-import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivationGroup;
-import org.eclipse.papyrus.moka.fuml.activities.IOffer;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.uml2.uml.ActivityEdge;
 
 public class ActivityEdgeInstance implements IActivityEdgeInstance {

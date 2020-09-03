@@ -23,7 +23,7 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.StateMachine;
 
-public class RootBehaviorTaskExecution extends UMLRootExecution<Behavior>{
+public class RootBehaviorTaskExecution extends UMLRootTaskExecution<Behavior>{
 
 	public RootBehaviorTaskExecution(IExecutionLoop loop, Behavior executionRoot) {
 		super(loop, executionRoot);
@@ -36,9 +36,13 @@ public class RootBehaviorTaskExecution extends UMLRootExecution<Behavior>{
 	
 	@Override
 	public void execute() {
-		List<IParameterValue> outputParameterValues = locus.getExecutor().execute(root, null, parameterValues);
-		for (IParameterValue outputParameterValue : outputParameterValues) {
-			setParameterValue(outputParameterValue);
+		if(root.isActive()) {
+			locus.getExecutor().start(root, parameterValues);
+		} else {
+			List<IParameterValue> outputParameterValues = locus.getExecutor().execute(root, null, parameterValues);
+			for (IParameterValue outputParameterValue : outputParameterValues) {
+				setParameterValue(outputParameterValue);
+			}
 		}
 	}
 	

@@ -19,13 +19,6 @@ package org.eclipse.papyrus.moka.pssm.statemachines;
 import java.util.Iterator;
 
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
-import org.eclipse.papyrus.moka.pssm.statemachines.IHistoryPseudostateActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IRegionActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateMachineExecution;
-import org.eclipse.papyrus.moka.pssm.statemachines.ITransitionActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IVertexActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.StateMetadata;
 import org.eclipse.uml2.uml.State;
 
 public abstract class HistoryPseudostateActivation extends PseudostateActivation implements IHistoryPseudostateActivation{

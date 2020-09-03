@@ -15,8 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.simpleclassifiers;
 
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IBooleanValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.values.Value;
 import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.UMLFactory;

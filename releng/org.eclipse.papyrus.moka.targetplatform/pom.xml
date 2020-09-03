@@ -11,13 +11,7 @@
 	</parent>
 	
 	<!-- POM Description -->
-	<artifactId>org.eclipse.papyrus.moka.releng.platforms</artifactId>
-	<packaging>pom</packaging>
-	<name>Moka Target Platforms (Platforms folder)</name>
-
-	<!-- Modules to build -->
-	<modules>
-		<module>org.eclipse.papyrus.moka.targetplatform.${eclipse.targetrelease}</module>
-	</modules>
-
+	<artifactId>org.eclipse.papyrus.moka.targetplatform</artifactId>
+	<packaging>eclipse-target-definition</packaging>
+	
 </project>

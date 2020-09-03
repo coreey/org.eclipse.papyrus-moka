@@ -15,29 +15,4 @@
 	<packaging>eclipse-feature</packaging>
 	<name>Moka Core Feature</name>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>source-feature</id>
-						<phase>package</phase>
-						<goals>
-							<goal>source-feature</goal>
-						</goals>
-						<configuration>
-							<excludes>
-								<plugin id="org.eclipse.equinox.weaving.aspectj" />
-								<plugin id="org.eclipse.equinox.weaving.hook" />
-								<plugin id="org.eclipse.paho.client.mqttv3" />
-							</excludes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
 </project>

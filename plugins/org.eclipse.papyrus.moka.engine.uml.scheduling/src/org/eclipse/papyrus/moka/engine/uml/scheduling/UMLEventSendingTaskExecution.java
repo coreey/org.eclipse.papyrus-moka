@@ -21,6 +21,7 @@ import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLEventSendingExecution;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionLoop;
 import org.eclipse.papyrus.moka.kernel.scheduling.execution.ITaskExecution;
 

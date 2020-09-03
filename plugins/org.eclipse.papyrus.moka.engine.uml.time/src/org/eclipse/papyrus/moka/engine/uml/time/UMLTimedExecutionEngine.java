@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.papyrus.moka.engine.uml.UMLExecutionEngine;
-import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLRootExecution;
 import org.eclipse.papyrus.moka.engine.uml.time.scheduling.control.TimedExecutionLoop;
 import org.eclipse.papyrus.moka.engine.uml.time.scheduling.de.DEScheduler;
 import org.eclipse.papyrus.moka.engine.uml.time.scheduling.de.actions.DisplayCurrentTimeAction;
@@ -25,6 +24,7 @@ import org.eclipse.papyrus.moka.engine.uml.time.semantics.Loci.TimedExecutionFac
 import org.eclipse.papyrus.moka.engine.uml.time.semantics.Loci.TimedLocus;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.loci.ILocus;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLRootTaskExecution;
 import org.eclipse.papyrus.moka.kernel.engine.ExecutionEngineException;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.ExecutionController;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionController;
@@ -76,7 +76,7 @@ public class UMLTimedExecutionEngine extends UMLExecutionEngine{
 		// Starts the execution loop
 		Element source = (Element) configuration.getExecutionSource();
 		if(locus != null && source != null) {
-			UMLRootExecution<?> rootExecution = rootTaskFactory.createRootExecution(source);
+			IUMLRootTaskExecution<?> rootExecution = rootTaskFactory.createRootExecution(source);
 			if(rootExecution != null) {
 				rootExecution.setLocus(locus);
 				rootExecution.setInputParameterValues(new ArrayList<IParameterValue>());

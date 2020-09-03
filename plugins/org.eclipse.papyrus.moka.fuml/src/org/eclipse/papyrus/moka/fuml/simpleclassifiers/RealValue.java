@@ -15,8 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.simpleclassifiers;
 
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IRealValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.uml2.uml.LiteralReal;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.ValueSpecification;

@@ -25,6 +25,7 @@ import org.eclipse.papyrus.moka.fuml.loci.ILocus;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecution;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionLoop;
 import org.eclipse.papyrus.moka.kernel.scheduling.execution.TaskExecution;
 import org.eclipse.uml2.uml.Behavior;

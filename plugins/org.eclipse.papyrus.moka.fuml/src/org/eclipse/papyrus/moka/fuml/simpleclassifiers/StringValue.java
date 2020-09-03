@@ -15,9 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.simpleclassifiers;
 
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IStringValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.PrimitiveValue;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.ValueSpecification;

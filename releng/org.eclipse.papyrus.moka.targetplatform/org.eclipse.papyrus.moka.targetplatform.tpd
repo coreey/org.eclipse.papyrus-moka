@@ -1,15 +1,15 @@
-target "Moka Photon Target Platform" with source requirements
+target "Moka Target Platform" with source requirements
 
-location "http://download.eclipse.org/releases/2019-06" eclipse {
+location "http://download.eclipse.org/releases/2020-06" eclipse {
 	org.eclipse.platform.feature.group lazy
-	org.eclipse.rcp.feature.group lazy
-	org.eclipse.jdt.feature.group lazy
-	org.eclipse.equinox.p2.discovery.feature.feature.group lazy
-	org.eclipse.equinox.executable.feature.group lazy
+ 	org.eclipse.rcp.feature.group lazy
+ 	org.eclipse.jdt.feature.group lazy
+ 	org.eclipse.equinox.p2.discovery.feature.feature.group lazy
+ 	org.eclipse.equinox.executable.feature.group lazy
 	org.eclipse.json lazy
 }
 
-location "https://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/4.5/" papyrus {
+location "https://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/master/" papyrus {
 	org.eclipse.papyrus.sdk.feature.feature.group lazy
 	org.eclipse.papyrus.junit.feature.feature.group lazy
 }

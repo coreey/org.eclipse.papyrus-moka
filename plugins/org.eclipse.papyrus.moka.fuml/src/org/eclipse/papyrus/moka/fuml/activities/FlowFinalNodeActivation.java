@@ -17,8 +17,6 @@ package org.eclipse.papyrus.moka.fuml.activities;
 
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.activities.IFlowFinalNodeActivation;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 
 public class FlowFinalNodeActivation extends ControlNodeActivation implements IFlowFinalNodeActivation {

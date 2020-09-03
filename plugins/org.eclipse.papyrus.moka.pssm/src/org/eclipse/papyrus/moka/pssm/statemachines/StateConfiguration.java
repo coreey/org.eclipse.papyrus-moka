@@ -18,10 +18,6 @@ package org.eclipse.papyrus.moka.pssm.statemachines;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateConfiguration;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateMachineConfiguration;
-import org.eclipse.papyrus.moka.pssm.statemachines.IVertexActivation;
-
 public class StateConfiguration implements IStateConfiguration{
 
 	// The activation (i.e. the semantic visitor) for which the StateConfiguration

@@ -15,12 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.pssm.statemachines;
 
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateActivation;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateConfiguration;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateMachineConfiguration;
-import org.eclipse.papyrus.moka.pssm.statemachines.IStateMachineExecution;
-import org.eclipse.papyrus.moka.pssm.statemachines.IVertexActivation;
-
 public class StateMachineConfiguration implements IStateMachineConfiguration{
 		
 	// The state-machine that is executed and for which this object

@@ -14,6 +14,10 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.engine.uml.scheduling;
 
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLEventDispatchLoopExecution;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLEventSendingExecution;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLRootTaskExecution;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecutionFactory;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionLoop;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
@@ -21,27 +25,10 @@ import org.eclipse.uml2.uml.Element;
 
 public class UMLTaskExecutionFactory implements IUMLTaskExecutionFactory {
 
-	/**
-	 * Factory instance
-	 */
-	private static UMLTaskExecutionFactory FACTORY;
-
 	protected IExecutionLoop executionLoop;
 
-	protected UMLTaskExecutionFactory() {
-		executionLoop = null;
-	}
-
-	/**
-	 * Create (if required) and return the factory instance
-	 * 
-	 * @return the task factory
-	 */
-	public static UMLTaskExecutionFactory getInstance() {
-		if (FACTORY == null) {
-			FACTORY = new UMLTaskExecutionFactory();
-		}
-		return FACTORY;
+	public UMLTaskExecutionFactory(IExecutionLoop loop) {
+		executionLoop = loop;
 	}
 
 	public IExecutionLoop getExecutionLoop() {
@@ -53,15 +40,15 @@ public class UMLTaskExecutionFactory implements IUMLTaskExecutionFactory {
 	}
 
 	public IUMLEventDispatchLoopExecution createEventDispatchLoopExecution() {
-		return new UMLEventDispatchLoopExecution(executionLoop);
+		return new UMLEventDispatchLoopTaskExecution(executionLoop);
 	}
 
 	public IUMLEventSendingExecution createEventSendingExecution() {
 		return new UMLEventSendingTaskExecution(executionLoop);
 	}
 
-	public UMLRootExecution<?> createRootExecution(final Element executionRoot) {
-		UMLRootExecution<?> rootExecution = null;
+	public IUMLRootTaskExecution<?> createRootExecution(final Element executionRoot) {
+		IUMLRootTaskExecution<?> rootExecution = null;
 		if (executionRoot instanceof Behavior) {
 			rootExecution = new RootBehaviorTaskExecution(executionLoop, (Behavior) executionRoot);
 		} else if (executionRoot instanceof Class) {

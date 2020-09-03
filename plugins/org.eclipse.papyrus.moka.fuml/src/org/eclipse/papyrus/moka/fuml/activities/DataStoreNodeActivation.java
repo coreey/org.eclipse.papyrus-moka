@@ -16,7 +16,6 @@ package org.eclipse.papyrus.moka.fuml.activities;
 
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 
 public class DataStoreNodeActivation extends CentralBufferNodeActivation{

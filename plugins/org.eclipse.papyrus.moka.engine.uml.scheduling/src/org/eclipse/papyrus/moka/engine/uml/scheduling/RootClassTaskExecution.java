@@ -20,7 +20,7 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.StateMachine;
 
-public class RootClassTaskExecution extends UMLRootExecution<Class>{
+public class RootClassTaskExecution extends UMLRootTaskExecution<Class>{
 
 	public RootClassTaskExecution(IExecutionLoop loop, Class executionRoot) {
 		super(loop, executionRoot);
@@ -38,8 +38,7 @@ public class RootClassTaskExecution extends UMLRootExecution<Class>{
 	
 	@Override
 	public IValue new_() {
-		// TODO Auto-generated method stub
-		return super.new_();
+		return new RootClassTaskExecution(executionLoop, root);
 	}
 	
 }

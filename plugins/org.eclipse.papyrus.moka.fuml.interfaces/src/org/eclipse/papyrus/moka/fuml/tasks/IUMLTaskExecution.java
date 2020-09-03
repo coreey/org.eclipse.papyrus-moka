@@ -12,19 +12,13 @@
  *   CEA LIST - Initial API and implementation
  *   
  *****************************************************************************/
-package org.eclipse.papyrus.moka.engine.uml.scheduling;
+package org.eclipse.papyrus.moka.fuml.tasks;
 
-import java.util.List;
+import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
+import org.eclipse.papyrus.moka.kernel.scheduling.execution.ITaskExecution;
 
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
-import org.eclipse.uml2.uml.Class;
+public interface IUMLTaskExecution extends ITaskExecution, IExecution{
 
-public interface IUMLRootExecution extends IUMLTaskExecution{
-
-	void setRoot(final Class root);
-	
-	Class getRoot();
-	
-	void setInputParameterValues(List<IParameterValue> inputParameterValues);
+	void schedule();
 	
 }

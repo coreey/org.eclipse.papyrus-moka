@@ -18,9 +18,6 @@ package org.eclipse.papyrus.moka.fuml.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.activities.IActivityEdgeInstance;
-import org.eclipse.papyrus.moka.fuml.activities.IDecisionNodeActivation;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.ParameterValue;

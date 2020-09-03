@@ -20,36 +20,34 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.engine.uml.scheduling.IUMLEventDispatchLoopExecution;
-import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLTaskExecutionFactory;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IClassifierBehaviorInvocationEventAccepter;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventAccepter;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.IObjectActivation;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
 import org.eclipse.papyrus.moka.fuml.loci.ChoiceStrategy;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Object_;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLEventDispatchLoopExecution;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecutionFactory;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
 
 public class ObjectActivation implements IObjectActivation {
 
 	/*
-	 * The invocations of the executing classifier behaviors for this object activation
+	 * The invocations of the executing classifier behaviors for this object
+	 * activation
 	 * 
 	 * fUML12-35 Initial execution of an activity is not run to completion
 	 */
 	public List<IClassifierBehaviorInvocationEventAccepter> classifierBehaviorInvocations = new ArrayList<IClassifierBehaviorInvocationEventAccepter>();
 
 	/*
-	 * The set of event accepters waiting for event occurrences to be dispatched from the pool
+	 * The set of event accepters waiting for event occurrences to be dispatched
+	 * from the pool
 	 */
 	public List<IEventAccepter> waitingEventAccepters = new ArrayList<IEventAccepter>();
 
 	/*
-	 * The pool of event occurrences received by the object of this object activation, pending
-	 * dispatching as events.
+	 * The pool of event occurrences received by the object of this object
+	 * activation, pending dispatching as events.
 	 * 
 	 * fUML12-35 Initial execution of an activity is not run to completion
 	 */
@@ -68,7 +66,8 @@ public class ObjectActivation implements IObjectActivation {
 
 		List<IClassifierBehaviorInvocationEventAccepter> classifierBehaviorExecutions = this.classifierBehaviorInvocations;
 		for (int i = 0; i < classifierBehaviorExecutions.size(); i++) {
-			IClassifierBehaviorInvocationEventAccepter classifierBehaviorExecution = classifierBehaviorExecutions.get(i);
+			IClassifierBehaviorInvocationEventAccepter classifierBehaviorExecution = classifierBehaviorExecutions
+					.get(i);
 			classifierBehaviorExecution.terminate();
 		}
 	}
@@ -113,8 +112,10 @@ public class ObjectActivation implements IObjectActivation {
 			if (matchingEventAccepterIndexes.size() > 0) {
 				// *** Choose one matching event accepter non-deterministically.
 				// ***
-				int j = ((ChoiceStrategy) this.object.getLocus().getFactory().getStrategy("choice")).choose(matchingEventAccepterIndexes.size());
-				IEventAccepter selectedEventAccepter = this.waitingEventAccepters.get(matchingEventAccepterIndexes.get(j - 1));
+				int j = ((ChoiceStrategy) this.object.getLocus().getFactory().getStrategy("choice"))
+						.choose(matchingEventAccepterIndexes.size());
+				IEventAccepter selectedEventAccepter = this.waitingEventAccepters
+						.get(matchingEventAccepterIndexes.get(j - 1));
 				int removeAt = matchingEventAccepterIndexes.get(j - 1);
 				this.waitingEventAccepters.remove(removeAt);
 				selectedEventAccepter.accept(eventOccurrence);
@@ -128,11 +129,12 @@ public class ObjectActivation implements IObjectActivation {
 
 		// fUML12-35 Initial execution of an activity is not run to completion
 
-		return ((GetNextEventStrategy) this.object.getLocus().getFactory().getStrategy("getNextEvent")).getNextEvent(this);
+		return ((GetNextEventStrategy) this.object.getLocus().getFactory().getStrategy("getNextEvent"))
+				.getNextEvent(this);
 	}
 
 	public void send(IEventOccurrence eventOccurrence) {
-		// Add an event occurrence to the event pool and signal that a 
+		// Add an event occurrence to the event pool and signal that a
 		// new event occurrence has arrived.
 		this.eventPool.add(eventOccurrence);
 		_send(new ArrivalSignal());
@@ -153,7 +155,7 @@ public class ObjectActivation implements IObjectActivation {
 
 		// fUML12-35 Initial execution of an activity is not run to completion
 
-		//_startObjectBehavior();
+		// _startObjectBehavior();
 		if (classifier == null) {
 			Debug.println("[startBehavior] Starting behavior for all classifiers...");
 			// *** Start all classifier behaviors concurrently. ***
@@ -174,9 +176,11 @@ public class ObjectActivation implements IObjectActivation {
 			}
 			if (notYetStarted) {
 				/*
-				 * 1. Register an event accepter to denote the waiting of an InvocationEventoccurence that allows the classifier behavior to start
-				 * 2. Place in the event pool an InvocationEventOccurrence. When consumed it will triggers the execution of the classifier behavior in an RTC step
-				 * 3. Force the starting of the dispatch loop using the usual pattern of the ArrivalSignal
+				 * 1. Register an event accepter to denote the waiting of an
+				 * InvocationEventoccurence that allows the classifier behavior to start 2.
+				 * Place in the event pool an InvocationEventOccurrence. When consumed it will
+				 * triggers the execution of the classifier behavior in an RTC step 3. Force the
+				 * starting of the dispatch loop using the usual pattern of the ArrivalSignal
 				 */
 				// FIXME: This should be done in a Factory
 				IClassifierBehaviorInvocationEventAccepter newInvocation = new ClassifierBehaviorInvocationEventAccepter();
@@ -191,22 +195,24 @@ public class ObjectActivation implements IObjectActivation {
 		}
 	}
 
-
 	protected IUMLEventDispatchLoopExecution dispatchLoopExecution;
 
 	public void _startObjectBehavior() {
 		// *** This should start the EventDispatchLoop ***
-		if(dispatchLoopExecution == null){
-			dispatchLoopExecution = UMLTaskExecutionFactory.getInstance().createEventDispatchLoopExecution();
-			dispatchLoopExecution.setObjectActivation(this);
+		if (dispatchLoopExecution == null) {
+			IUMLTaskExecutionFactory taskFactory = getObject().getLocus().getFactory().getTaskFactory();
+			if (taskFactory != null) {
+				dispatchLoopExecution = taskFactory.createEventDispatchLoopExecution();
+				dispatchLoopExecution.setObjectActivation(this);
+			}
 		}
 		dispatchLoopExecution.newSignalArrival();
 	}
 
-	public void notifyEventArrival(){
+	public void notifyEventArrival() {
 		this._send(new ArrivalSignal());
 	}
-	
+
 	public void _send(ArrivalSignal signal) {
 		// Signal the arrival of a new signal instance in the event pool.
 		// *** This should send an ArrivalSignal to the EventDispatchLoop. ***

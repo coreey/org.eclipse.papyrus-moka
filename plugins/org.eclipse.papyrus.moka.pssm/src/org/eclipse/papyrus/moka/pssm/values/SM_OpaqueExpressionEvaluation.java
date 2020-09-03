@@ -63,8 +63,8 @@ public class SM_OpaqueExpressionEvaluation extends CS_OpaqueExpressionEvaluation
 		}
 		if(expression.getBehavior().getOwnedParameters().size() > 0){
 			Behavior behavior = expression.getBehavior();
-			if(eventOccurrence instanceof SignalEventOccurrence){
-				SignalEventOccurrence signalEventOccurrence = (SignalEventOccurrence) eventOccurrence;
+			if(currentEventOccurrence instanceof SignalEventOccurrence){
+				SignalEventOccurrence signalEventOccurrence = (SignalEventOccurrence) currentEventOccurrence;
 				if(behavior.inputParameters().size() == 1){
 					Parameter parameter = behavior.inputParameters().get(0);
 					IParameterValue parameterValue = new ParameterValue();
@@ -74,8 +74,8 @@ public class SM_OpaqueExpressionEvaluation extends CS_OpaqueExpressionEvaluation
 					parameterValue.setValues(values);
 					this.setParameterValue(parameterValue);
 				}
-			}else if(eventOccurrence instanceof ICallEventOccurrence){
-				ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) eventOccurrence;
+			}else if(currentEventOccurrence instanceof ICallEventOccurrence){
+				ICallEventOccurrence callEventOccurrence = (ICallEventOccurrence) currentEventOccurrence;
 				List<Parameter> behaviorInputParameters = behavior.inputParameters();
 				List<IParameterValue> inputParameterValues = callEventOccurrence.getCallEventExecution().getInputParameterValues();
 				if(behaviorInputParameters.size() == inputParameterValues.size()){

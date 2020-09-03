@@ -31,6 +31,7 @@ import org.eclipse.papyrus.moka.fuml.commonbehavior.IObjectActivation;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
+import org.eclipse.papyrus.moka.fuml.tasks.IUMLEventDispatchLoopExecution;
 import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
 import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
@@ -39,7 +40,7 @@ import org.eclipse.papyrus.moka.kernel.service.IExecutionEngineService;
 import org.eclipse.papyrus.moka.kernel.service.ServiceRegistry;
 import org.eclipse.uml2.uml.Element;
 
-public class UMLEventDispatchLoopExecution extends UMLTaskExecution implements IUMLEventDispatchLoopExecution {
+public class UMLEventDispatchLoopTaskExecution extends UMLTaskExecution implements IUMLEventDispatchLoopExecution {
 
 	/**
 	 * The object activation that handles this event dispatch loop
@@ -61,7 +62,7 @@ public class UMLEventDispatchLoopExecution extends UMLTaskExecution implements I
 	 */
 	private ReentrantLock signalCountLock;
 
-	public UMLEventDispatchLoopExecution(IExecutionLoop loop) {
+	public UMLEventDispatchLoopTaskExecution(IExecutionLoop loop) {
 		super(loop);
 		dispatchLoopLock = new ReentrantLock(true);
 		signalCount = 0;
@@ -196,7 +197,7 @@ public class UMLEventDispatchLoopExecution extends UMLTaskExecution implements I
 
 	@Override
 	public IValue new_() {
-		UMLEventDispatchLoopExecution dispatchLoopExecution = new UMLEventDispatchLoopExecution(executionLoop);
+		UMLEventDispatchLoopTaskExecution dispatchLoopExecution = new UMLEventDispatchLoopTaskExecution(executionLoop);
 		dispatchLoopExecution.dispatchLoop = dispatchLoop;
 		return dispatchLoopExecution;
 	}

@@ -15,8 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.activities;
 
-import org.eclipse.papyrus.moka.fuml.activities.IForkedToken;
-import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 
 public class ForkedToken extends Token implements IForkedToken {
