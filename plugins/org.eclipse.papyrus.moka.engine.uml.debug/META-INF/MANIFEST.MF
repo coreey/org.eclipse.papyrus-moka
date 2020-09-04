@@ -3,30 +3,14 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.papyrus.moka.engine.uml.debug
 Bundle-SymbolicName: org.eclipse.papyrus.moka.engine.uml.debug;singleton:=true
 Bundle-Version: 4.1.0.qualifier
+Bundle-Vendor: CEA List
 Automatic-Module-Name: org.eclipse.papyrus.moka.engine.uml.debug
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Require-Bundle: org.eclipse.papyrus.moka.fuml.interfaces;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.moka.kernel.debug;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.moka.kernel;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.debug.core;bundle-version="[3.15.0,4.0.0)",
- org.eclipse.papyrus.moka.utils;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.moka.pssm.interfaces;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.debug.ui;bundle-version="[3.14.0,4.0.0)",
- org.eclipse.jface;bundle-version="[3.20.0,4.0.0)",
- org.eclipse.ui.workbench;bundle-version="[3.119.0,4.0.0)",
- org.eclipse.papyrus.moka.pscs.interfaces;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.moka.engine.uml.time.interfaces;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.infra.core;bundle-version="[3.1.0,5.0.0)",
- org.eclipse.papyrus.infra.emf;bundle-version="[3.1.0,5.0.0)",
- org.eclipse.osgi;bundle-version="[3.15.0,4.0.0)",
- org.eclipse.papyrus.infra.services.labelprovider;bundle-version="[2.0.0,4.0.0)",
- org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)",
- org.eclipse.core.runtime;bundle-version="[3.18.0,4.0.0)"
-Export-Package: org.eclipse.papyrus.moka.engine.uml.debug.data.presentation,
+Require-Bundle: org.eclipse.papyrus.moka.engine.uml;bundle-version="[4.0.0,5.0.0)";visibility:=reexport,
+ org.eclipse.papyrus.moka.kernel.debug;bundle-version="[4.0.0,5.0.0)";visibility:=reexport,
+ org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",
+ org.eclipse.papyrus.moka.engine.uml.time.interfaces;bundle-version="[4.0.0,5.0.0)"
+Export-Package: org.eclipse.papyrus.moka.engine.uml.debug,
  org.eclipse.papyrus.moka.engine.uml.debug.data.values,
  org.eclipse.papyrus.moka.engine.uml.debug.data.variables,
- org.eclipse.papyrus.moka.engine.uml.debug.listeners,
  org.eclipse.papyrus.moka.engine.uml.debug.service
-Bundle-Activator: org.eclipse.papyrus.moka.engine.uml.debug.UMLDebugPlugin
-Bundle-ActivationPolicy: lazy
-Bundle-Vendor: Eclipse Modeling Project

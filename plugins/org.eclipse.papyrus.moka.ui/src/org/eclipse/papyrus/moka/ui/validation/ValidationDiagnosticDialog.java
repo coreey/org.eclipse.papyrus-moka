@@ -15,13 +15,12 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.ui.validation;
 
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MODEL_VALIDATION_ON_LAUNCH;
-
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.papyrus.infra.services.markerlistener.dialogs.DiagnosticDialog;
-import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
+import org.eclipse.papyrus.moka.ui.IUIPreferences;
+import org.eclipse.papyrus.moka.ui.MokaUIActivator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -71,7 +70,7 @@ public class ValidationDiagnosticDialog extends DiagnosticDialog {
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
 				}
-				
+
 			});
 		}
 		return control;
@@ -80,8 +79,8 @@ public class ValidationDiagnosticDialog extends DiagnosticDialog {
 	@Override
 	protected void buttonPressed(int id) {
 		if (id == IDialogConstants.OK_ID || id == IDialogConstants.CANCEL_ID) {
-			IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
-			store.setValue(MODEL_VALIDATION_ON_LAUNCH, !dontValidateAnymoreBeforeLaunchButton);
+			IPreferenceStore store = MokaUIActivator.getDefault().getPreferenceStore();
+			store.setValue(IUIPreferences.MODEL_VALIDATION_ON_LAUNCH, !dontValidateAnymoreBeforeLaunchButton);
 			try {
 				((ScopedPreferenceStore) store).save();
 			} catch (Exception e) {

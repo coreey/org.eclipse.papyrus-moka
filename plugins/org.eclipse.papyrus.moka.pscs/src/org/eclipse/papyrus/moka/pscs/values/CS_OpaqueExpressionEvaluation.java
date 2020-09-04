@@ -21,7 +21,6 @@ import java.util.List;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.values.Evaluation;
-import org.eclipse.papyrus.moka.pscs.values.ICS_OpaqueExpressionEvaluation;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
 

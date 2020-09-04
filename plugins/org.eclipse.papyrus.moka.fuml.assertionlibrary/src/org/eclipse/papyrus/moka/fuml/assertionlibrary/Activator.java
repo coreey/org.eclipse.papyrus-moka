@@ -13,14 +13,19 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.assertionlibrary;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
-import org.eclipse.papyrus.infra.core.log.LogHelper;
 import org.osgi.framework.BundleContext;
 
 public class Activator extends Plugin {
+	
+	/**
+	 * Plugin instance
+	 */
+	private static Activator plugin;
 
-	public static LogHelper log;
-
+	public ILog logger;
 	/*
 	 * (non-Javadoc)
 	 *
@@ -29,7 +34,8 @@ public class Activator extends Plugin {
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		super.start(bundleContext);
-		log = new LogHelper(this);
+		plugin = this;
+		logger = Platform.getLog(this.getClass());
 	}
 
 	/*
@@ -39,7 +45,13 @@ public class Activator extends Plugin {
 	 */
 	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
+		logger = null;
+		plugin = null;
 		super.stop(bundleContext);
+	}
+	
+	public static Activator getInstance() {
+		return plugin;
 	}
 
 }

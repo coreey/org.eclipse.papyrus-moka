@@ -78,9 +78,9 @@ public class ImportExportTPs {
 				importAction.run(new NullProgressMonitor());
 			}
 		} catch (InvocationTargetException e) {
-			Activator.log.error(e);
+			Activator.getDefault().logger.error("Error occured while running import action",e);
 		} catch (IOException e) {
-			Activator.log.error(e);
+			Activator.getDefault().logger.error("Error occured while resolving file to import",e);
 		}
 	}
 
@@ -116,9 +116,9 @@ public class ImportExportTPs {
 					exportAction.run(new NullProgressMonitor());
 				}
 			} catch (InvocationTargetException e) {
-				Activator.log.error(e);
+				Activator.getDefault().logger.error("Error occured while running export action",e);
 			} catch (IOException e) {
-				Activator.log.error(e);
+				Activator.getDefault().logger.error("Error occured while resolving file to export",e);
 			}
 		}
 	}

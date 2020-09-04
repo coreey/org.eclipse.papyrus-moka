@@ -7,7 +7,7 @@
             class="org.eclipse.papyrus.moka.engine.uml.animation.service.UMLAnimationService"
             description="UML Animation Service">
          <context
-               engineID="org.eclipse.papyrus.moka.engine.uml">
+               engineID="org.eclipse.papyrus.moka.engine.uml.debug">
          </context>
          <context
                engineID="org.eclipse.papyrus.moka.engine.uml.time">

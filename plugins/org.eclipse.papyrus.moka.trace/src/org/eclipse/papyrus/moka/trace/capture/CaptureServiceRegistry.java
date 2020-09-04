@@ -66,7 +66,7 @@ public class CaptureServiceRegistry {
 				engine.setId(engineId);
 				captures.put(engineId, engine);
 			} catch (CoreException e) {
-				Activator.log.error(e);
+				Activator.getDefault().logger.error("Could not create class for "+config[i].getAttribute(CLASS_PROPERTY_NAME),e);
 			}
 		}
 		return captures;

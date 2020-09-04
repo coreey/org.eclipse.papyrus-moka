@@ -21,7 +21,6 @@ import java.util.List;
 import org.eclipse.papyrus.moka.fuml.loci.SemanticStrategy;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Object;
 import org.eclipse.uml2.uml.StructuralFeature;
 
 public abstract class CS_StructuralFeatureOfInterfaceAccessStrategy extends SemanticStrategy {

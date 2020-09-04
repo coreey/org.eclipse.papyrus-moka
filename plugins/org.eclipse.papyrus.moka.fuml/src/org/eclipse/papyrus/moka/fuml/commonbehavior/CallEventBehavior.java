@@ -21,15 +21,15 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.internal.impl.BehaviorImpl;
 
 @SuppressWarnings("restriction")
-public class CallEventBehavior extends BehaviorImpl implements ICallEventBehavior{
+public class CallEventBehavior extends BehaviorImpl implements ICallEventBehavior {
 
 	public Operation operation;
-	
-	public void setOperation(Operation operation){
+
+	public void setOperation(Operation operation) {
 		// Set the operation for this call event behavior and construct
 		// the behavior signature based on the operation signature.
 		this.operation = operation;
-		for(int i = 0; i < operation.getOwnedParameters().size(); i++){
+		for (int i = 0; i < operation.getOwnedParameters().size(); i++) {
 			Parameter operationParameter = operation.getOwnedParameters().get(i);
 			Parameter parameter = UMLFactory.eINSTANCE.createParameter();
 			parameter.setName(operationParameter.getName());
@@ -46,5 +46,5 @@ public class CallEventBehavior extends BehaviorImpl implements ICallEventBehavio
 	public Operation getOperation() {
 		return this.operation;
 	}
-	
+
 }

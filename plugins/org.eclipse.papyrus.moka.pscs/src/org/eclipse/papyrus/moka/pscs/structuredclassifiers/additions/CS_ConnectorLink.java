@@ -16,17 +16,16 @@
 package org.eclipse.papyrus.moka.pscs.structuredclassifiers.additions;
 
 import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_Link;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.additions.ICS_ConnectorLink;
 import org.eclipse.uml2.uml.Connector;
 
-public class CS_ConnectorLink extends CS_Link implements ICS_ConnectorLink{
-	
+public class CS_ConnectorLink extends CS_Link implements ICS_ConnectorLink {
+
 	protected Connector connector;
-	
+
 	public void setConnector(Connector connector) {
 		this.connector = connector;
 	}
-	
+
 	public Connector getConnector() {
 		return this.connector;
 	}

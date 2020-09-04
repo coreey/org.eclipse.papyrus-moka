@@ -22,10 +22,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.engine.uml.libraries.ServiceObject;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
+import org.eclipse.papyrus.moka.fuml.library.ServiceObject;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.StringValue;
 import org.eclipse.papyrus.moka.fuml.values.Value;
@@ -37,25 +37,25 @@ public class StandardInputChannelImpl extends ServiceObject {
 	protected static BufferedReader bufferedReader;
 
 	protected InputStream in = null;
-	
+
 	private static final String READLINE_OPERATION = "readLine";
 
 	public StandardInputChannelImpl(Class service) {
 		super(service);
-		this.in = StandardOutputChannelImpl.getConsole().getInputStream();
+		this.in = FUMLIOConsole.getInstance().getConsole().getInputStream();
 	}
 
 	@Override
 	public IExecution dispatch(Operation operation) {
 		IExecution execution = null;
-		if(operation != null) {
-			if(operation.getName().equals(READLINE_OPERATION)) {
+		if (operation != null) {
+			if (operation.getName().equals(READLINE_OPERATION)) {
 				execution = new ReadLineExecution(operation);
 			}
 		}
 		return execution;
 	}
-	
+
 	protected class ReadLineExecution extends ServiceObject.ServiceOperationExecution {
 
 		public ReadLineExecution(Operation operation) {

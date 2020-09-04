@@ -25,20 +25,19 @@ import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Reference;
 import org.eclipse.papyrus.moka.pscs.commonbehavior.CS_EventOccurrence;
 import org.eclipse.papyrus.moka.pscs.commonbehavior.ICS_EventOccurrence;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_InteractionPoint;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Reference;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Port;
 
-
 public class CS_InteractionPoint extends Reference implements ICS_InteractionPoint {
 
 	/*
-	 * Represents the Reference to the CompositeObject owning this InteractionPort. NOTE: This is introduced to address requirement R3 (It represents
-	 * the "link from that instance to the instance of the owning classifier [...] through which communication is forwarded to the instance of the
-	 * owning classifier or through which the owning classifier communicates)
+	 * Represents the Reference to the CompositeObject owning this InteractionPort.
+	 * NOTE: This is introduced to address requirement R3 (It represents the "link
+	 * from that instance to the instance of the owning classifier [...] through
+	 * which communication is forwarded to the instance of the owning classifier or
+	 * through which the owning classifier communicates)
 	 */
 	public ICS_Reference owner;
 
@@ -62,11 +61,11 @@ public class CS_InteractionPoint extends Reference implements ICS_InteractionPoi
 	public void send(IEventOccurrence eventOccurrence) {
 		// An event occurrence that passes through a CS_InteractionPoint is
 		// (if necessary) wrapped in a CS_EventOccurrence. This event occurrence
-		// is then sent to the owning object. 
+		// is then sent to the owning object.
 		ICS_EventOccurrence wrappingEventOccurrence = null;
-		if(eventOccurrence instanceof ICS_EventOccurrence){
-			wrappingEventOccurrence = (ICS_EventOccurrence) eventOccurrence; 
-		}else{
+		if (eventOccurrence instanceof ICS_EventOccurrence) {
+			wrappingEventOccurrence = (ICS_EventOccurrence) eventOccurrence;
+		} else {
 			wrappingEventOccurrence = new CS_EventOccurrence();
 			wrappingEventOccurrence.setWrappedEventOccurrence(eventOccurrence);
 		}
@@ -76,7 +75,8 @@ public class CS_InteractionPoint extends Reference implements ICS_InteractionPoi
 
 	@Override
 	public IValue copy() {
-		// Create a new interaction point with the same referent as this interaction point.
+		// Create a new interaction point with the same referent as this interaction
+		// point.
 		ICS_InteractionPoint newValue = (ICS_InteractionPoint) (super.copy());
 		newValue.setReferent(this.referent);
 		return newValue;
@@ -104,7 +104,7 @@ public class CS_InteractionPoint extends Reference implements ICS_InteractionPoi
 	public void setDefiningPort(Port definingPort) {
 		this.definingPort = definingPort;
 	}
-	
+
 	@Override
 	public boolean checkAllParents(Classifier type, Classifier classifier) {
 		// Delegates the type checking to the reference

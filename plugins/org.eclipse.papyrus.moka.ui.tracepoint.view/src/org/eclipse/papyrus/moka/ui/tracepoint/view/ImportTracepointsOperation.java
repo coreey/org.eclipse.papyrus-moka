@@ -43,7 +43,7 @@ public class ImportTracepointsOperation extends ImportBreakpointsOperation {
 				markers = root.findMarkers(TracepointConstants.tracepointMarker, true, IResource.DEPTH_INFINITE);
 			}
 		} catch (CoreException e) {
-			Activator.log.error(e);
+			Activator.getDefault().logger.error("Error occured while finding markers for "+root,e);
 		}
 	}
 

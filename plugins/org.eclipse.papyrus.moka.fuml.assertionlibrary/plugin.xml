@@ -19,7 +19,7 @@
       </library>
    </extension>
    <extension
-         point="org.eclipse.papyrus.moka.engine.uml.library">
+         point="org.eclipse.papyrus.moka.fuml.library">
       <library
             libraryFactoryClass="org.eclipse.papyrus.moka.fuml.assertionlibrary.AssertionLibraryExecutionFactory"
             libraryURI="pathmap://PAPYRUS_ASSERTION_LIBRARY/AssertionLibrary.uml">

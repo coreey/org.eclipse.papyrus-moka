@@ -34,7 +34,7 @@ public class ToInteger extends OpaqueBehaviorExecution {
 			Integer x = ((UnlimitedNaturalValue) inputParameters.get(0).getValues().get(0)).value;
 			IntegerValue result = new IntegerValue();
 			if (x != 1) {
-				result.value = new Integer(x);
+				result.value = Integer.valueOf(x);
 			}
 			result.type = (PrimitiveType) this.locus.getFactory().getBuiltInType("Integer");
 			List<IValue> outputs = new ArrayList<IValue>();

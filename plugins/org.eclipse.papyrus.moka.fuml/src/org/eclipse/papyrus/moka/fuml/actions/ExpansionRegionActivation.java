@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.actions.IOutputPinActivation;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivationGroup;
 import org.eclipse.papyrus.moka.fuml.activities.IToken;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
@@ -32,24 +31,23 @@ import org.eclipse.uml2.uml.StructuredActivityNode;
 public class ExpansionRegionActivation extends ActionActivation implements IExpansionRegionActivation {
 
 	/*
-	 * The set of expansion activation groups for this expansion region
-	 * activation. One activation group is created corresponding to each token
-	 * held by the first input expansion node activation for the expansion
-	 * region.
+	 * The set of expansion activation groups for this expansion region activation.
+	 * One activation group is created corresponding to each token held by the first
+	 * input expansion node activation for the expansion region.
 	 */
 	public List<IExpansionActivationGroup> activationGroups = new ArrayList<IExpansionActivationGroup>();
 
 	/*
-	 * The tokens taken from each of the input pin activations for this
-	 * expansion region activation. These are preserved for initializing the
-	 * region inputs of each of the activation groups.
+	 * The tokens taken from each of the input pin activations for this expansion
+	 * region activation. These are preserved for initializing the region inputs of
+	 * each of the activation groups.
 	 */
 	public List<TokenSet> inputTokens = new ArrayList<TokenSet>();
 
 	/*
-	 * The tokens taken from each of the input expansion node activations for
-	 * this expansion region activation. These are preserved for initializing
-	 * the group input of each of the activation groups.
+	 * The tokens taken from each of the input expansion node activations for this
+	 * expansion region activation. These are preserved for initializing the group
+	 * input of each of the activation groups.
 	 */
 	public List<TokenSet> inputExpansionTokens = new ArrayList<TokenSet>();
 
@@ -139,7 +137,8 @@ public class ExpansionRegionActivation extends ActionActivation implements IExpa
 			while (j <= outputElements.size()) {
 				OutputPinActivation groupOutput = new OutputPinActivation();
 				groupOutput.run();
-				activationGroup.getGroupOutputs().add(groupOutput); // fUML12-10 certain boolean flags are not properly initialized in come cases
+				activationGroup.getGroupOutputs().add(groupOutput); // fUML12-10 certain boolean flags are not properly
+																	// initialized in come cases
 				j = j + 1;
 			}
 			activationGroup.createNodeActivations(region.getNodes());
@@ -185,7 +184,8 @@ public class ExpansionRegionActivation extends ActionActivation implements IExpa
 		// Place tokens on the output expansion nodes.
 		ExpansionRegion region = (ExpansionRegion) this.node;
 		List<ExpansionNode> outputElements = region.getOutputElements();
-		Debug.println("[doOutput] Expansion region " + region.getName() + " is " + (this.isSuspended() ? "suspended." : "completed."));
+		Debug.println("[doOutput] Expansion region " + region.getName() + " is "
+				+ (this.isSuspended() ? "suspended." : "completed."));
 		if (!this.isSuspended()) {
 			for (int i = 0; i < activationGroups.size(); i++) {
 				IExpansionActivationGroup activationGroup = activationGroups.get(i);
@@ -237,7 +237,8 @@ public class ExpansionRegionActivation extends ActionActivation implements IExpa
 		// Set up the inputs for the group with the given index, run the group
 		// and then fire the group outputs.
 		if (this.isRunning()) {
-			Debug.println("[runGroup] groupInput[0] = " + this.inputExpansionTokens.get(0).tokens.get(activationGroup.getIndex() - 1).getValue());
+			Debug.println("[runGroup] groupInput[0] = "
+					+ this.inputExpansionTokens.get(0).tokens.get(activationGroup.getIndex() - 1).getValue());
 			List<TokenSet> inputTokens = this.inputTokens;
 			for (int j = 0; j < inputTokens.size(); j++) {
 				TokenSet tokenSet = inputTokens.get(j);

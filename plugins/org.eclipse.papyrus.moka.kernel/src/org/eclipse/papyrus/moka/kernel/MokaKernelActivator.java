@@ -15,13 +15,15 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.kernel;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle.
  */
-public class MokaKernelActivator extends AbstractUIPlugin {
+public class MokaKernelActivator extends Plugin {
 
 	// The plug-in ID
 	/** The Constant PLUGIN_ID. */
@@ -31,10 +33,13 @@ public class MokaKernelActivator extends AbstractUIPlugin {
 	/** The plugin. */
 	private static MokaKernelActivator plugin;
 
+	public ILog logger;
+
 	/**
 	 * The constructor.
 	 */
 	public MokaKernelActivator() {
+		logger = Platform.getLog(this.getClass());
 	}
 
 	/*

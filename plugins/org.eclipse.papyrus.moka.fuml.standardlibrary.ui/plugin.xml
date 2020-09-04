@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
+     <library
+            description="Standard fUML Library"
+            iconpath="resources/icons/moka_icon.png"
+            name="FoundationalModelLibrary"
+            path="pathmap://PAPYRUS_fUML_LIBRARY/fUML_Library.uml"
+            provider="CEA LIST">
+      </library>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.moka.fuml.standardlibrary.fumlioconsole">
+      <fumlioconsole
+            fumlioconsoleClass="org.eclipse.papyrus.moka.fuml.standardlibrary.ui.EclipseUIFUMLIOConsole">
+      </fumlioconsole>
+   </extension>
+
+</plugin>

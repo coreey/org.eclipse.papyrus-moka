@@ -21,11 +21,10 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.DebugException;
-import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.ExecutionEngineException;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
-import org.eclipse.swt.widgets.Display;
 
 public class ExecutionEngineJob extends Job implements IExecutionEngineContainer {
 
@@ -82,17 +81,15 @@ public class ExecutionEngineJob extends Job implements IExecutionEngineContainer
 		return engine;
 	}
 
-	private static void handleEngineException(final ExecutionEngineException exception) {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				String message = exception.getMessage();
-				message += "\n\n Engine information ---"; //$NON-NLS-1$
-				message += "\n - Status: " + exception.getEngineStatus().toString(); //$NON-NLS-1$
-				message += "\n - ID: " + exception.getEngineID(); //$NON-NLS-1$
-				MessageDialog.openWarning(Display.getDefault().getActiveShell(), "Error", message); //$NON-NLS-1$
-			}
-		});
+	private void handleEngineException(final ExecutionEngineException exception) {
+
+		String message = exception.getMessage();
+		message += "\n\n Engine information ---"; //$NON-NLS-1$
+		message += "\n - Status: " + exception.getEngineStatus().toString(); //$NON-NLS-1$
+		message += "\n - ID: " + exception.getEngineID(); //$NON-NLS-1$
+
+		MokaKernelActivator.getDefault().logger.error(message, exception);
+
 	}
 
 }

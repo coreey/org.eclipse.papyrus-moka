@@ -30,8 +30,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLSemanticVisitorExecutionListener;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.ISemanticVisitorExecutionListener;
 import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
@@ -47,7 +47,7 @@ import org.eclipse.papyrus.moka.tracepoint.service.MarkerUtils;
 import org.eclipse.papyrus.moka.tracepoint.service.TracepointConstants;
 
 public class TraceGenerationService extends ExecutionEngineService<IExecutionEngine>
-		implements UMLSemanticVisitorExecutionListener {
+		implements ISemanticVisitorExecutionListener {
 
 	public static final String FILE_NAME = "trace";
 
@@ -69,7 +69,7 @@ public class TraceGenerationService extends ExecutionEngineService<IExecutionEng
 	@Override
 	public void init(IExecutionEngine engine) {
 		super.init(engine);
-		EngineConfiguration configuration = engine.getConfiguration();
+		EngineConfiguration<? extends EObject> configuration = engine.getConfiguration();
 		if (configuration != null && configuration.isTraceEnabled()) {
 			this.isTraceServiceActivate = configuration.isTraceEnabled();
 			this.formaters = Collections.singletonList(
@@ -102,7 +102,7 @@ public class TraceGenerationService extends ExecutionEngineService<IExecutionEng
 				}
 			}
 		} catch (CoreException e) {
-			Activator.log.error(e);
+			Activator.getDefault().logger.error("Error occured while finding markers for "+root,e);
 		}
 
 	}
@@ -122,17 +122,17 @@ public class TraceGenerationService extends ExecutionEngineService<IExecutionEng
 		IWorkspaceRoot workspace = ResourcesPlugin.getWorkspace().getRoot();
 		String workspacePath = workspace.getLocation().toFile().getPath().toString();
 		IFile currentFile = null;
-		
+
 		// Search a file in the workspace
 		try {
 			currentFile = workspace.getFileForLocation(new Path(workspacePath + traceDirectory));
 		} catch (IllegalArgumentException ex) {
 			// Ignore
 		}
-		if(currentFile != null) {
+		if (currentFile != null) {
 			return workspacePath + traceDirectory;
 		}
-		
+
 		// Search a folder in the workspace
 		IContainer currentFolder = null;
 		try {

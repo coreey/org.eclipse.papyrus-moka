@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.papyrus.moka.trace.Activator;
-import org.eclipse.papyrus.moka.trace.capture.MokaCaptureServiceFactory;
 import org.eclipse.papyrus.moka.trace.interfaces.format.ITraceFileFormater;
 
 public class TraceFileFormaterRegistry {
@@ -58,7 +57,8 @@ public class TraceFileFormaterRegistry {
 		Map<String, ITraceFileFormater> formaters = new HashMap<>();
 		for (int i = 0; i < config.length; i++) {
 			try {
-				ITraceFileFormater traceformater = (ITraceFileFormater) config[i].createExecutableExtension(CLASS_PROPERTY_NAME);
+				ITraceFileFormater traceformater = (ITraceFileFormater) config[i]
+						.createExecutableExtension(CLASS_PROPERTY_NAME);
 				String formaterName = config[i].getAttribute(NAME_PROPERTY_NAME);
 				traceformater.setName(formaterName);
 				String formaterId = config[i].getAttribute(ID_PROPERTY_NAME);
@@ -69,7 +69,7 @@ public class TraceFileFormaterRegistry {
 				traceformater.setFileExtension(fileExtension);
 				formaters.put(formaterId, traceformater);
 			} catch (CoreException e) {
-				Activator.log.error(e);
+				Activator.getDefault().logger.error("Could not create class for "+config[i].getAttribute(CLASS_PROPERTY_NAME),e);
 			}
 		}
 		return formaters;

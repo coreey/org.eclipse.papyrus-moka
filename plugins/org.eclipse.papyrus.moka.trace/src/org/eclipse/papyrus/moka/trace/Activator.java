@@ -14,7 +14,8 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.trace;
 
-import org.eclipse.papyrus.infra.core.log.LogHelper;
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -27,7 +28,7 @@ public class Activator extends AbstractUIPlugin {
 	private static Activator plugin;
 
 	/** The log service. */
-	public static LogHelper log;
+	public ILog logger;
 
 	/**
 	 * The constructor.
@@ -51,7 +52,7 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		log = new LogHelper(plugin);
+		logger = Platform.getLog(this.getClass());
 	}
 
 	/*
@@ -69,7 +70,7 @@ public class Activator extends AbstractUIPlugin {
 	@Override
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		log = null;
+		logger = null;
 		super.stop(context);
 	}
 

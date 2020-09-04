@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.eclipse.papyrus.moka.engine.uml.time.interfaces
 Bundle-Version: 4.1.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Require-Bundle: org.eclipse.papyrus.moka.pssm.interfaces;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.moka.fuml.interfaces;bundle-version="[4.0.0,5.0.0)"
+Require-Bundle: org.eclipse.papyrus.moka.pssm.interfaces;bundle-version="[4.0.0,5.0.0)";visibility:=reexport
 Export-Package: org.eclipse.papyrus.moka.engine.uml.time.interfaces
 Automatic-Module-Name: org.eclipse.papyrus.moka.timedfuml.interfaces

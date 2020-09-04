@@ -22,19 +22,19 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IVariable;
 
 public interface IDebuggableExecutionEngineThread<ThreadType, SuspensionContextType> extends IAdaptable {
-	
+
 	String getID();
-	
+
 	void setID(final String identifier);
-	
+
 	ThreadType getThread();
-	
+
 	void setThread(final ThreadType t);
-	
+
 	SuspensionContextType getSuspensionContext();
-	
+
 	void setSuspensionContext(final SuspensionContextType c);
-	
+
 	List<IVariable> getVariables(final IDebugTarget target);
-	
+
 }

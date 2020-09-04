@@ -13,7 +13,8 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.engine.uml.time;
 
-import org.eclipse.papyrus.infra.core.log.LogHelper;
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -22,28 +23,27 @@ public class Activator implements BundleActivator {
 	/**
 	 * Plugin instance
 	 */
-	private static Activator PLUGIN;
-	
+	private static Activator plugin;
+
 	/**
 	 * Logger used within that plugin
 	 */
-	public static LogHelper LOGGER;
-	
+	public ILog logger;
+
 	@Override
 	public void start(BundleContext context) throws Exception {
-		PLUGIN = this;
-		LOGGER = new LogHelper(context.getBundle());
+		plugin = this;
+		logger = Platform.getLog(this.getClass());
 	}
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		LOGGER = null;
-		PLUGIN = null;
+		logger = null;
+		plugin = null;
 	}
-	
-	public static Activator getInstance(){
-		return PLUGIN;
+
+	public static Activator getInstance() {
+		return plugin;
 	}
 
 }
-

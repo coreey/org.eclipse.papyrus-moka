@@ -23,10 +23,10 @@ import org.eclipse.papyrus.moka.animation.engine.AnimationService;
 import org.eclipse.papyrus.moka.animation.engine.rendering.AnimationKind;
 import org.eclipse.papyrus.moka.animation.engine.rendering.DiagramHandler;
 import org.eclipse.papyrus.moka.engine.uml.animation.animators.UMLAnimator;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLRTCStepListener;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLSemanticVisitorExecutionListener;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLValueLifecyleListener;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.IRTCStepListener;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.ISemanticVisitorExecutionListener;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.IValueLifecyleListener;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
@@ -34,7 +34,7 @@ import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 
-public class UMLAnimationService extends AnimationService implements UMLSemanticVisitorExecutionListener, UMLRTCStepListener, UMLValueLifecyleListener{
+public class UMLAnimationService extends AnimationService implements ISemanticVisitorExecutionListener, IRTCStepListener, IValueLifecyleListener{
 
 	public UMLAnimationService() {
 		super();

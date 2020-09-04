@@ -13,9 +13,9 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.profiling.loci;
 
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLSemanticVisitorExecutionListener;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.profiling.MokaObservable;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.ISemanticVisitorExecutionListener;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 import org.eclipse.papyrus.moka.kernel.service.IExecutionEngineService;
 
@@ -45,16 +45,16 @@ public abstract aspect SemanticVisitorProfiler extends MokaObservable {
 
 	protected void fireNodeVisited(ISemanticVisitor visitor) {
 		for (IExecutionEngineService<IExecutionEngine> service : getListeners()) {
-			if (service instanceof UMLSemanticVisitorExecutionListener) {
-				((UMLSemanticVisitorExecutionListener) service).nodeVisited(visitor);
+			if (service instanceof ISemanticVisitorExecutionListener) {
+				((ISemanticVisitorExecutionListener) service).nodeVisited(visitor);
 			}
 		}
 	}
 
 	protected void fireNodeLeft(ISemanticVisitor visitor) {
 		for (IExecutionEngineService<IExecutionEngine> service : getListeners()) {
-			if (service instanceof UMLSemanticVisitorExecutionListener) {
-				((UMLSemanticVisitorExecutionListener) service).nodeLeft(visitor);
+			if (service instanceof ISemanticVisitorExecutionListener) {
+				((ISemanticVisitorExecutionListener) service).nodeLeft(visitor);
 			}
 		}
 	}

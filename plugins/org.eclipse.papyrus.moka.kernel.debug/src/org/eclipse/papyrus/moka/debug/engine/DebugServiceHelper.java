@@ -14,20 +14,16 @@
 package org.eclipse.papyrus.moka.debug.engine;
 
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.IBreakpointManager;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.moka.animation.engine.rendering.IAnimation;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.papyrus.moka.debug.breakpoint.MokaBreakpoint;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
-import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
-import org.eclipse.papyrus.moka.kernel.service.IExecutionEngineService;
-import org.eclipse.papyrus.moka.kernel.service.ServiceRegistry;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
 import org.eclipse.papyrus.moka.utils.helper.semantics.SemanticHelper;
 import org.eclipse.uml2.uml.Class;
@@ -67,27 +63,14 @@ public class DebugServiceHelper {
 				} catch (CoreException e) {
 					e.printStackTrace();
 				}
-				if (isEnabled && visitedModelElement == breakpoint.getModelElement()) {
+
+				if (isEnabled && EcoreUtil.getURI(visitedModelElement).equals(breakpoint.getModelElementURI())) {
 					breakpointExist = true;
 				}
 				i++;
 			}
 		}
 		return breakpointExist;
-	}
-
-
-	public IAnimation getAnimationService() {
-		IAnimation animationService = null;
-		List<IExecutionEngineService<IExecutionEngine>> services = ServiceRegistry.getInstance().getService(IAnimation.class);
-		if (!services.isEmpty()) {
-			if (services.size() == 1) {
-				animationService = (IAnimation) services.iterator().next();
-			} else {
-				// TODO: handle via a strategy (e.g., the animation service with the highest priority)
-			}
-		}
-		return animationService;
 	}
 
 }

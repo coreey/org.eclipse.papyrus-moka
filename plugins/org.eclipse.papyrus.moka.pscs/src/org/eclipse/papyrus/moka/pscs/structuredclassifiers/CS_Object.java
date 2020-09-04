@@ -19,24 +19,19 @@ package org.eclipse.papyrus.moka.pscs.structuredclassifiers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.loci.ChoiceStrategy;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
-import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.actions.CallOperationActionActivation;
 import org.eclipse.papyrus.moka.fuml.actions.SendSignalActionActivation;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
+import org.eclipse.papyrus.moka.fuml.loci.ChoiceStrategy;
+import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
+import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IExtensionalValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Object_;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Reference;
 import org.eclipse.papyrus.moka.pscs.commonbehavior.ICS_CallEventExecution;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_LinkKind;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_InteractionPoint;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Link;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Object;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Reference;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ConnectorKind;
@@ -47,14 +42,17 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.StructuralFeature;
 
-
 public class CS_Object extends Object_ implements ICS_Object {
 
 	public IExecution dispatchIn(Operation operation, ICS_InteractionPoint interactionPoint) {
-		// If the interaction point refers to a behavior port, the operation call is dispatched
-		// to the object owning the behavior port. This may result in the method being handled
-		// by the method defined for the operation at the object or through a call event handled 
-		// by the classifier behavior of the owning object. The latter case only occurs if the
+		// If the interaction point refers to a behavior port, the operation call is
+		// dispatched
+		// to the object owning the behavior port. This may result in the method being
+		// handled
+		// by the method defined for the operation at the object or through a call event
+		// handled
+		// by the classifier behavior of the owning object. The latter case only occurs
+		// if the
 		// dispatched operation has no implementation
 		// If it does not refer to a behavior port, select appropriate delegation links
 		// from interactionPoint, and propagates the operation call through
@@ -62,8 +60,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		IExecution execution = null;
 		if (interactionPoint.getDefiningPort().isBehavior()) {
 			execution = this.dispatch(operation);
-			if(execution instanceof ICS_CallEventExecution){
-				((ICS_CallEventExecution)execution).setInteractionPoint(interactionPoint);
+			if (execution instanceof ICS_CallEventExecution) {
+				((ICS_CallEventExecution) execution).setInteractionPoint(interactionPoint);
 			}
 		} else {
 			boolean operationIsProvided = true;
@@ -71,7 +69,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 			List<ICS_Link> cddLinks = this.getLinks(interactionPoint);
 			Integer linkIndex = 1;
 			while (linkIndex <= cddLinks.size()) {
-				List<IReference> validTargets = this.selectTargetsForDispatching(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.DELEGATION_LITERAL, operation, operationIsProvided);
+				List<IReference> validTargets = this.selectTargetsForDispatching(cddLinks.get(linkIndex - 1),
+						interactionPoint, ConnectorKind.DELEGATION_LITERAL, operation, operationIsProvided);
 				Integer targetIndex = 1;
 				while (targetIndex <= validTargets.size()) {
 					potentialTargets.add(validTargets.get(targetIndex - 1));
@@ -82,7 +81,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 			// If potentialTargets is empty, no delegation target have been found,
 			// and the operation call will be lost
 			if (!(potentialTargets.size() == 0)) {
-				CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory().getStrategy("requestPropagation");
+				CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory()
+						.getStrategy("requestPropagation");
 				// Choose one target non-deterministically
 				List<IReference> targets = strategy.select(potentialTargets, new CallOperationActionActivation());
 				IReference target = targets.get(0);
@@ -92,11 +92,12 @@ public class CS_Object extends Object_ implements ICS_Object {
 		return execution;
 	}
 
-
 	public void sendIn(IEventOccurrence eventOccurrence, ICS_InteractionPoint interactionPoint) {
-		// 1] If the interaction is a behavior port then sends the event occurrence to the target
+		// 1] If the interaction is a behavior port then sends the event occurrence to
+		// the target
 		// object using operation send.
-		// 2] If this is not a behavior port, select appropriate delegation targets from interactionPoint,
+		// 2] If this is not a behavior port, select appropriate delegation targets from
+		// interactionPoint,
 		// and propagates the event occurrence to these targets
 		if (interactionPoint.getDefiningPort().isBehavior()) {
 			this.send(eventOccurrence);
@@ -106,7 +107,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 			List<ICS_Link> cddLinks = this.getLinks(interactionPoint);
 			Integer linkIndex = 1;
 			while (linkIndex <= cddLinks.size()) {
-				List<IReference> validTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.DELEGATION_LITERAL, toInternal);
+				List<IReference> validTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1),
+						interactionPoint, ConnectorKind.DELEGATION_LITERAL, toInternal);
 				Integer targetIndex = 1;
 				while (targetIndex <= validTargets.size()) {
 					potentialTargets.add(validTargets.get(targetIndex - 1));
@@ -124,13 +126,17 @@ public class CS_Object extends Object_ implements ICS_Object {
 		}
 	}
 
-
-	public List<IReference> selectTargetsForSending(ICS_Link link, ICS_InteractionPoint interactionPoint, ConnectorKind connectorKind, Boolean toInternal) {
-		// From the given link, signal and interaction point, retrieves potential targets (i.e. end values of link)
+	public List<IReference> selectTargetsForSending(ICS_Link link, ICS_InteractionPoint interactionPoint,
+			ConnectorKind connectorKind, Boolean toInternal) {
+		// From the given link, signal and interaction point, retrieves potential
+		// targets (i.e. end values of link)
 		// through which request can be propagated
-		// These targets are attached to interaction point through the given link, and respect the following rules:
-		// - if toInternal is true, connectorKind must be Delegation, the given link has to target the internals of this CS_Object
-		// - if toInternal is false, the given link has to target the environment of this CS_Object.
+		// These targets are attached to interaction point through the given link, and
+		// respect the following rules:
+		// - if toInternal is true, connectorKind must be Delegation, the given link has
+		// to target the internals of this CS_Object
+		// - if toInternal is false, the given link has to target the environment of
+		// this CS_Object.
 		List<IReference> potentialTargets = new ArrayList<IReference>();
 		if (toInternal && connectorKind == ConnectorKind.DELEGATION_LITERAL) {
 			if (this.getLinkKind(link, interactionPoint) == CS_LinkKind.ToInternal) {
@@ -208,13 +214,18 @@ public class CS_Object extends Object_ implements ICS_Object {
 		return potentialTargets;
 	}
 
-	public List<IReference> selectTargetsForDispatching(ICS_Link link, ICS_InteractionPoint interactionPoint, ConnectorKind connectorKind, Operation operation, Boolean toInternal) {
-		// From the given link, operation and interaction point, retrieves potential targets (i.e. end values of link)
+	public List<IReference> selectTargetsForDispatching(ICS_Link link, ICS_InteractionPoint interactionPoint,
+			ConnectorKind connectorKind, Operation operation, Boolean toInternal) {
+		// From the given link, operation and interaction point, retrieves potential
+		// targets (i.e. end values of link)
 		// through which request can be propagated
-		// These targets are attached to interaction point through the given link, and respect the following rules:
-		// - if isProvided is true, connectorKind must be Delegation, the given link has to target the internals of this CS_Object,
+		// These targets are attached to interaction point through the given link, and
+		// respect the following rules:
+		// - if isProvided is true, connectorKind must be Delegation, the given link has
+		// to target the internals of this CS_Object,
 		// and a valid target must provide the Operation
-		// - if isProvided is false, the given link has to target the environment of this CS_Object.
+		// - if isProvided is false, the given link has to target the environment of
+		// this CS_Object.
 		// - if connectorKind is assembly, a valid target has to provide the operation
 		// - if connectorKind is delegation, a valid target has to require the operation
 		List<IReference> potentialTargets = new ArrayList<IReference>();
@@ -302,7 +313,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		// Appropriate links are links which target elements
 		// in the environment of this CS_Object.
 		// These can be delegation links (i.e, the targeted elements must
-		// require a reception for the signal) or assembly links (i.e., the target elements
+		// require a reception for the signal) or assembly links (i.e., the target
+		// elements
 		// must provide a reception for the signal)
 		boolean notToInternal = false; // i.e. to environment
 		List<IReference> allPotentialTargets = new ArrayList<IReference>();
@@ -312,14 +324,16 @@ public class CS_Object extends Object_ implements ICS_Object {
 		List<ICS_Link> cddLinks = this.getLinks(interactionPoint);
 		Integer linkIndex = 1;
 		while (linkIndex <= cddLinks.size()) {
-			List<IReference> validAssemblyTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.ASSEMBLY_LITERAL, notToInternal);
+			List<IReference> validAssemblyTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1),
+					interactionPoint, ConnectorKind.ASSEMBLY_LITERAL, notToInternal);
 			Integer targetIndex = 1;
 			while (targetIndex <= validAssemblyTargets.size()) {
 				allPotentialTargets.add(validAssemblyTargets.get(targetIndex - 1));
 				targetsForSendingIn.add(validAssemblyTargets.get(targetIndex - 1));
 				targetIndex = targetIndex + 1;
 			}
-			List<IReference> validDelegationTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.DELEGATION_LITERAL, notToInternal);
+			List<IReference> validDelegationTargets = this.selectTargetsForSending(cddLinks.get(linkIndex - 1),
+					interactionPoint, ConnectorKind.DELEGATION_LITERAL, notToInternal);
 			targetIndex = 1;
 			while (targetIndex <= validDelegationTargets.size()) {
 				allPotentialTargets.add(validDelegationTargets.get(targetIndex - 1));
@@ -329,7 +343,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 			linkIndex = linkIndex + 1;
 		}
 
-		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory().getStrategy("requestPropagation");
+		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory()
+				.getStrategy("requestPropagation");
 		List<IReference> selectedTargets = strategy.select(allPotentialTargets, new SendSignalActionActivation());
 
 		for (int j = 0; j < selectedTargets.size(); j++) {
@@ -361,7 +376,6 @@ public class CS_Object extends Object_ implements ICS_Object {
 		// require the operation) or assembly links (i.e., the target elements
 		// must provide the operation)
 
-
 		IExecution execution = null;
 
 		boolean notToInternal = false; // i.e. to environment
@@ -372,14 +386,16 @@ public class CS_Object extends Object_ implements ICS_Object {
 		List<ICS_Link> cddLinks = this.getLinks(interactionPoint);
 		Integer linkIndex = 1;
 		while (linkIndex <= cddLinks.size()) {
-			List<IReference> validAssemblyTargets = this.selectTargetsForDispatching(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.ASSEMBLY_LITERAL, operation, notToInternal);
+			List<IReference> validAssemblyTargets = this.selectTargetsForDispatching(cddLinks.get(linkIndex - 1),
+					interactionPoint, ConnectorKind.ASSEMBLY_LITERAL, operation, notToInternal);
 			Integer targetIndex = 1;
 			while (targetIndex <= validAssemblyTargets.size()) {
 				allPotentialTargets.add(validAssemblyTargets.get(targetIndex - 1));
 				targetsForDispatchingIn.add(validAssemblyTargets.get(targetIndex - 1));
 				targetIndex = targetIndex + 1;
 			}
-			List<IReference> validDelegationTargets = this.selectTargetsForDispatching(cddLinks.get(linkIndex - 1), interactionPoint, ConnectorKind.DELEGATION_LITERAL, operation, notToInternal);
+			List<IReference> validDelegationTargets = this.selectTargetsForDispatching(cddLinks.get(linkIndex - 1),
+					interactionPoint, ConnectorKind.DELEGATION_LITERAL, operation, notToInternal);
 			targetIndex = 1;
 			while (targetIndex <= validDelegationTargets.size()) {
 				allPotentialTargets.add(validDelegationTargets.get(targetIndex - 1));
@@ -389,7 +405,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 			linkIndex = linkIndex + 1;
 		}
 
-		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory().getStrategy("requestPropagation");
+		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory()
+				.getStrategy("requestPropagation");
 		List<IReference> selectedTargets = strategy.select(allPotentialTargets, new SendSignalActionActivation());
 
 		for (int j = 0; j < selectedTargets.size(); j++) {
@@ -419,7 +436,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		// fUML semantics is extended in the sense that reading is
 		// delegated to a CS_StructuralFeatureOfInterfaceAccessStrategy
 		if (feature.getNamespace() instanceof Interface) {
-			CS_StructuralFeatureOfInterfaceAccessStrategy readStrategy = (CS_StructuralFeatureOfInterfaceAccessStrategy) this.locus.getFactory().getStrategy("structuralFeature");
+			CS_StructuralFeatureOfInterfaceAccessStrategy readStrategy = (CS_StructuralFeatureOfInterfaceAccessStrategy) this.locus
+					.getFactory().getStrategy("structuralFeature");
 			return readStrategy.read(this, feature);
 		} else {
 			return super.getFeatureValue(feature);
@@ -432,7 +450,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		// fUML semantics is extended in the sense that writing is
 		// delegated to a CS_StructuralFeatureOfInterfaceAccessStrategy
 		if (feature.getNamespace() instanceof Interface) {
-			CS_StructuralFeatureOfInterfaceAccessStrategy writeStrategy = (CS_StructuralFeatureOfInterfaceAccessStrategy) this.locus.getFactory().getStrategy("structuralFeature");
+			CS_StructuralFeatureOfInterfaceAccessStrategy writeStrategy = (CS_StructuralFeatureOfInterfaceAccessStrategy) this.locus
+					.getFactory().getStrategy("structuralFeature");
 			writeStrategy.write(this, feature, values, position);
 		} else {
 			super.setFeatureValue(feature, values, position);
@@ -485,7 +504,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		// containers for this CS_Object
 		// An extensional value is a direct container for an object if:
 		// - it is a CS_Object
-		// - it directly contains this object (i.e. CS_Object.directlyContains(Object)==true)
+		// - it directly contains this object (i.e.
+		// CS_Object.directlyContains(Object)==true)
 		List<ICS_Object> containers = new ArrayList<ICS_Object>();
 		for (int i = 0; i < this.locus.getExtensionalValues().size(); i++) {
 			IExtensionalValue extensionalValue = this.locus.getExtensionalValues().get(i);
@@ -501,10 +521,13 @@ public class CS_Object extends Object_ implements ICS_Object {
 
 	public Boolean isOperationProvided(IReference reference, Operation operation) {
 		// Determines if the given reference provides the operation
-		// If the reference is an interaction point, it provides the operation if this operation
+		// If the reference is an interaction point, it provides the operation if this
+		// operation
 		// is a member of one of its provided interfaces
-		// If the reference is NOT an interactionPoint, it provides this operation if this operation is
-		// an operation of one of its type, or one of its type provides a realization for this operation (in the case
+		// If the reference is NOT an interactionPoint, it provides this operation if
+		// this operation is
+		// an operation of one of its type, or one of its type provides a realization
+		// for this operation (in the case
 		// where the namespace of this Operation is an interface)
 		boolean isProvided = false;
 		if (reference instanceof ICS_InteractionPoint) {
@@ -513,7 +536,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 				// they define directly or indirectly the Operation
 				Integer interfaceIndex = 1;
 				// Iterates on provided interfaces of the port
-				List<Interface> providedInterfaces = ((ICS_InteractionPoint) reference).getDefiningPort().getProvideds();
+				List<Interface> providedInterfaces = ((ICS_InteractionPoint) reference).getDefiningPort()
+						.getProvideds();
 				while (interfaceIndex <= providedInterfaces.size() && !isProvided) {
 					Interface interface_ = providedInterfaces.get(interfaceIndex - 1);
 					// Iterates on members of the current Interface
@@ -554,7 +578,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 
 	public Boolean isOperationRequired(IReference reference, Operation operation) {
 		// Determines if the given reference requires the operation
-		// If the reference is an interaction point, it requires the operation if this operation
+		// If the reference is an interaction point, it requires the operation if this
+		// operation
 		// is a member of one of its required interfaces
 		// If the reference is not a interaction point, it cannot require an operation
 		boolean matches = false;
@@ -580,12 +605,18 @@ public class CS_Object extends Object_ implements ICS_Object {
 	}
 
 	public CS_LinkKind getLinkKind(ICS_Link link, ICS_InteractionPoint interactionPoint) {
-		// If the given interaction point belongs to this object, and if the given interaction point is used as an end of the link,
-		// then the links targets the environment of the object (enumeration literal ToEnvironment) if all the feature values of the link
-		// (but one for the interaction point) refer to values which are not themselves values for features of this object.
-		// If all the feature values of the link refer to values which are themselves values for features of this object,
-		// the link targets the internals of the object (enumeration literal ToInternal). Otherwise, the link has no particular meaning
-		// in the context defined by the object and the interaction point (enumeration literal None).
+		// If the given interaction point belongs to this object, and if the given
+		// interaction point is used as an end of the link,
+		// then the links targets the environment of the object (enumeration literal
+		// ToEnvironment) if all the feature values of the link
+		// (but one for the interaction point) refer to values which are not themselves
+		// values for features of this object.
+		// If all the feature values of the link refer to values which are themselves
+		// values for features of this object,
+		// the link targets the internals of the object (enumeration literal
+		// ToInternal). Otherwise, the link has no particular meaning
+		// in the context defined by the object and the interaction point (enumeration
+		// literal None).
 		if (!link.hasValueForAFeature(interactionPoint)) {
 			return CS_LinkKind.None;
 		}
@@ -617,7 +648,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 	}
 
 	public List<ICS_Link> getLinks(ICS_InteractionPoint interactionPoint) {
-		// Get all links (available at the locus of this object) where the given interaction point is used as a feature value
+		// Get all links (available at the locus of this object) where the given
+		// interaction point is used as a feature value
 		// (i.e. the interaction is an end such links)
 		List<IExtensionalValue> extensionalValues = this.locus.getExtensionalValues();
 		Integer i = 1;
@@ -636,7 +668,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 	}
 
 	public Boolean hasValueForAFeature(IValue value) {
-		// Returns true if the given value object is used as a value for a feature value of this object
+		// Returns true if the given value object is used as a value for a feature value
+		// of this object
 		List<IFeatureValue> allFeatureValues = this.getFeatureValues();
 		Integer i = 1;
 		boolean isAValue = false;
@@ -664,7 +697,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		for (int i = 0; i < values.size(); i++) {
 			potentialTargets.add((IReference) values.get(i));
 		}
-		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory().getStrategy("requestPropagation");
+		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory()
+				.getStrategy("requestPropagation");
 		List<IReference> targets = strategy.select(potentialTargets, new SendSignalActionActivation());
 		for (int i = 0; i < targets.size(); i++) {
 			CS_InteractionPoint target = (CS_InteractionPoint) targets.get(i);
@@ -682,7 +716,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		for (int i = 0; i < values.size(); i++) {
 			potentialTargets.add((Reference) values.get(i));
 		}
-		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory().getStrategy("requestPropagation");
+		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory()
+				.getStrategy("requestPropagation");
 		List<IReference> targets = strategy.select(potentialTargets, new CallOperationActionActivation());
 		// if targets is empty, no dispatch target has been found,
 		// and the operation call is lost
@@ -699,7 +734,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		// and dispatches the operation call to this interaction point
 		IFeatureValue featureValue = this.getFeatureValue(onPort);
 		List<IValue> values = featureValue.getValues();
-		Integer choice = ((ChoiceStrategy) this.locus.getFactory().getStrategy("choice")).choose(featureValue.getValues().size()) - 1;
+		Integer choice = ((ChoiceStrategy) this.locus.getFactory().getStrategy("choice"))
+				.choose(featureValue.getValues().size()) - 1;
 		CS_InteractionPoint interactionPoint = (CS_InteractionPoint) values.get(choice);
 		return interactionPoint.dispatch(operation);
 	}
@@ -713,7 +749,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 		for (int i = 0; i < values.size(); i++) {
 			potentialTargets.add((Reference) values.get(i));
 		}
-		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory().getStrategy("requestPropagation");
+		CS_RequestPropagationStrategy strategy = (CS_RequestPropagationStrategy) this.locus.getFactory()
+				.getStrategy("requestPropagation");
 		List<IReference> targets = strategy.select(potentialTargets, new SendSignalActionActivation());
 		for (int i = 0; i < targets.size(); i++) {
 			IReference target = targets.get(i);
@@ -723,7 +760,8 @@ public class CS_Object extends Object_ implements ICS_Object {
 
 	public boolean checkAllParents(Classifier type, Classifier classifier) {
 		// If the given classifier is not an Interface, behaves like in fUML.
-		// Otherwise, check if the given type (or one of its direct or indirect ancestors)
+		// Otherwise, check if the given type (or one of its direct or indirect
+		// ancestors)
 		// has an InterfaceRealization relationships with the given classifier.
 		boolean matched = false;
 		if (!(classifier instanceof Interface)) {

@@ -49,13 +49,13 @@ public class GenerateTestReport extends OpaqueBehaviorExecution {
 		try {
 			report = Reporter.INSTANCE.getReport();
 		} catch (ParserConfigurationException e) {
-			Activator.log.error(e);
+			Activator.getInstance().logger.error("Error occured while generating test report",e);
 		}
 
 		try {
 			transformer = factory.newTransformer();
 		} catch (TransformerConfigurationException e) {
-			Activator.log.error(e);
+			Activator.getInstance().logger.error("Error occured while generating test report",e);
 		}
 		if (transformer != null) {
 			this.writeReport(transformer, report, Platform.getInstanceLocation().getURL(), reportName);
@@ -68,14 +68,14 @@ public class GenerateTestReport extends OpaqueBehaviorExecution {
 		FileOutputStream out = null;
 		try {
 			out = new FileOutputStream(file, false);
-		} catch (FileNotFoundException e1) {
-			Activator.log.error(e1);
+		} catch (FileNotFoundException e) {
+			Activator.getInstance().logger.error("Error occured while generating test report",e);
 			return false;
 		}
 		try {
 			transformer.transform(new DOMSource(report), new StreamResult(out));
 		} catch (TransformerException e) {
-			Activator.log.error(e);
+			Activator.getInstance().logger.error("Error occured while generating test report",e);
 			return false;
 		}
 		return true;

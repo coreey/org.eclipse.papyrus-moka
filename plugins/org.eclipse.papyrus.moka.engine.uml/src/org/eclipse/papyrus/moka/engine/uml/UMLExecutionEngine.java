@@ -17,83 +17,14 @@ package org.eclipse.papyrus.moka.engine.uml;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.SubMonitor;
-import org.eclipse.papyrus.moka.debug.engine.DebuggableExecutionEngine;
-import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngine;
-import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
-import org.eclipse.papyrus.moka.engine.uml.libraries.LibraryRegistry;
-import org.eclipse.papyrus.moka.engine.uml.scheduling.IsTargetThreadCondition;
-import org.eclipse.papyrus.moka.engine.uml.scheduling.UMLTaskExecutionFactory;
-import org.eclipse.papyrus.moka.fuml.actions.DefaultCreateObjectActionStrategy;
-import org.eclipse.papyrus.moka.fuml.actions.DefaultGetAssociationStrategy;
-import org.eclipse.papyrus.moka.fuml.commonbehavior.FIFOGetNextEventStrategy;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
-import org.eclipse.papyrus.moka.fuml.loci.FirstChoiceStrategy;
-import org.eclipse.papyrus.moka.fuml.loci.ILocus;
-import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
-import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.tasks.IUMLRootTaskExecution;
-import org.eclipse.papyrus.moka.fuml.tasks.IUMLTaskExecutionFactory;
-import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.ExecutionEngineException;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.Scheduler;
-import org.eclipse.papyrus.moka.pscs.actions.additions.CS_NotNormativeDefaultConstructStrategy;
-import org.eclipse.papyrus.moka.pscs.loci.CS_Executor;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_DefaultRequestPropagationStrategy;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_DispatchOperationOfInterfaceStrategy;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_NameBased_StructuralFeatureOfInterfaceAccessStrategy;
-import org.eclipse.papyrus.moka.pssm.loci.SM_ExecutionFactory;
-import org.eclipse.papyrus.moka.pssm.loci.SM_Locus;
-import org.eclipse.papyrus.moka.utils.UMLPrimitiveTypesUtils;
 import org.eclipse.uml2.uml.Element;
 
-public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISemanticVisitor>
-		implements IUMLExecutionEngine {
-
-	/**
-	 * Virtual machine on which the execution takes place
-	 */
-	protected ILocus locus;
-
-	/**
-	 * Factory enabling the creation of the appropriate root task for this engine
-	 */
-	protected IUMLTaskExecutionFactory rootTaskFactory;
-	
-	/**
-	 * Behave as the super class. In addition, instantiate the locus and
-	 * parameterize it with the appropriate execution factory and executor. Finally,
-	 * built in types, libraries and semantic strategies are installed at the locus
-	 */
-	@Override
-	public void init(EngineConfiguration<?> configuration, SubMonitor monitor) {
-		super.init(configuration, monitor);
-		locus = createLocus();
-		rootTaskFactory = createUMLTaskFactory();
-		locus.getFactory().setTaskFactory(rootTaskFactory);
-		installBuiltInTypes();
-		installLibraries();
-		installSemanticStrategies();
-	}
-
-	/**
-	 * Create the UML task factory used by this engine
-	 * 
-	 * @return the task factory
-	 */
-	protected IUMLTaskExecutionFactory createUMLTaskFactory() {
-		return new UMLTaskExecutionFactory(controller.getExecutionLoop());
-	}
-	
-	/**
-	 * Create and parameterize the locus
-	 */
-	@Override
-	public ILocus createLocus() {
-		ILocus locus = new SM_Locus();
-		locus.setExecutor(new CS_Executor());
-		locus.setFactory(new SM_ExecutionFactory());
-		return locus;
-	}
+public class UMLExecutionEngine extends AbstractUMLExecutionEngine {
 
 	/**
 	 * Start the execution. This is technically realized by adding the the root
@@ -101,111 +32,32 @@ public class UMLExecutionEngine extends DebuggableExecutionEngine<IObject_, ISem
 	 */
 	@Override
 	public void start(SubMonitor monitor) throws ExecutionEngineException {
-		Element source = (Element) configuration.getExecutionSource();
-		if (locus != null && source != null) {
-			IUMLRootTaskExecution<?> rootExecution = rootTaskFactory.createRootExecution(source);
-			if(rootExecution != null) {
-				rootExecution.setLocus(locus);
-				rootExecution.setInputParameterValues(new ArrayList<IParameterValue>());
-				if(rootExecution.canExecute()) {
-					controller.getExecutionLoop().init(rootExecution, new Scheduler());
-					SubMonitor progress = monitor.split(1);
-					progress.subTask("Run model"); //$NON-NLS-1$
-					controller.start();
-					progress.worked(1);
+		EObject executionSource = configuration.getExecutionSource();
+		if (executionSource instanceof Element) {
+			Element source = (Element) configuration.getExecutionSource();
+			if (locus != null && source != null) {
+				IUMLRootTaskExecution<?> rootExecution = rootTaskFactory.createRootExecution(source);
+				if (rootExecution != null) {
+					rootExecution.setLocus(locus);
+					rootExecution.setInputParameterValues(new ArrayList<IParameterValue>());
+					if (rootExecution.canExecute()) {
+						controller.getExecutionLoop().init(rootExecution, new Scheduler());
+						SubMonitor progress = monitor.split(1);
+						progress.subTask("Run model"); //$NON-NLS-1$
+						controller.start();
+						progress.worked(1);
+					} else {
+						throw new ExecutionEngineException(identifier, status,
+								"Could not start the execution from the specified model element"); //$NON-NLS-1$
+					}
 				} else {
-					throw new ExecutionEngineException(identifier, status, "Could not start the execution from the specified model element"); //$NON-NLS-1$
+					throw new ExecutionEngineException(identifier, status,
+							"Could not instantiate an execution from the specified element"); //$NON-NLS-1$
 				}
-			} else {
-				throw new ExecutionEngineException(identifier, status, "Could not instantiate an execution from the specified element"); //$NON-NLS-1$
 			}
+		} else {
+			throw new IllegalArgumentException("ExecutionSource in configuration must be instanceOf UML::Element");
 		}
-	}
-
-	/**
-	 * Register UML primitive types
-	 */
-	@Override
-	public void installBuiltInTypes() {
-		Element source = (Element) configuration.getExecutionSource();
-		if (locus != null && source != null) {
-			locus.getFactory().addBuiltInType(UMLPrimitiveTypesUtils.getReal(source));
-			locus.getFactory().addBuiltInType(UMLPrimitiveTypesUtils.getInteger(source));
-			locus.getFactory().addBuiltInType(UMLPrimitiveTypesUtils.getBoolean(source));
-			locus.getFactory().addBuiltInType(UMLPrimitiveTypesUtils.getString(source));
-		}
-	}
-
-	/**
-	 * Install all registered libraries (e.g., the FUML Library)
-	 */
-	@Override
-	public void installLibraries() {
-		Element source = (Element) configuration.getExecutionSource();
-		if (locus != null && source.eResource() != null && source.eResource().getResourceSet() != null) {
-			LibraryRegistry.getInstance().loadLibraryFactories(source.eResource().getResourceSet());
-			LibraryRegistry.getInstance().installLibraries(locus);
-		}
-	}
-
-	/**
-	 * Install semantic strategies used to realized the execution
-	 */
-	@Override
-	public void installSemanticStrategies() {
-		if (locus != null) {
-			locus.getFactory().setStrategy(new FirstChoiceStrategy());
-			locus.getFactory().setStrategy(new FIFOGetNextEventStrategy());
-			locus.getFactory().setStrategy(new CS_DispatchOperationOfInterfaceStrategy());
-			locus.getFactory().setStrategy(new CS_NameBased_StructuralFeatureOfInterfaceAccessStrategy());
-			locus.getFactory().setStrategy(new CS_DefaultRequestPropagationStrategy());
-			locus.getFactory().setStrategy(new CS_NotNormativeDefaultConstructStrategy());
-			locus.getFactory().setStrategy(new DefaultGetAssociationStrategy());
-			locus.getFactory().setStrategy(new DefaultCreateObjectActionStrategy());
-		}
-	}
-
-	/**
-	 * @see {@link IDebuggableExecutionEngine#suspendThread(Object)}
-	 */
-	@Override
-	public IDebuggableExecutionEngineThread<IObject_, ISemanticVisitor> getThread(String identifier) {
-		 IDebuggableExecutionEngineThread<IObject_, ISemanticVisitor> thread = null;
-		if(!debuggableThreadLock.isHeldByCurrentThread()) {
-			debuggableThreadLock.lock();
-		}
-		thread = debuggableThread.get(identifier);
-		if(debuggableThreadLock.isHeldByCurrentThread()) {
-			debuggableThreadLock.unlock();
-		}
-		return thread;
-	}
-
-	/**
-	 * @see {@link IDebuggableExecutionEngine#suspendThread(Object)}
-	 * 
-	 *      Execution of this active object is suspended
-	 */
-	public void suspendThread(IDebuggableExecutionEngineThread<IObject_, ISemanticVisitor> debuggableThread) {
-		controller.getExecutionLoop().suspend(new IsTargetThreadCondition(debuggableThread.getThread()));
-	}
-
-	/**
-	 * @see {@link IDebuggableExecutionEngine#resumeThread(Object)}
-	 * 
-	 *      Execution of this active object is resumed
-	 */
-	public void resumeThread(IDebuggableExecutionEngineThread<IObject_, ISemanticVisitor> debuggableThread) {
-		controller.getExecutionLoop().resume(new IsTargetThreadCondition(debuggableThread.getThread()));
-	}
-
-	/**
-	 * @see {@link IDebuggableExecutionEngine#terminateThread(Object)}
-	 * 
-	 *      Execution of this active object is terminated
-	 */
-	public void terminateThread(IDebuggableExecutionEngineThread<IObject_, ISemanticVisitor> debuggableThread) {
-		controller.getExecutionLoop().terminate(new IsTargetThreadCondition(debuggableThread.getThread()));
 	}
 
 }

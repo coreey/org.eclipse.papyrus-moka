@@ -46,6 +46,11 @@ public class EngineRegistry {
 	protected HashMap<String, IExecutionEngine> registry;
 
 	/**
+	 * Status of the registry
+	 */
+	private boolean loaded = false;
+
+	/**
 	 * Singleton instance of the registry
 	 */
 	private static EngineRegistry INSTANCE;
@@ -62,38 +67,43 @@ public class EngineRegistry {
 	}
 
 	public void loadEngines() {
-		// Find all engines contributed through extension point.
-		// Engines are not instantiated but their ID get registered.
-		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-		IConfigurationElement[] configurations = extensionRegistry
-				.getConfigurationElementsFor(MOKA_ENGINE_EXTENSION_POINT_ID);
-		for (int i = 0; i < configurations.length; i++) {
-			String identifier = configurations[i].getAttribute(ENGINE_ID_ATTRIBUTE);
-			if (!registry.containsKey(identifier)) {
-				Object instance = null;
-				try {
-					instance = configurations[i].createExecutableExtension(ENGINE_CLASS_ATTRIBUTE);
-				} catch (CoreException e) {
-					e.printStackTrace();
-				}
-				if (instance != null && instance instanceof IExecutionEngine) {
-					((IExecutionEngine) instance).setID(identifier);
-					registry.put(identifier, (IExecutionEngine) instance);
+		if (!loaded) {
+			// Find all engines contributed through extension point.
+			// Engines are not instantiated but their ID get registered.
+			IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+			IConfigurationElement[] configurations = extensionRegistry
+					.getConfigurationElementsFor(MOKA_ENGINE_EXTENSION_POINT_ID);
+			for (int i = 0; i < configurations.length; i++) {
+				String identifier = configurations[i].getAttribute(ENGINE_ID_ATTRIBUTE);
+				if (!registry.containsKey(identifier)) {
+					Object instance = null;
+					try {
+						instance = configurations[i].createExecutableExtension(ENGINE_CLASS_ATTRIBUTE);
+					} catch (CoreException e) {
+						e.printStackTrace();
+					}
+					if (instance != null && instance instanceof IExecutionEngine) {
+						((IExecutionEngine) instance).setID(identifier);
+						registry.put(identifier, (IExecutionEngine) instance);
+					}
 				}
 			}
+			loaded = true;
 		}
 	}
 
 	public IExecutionEngine getEngine(final String engineID) {
+		loadEngines();
 		// Return an instance of the specified engine
 		return registry.get(engineID);
 	}
 
 	public Collection<IExecutionEngine> getAllEngines() {
+		loadEngines();
 		// Return an instance of all engines contributed through the extension point
 		return registry.values();
 	}
-	
+
 	public void clear() {
 		registry.clear();
 	}

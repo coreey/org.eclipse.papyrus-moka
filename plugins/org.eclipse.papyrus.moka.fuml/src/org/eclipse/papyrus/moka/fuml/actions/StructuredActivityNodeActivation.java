@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.actions.IPinActivation;
 import org.eclipse.papyrus.moka.fuml.activities.ActivityNodeActivationGroup;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityEdgeInstance;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
@@ -37,8 +36,8 @@ import org.eclipse.uml2.uml.StructuredActivityNode;
 public class StructuredActivityNodeActivation extends ActionActivation implements IStructuredActivityNodeActivation {
 
 	/*
-	 * The group of activations of the activity nodes contained in the
-	 * structured activity node.
+	 * The group of activations of the activity nodes contained in the structured
+	 * activity node.
 	 */
 	public ActivityNodeActivationGroup activationGroup;
 

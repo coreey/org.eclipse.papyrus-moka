@@ -22,17 +22,15 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 
-
 public class GenerateMethodHandler extends AbstractCompositeUtilsHandler {
 
-	protected Operation contextOperation ;
-	
+	protected Operation contextOperation;
+
 	@Override
 	public RecordingCommand getUpdateCommand(Class context, TransactionalEditingDomain domain) {
 		return new GenerateMethodCommand(context, domain);
@@ -42,11 +40,11 @@ public class GenerateMethodHandler extends AbstractCompositeUtilsHandler {
 	public boolean isEnabled() {
 		Element selectedElement = Utils.getSelection();
 		if (selectedElement != null) {
-			return selectedElement instanceof Operation ;
+			return selectedElement instanceof Operation;
 		}
 		return false;
 	}
-	
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Class context = null;
@@ -55,7 +53,7 @@ public class GenerateMethodHandler extends AbstractCompositeUtilsHandler {
 		if (contextOperation != null) {
 			Element cddClass = contextOperation.getOwner();
 			if (cddClass instanceof Class) {
-				context = (Class)cddClass ;
+				context = (Class) cddClass;
 			}
 		}
 		if (context != null) {
@@ -65,7 +63,7 @@ public class GenerateMethodHandler extends AbstractCompositeUtilsHandler {
 	}
 
 	/**
-	 * Return the Operation associated with the selection object or null 
+	 * Return the Operation associated with the selection object or null
 	 *
 	 * @param selected
 	 * @return Class
@@ -82,7 +80,7 @@ public class GenerateMethodHandler extends AbstractCompositeUtilsHandler {
 			return nElem instanceof Operation ? (Operation) nElem : null;
 		}
 	}
-	
+
 	/**
 	 * Command that generate factory for a given class.
 	 *
@@ -100,9 +98,9 @@ public class GenerateMethodHandler extends AbstractCompositeUtilsHandler {
 		/*
 		 * (non-Javadoc)
 		 *
-		 * @see
-		 * org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand#doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor
-		 * , org.eclipse.core.runtime.IAdaptable)
+		 * @see org.eclipse.gmf.runtime.emf.commands.core.command.
+		 * AbstractTransactionalCommand#doExecuteWithResult(org.eclipse.core.runtime.
+		 * IProgressMonitor , org.eclipse.core.runtime.IAdaptable)
 		 */
 		@Override
 		protected void doExecute() {

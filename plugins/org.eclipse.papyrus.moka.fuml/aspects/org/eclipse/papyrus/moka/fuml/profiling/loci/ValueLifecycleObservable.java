@@ -15,8 +15,8 @@
 
 package org.eclipse.papyrus.moka.fuml.profiling.loci;
 
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLValueLifecyleListener;
 import org.eclipse.papyrus.moka.fuml.profiling.MokaObservable;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.IValueLifecyleListener;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 import org.eclipse.papyrus.moka.kernel.service.IExecutionEngineService;
@@ -25,16 +25,16 @@ public class ValueLifecycleObservable extends MokaObservable{
 
 	public void fireValueCreated(final IValue value){
 		for(IExecutionEngineService<IExecutionEngine> service : getListeners()){
-			if(service instanceof UMLValueLifecyleListener) {
-				((UMLValueLifecyleListener)service).valueCreated(value);		
+			if(service instanceof IValueLifecyleListener) {
+				((IValueLifecyleListener)service).valueCreated(value);		
 			}	
 		}
 	}
 	
 	public void fireValueDestroyed(final IValue value){
 		for(IExecutionEngineService<IExecutionEngine> service : getListeners()){
-			if(service instanceof UMLValueLifecyleListener) {
-				((UMLValueLifecyleListener)service).valueDestroyed(value);		
+			if(service instanceof IValueLifecyleListener) {
+				((IValueLifecyleListener)service).valueDestroyed(value);		
 			}	
 		}
 	} 

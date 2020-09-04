@@ -57,7 +57,7 @@ public class MokaProjectSelection extends SelectionAdapter {
 		dialog.setLabelProvider(WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider());
 
 		if (this.currentSelection != null && this.currentSelection.exists()) {
-			dialog.setInitialSelections(new IFile[] { this.currentSelection });
+			dialog.setInitialSelections(new Object[] { this.currentSelection });
 		}
 
 		dialog.open();

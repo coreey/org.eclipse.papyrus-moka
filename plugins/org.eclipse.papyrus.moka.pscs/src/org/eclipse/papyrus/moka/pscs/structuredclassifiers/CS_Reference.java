@@ -19,17 +19,14 @@ import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Reference;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_InteractionPoint;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Object;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Reference;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Port;
-
 
 public class CS_Reference extends Reference implements ICS_Reference {
 
 	/*
-	 * The composite object referenced by this ReferenceToCompositeStructure. This property subsets Reference::referent.
+	 * The composite object referenced by this ReferenceToCompositeStructure. This
+	 * property subsets Reference::referent.
 	 */
 	public ICS_Object compositeReferent;
 
@@ -77,7 +74,8 @@ public class CS_Reference extends Reference implements ICS_Reference {
 
 	@Override
 	public IValue copy() {
-		// Create a new reference with the same referent and composite referent as this reference.
+		// Create a new reference with the same referent and composite referent as this
+		// reference.
 		ICS_Reference newValue = new CS_Reference();
 		newValue.setReferent(this.getReferent());
 		newValue.setCompositeReferent(this.compositeReferent);

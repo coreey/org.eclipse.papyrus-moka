@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.eclipse.papyrus.moka.engine.uml.time.scheduling.de.DEScheduler;
-import org.eclipse.papyrus.moka.engine.uml.time.scheduling.de.actions.CallbackAction;
 
 /**
  * @author ac221913

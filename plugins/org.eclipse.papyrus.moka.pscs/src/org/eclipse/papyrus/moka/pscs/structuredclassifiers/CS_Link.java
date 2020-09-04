@@ -21,14 +21,13 @@ import java.util.List;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Link;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Link;
 import org.eclipse.uml2.uml.StructuralFeature;
-
 
 public class CS_Link extends Link implements ICS_Link {
 
 	public Boolean hasValueForAFeature(IValue value) {
-		// Returns true if the given value object is used as a value for a FeatureValue of this link
+		// Returns true if the given value object is used as a value for a FeatureValue
+		// of this link
 		return this.getFeature(value) != null;
 	}
 

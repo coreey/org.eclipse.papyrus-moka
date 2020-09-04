@@ -25,13 +25,15 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IStreamsProxy;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 
 public class ExecutionEngineProcess extends BaseProcess<ExecutionEngineJob>
 		implements IJobChangeListener, IExecutionEngineContainer {
 
-	public ExecutionEngineProcess(ILaunch launch, IExecutionEngine engine, EngineConfiguration config) {
+	public ExecutionEngineProcess(ILaunch launch, IExecutionEngine engine,
+			EngineConfiguration<? extends EObject> config) {
 		super(launch);
 		process = new ExecutionEngineJob(engine, config);
 		process.addJobChangeListener(this);

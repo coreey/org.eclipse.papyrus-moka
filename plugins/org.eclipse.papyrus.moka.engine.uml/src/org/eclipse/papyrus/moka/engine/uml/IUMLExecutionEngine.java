@@ -14,29 +14,31 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.engine.uml;
 
+import org.eclipse.papyrus.moka.engine.schedulable.IScheduledExecutionEngine;
 import org.eclipse.papyrus.moka.fuml.loci.ILocus;
 
-public interface IUMLExecutionEngine {
+public interface IUMLExecutionEngine extends IScheduledExecutionEngine {
 
 	/**
 	 * Instantiate the locus that hosts the execution
+	 * 
 	 * @return
 	 */
 	ILocus createLocus();
-	
+
 	/**
 	 * Install built in types (e.g., primitive ones)
 	 */
 	void installBuiltInTypes();
-	
+
 	/**
 	 * Install Opaque Behavior Execution for behavior defined in model libraries
 	 */
 	void installLibraries();
-	
+
 	/**
 	 * Install Executable UML semantic strategies
 	 */
 	void installSemanticStrategies();
-	
+
 }

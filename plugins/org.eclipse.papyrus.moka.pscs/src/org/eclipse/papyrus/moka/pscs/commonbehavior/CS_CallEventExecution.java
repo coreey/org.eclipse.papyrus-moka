@@ -18,14 +18,13 @@ package org.eclipse.papyrus.moka.pscs.commonbehavior;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.CallEventExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
-import org.eclipse.papyrus.moka.pscs.commonbehavior.ICS_CallEventExecution;
 import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_InteractionPoint;
 
-public class CS_CallEventExecution extends CallEventExecution implements ICS_CallEventExecution{
+public class CS_CallEventExecution extends CallEventExecution implements ICS_CallEventExecution {
 
 	// The port manifestation at which the operation call arrived.
 	public ICS_InteractionPoint interactionPoint;
-	
+
 	@Override
 	public IEventOccurrence createEventOccurrence() {
 		// Wrap the created event occurrence within a CS_EventOccurrence which
@@ -35,12 +34,12 @@ public class CS_CallEventExecution extends CallEventExecution implements ICS_Cal
 		wrappingEventOccurrence.setWrappedEventOccurrence(super.createEventOccurrence());
 		return wrappingEventOccurrence;
 	}
-		
+
 	public IValue new_() {
 		// Create a new call event execution.
 		return new CS_CallEventExecution();
 	}
-		
+
 	public IValue copy() {
 		// Create a new call event execution that is a copy of this execution, no
 		// referenced interaction point.
@@ -58,5 +57,5 @@ public class CS_CallEventExecution extends CallEventExecution implements ICS_Cal
 	public ICS_InteractionPoint getInteractionPoint() {
 		return this.interactionPoint;
 	}
-	
+
 }

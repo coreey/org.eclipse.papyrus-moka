@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.IBreakpointManager;
 import org.eclipse.debug.core.model.IBreakpoint;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -53,8 +54,9 @@ public class ToggleBreakpointActivationCommand extends AbstractTraceAndDebugComm
 			IBreakpoint alreadyDefinedBreakpoint = null;
 			for (int i = 0; i < breakpoints.length && alreadyDefinedBreakpoint == null; i++) {
 				MokaBreakpoint breakpoint = (MokaBreakpoint) breakpoints[i];
-				EObject eObjectOfBreakpoint = breakpoint.getModelElement();
-				if (eObjectOfBreakpoint != null && EcoreUtil.getURI(eObjectOfBreakpoint).toString().equals(selectedElementURI)) {
+				URI uriOfEObjectOfBreakpoint = breakpoint.getModelElementURI();
+				if (uriOfEObjectOfBreakpoint != null
+						&& uriOfEObjectOfBreakpoint.toString().equals(selectedElementURI)) {
 					alreadyDefinedBreakpoint = breakpoint;
 				}
 			}

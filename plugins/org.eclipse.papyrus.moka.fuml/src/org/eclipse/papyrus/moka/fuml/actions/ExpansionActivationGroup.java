@@ -18,7 +18,6 @@ package org.eclipse.papyrus.moka.fuml.actions;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.fuml.actions.IOutputPinActivation;
 import org.eclipse.papyrus.moka.fuml.activities.ActivityNodeActivationGroup;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityExecution;
 import org.eclipse.papyrus.moka.fuml.activities.IActivityNodeActivation;
@@ -34,8 +33,8 @@ public class ExpansionActivationGroup extends ActivityNodeActivationGroup implem
 	public List<IOutputPinActivation> regionInputs = new ArrayList<IOutputPinActivation>();
 
 	/*
-	 * Output pin activations corresponding, in order, to the input expansion
-	 * nodes of the expansion region of this activation group.
+	 * Output pin activations corresponding, in order, to the input expansion nodes
+	 * of the expansion region of this activation group.
 	 */
 	public List<IOutputPinActivation> groupInputs = new ArrayList<IOutputPinActivation>();
 
@@ -45,14 +44,14 @@ public class ExpansionActivationGroup extends ActivityNodeActivationGroup implem
 	public IExpansionRegionActivation regionActivation;
 
 	/*
-	 * Output pin activations corresponding, in order, to the output expansion
-	 * nodes of the expansion region of this activation group.
+	 * Output pin activations corresponding, in order, to the output expansion nodes
+	 * of the expansion region of this activation group.
 	 */
 	public List<IOutputPinActivation> groupOutputs = new ArrayList<IOutputPinActivation>();
 
 	/*
-	 * The index (starting at 1) of this activation group in the list held by
-	 * the expansion region activation.
+	 * The index (starting at 1) of this activation group in the list held by the
+	 * expansion region activation.
 	 */
 	public Integer index;
 

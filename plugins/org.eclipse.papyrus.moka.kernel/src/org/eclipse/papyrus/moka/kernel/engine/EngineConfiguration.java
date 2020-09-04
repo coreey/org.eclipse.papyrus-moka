@@ -27,13 +27,13 @@ public class EngineConfiguration<SourceElementType extends EObject> {
 
 	// The project containing the model to be executed
 	protected IProject project;
-	
+
 	// Determine if services should run or not
 	protected ServiceOperatingMode mode;
 
 	// The URI of the executed model
 	protected URI modelURI;
-	
+
 	// The model element that is used as a starting point for the execution
 	protected SourceElementType source;
 
@@ -41,11 +41,11 @@ public class EngineConfiguration<SourceElementType extends EObject> {
 	protected Map<String, String> parameters;
 
 	protected String traceFilePath;
-	
+
 	protected String formatterID;
-	
+
 	protected boolean traceEnabled;
-	
+
 	protected boolean tracepointMode;
 
 	public EngineConfiguration() {
@@ -58,12 +58,12 @@ public class EngineConfiguration<SourceElementType extends EObject> {
 		mode = m;
 		parameters = new HashMap<String, String>();
 	}
-	
+
 	public EngineConfiguration(EngineConfiguration<SourceElementType> ec) {
 		source = ec.getExecutionSource();
 		mode = ec.getMode();
 		parameters = new HashMap<String, String>();
-		for(Map.Entry<String, String> p : ec.getParameters().entrySet()) {
+		for (Map.Entry<String, String> p : ec.getParameters().entrySet()) {
 			parameters.put(p.getKey(), p.getValue());
 		}
 		project = ec.getProject();
@@ -108,7 +108,7 @@ public class EngineConfiguration<SourceElementType extends EObject> {
 	public Map<String, String> getParameters() {
 		return parameters;
 	}
-	
+
 	public IProject getProject() {
 		return project;
 	}
@@ -124,7 +124,7 @@ public class EngineConfiguration<SourceElementType extends EObject> {
 	public void setModelURI(URI modelURI) {
 		this.modelURI = modelURI;
 	}
-	
+
 	public String getTraceFilePath() {
 		return traceFilePath;
 	}
@@ -132,8 +132,7 @@ public class EngineConfiguration<SourceElementType extends EObject> {
 	public void setTraceFilePath(String traceFilePath) {
 		this.traceFilePath = traceFilePath;
 	}
-	
-	
+
 	public String getFormatterID() {
 		return formatterID;
 	}
@@ -153,7 +152,7 @@ public class EngineConfiguration<SourceElementType extends EObject> {
 	public void setTracepointMode(boolean mode) {
 		tracepointMode = mode;
 	}
-	
+
 	public boolean isTracepointMode() {
 		return this.tracepointMode;
 	}

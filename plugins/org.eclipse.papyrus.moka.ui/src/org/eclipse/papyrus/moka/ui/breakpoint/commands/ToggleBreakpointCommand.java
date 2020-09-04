@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.papyrus.infra.core.Activator;
 import org.eclipse.papyrus.moka.debug.breakpoint.MokaBreakpoint;
 import org.eclipse.papyrus.moka.utils.constants.MokaConstants;
+import org.eclipse.uml2.uml.NamedElement;
 
 /**
  * Command to toggle a breakpoint
@@ -67,8 +68,12 @@ public class ToggleBreakpointCommand extends AbstractTraceAndDebugCommand {
 				if (alreadyDefinedBreakpoint != null) {
 					breakpointManager.removeBreakpoint(alreadyDefinedBreakpoint, true);
 				} else {
+					String label = "";
+					if (this.selectedElement instanceof NamedElement) {
+						label = ((NamedElement) selectedElement).getQualifiedName();
+					}
 					MokaBreakpoint breakpoint = new MokaBreakpoint();
-					breakpoint.toggleBreakpoint(selectedElement);
+					breakpoint.toggleBreakpoint(selectedElement, label);
 					breakpointManager.addBreakpoint(breakpoint);
 				}
 			} catch (CoreException e) {

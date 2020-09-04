@@ -22,14 +22,15 @@ import java.util.List;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.FeatureValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IFeatureValue;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
-import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Object;
 import org.eclipse.uml2.uml.StructuralFeature;
 
-public class CS_NameBased_StructuralFeatureOfInterfaceAccessStrategy extends CS_StructuralFeatureOfInterfaceAccessStrategy {
+public class CS_NameBased_StructuralFeatureOfInterfaceAccessStrategy
+		extends CS_StructuralFeatureOfInterfaceAccessStrategy {
 
 	@Override
 	public IFeatureValue read(ICS_Object cs_Object, StructuralFeature feature) {
-		// returns the a copy of the first feature value of cs_Object where the name of the corresponding feature
+		// returns the a copy of the first feature value of cs_Object where the name of
+		// the corresponding feature
 		// matches the name of the feature given as a parameter
 		// Otherwise, returns an empty feature value
 		List<IFeatureValue> featureValues = cs_Object.getFeatureValues();
@@ -55,7 +56,8 @@ public class CS_NameBased_StructuralFeatureOfInterfaceAccessStrategy extends CS_
 
 	@Override
 	public void write(ICS_Object cs_Object, StructuralFeature feature, List<IValue> values, Integer position) {
-		// Retrieves the first feature value of cs_Object where the name of the corresponding feature
+		// Retrieves the first feature value of cs_Object where the name of the
+		// corresponding feature
 		// matches the name of the feature given as a parameter
 		// Then updates the values for this feature value
 		List<IFeatureValue> featureValues = cs_Object.getFeatureValues();

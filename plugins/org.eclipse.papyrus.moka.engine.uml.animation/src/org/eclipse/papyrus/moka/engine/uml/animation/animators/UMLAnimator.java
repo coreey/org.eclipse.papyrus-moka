@@ -17,15 +17,15 @@ package org.eclipse.papyrus.moka.engine.uml.animation.animators;
 
 import org.eclipse.papyrus.moka.animation.engine.animators.Animator;
 import org.eclipse.papyrus.moka.animation.engine.animators.actions.DerivedAnimationAction;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLRTCStepListener;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLSemanticVisitorExecutionListener;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLValueLifecyleListener;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.IRTCStepListener;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.ISemanticVisitorExecutionListener;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.IValueLifecyleListener;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
 import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 
-public abstract class UMLAnimator extends Animator implements UMLSemanticVisitorExecutionListener, UMLRTCStepListener, UMLValueLifecyleListener{
+public abstract class UMLAnimator extends Animator implements ISemanticVisitorExecutionListener, IRTCStepListener, IValueLifecyleListener{
 
 	@Override
 	public final void nodeVisited(ISemanticVisitor nodeVisitor) {

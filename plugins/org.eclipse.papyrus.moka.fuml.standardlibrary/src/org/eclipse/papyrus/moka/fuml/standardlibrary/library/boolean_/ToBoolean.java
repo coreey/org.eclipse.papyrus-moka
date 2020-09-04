@@ -34,7 +34,7 @@ public class ToBoolean extends OpaqueBehaviorExecution {
 		try {
 			String x = ((StringValue) inputParameters.get(0).getValues().get(0)).value;
 			BooleanValue result = new BooleanValue();
-			result.value = new Boolean(x);
+			result.value = Boolean.valueOf(x);
 			result.type = (PrimitiveType) this.locus.getFactory().getBuiltInType("Boolean"); // ADDED
 			List<IValue> outputs = new ArrayList<IValue>();
 			outputs.add(result);

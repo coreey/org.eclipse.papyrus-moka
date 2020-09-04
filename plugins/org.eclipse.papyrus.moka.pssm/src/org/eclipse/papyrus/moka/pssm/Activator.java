@@ -15,32 +15,32 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.pssm;
 
-import org.osgi.framework.BundleContext;
 import org.eclipse.core.runtime.Plugin;
-import org.eclipse.papyrus.infra.core.log.LogHelper;
+import org.osgi.framework.BundleContext;
 
 public class Activator extends Plugin {
 
 	private static BundleContext context;
 
-	public static LogHelper logger;
-	
 	static BundleContext getContext() {
 		return context;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
-		logger = new LogHelper(this);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;

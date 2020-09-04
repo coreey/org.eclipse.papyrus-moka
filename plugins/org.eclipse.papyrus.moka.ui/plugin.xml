@@ -266,8 +266,8 @@
       <page
             category="org.eclipse.papyrus.infra.core.sasheditor.preferences.generalcategory"
             class="org.eclipse.papyrus.moka.ui.preferences.PapyrusSimulationPreferencePage"
-            id="org.eclipse.papyrus.moka.kernel.preferences"
-            name="Simulation">
+            id="org.eclipse.papyrus.moka.ui.preferences"
+            name="Simulation (Moka)">
       </page>
    </extension>
    <extension
@@ -345,7 +345,7 @@
          point="org.eclipse.papyrus.moka.kernel.validation">
       <validation>
 	      <context
-	            engineID="org.eclipse.papyrus.moka.engine.uml">
+	            engineID="org.eclipse.papyrus.moka.engine.uml.debug">
 	      </context>
 	      <context
 	            engineID="org.eclipse.papyrus.moka.engine.uml.time">

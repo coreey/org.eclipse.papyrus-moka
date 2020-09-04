@@ -13,13 +13,15 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debug;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class MokaDebugPlugin extends AbstractUIPlugin {
+public class MokaDebugPlugin extends Plugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.papyrus.moka.debug"; //$NON-NLS-1$
@@ -27,16 +29,20 @@ public class MokaDebugPlugin extends AbstractUIPlugin {
 	// The shared instance
 	private static MokaDebugPlugin plugin;
 
+	public ILog logger;
+
 	/**
 	 * The constructor
 	 */
 	public MokaDebugPlugin() {
+		logger = Platform.getLog(this.getClass());
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.
+	 * BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
@@ -46,7 +52,8 @@ public class MokaDebugPlugin extends AbstractUIPlugin {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
@@ -61,5 +68,5 @@ public class MokaDebugPlugin extends AbstractUIPlugin {
 	public static MokaDebugPlugin getDefault() {
 		return plugin;
 	}
-	
+
 }

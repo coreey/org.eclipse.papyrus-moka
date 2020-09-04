@@ -13,9 +13,9 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.profiling.commonbehavior;
 
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLRTCStepListener;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IObjectActivation;
 import org.eclipse.papyrus.moka.fuml.profiling.MokaObservable;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.IRTCStepListener;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.Reference;
 import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
@@ -37,20 +37,20 @@ public aspect ObjectActivationProfiler extends MokaObservable{
 	
 	protected void notifyStepStart(IObjectActivation objectActivation) {
 		for(IExecutionEngineService<IExecutionEngine> service : getListeners()) {
-			if(service instanceof UMLRTCStepListener) {
+			if(service instanceof IRTCStepListener) {
 				IReference reference = new Reference();
 				reference.setReferent(objectActivation.getObject());
-				((UMLRTCStepListener)service).rtcStepBegin(reference);
+				((IRTCStepListener)service).rtcStepBegin(reference);
 			}
 		}
 	}
 	
 	protected void notifyStepEnd(IObjectActivation objectActivation) {
 		for(IExecutionEngineService<IExecutionEngine> service : getListeners()) {
-			if(service instanceof UMLRTCStepListener) {
+			if(service instanceof IRTCStepListener) {
 				IReference reference = new Reference();
 				reference.setReferent(objectActivation.getObject());
-				((UMLRTCStepListener)service).rtcStepEnd(reference);
+				((IRTCStepListener)service).rtcStepEnd(reference);
 			}
 		}
 	}

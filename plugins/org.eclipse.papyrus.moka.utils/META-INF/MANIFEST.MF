@@ -5,10 +5,8 @@ Bundle-SymbolicName: org.eclipse.papyrus.moka.utils
 Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.eclipse.papyrus.moka.utils.Activator
 Bundle-Vendor: Eclipse Modeling Project
-Require-Bundle: org.eclipse.papyrus.moka.fuml.interfaces;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.moka.pssm.interfaces;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)",
- org.eclipse.core.runtime;bundle-version="[3.18.0,4.0.0)"
+Require-Bundle: org.eclipse.papyrus.moka.pssm.interfaces;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.0.0,4.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.papyrus.moka.utils,

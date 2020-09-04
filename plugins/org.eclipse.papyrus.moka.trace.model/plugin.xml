@@ -12,7 +12,7 @@
       <package
             uri="http://www.eclipse.org/papyrus/moka/trace"
             class="org.eclipse.papyrus.moka.trace.model.mokatraceservice.MokaTraceServicePackage"
-            genModel="resources/model/fumltracemodel.genmodel"/>
+            genModel="resources/model/mokatraceservice.genmodel"/>
    </extension>
    <extension
          point="org.eclipse.emf.ecore.uri_mapping">

@@ -24,7 +24,6 @@ import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.loci.ILocus;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
-import org.eclipse.papyrus.moka.pscs.actions.ICS_CallOperationActionActivation;
 import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_Reference;
 import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_Reference;
 import org.eclipse.uml2.uml.CallOperationAction;
@@ -37,7 +36,8 @@ import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Stereotype;
 
-public class CS_CallOperationActionActivation extends CallOperationActionActivation implements ICS_CallOperationActionActivation {
+public class CS_CallOperationActionActivation extends CallOperationActionActivation
+		implements ICS_CallOperationActionActivation {
 
 	@Override
 	public void doAction() {
@@ -49,9 +49,11 @@ public class CS_CallOperationActionActivation extends CallOperationActionActivat
 		// The default construction strategy is used if no method is associated with the
 		// <<Create>> operation.
 		// Otherwise, behaves as in fUML.
-		if (action.getOnPort() == null && this.isCreate(action.getOperation()) && action.getOperation().getMethods().size() == 0) {
+		if (action.getOnPort() == null && this.isCreate(action.getOperation())
+				&& action.getOperation().getMethods().size() == 0) {
 			ILocus locus = this.getExecutionLocus();
-			CS_ConstructStrategy strategy = ((CS_ConstructStrategy) locus.getFactory().getStrategy("constructStrategy"));
+			CS_ConstructStrategy strategy = ((CS_ConstructStrategy) locus.getFactory()
+					.getStrategy("constructStrategy"));
 			IValue target = this.takeTokens(action.getTarget()).get(0);
 			if (target instanceof CS_Reference) {
 				strategy.construct(action.getOperation(), ((CS_Reference) target).compositeReferent);
@@ -82,16 +84,23 @@ public class CS_CallOperationActionActivation extends CallOperationActionActivat
 		// to it and return the resulting execution object.
 		// As compared to fUML, instead of dispatching directly to target reference
 		// by calling operation dispatch:
-		// - If the invoked BehavioralFeature is on a provided Interface but not on any required Interface,
-		// then, when the InvocationAction is executed, the invocation is made into the object given on
+		// - If the invoked BehavioralFeature is on a provided Interface but not on any
+		// required Interface,
+		// then, when the InvocationAction is executed, the invocation is made into the
+		// object given on
 		// the target InputPin through the given Port
-		// - If the invoked BehavioralFeature is on a required Interface but not on any provided Interface,
-		// then, if the InvocationAction is being executed inside the object given on the target InputPin,
+		// - If the invoked BehavioralFeature is on a required Interface but not on any
+		// provided Interface,
+		// then, if the InvocationAction is being executed inside the object given on
+		// the target InputPin,
 		// the invocation is forwarded out of the target object through the given Port.
-		// - If the invoked BehavioralFeature is on both a provided and a required Interface,
-		// then, if the InvocationAction is being executed inside the object given on the target InputPin,
+		// - If the invoked BehavioralFeature is on both a provided and a required
+		// Interface,
+		// then, if the InvocationAction is being executed inside the object given on
+		// the target InputPin,
 		// the invocation is made out of the target object through the given Port.
-		// Otherwise the invocation is made into the target object through the given Port.
+		// Otherwise the invocation is made into the target object through the given
+		// Port.
 
 		CallOperationAction action = (CallOperationAction) (this.node);
 		IExecution execution = null;
@@ -105,8 +114,10 @@ public class CS_CallOperationActionActivation extends CallOperationActionActivat
 				// target, through onPort
 				ICS_Reference targetReference = (CS_Reference) target;
 				IObject_ executionContext = this.group.getActivityExecution().getContext();
-				boolean operationIsOnProvidedInterface = this.isOperationProvided(action.getOnPort(), action.getOperation());
-				boolean operationIsOnRequiredInterface = this.isOperationRequired(action.getOnPort(), action.getOperation());
+				boolean operationIsOnProvidedInterface = this.isOperationProvided(action.getOnPort(),
+						action.getOperation());
+				boolean operationIsOnRequiredInterface = this.isOperationRequired(action.getOnPort(),
+						action.getOperation());
 				// Operation on a provided interface only
 				if (operationIsOnProvidedInterface && !operationIsOnRequiredInterface) {
 					execution = targetReference.dispatchIn(action.getOperation(), action.getOnPort());
@@ -116,13 +127,15 @@ public class CS_CallOperationActionActivation extends CallOperationActionActivat
 					// If not executing in the context of the target,
 					// Semantics are undefined.
 					// Otherwise, dispatch outside.
-					if (executionContext == targetReference.getReferent() || targetReference.getCompositeReferent().contains(executionContext)) {
+					if (executionContext == targetReference.getReferent()
+							|| targetReference.getCompositeReferent().contains(executionContext)) {
 						execution = targetReference.dispatchOut(action.getOperation(), action.getOnPort());
 					}
 				}
 				// Operation is both on a provided and a required interface
 				else if (operationIsOnProvidedInterface && operationIsOnRequiredInterface) {
-					if (executionContext == targetReference.getReferent() || targetReference.getCompositeReferent().contains(executionContext)) {
+					if (executionContext == targetReference.getReferent()
+							|| targetReference.getCompositeReferent().contains(executionContext)) {
 						execution = targetReference.dispatchOut(action.getOperation(), action.getOnPort());
 					} else {
 						execution = targetReference.dispatchIn(action.getOperation(), action.getOnPort());

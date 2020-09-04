@@ -17,14 +17,14 @@ package org.eclipse.papyrus.moka.fuml.standardlibrary;
 
 import java.util.Map;
 
-import org.eclipse.papyrus.moka.engine.uml.libraries.LibraryExecutionFactory;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IOpaqueBehaviorExecution;
+import org.eclipse.papyrus.moka.fuml.library.LibraryExecutionFactory;
 import org.eclipse.papyrus.moka.fuml.loci.ILocus;
 import org.eclipse.papyrus.moka.fuml.standardlibrary.library.io.StandardInputChannelImpl;
 import org.eclipse.papyrus.moka.fuml.standardlibrary.library.io.StandardOutputChannelImpl;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
-import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.OpaqueBehavior;
 
 public class FUMLLibraryExecutionFactory extends LibraryExecutionFactory {
 
@@ -181,7 +181,7 @@ public class FUMLLibraryExecutionFactory extends LibraryExecutionFactory {
 						.equals(FUMLLibraryExecutionFactoryUtils.STANDARD_OUTPUT_CHANNEL_SERVICE_NAME)) {
 					service = new StandardOutputChannelImpl(entry.getValue());
 				}
-				if(service != null) {
+				if (service != null) {
 					service.setLocus(locus);
 					locus.add(service);
 				}

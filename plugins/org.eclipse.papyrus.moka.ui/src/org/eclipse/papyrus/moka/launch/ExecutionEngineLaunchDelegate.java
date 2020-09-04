@@ -15,10 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.launch;
 
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MODEL_VALIDATION_ON_LAUNCH;
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PATH;
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -38,13 +34,14 @@ import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
 import org.eclipse.papyrus.infra.gmfdiag.common.model.NotationUtils;
 import org.eclipse.papyrus.moka.animation.css.MokaCSSDiagram;
-import org.eclipse.papyrus.moka.debugtarget.ExecutionEngineDebugTarget;
-import org.eclipse.papyrus.moka.kernel.IKernelPreferences;
-import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
+import org.eclipse.papyrus.moka.debug.target.ExecutionEngineDebugTarget;
+import org.eclipse.papyrus.moka.kernel.IKernelProperties;
 import org.eclipse.papyrus.moka.kernel.engine.EngineConfiguration;
 import org.eclipse.papyrus.moka.kernel.engine.EngineRegistry;
 import org.eclipse.papyrus.moka.kernel.process.ExecutionEngineProcess;
+import org.eclipse.papyrus.moka.kernel.process.MQTTServerConfig;
 import org.eclipse.papyrus.moka.kernel.process.ServerMqttProcess;
+import org.eclipse.papyrus.moka.ui.IUIPreferences;
 import org.eclipse.papyrus.moka.ui.Messages;
 import org.eclipse.papyrus.moka.ui.MokaUIActivator;
 import org.eclipse.papyrus.moka.ui.validation.ValidationUtil;
@@ -56,16 +53,20 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 
 public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
 
+	public ExecutionEngineLaunchDelegate() {
+		super();
+	}
+
 	/**
 	 * The project containing the model from which the execution is started
 	 */
 	protected IProject project;
-	
+
 	/**
 	 * The user defined engine configuration
 	 */
 	private EngineConfiguration<?> engineConfiguration;
-	
+
 	/**
 	 * The model set containing the model that is executed
 	 */
@@ -92,20 +93,19 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 
 	private boolean canRunServer() {
 		boolean canRunServer = false;
-		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
-		if (store != null) {
-			canRunServer = !store.getString(MQTT_SERVER_PATH).isEmpty() && store.getInt(MQTT_SERVER_PORT) > 0;
-		}
+		canRunServer = !MQTTServerConfig.getMQTTServerPath().isEmpty()
+				&& Integer.parseInt(MQTTServerConfig.getMQTTServerPort()) > 0;
 		return canRunServer;
 	}
 
-	private boolean isValidationOk(EngineConfiguration<?> engineConfiguration, IProgressMonitor monitor, String engineID) {
+	private boolean isValidationOk(EngineConfiguration<?> engineConfiguration, IProgressMonitor monitor,
+			String engineID) {
 		// If the preference allow to run model validation before the launch, the
 		// validation is run. If there are errors, the system ask the user if he/she
 		// still wants to run the simulation.
 		// Return true if the simulation must continue, false otherwise
-		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
-		boolean mustValidate = store.getBoolean(MODEL_VALIDATION_ON_LAUNCH);
+		IPreferenceStore store = MokaUIActivator.getDefault().getPreferenceStore();
+		boolean mustValidate = store.getBoolean(IUIPreferences.MODEL_VALIDATION_ON_LAUNCH);
 		boolean continueSimulation = true;
 		if (mustValidate) {
 			continueSimulation = ValidationUtil.validateModel(engineConfiguration, monitor, engineID);
@@ -131,6 +131,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 		if (canOpenProject(reader)) {
 			project = reader.getProject();
 			if (canInstantiateEngine(reader)) {
+				initMQTTServerConfig();
 				if (canRunServer()) {
 					SubMonitor progressMonitor = SubMonitor.convert(monitor);
 					IExecutionEngineLaunchConfigurationReader cr = createReader(configuration);
@@ -163,8 +164,9 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 							MokaErrorDialog dialog = new MokaErrorDialog(shell, Messages.MokaDialogError_Title,
 									Messages.ServerError_Title, status, Status.ERROR);
 							dialog.open();
-							PreferencesUtil.createPreferenceDialogOn(shell, IKernelPreferences.KERNEL_PREFERENCES_ID,
-									null, null).open();
+							PreferencesUtil
+									.createPreferenceDialogOn(shell, IUIPreferences.UI_PREFERENCES_ID, null, null)
+									.open();
 						}
 					});
 				}
@@ -195,6 +197,13 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 			});
 		}
 		return prechecks;
+	}
+
+	protected void initMQTTServerConfig() {
+		MQTTServerConfig.setMQTTServerPath(
+				MokaUIActivator.getDefault().getPreferenceStore().getString(IKernelProperties.MQTT_SERVER_PATH));
+		MQTTServerConfig.setMQTTServerPort(
+				MokaUIActivator.getDefault().getPreferenceStore().getString(IKernelProperties.MQTT_SERVER_PORT));
 	}
 
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
@@ -276,7 +285,7 @@ public class ExecutionEngineLaunchDelegate extends LaunchConfigurationDelegate i
 	}
 
 	protected final ExecutionEngineProcess initializeExecutionProcess(ILaunch l,
-			IExecutionEngineLaunchConfigurationReader cr, EngineConfiguration<?> ec) {
+			IExecutionEngineLaunchConfigurationReader cr, EngineConfiguration<? extends EObject> ec) {
 		ExecutionEngineProcess process = new ExecutionEngineProcess(l, cr.getEngine(), ec);
 		ExecutionEngineDebugTarget debugTarget = new ExecutionEngineDebugTarget(l, process);
 		l.addProcess(process);

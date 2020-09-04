@@ -18,21 +18,22 @@ package org.eclipse.papyrus.moka.engine.uml.debug.service;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.papyrus.moka.debug.engine.DebugServiceHelper;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
 import org.eclipse.papyrus.moka.debug.service.DebugService;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLSemanticVisitorExecutionListener;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLValueLifecyleListener;
 import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.ISemanticVisitorExecutionListener;
+import org.eclipse.papyrus.moka.fuml.profiling.listeners.IValueLifecyleListener;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
 import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
 
 public class UMLDebugService extends DebugService<IObject_, ISemanticVisitor>
-		implements UMLSemanticVisitorExecutionListener, UMLValueLifecyleListener {
+		implements ISemanticVisitorExecutionListener, IValueLifecyleListener {
 
 	protected Set<String> debugAssistants = new HashSet<String>();
-	
+
 	/**
 	 * Called each time a model element is executed by the execution engine. It
 	 * enables the execution engine to : (1) account for requests received from the
@@ -61,7 +62,7 @@ public class UMLDebugService extends DebugService<IObject_, ISemanticVisitor>
 				terminateEngine();
 			} else {
 				if (debuggableThread != null) {
-					if (DebugServiceUtils.hasBreakpoint(visitor)) {
+					if (DebugServiceHelper.INSTANCE.hasBreakpoint(visitor)) {
 						// (3) Suspend the thread executing this model element
 						client.fireSuspendThreadEvent(context, visitor, SuspensionReasons.BREAKPOINT);
 						suspendThread(debuggableThread);

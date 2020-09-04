@@ -25,7 +25,6 @@ import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IExtensionalValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.ILink;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IReference;
-import org.eclipse.papyrus.moka.pscs.actions.ICS_ClearStructuralFeatureValueActionActivation;
 import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_Link;
 import org.eclipse.papyrus.moka.pscs.structuredclassifiers.CS_Reference;
 import org.eclipse.papyrus.moka.pscs.structuredclassifiers.ICS_InteractionPoint;
@@ -36,7 +35,8 @@ import org.eclipse.uml2.uml.ClearStructuralFeatureAction;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.StructuralFeature;
 
-public class CS_ClearStructuralFeatureValueActionActivation extends ClearStructuralFeatureActionActivation implements ICS_ClearStructuralFeatureValueActionActivation {
+public class CS_ClearStructuralFeatureValueActionActivation extends ClearStructuralFeatureActionActivation
+		implements ICS_ClearStructuralFeatureValueActionActivation {
 
 	@Override
 	public void doAction() {
@@ -79,7 +79,8 @@ public class CS_ClearStructuralFeatureValueActionActivation extends ClearStructu
 		List<ICS_Link> linksToDestroy = new ArrayList<ICS_Link>();
 		if (value instanceof CS_Reference) {
 			ICS_Reference context = (CS_Reference) value;
-			// Retrieves the feature values for the structural feature associated with this action,
+			// Retrieves the feature values for the structural feature associated with this
+			// action,
 			// in the context of this reference
 			IFeatureValue featureValue = context.getFeatureValue(feature);
 			if (feature instanceof Port) {
@@ -135,7 +136,8 @@ public class CS_ClearStructuralFeatureValueActionActivation extends ClearStructu
 							for (int k = 0; k < link.getFeatureValues().size() && !linkHasToBeDestroyed; k++) {
 								IFeatureValue otherFeatureValue = link.getFeatureValues().get(k);
 								if (otherFeatureValue.getFeature() != featureForV) {
-									for (int l = 0; l < otherFeatureValue.getValues().size() && !linkHasToBeDestroyed; l++) {
+									for (int l = 0; l < otherFeatureValue.getValues().size()
+											&& !linkHasToBeDestroyed; l++) {
 										for (int m = 0; m < allOtherValues.size() && !linkHasToBeDestroyed; m++) {
 											if (otherFeatureValue.getValues().get(l) == allOtherValues.get(m)) {
 												linkHasToBeDestroyed = true;
@@ -167,7 +169,8 @@ public class CS_ClearStructuralFeatureValueActionActivation extends ClearStructu
 				// add all interaction points associated with v
 				for (int j = 0; j < ((CS_Reference) v).getReferent().getFeatureValues().size(); j++) {
 					if (((ICS_Reference) v).getReferent().getFeatureValues().get(j).getFeature() instanceof Port) {
-						List<IValue> interactionPoints = (((ICS_Reference) v).getReferent().getFeatureValues().get(j)).getValues();
+						List<IValue> interactionPoints = (((ICS_Reference) v).getReferent().getFeatureValues().get(j))
+								.getValues();
 						for (int k = 0; k < interactionPoints.size(); k++) {
 							potentialLinkEnds.add(interactionPoints.get(k));
 						}

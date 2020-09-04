@@ -1,7 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-		
+
 	<!-- Parent POM (i.e., Engines) -->
 	<parent>
 		<groupId>org.eclipse.papyrus.moka</groupId>
@@ -15,19 +17,6 @@
 	<name>org.eclipse.papyrus.moka.pssm</name>
 	<description>Execution engine implementing PSSM (Precise Semantics for UML State Machines)</description>
 
-	<!-- Properties -->
-	<properties>
-		<fuml-aspects>${project.basedir}/../org.eclipse.papyrus.moka.fuml/aspects</fuml-aspects>
-	</properties>
-	
-	<dependencies>
-		<dependency>
-			<groupId>com.nickwongdev</groupId>
-			<artifactId>aspectj-maven-plugin</artifactId>
-			<version>1.12.1</version>
-		</dependency>
-	</dependencies>
-	
 	<!-- Build specificities -->
 	<build>
 		<plugins>
@@ -47,16 +36,14 @@
 						<configuration>
 							<verbose>true</verbose>
 							<showWeaveInfo>true</showWeaveInfo>
-							<aspectDirectory>${fuml-aspects}</aspectDirectory>
 							<aspectDirectory>${project.basedir}/aspects</aspectDirectory>
 							<source>11</source>
 							<target>11</target>
 						</configuration>
 					</execution>
 				</executions>
-
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>

@@ -15,9 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.kernel.process;
 
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PATH;
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,8 +27,6 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchesListener2;
 import org.eclipse.debug.core.model.IStreamsProxy;
-import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
 
 public class ServerMqttProcess extends BaseProcess<Process> implements ILaunchesListener2 {
 
@@ -96,15 +91,15 @@ public class ServerMqttProcess extends BaseProcess<Process> implements ILaunches
 
 	@Override
 	public void run() {
-		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
-		File serverExecutable = new File(store.getString(MQTT_SERVER_PATH));
+
+		File serverExecutable = new File(MQTTServerConfig.getMQTTServerPath());
 		if (serverExecutable.exists() && serverExecutable.isFile()) {
 			ProcessBuilder builder = new ProcessBuilder().inheritIO();
 			List<String> commands = new ArrayList<String>();
 			commands.add(serverExecutable.getAbsolutePath());
 			commands.add("-v");
 			commands.add("-p");
-			commands.add(String.valueOf(store.getInt(MQTT_SERVER_PORT)));
+			commands.add(MQTTServerConfig.getMQTTServerPort());
 			builder.command(commands);
 			try {
 				process = builder.start();

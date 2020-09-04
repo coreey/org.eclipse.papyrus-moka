@@ -9,7 +9,7 @@
             class="org.eclipse.papyrus.moka.trace.service.TraceGenerationService"
             description="Moka Trace Generation Service">
          <context
-               engineID="org.eclipse.papyrus.moka.engine.uml">
+               engineID="org.eclipse.papyrus.moka.engine.uml.debug">
          </context>
          <context
                engineID="org.eclipse.papyrus.moka.engine.uml.time">

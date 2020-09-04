@@ -38,7 +38,7 @@ public class ToUnlimitedNatural extends OpaqueBehaviorExecution {
 				result.value = -1;
 			} else {
 				try {
-					value = new Integer(x);
+					value = Integer.valueOf(x);
 				} catch (NumberFormatException badFormat) {
 				}
 				if (value != null && value >= 0) {

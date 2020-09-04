@@ -15,16 +15,14 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.ui.preferences;
 
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MODEL_VALIDATION_ON_LAUNCH;
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PATH;
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
-
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.IntegerFieldEditor;
-import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
+import org.eclipse.papyrus.moka.kernel.IKernelProperties;
+import org.eclipse.papyrus.moka.ui.IUIPreferences;
+import org.eclipse.papyrus.moka.ui.MokaUIActivator;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -43,26 +41,27 @@ public class PapyrusSimulationPreferencePage extends FieldEditorPreferencePage i
 	}
 
 	public void init(IWorkbench workbench) {
-		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
+		IPreferenceStore store = MokaUIActivator.getDefault().getPreferenceStore();
 		setPreferenceStore(store);
 		setDescription(DESCRIPTION);
 	}
 
 	@Override
 	protected void createFieldEditors() {
-		FileFieldEditor serverPathEditor = new FileFieldEditor(MQTT_SERVER_PATH, SERVER_PATH_LABEL,
+		FileFieldEditor serverPathEditor = new FileFieldEditor(IKernelProperties.MQTT_SERVER_PATH, SERVER_PATH_LABEL,
 				getFieldEditorParent());
 		serverPathEditor.setEmptyStringAllowed(false);
 		serverPathEditor.setErrorMessage("Invalid path to the server");
+
 		addField(serverPathEditor);
-		IntegerFieldEditor portFieldEditor = new IntegerFieldEditor(MQTT_SERVER_PORT, SERVER_PORT_LABEL,
-				getFieldEditorParent());
+		IntegerFieldEditor portFieldEditor = new IntegerFieldEditor(IKernelProperties.MQTT_SERVER_PORT,
+				SERVER_PORT_LABEL, getFieldEditorParent());
 		portFieldEditor.setValidRange(0, 65536);
 		portFieldEditor.setErrorMessage("Invalid port");
+
 		addField(portFieldEditor);
-		BooleanFieldEditor validationOnLaunch = new BooleanFieldEditor(MODEL_VALIDATION_ON_LAUNCH,
+		BooleanFieldEditor validationOnLaunch = new BooleanFieldEditor(IUIPreferences.MODEL_VALIDATION_ON_LAUNCH,
 				MODEL_VALIDATION_ON_LAUNCH_LABEL, getFieldEditorParent());
 		addField(validationOnLaunch);
 	}
-
 }

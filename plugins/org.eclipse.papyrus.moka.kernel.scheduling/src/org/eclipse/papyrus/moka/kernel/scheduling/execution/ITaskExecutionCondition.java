@@ -14,16 +14,15 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.kernel.scheduling.execution;
 
-public interface ITaskExecutionCondition {
+public interface ITaskExecutionCondition<ThreadType> {
 
 	/**
 	 * Evaluate the condition
 	 * 
-	 * @param task
-	 * 		the task used a parameter for the evaluation
+	 * @param task the task used a parameter for the evaluation
 	 * 
 	 * @return true if the condition is verified, false otherwise
 	 */
-	boolean evaluate(ITaskExecution task);
-	
+	boolean evaluate(ThreadType task);
+
 }

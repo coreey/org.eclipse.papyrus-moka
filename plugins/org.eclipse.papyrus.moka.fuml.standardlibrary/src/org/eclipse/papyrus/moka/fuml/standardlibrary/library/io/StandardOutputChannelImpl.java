@@ -16,61 +16,44 @@
 
 package org.eclipse.papyrus.moka.fuml.standardlibrary.library.io;
 
+import java.io.OutputStream;
 import java.util.List;
 
-import org.eclipse.papyrus.moka.engine.uml.libraries.ServiceObject;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IExecution;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IParameterValue;
 import org.eclipse.papyrus.moka.fuml.debug.Debug;
+import org.eclipse.papyrus.moka.fuml.library.ServiceObject;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.StringValue;
 import org.eclipse.papyrus.moka.fuml.values.Value;
-import org.eclipse.ui.console.ConsolePlugin;
-import org.eclipse.ui.console.IConsole;
-import org.eclipse.ui.console.IConsoleManager;
-import org.eclipse.ui.console.IOConsole;
-import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Operation;
 
 public final class StandardOutputChannelImpl extends ServiceObject {
 
-	protected static final String CONSOLE_NAME = "fUML Console";
+	protected OutputStream out = null;
 
-	protected static IOConsole console = null;
-
-	protected IOConsoleOutputStream out = null;
-	
 	private static final String WRITE_OPERATION = "write";
-	
-	private static final String WRITELINE_OPERATION = "writeLine";
 
-	public static IOConsole getConsole() {
-		if (console == null) {
-			console = new IOConsole(CONSOLE_NAME, null);
-			IConsoleManager conMan = ConsolePlugin.getDefault().getConsoleManager();
-			conMan.addConsoles(new IConsole[] { console });
-		}
-		return console;
-	}
+	private static final String WRITELINE_OPERATION = "writeLine";
 
 	public StandardOutputChannelImpl(Class service) {
 		super(service);
-		this.out = getConsole().newOutputStream();
+		this.out = FUMLIOConsole.getInstance().getConsole().getOutputStream();
 	}
 
 	@Override
 	public IExecution dispatch(Operation operation) {
 		IExecution execution = null;
-		if(operation != null) {
-			if(operation.getName().equals(WRITE_OPERATION)) {
+		if (operation != null) {
+			if (operation.getName().equals(WRITE_OPERATION)) {
 				execution = new Write(operation);
-			} else if(operation.getName().equals(WRITELINE_OPERATION)) {
+			} else if (operation.getName().equals(WRITELINE_OPERATION)) {
 				execution = new WriteLine(operation);
 			}
 		}
 		return execution;
 	}
-	
+
 	protected class WriteLine extends ServiceObject.ServiceOperationExecution {
 
 		public WriteLine(Operation operation) {
@@ -88,7 +71,7 @@ public final class StandardOutputChannelImpl extends ServiceObject {
 			try {
 				String message = "";
 				message = ((StringValue) inputParameters.get(0).getValues().get(0)).value;
-				out.write(message + "\n");
+				out.write((message + "\n").getBytes());
 				out.flush();
 				// This implementation does not produce errorStatus information.
 			} catch (Exception e) {
@@ -113,7 +96,7 @@ public final class StandardOutputChannelImpl extends ServiceObject {
 			// Supposed to have only one input argument, corresponding to parameter 'value'
 			try {
 				String message = inputParameters.get(0).getValues().get(0).toString();
-				out.write(message);
+				out.write(message.getBytes());
 				out.flush();
 				// This implementation does not produce errorStatus information.
 			} catch (Exception e) {

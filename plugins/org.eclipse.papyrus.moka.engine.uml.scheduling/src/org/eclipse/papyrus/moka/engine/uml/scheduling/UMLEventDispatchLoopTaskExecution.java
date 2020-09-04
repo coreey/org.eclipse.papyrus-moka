@@ -16,29 +16,14 @@
 
 package org.eclipse.papyrus.moka.engine.uml.scheduling;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.eclipse.papyrus.moka.animation.engine.AnimationService;
-import org.eclipse.papyrus.moka.animation.engine.rendering.AnimationEngine;
-import org.eclipse.papyrus.moka.animation.engine.rendering.DiagramHandler;
-import org.eclipse.papyrus.moka.debug.assistant.DebugAssistantException;
-import org.eclipse.papyrus.moka.debug.service.IDebugService;
-import org.eclipse.papyrus.moka.engine.uml.debug.listeners.UMLSemanticVisitorExecutionListener;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IClassifierBehaviorInvocationEventAccepter;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IObjectActivation;
-import org.eclipse.papyrus.moka.fuml.loci.ISemanticVisitor;
 import org.eclipse.papyrus.moka.fuml.simpleclassifiers.IValue;
 import org.eclipse.papyrus.moka.fuml.structuredclassifiers.IObject_;
 import org.eclipse.papyrus.moka.fuml.tasks.IUMLEventDispatchLoopExecution;
-import org.eclipse.papyrus.moka.kernel.SuspensionReasons;
-import org.eclipse.papyrus.moka.kernel.assistant.Suspension;
-import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 import org.eclipse.papyrus.moka.kernel.scheduling.control.IExecutionLoop;
-import org.eclipse.papyrus.moka.kernel.service.IExecutionEngineService;
-import org.eclipse.papyrus.moka.kernel.service.ServiceRegistry;
-import org.eclipse.uml2.uml.Element;
 
 public class UMLEventDispatchLoopTaskExecution extends UMLTaskExecution implements IUMLEventDispatchLoopExecution {
 
@@ -110,70 +95,13 @@ public class UMLEventDispatchLoopTaskExecution extends UMLTaskExecution implemen
 		}
 		try {
 			dispatchLoop.dispatchNextEvent();
-		} catch (DebugAssistantException debugAssistantException) {
-			List<IExecutionEngineService<IExecutionEngine>> debugServices = ServiceRegistry.getInstance()
-					.getService(IDebugService.class);
-			if (!debugServices.isEmpty()) {
-				fireErrorDetectionError((IDebugService<?, ?>) debugServices.get(0), debugAssistantException);
-			}
-			// debugAssistantException.printStackTrace();
 		} catch (Exception e) {
-			// e.printStackTrace();
+			e.printStackTrace();
 		} finally {
 			if (dispatchLoopLock.isHeldByCurrentThread()) {
 				dispatchLoopLock.unlock();
 			}
 		}
-	}
-
-	protected void fireErrorDetectionError(IDebugService<?, ?> executionEngineService,
-			DebugAssistantException debugAssistantException) {
-		Suspension suspension = new Suspension(debugAssistantException.getDebugAssistant(),
-				SuspensionReasons.ERROR_DETECTION);
-		if (executionEngineService
-				.shouldContinueInDebugAssistant(debugAssistantException.getDebugAssistant().getAssistantID())) {
-			Element node = debugAssistantException.getVisitorNode();
-			ISemanticVisitor visitor = debugAssistantException.getVisitor();
-			if (node != null) {
-				// Open diagrams
-				DiagramHandler diagramManager = getDiagramHandler(debugAssistantException);
-				if (diagramManager != null) {
-					if (!diagramManager.hasOpenedDiagram(node)) {
-						diagramManager.openDiagrams(node);
-					} else {
-						diagramManager.selectDiagrams(node);
-					}
-				}
-
-				// Ask to every UMLSemanticVisitorExecution service to suspend
-				Collection<IExecutionEngineService<IExecutionEngine>> allServices = ServiceRegistry.getInstance()
-						.getAllServices();
-				for (IExecutionEngineService<IExecutionEngine> service : allServices) {
-					if (service instanceof UMLSemanticVisitorExecutionListener) {
-						if (!(service instanceof IDebugService)) {
-							((UMLSemanticVisitorExecutionListener) service).nodeSuspended(visitor, suspension);
-						}
-					}
-				}
-				// The debug service suspend the thread so it should works in last
-				if (executionEngineService instanceof UMLSemanticVisitorExecutionListener) {
-					((UMLSemanticVisitorExecutionListener) executionEngineService).nodeSuspended(visitor, suspension);
-				}
-			}
-		}
-	}
-
-	private DiagramHandler getDiagramHandler(DebugAssistantException debugAssistantException) {
-		List<IExecutionEngineService<IExecutionEngine>> animationServices = ServiceRegistry.getInstance()
-				.getService(AnimationService.class);
-		if (!animationServices.isEmpty()) {
-			AnimationService animationService = (AnimationService) animationServices.get(0);
-			AnimationEngine animationEngine = animationService.getEngine();
-			if (animationEngine != null) {
-				return animationEngine.getDiagramHandler();
-			}
-		}
-		return null;
 	}
 
 	/**

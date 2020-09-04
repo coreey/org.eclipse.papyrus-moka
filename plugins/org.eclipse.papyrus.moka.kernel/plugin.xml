@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="engine" name="ExecutionEngine" schema="schema/engine.exsd"/>
-   <extension-point id="service" name="service" schema="schema/service.exsd"/>
-   <extension-point id="validation" name="Validation" schema="schema/validation.exsd"/>
-   <extension
-         point="org.eclipse.ui.startup">
-      <startup
-            class="org.eclipse.papyrus.moka.kernel.MokaKernelStartup">
-      </startup>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="org.eclipse.papyrus.moka.kernel.preferences.PapyrusSimulationPreferencePageInitializer">
-      </initializer>
-   </extension>
+   <extension-point id="org.eclipse.papyrus.moka.kernel.engine" name="Execution engine extension point" schema="schema/org.eclipse.papyrus.moka.kernel.engine.exsd"/>
+   <extension-point id="org.eclipse.papyrus.moka.kernel.service" name="Execution engine service extension point" schema="schema/org.eclipse.papyrus.moka.kernel.service.exsd"/>
+   <extension-point id="org.eclipse.papyrus.moka.kernel.validation" name="Validation" schema="schema/org.eclipse.papyrus.moka.kernel.validation.exsd"/>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Kernel -->
       <package
@@ -23,18 +11,5 @@
             class="org.eclipse.papyrus.moka.kernel.KernelPackage"
             genModel="resources/models/Kernel.genmodel"/>
    </extension>
-    <extension
-          point="org.eclipse.ui.newWizards">
-       <wizard
-             category="org.eclipse.ui.Examples/org.eclipse.papyrus.examples"
-             class="org.eclipse.papyrus.uml.diagram.wizards.wizards.PapyrusExampleInstallerWizard"
-             finalPerspective="org.eclipse.papyrus.infra.core.perspective"
-             icon="resources/icons/moka_icon.png"
-             id="org.eclipse.papyrus.moka.kernel.wizard.examples"
-             name="Papyrus Moka Examples"
-             preferredPerspectives="org.eclipse.papyrus.infra.core.perspective,org.eclipse.papyrus.moka.ui.debug.perspectives.moka.debug"
-             project="true">
-       </wizard>
-    </extension>
 
 </plugin>

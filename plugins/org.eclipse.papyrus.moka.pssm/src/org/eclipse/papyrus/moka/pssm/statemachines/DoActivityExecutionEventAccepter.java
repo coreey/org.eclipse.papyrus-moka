@@ -18,16 +18,16 @@ package org.eclipse.papyrus.moka.pssm.statemachines;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.EventAccepter;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventAccepter;
 import org.eclipse.papyrus.moka.fuml.commonbehavior.IEventOccurrence;
-import org.eclipse.papyrus.moka.pssm.statemachines.IDoActivityContextObject;
 
 public class DoActivityExecutionEventAccepter extends EventAccepter {
 
 	// The doActivity context object in which this accepter is registered
 	public IDoActivityContextObject context;
-	
-	// The actual event accepter (i.e., the one registered by the doActivity execution)
+
+	// The actual event accepter (i.e., the one registered by the doActivity
+	// execution)
 	public IEventAccepter encapsulatedAccepter;
-	
+
 	@Override
 	public void accept(IEventOccurrence eventOccurrence) {
 		// The event accepted through the state-machine event pool leads

@@ -15,6 +15,8 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.fuml.standardlibrary;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
@@ -29,6 +31,8 @@ public class Activator extends Plugin {
 	// The shared instance
 	private static Activator plugin;
 
+	public ILog logger;
+
 	/**
 	 * The constructor
 	 */
@@ -38,18 +42,21 @@ public class Activator extends Plugin {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.
+	 * BundleContext)
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
+		logger = Platform.getLog(this.getClass());
 		plugin = this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {

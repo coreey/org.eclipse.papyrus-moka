@@ -15,8 +15,6 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.debug.service;
 
-import static org.eclipse.papyrus.moka.kernel.process.IServerMqttPreferences.MQTT_SERVER_PORT;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,11 +23,10 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.eclipse.debug.core.DebugException;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngine;
 import org.eclipse.papyrus.moka.debug.engine.IDebuggableExecutionEngineThread;
-import org.eclipse.papyrus.moka.kernel.MokaKernelActivator;
+import org.eclipse.papyrus.moka.kernel.process.MQTTServerConfig;
 import org.eclipse.papyrus.moka.kernel.service.ExecutionEngineService;
 
 public abstract class DebugService<T, C> extends ExecutionEngineService<IDebuggableExecutionEngine<T, C>>
@@ -103,8 +100,7 @@ public abstract class DebugService<T, C> extends ExecutionEngineService<IDebugga
 	}
 
 	private void initClient() {
-		IPreferenceStore store = MokaKernelActivator.getDefault().getPreferenceStore();
-		String port = store.getString(MQTT_SERVER_PORT);
+		String port = MQTTServerConfig.getMQTTServerPort();
 		client = new DebugServiceClient("tcp://localhost:" + port, "Debug Service Client", this);
 		client.run();
 	}
