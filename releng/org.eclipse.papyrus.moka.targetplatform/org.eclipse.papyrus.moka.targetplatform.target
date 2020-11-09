@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Moka Target Platform" sequenceNumber="1599152889">
+<target name="Moka Target Platform" sequenceNumber="1604930062">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
@@ -10,7 +10,7 @@
       <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.json" version="0.0.0"/>
-      <repository id="eclipse" location="http://download.eclipse.org/releases/2020-06"/>
+      <repository id="eclipse" location="http://download.eclipse.org/releases/2020-12"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="0.0.0"/>

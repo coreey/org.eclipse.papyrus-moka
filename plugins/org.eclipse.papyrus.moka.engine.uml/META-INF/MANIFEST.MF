@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.papyrus.moka.engine.uml
 Bundle-SymbolicName: org.eclipse.papyrus.moka.engine.uml;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Automatic-Module-Name: org.eclipse.papyrus.moka.engine.uml
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.papyrus.moka.kernel;bundle-version="[4.0.0,5.0.0)",
@@ -19,8 +19,10 @@ Require-Bundle: org.eclipse.papyrus.moka.kernel;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.papyrus.moka.kernel.debug;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.papyrus.moka.engine.uml.debug;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.papyrus.moka.kernel.scheduling;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.infra.core.log;bundle-version="[1.2.0,2.0.0)",
- org.eclipse.jface;bundle-version="[3.20.0,4.0.0)"
+ org.eclipse.papyrus.infra.core.log;bundle-version="[1.2.0,3.0.0)",
+ org.eclipse.jface;bundle-version="[3.20.0,4.0.0)",
+ org.eclipse.osgi;bundle-version="[3.15.300,4.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.18.0,4.0.0)"
 Export-Package: org.eclipse.papyrus.moka.engine.uml,
  org.eclipse.papyrus.moka.engine.uml.libraries
 Bundle-Activator: org.eclipse.papyrus.moka.engine.uml.Activator

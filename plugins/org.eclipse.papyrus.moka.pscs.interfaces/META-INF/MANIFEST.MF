@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.papyrus.moka.pscs.interfaces
 Bundle-SymbolicName: org.eclipse.papyrus.moka.pscs.interfaces
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.eclipse.papyrus.moka.pscs.Activator
 Require-Bundle: org.eclipse.papyrus.moka.fuml.interfaces;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)",

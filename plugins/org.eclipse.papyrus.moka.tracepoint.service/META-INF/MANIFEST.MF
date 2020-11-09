@@ -2,19 +2,24 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Moka Tracepoint Service
 Bundle-SymbolicName: org.eclipse.papyrus.moka.tracepoint.service;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.eclipse.papyrus.moka.tracepoint.service.Activator
 Require-Bundle: org.eclipse.debug.core;bundle-version="[3.15.0,4.0.0)",
  org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)",
- org.eclipse.papyrus.infra.services.decoration;bundle-version="[2.0.0,3.0.0)",
- org.eclipse.papyrus.infra.core.log;bundle-version="[1.2.0,2.0.0)",
- org.eclipse.papyrus.infra.emf;bundle-version="[3.1.0,4.0.0)",
- org.eclipse.papyrus.infra.gmfdiag.commands;bundle-version="[3.0.0,4.0.0)",
- org.eclipse.papyrus.infra.services.markerlistener;bundle-version="[2.0.0,3.0.0)",
- org.eclipse.papyrus.infra.ui;bundle-version="[2.1.0,3.0.0)",
+ org.eclipse.papyrus.infra.services.decoration;bundle-version="[2.0.0,4.0.0)",
+ org.eclipse.papyrus.infra.core.log;bundle-version="[1.2.0,3.0.0)",
+ org.eclipse.papyrus.infra.emf;bundle-version="[3.1.0,5.0.0)",
+ org.eclipse.papyrus.infra.gmfdiag.commands;bundle-version="[3.0.0,6.0.0)",
+ org.eclipse.papyrus.infra.services.markerlistener;bundle-version="[2.0.0,4.0.0)",
+ org.eclipse.papyrus.infra.ui;bundle-version="[2.1.0,4.0.0)",
  org.eclipse.papyrus.moka.utils;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.papyrus.moka.tracepoint.service;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.papyrus.moka.kernel.debug;bundle-version="[4.0.0,5.0.0)"
+ org.eclipse.papyrus.moka.kernel.debug;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.18.0,4.0.0)",
+ org.eclipse.jface;bundle-version="[3.20.0,4.0.0)",
+ org.eclipse.ui.workbench;bundle-version="[3.119.0,4.0.0)",
+ org.eclipse.papyrus.infra.core;bundle-version="[3.1.0,5.0.0)",
+ org.eclipse.papyrus.infra.widgets;bundle-version="[3.6.0,5.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: org.eclipse.papyrus.moka.tracepoint.service
 Bundle-ActivationPolicy: lazy

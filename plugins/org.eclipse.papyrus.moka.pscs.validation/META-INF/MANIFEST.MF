@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Moka Validation Rules for PSCS models
 Bundle-SymbolicName: org.eclipse.papyrus.moka.pscs.validation;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.eclipse.papyrus.moka.pscs.validation.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.ui;bundle-version="[3.117.0,4.0.0)",
