@@ -25,6 +25,6 @@ Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.papyrus.moka.kernel.MokaKernelActivator
 Bundle-Description: %pluginDescription
 Bundle-SymbolicName: org.eclipse.papyrus.moka.kernel;singleton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.eclipse.papyrus.moka
 Bundle-ActivationPolicy: lazy

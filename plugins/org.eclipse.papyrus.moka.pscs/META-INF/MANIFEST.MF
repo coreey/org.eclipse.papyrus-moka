@@ -15,7 +15,7 @@ Bundle-Name: org.eclipse.papyrus.moka.pscs
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.papyrus.moka.pscs.Activator
 Bundle-SymbolicName: org.eclipse.papyrus.moka.pscs;singleton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.eclipse.papyrus.moka.composites
 Export-Package: org.eclipse.papyrus.moka.pscs,
  org.eclipse.papyrus.moka.pscs.actions,

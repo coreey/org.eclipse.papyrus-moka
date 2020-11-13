@@ -52,6 +52,6 @@ Bundle-Name: org.eclipse.papyrus.moka.ui
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.papyrus.moka.ui.MokaUIActivator
 Bundle-SymbolicName: org.eclipse.papyrus.moka.ui;singleton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.eclipse.papyrus.moka.ui
 Bundle-ActivationPolicy: lazy

@@ -37,7 +37,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 				<artifactId>aspectj-maven-plugin</artifactId>
 				<version>1.12.1</version>
 				<configuration>
-					<complianceLevel>1.8</complianceLevel>
+					<complianceLevel>11</complianceLevel>
 				</configuration>
 				<executions>
 					<execution>
@@ -50,8 +50,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 							<showWeaveInfo>true</showWeaveInfo>
 							<aspectDirectory>${fuml-aspects}</aspectDirectory>
 							<aspectDirectory>${project.basedir}/aspects</aspectDirectory>
-							<source>1.8</source>
-							<target>1.8</target>
+							<source>11</source>
+							<target>11</target>
 						</configuration>
 					</execution>
 				</executions>
