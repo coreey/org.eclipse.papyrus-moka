@@ -17,6 +17,8 @@
 
 package org.eclipse.papyrus.moka.ui.tracepoint.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.text.View;
@@ -28,7 +30,10 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.debug.core.model.IBreakpoint;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.common.ui.resources.FileChangeManager;
 import org.eclipse.gmf.runtime.common.ui.resources.IFileObserver;
@@ -77,6 +82,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 
@@ -101,10 +107,28 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 	 */
 	public static final String ID = "org.eclipse.papyrus.moka.ui.tracepoint.view.Tracepoints"; //$NON-NLS-1$
 
+	/**
+	 * ID of org.eclipse.debug.ui plugin (containing the import/export icons)
+	 */
+	protected static final String OE_DEBUG_UI = "org.eclipse.debug.ui"; //$NON-NLS-1$
+
+	/**
+	 * relative path of import-breakpoints icon
+	 */
+	protected static final String IMPORT_BRKPTS_PNG = "icons/full/dlcl16/import_brkpts.png"; //$NON-NLS-1$
+
+	/**
+	 * relative path of export-breakpoints icon
+	 */
+	protected static final String EXPORT_BRKPTS_PNG = "icons/full/dlcl16/export_brkpts.png"; //$NON-NLS-1$
 
 	private CheckboxTableViewer viewer;
 
 	protected Action actionDelete;
+
+	protected Action actionExport;
+
+	protected Action actionImport;
 
 	protected Action actionDeleteAll;
 
@@ -162,8 +186,10 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 				final String separator = " - "; //$NON-NLS-1$
 				EObject eobj = MarkerUtils.getEObjectOfMarker((IMarker) obj);
 				StringBuilder builder = new StringBuilder();
-				if (eobj.eResource() != null) {
+				if (eobj != null && eobj.eResource() != null) {
 					builder.append(eobj.eResource().getURI().lastSegment().toString());
+				} else {
+					builder.append("cannot resolve URI: " + MarkerUtils.getURI((IMarker) obj));
 				}
 				if (eobj instanceof NamedElement) {
 					builder.append(separator);
@@ -289,10 +315,20 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 
 			@Override
 			public void handleFileDeleted(IFile file) {
+				// can treat both changes in the same way
+				handleFileChanged(file);
 			}
 
 			@Override
 			public void handleFileChanged(IFile file) {
+				// check, whether a file has changed => unload in order to refresh
+				URI uri = URI.createURI(file.getFullPath().toString());
+				Resource r = MarkerUtils.getResourceSet().getResource(uri, false);
+
+				if (r != null) {
+					r.unload();
+					switchUI();
+				}
 			}
 		};
 
@@ -343,11 +379,15 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 		manager.add(actionDelete);
 		manager.add(new Separator());
 		manager.add(actionGoto);
+		manager.add(actionImport);
+		manager.add(actionExport);
 	}
 
 	protected void fillContextMenu(IMenuManager manager) {
 		manager.add(actionDelete);
 		manager.add(actionGoto);
+		manager.add(actionImport);
+		manager.add(actionExport);
 		// Other plug-ins can contribute there actions here
 		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
@@ -355,6 +395,8 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 	protected void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(actionDelete);
 		manager.add(actionDeleteAll);
+		manager.add(actionImport);
+		manager.add(actionExport);
 		manager.add(actionGoto);
 		manager.add(actionSkip);
 		manager.add(actionTraceSelect);
@@ -373,6 +415,36 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 
 		actionSkip.setImageDescriptor(TraceViewImages.getSkipAllID());
 		actionSkip.setToolTipText("Skip All Tracepoints"); //$NON-NLS-1$
+
+		actionImport = new Action("Import") { //$NON-NLS-1$
+
+			@Override
+			public void run() {
+				ImportExportTPs.importTracepoints();
+			}
+		};
+		actionImport.setToolTipText("Import tracepoints"); //$NON-NLS-1$
+		actionImport.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(OE_DEBUG_UI, IMPORT_BRKPTS_PNG));
+
+		actionExport = new Action("Export") { //$NON-NLS-1$
+
+			@Override
+			public void run() {
+				ISelection selection = viewer.getSelection();
+				if (selection instanceof IStructuredSelection) {
+					List<IBreakpoint> tracepoints = new ArrayList<IBreakpoint>();
+					for (Object obj : ((IStructuredSelection) selection).toList()) {
+						if (obj instanceof IMarker) {
+							IBreakpoint tracepoint = new MokaTracepoint((IMarker) obj);
+							tracepoints.add(tracepoint);
+						}
+					}
+					ImportExportTPs.exportTracepoints(tracepoints);
+				}
+			}
+		};
+		actionExport.setToolTipText("Export tracepoints"); //$NON-NLS-1$
+		actionExport.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(OE_DEBUG_UI, EXPORT_BRKPTS_PNG));
 
 		actionDelete = new Action("Delete") { //$NON-NLS-1$
 

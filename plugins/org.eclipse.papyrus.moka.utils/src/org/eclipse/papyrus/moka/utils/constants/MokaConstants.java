@@ -19,6 +19,7 @@ package org.eclipse.papyrus.moka.utils.constants;
 /**
  * The Class MokaConstants.
  */
+@SuppressWarnings("nls")
 public class MokaConstants {
 
 	/** For testing/debugging purposes */
@@ -34,6 +35,9 @@ public class MokaConstants {
 
 	/** ID of the moka breakpoint marker type. */
 	public final static String MOKA_BREAKPOINT_MARKER_ID = "org.eclipse.papyrus.moka.breakpointmarker";
+
+	/** ID of the moka breakpoint marker type. */
+	public final static String MOKA_TRACEPOINT_MARKER_ID = "org.eclipse.papyrus.moka.tracepointmarker";
 
 	/** ID of the moka suspended marker type. */
 	public final static String MOKA_SUSPENDED_MARKER_ID = "org.eclipse.papyrus.moka.ui.suspendedmarker";

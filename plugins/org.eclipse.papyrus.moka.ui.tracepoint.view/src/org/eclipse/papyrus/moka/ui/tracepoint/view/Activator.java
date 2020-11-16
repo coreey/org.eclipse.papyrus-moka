@@ -16,6 +16,7 @@
 package org.eclipse.papyrus.moka.ui.tracepoint.view;
 
 import org.eclipse.core.runtime.Plugin;
+import org.eclipse.papyrus.infra.core.log.LogHelper;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -31,7 +32,7 @@ public class Activator extends Plugin {
 	/** The plugin. */
 	private static Activator plugin;
 
-	
+	public static LogHelper log;
 
 	/**
 	 * The constructor.
@@ -50,6 +51,7 @@ public class Activator extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		log = new LogHelper(plugin);
 	}
 
 	/*

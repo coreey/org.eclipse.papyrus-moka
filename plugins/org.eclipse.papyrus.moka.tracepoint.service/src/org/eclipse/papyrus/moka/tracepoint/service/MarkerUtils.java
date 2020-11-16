@@ -26,12 +26,24 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.papyrus.infra.core.markers.MarkerConstants;
 
 /**
- * Utilities for Markers (TODO: some of these are generic marker services (move to infra core markers) and not specific to tracepoints).
- *
- * @author ansgar
- *
+ * Utilities for resolving a Marker (with its URI attributes) to an EObject. In
+ * order to do that, it loads resources into its own resource-set
  */
 public class MarkerUtils {
+
+	/**
+	 * Our own copy of resource set
+	 * we do not use the Papyrus resourceSet, since every editor keeps his own copy of the resource set
+	 * and thus no resourceSet would be available, if Papyrus is not open.
+	 */
+	protected static ResourceSet resourceSet = null;
+
+	public static ResourceSet getResourceSet() {
+		if (resourceSet == null) {
+			resourceSet = new ResourceSetImpl();
+		}
+		return resourceSet;
+	}
 
 	public static URI getURI(IMarker marker) {
 		String uriOfMarkerStr = marker.getAttribute(MarkerConstants.uri, null);
@@ -48,7 +60,7 @@ public class MarkerUtils {
 	 * @return the associated EObject
 	 */
 	public static EObject getEObjectOfMarker(IMarker marker) {
-		return getEObjectOfMarker(resourceSet, marker);
+		return getEObjectOfMarker(getResourceSet(), marker);
 	}
 
 	/**
@@ -76,11 +88,4 @@ public class MarkerUtils {
 	public static boolean isActive(IMarker marker) {
 		return marker.getAttribute(TracepointConstants.isActive, false);
 	}
-
-	/**
-	 * our own copy of resource set
-	 * we do not use the Papyrus resourceSet, since every editor keeps his own copy of the resource set (which is probably
-	 * quite bad) and thus no resourceSet would be available, if Papyrus is not open.
-	 */
-	public static ResourceSet resourceSet = new ResourceSetImpl();
 }
