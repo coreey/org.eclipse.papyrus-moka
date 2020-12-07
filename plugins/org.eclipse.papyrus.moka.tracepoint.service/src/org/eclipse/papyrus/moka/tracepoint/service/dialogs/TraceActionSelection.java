@@ -17,6 +17,7 @@
 package org.eclipse.papyrus.moka.tracepoint.service.dialogs;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.common.util.BasicEList;
@@ -35,12 +36,13 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.papyrus.moka.tracepoint.service.ITraceMechanism;
 import org.eclipse.papyrus.moka.tracepoint.service.Messages;
 import org.eclipse.papyrus.moka.tracepoint.service.TraceActions;
-import org.eclipse.papyrus.moka.tracepoint.service.TraceMechanism;
-import org.eclipse.papyrus.moka.tracepoint.service.TracepointConstants;
 import org.eclipse.papyrus.moka.tracepoint.service.TraceActions.TAClass;
 import org.eclipse.papyrus.moka.tracepoint.service.TraceActions.TAOperation;
 import org.eclipse.papyrus.moka.tracepoint.service.TraceActions.TAState;
+import org.eclipse.papyrus.moka.tracepoint.service.TraceActions.TATransition;
 import org.eclipse.papyrus.moka.tracepoint.service.TraceActions.TraceFeature;
+import org.eclipse.papyrus.moka.tracepoint.service.TraceMechanism;
+import org.eclipse.papyrus.moka.tracepoint.service.TracepointConstants;
 import org.eclipse.papyrus.moka.tracepoint.service.preferences.BinaryEncodedMChoiceFieldEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -58,7 +60,9 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.State;
+import org.eclipse.uml2.uml.Transition;
 
 public class TraceActionSelection extends SelectionStatusDialog {
 
@@ -72,7 +76,11 @@ public class TraceActionSelection extends SelectionStatusDialog {
 
 	BinaryEncodedMChoiceFieldEditor operationOptions;
 
+	BinaryEncodedMChoiceFieldEditor portOptions;
+
 	BinaryEncodedMChoiceFieldEditor stateOptions;
+
+	BinaryEncodedMChoiceFieldEditor transitionOptions;
 
 	/**
 	 * The model element that has a trace marker
@@ -107,8 +115,14 @@ public class TraceActionSelection extends SelectionStatusDialog {
 		else if (m_me instanceof State) {
 			traceActionValue = stateOptions.getResult();
 		}
+		else if (m_me instanceof Transition) {
+			traceActionValue = transitionOptions.getResult();
+		}
 		else if (m_me instanceof Operation) {
 			traceActionValue = operationOptions.getResult();
+		}
+		else if (m_me instanceof Port) {
+			traceActionValue = portOptions.getResult();
 		}
 		String traceMechanism = ""; //$NON-NLS-1$
 		for (Object tableElement : fTraceImplementations.getCheckedElements()) {
@@ -157,7 +171,7 @@ public class TraceActionSelection extends SelectionStatusDialog {
 			// programming language. Therefore, they are not part of this plugin shipped with Papyrus, but use an
 			// extension mechanism.
 
-			EList<ITraceMechanism> mechanisms = TraceMechanism.getTraceMechanisms();
+			List<ITraceMechanism> mechanisms = TraceMechanism.getTraceMechanisms();
 			if (mechanisms.size() == 0) {
 				items = new String[] { Messages.TraceActionSelection_NoPluginsProvideTraceExt };
 			}
@@ -188,6 +202,7 @@ public class TraceActionSelection extends SelectionStatusDialog {
 		String[][] taClassOptions = TraceActions.getStringFields(TAClass.values());
 		String[][] taStateOptions = TraceActions.getStringFields(TAState.values());
 		String[][] taOperationOptions = TraceActions.getStringFields(TAOperation.values());
+		String[][] taTransitionOptions = TraceActions.getStringFields(TATransition.values());
 		String actionString = m_marker.getAttribute(TracepointConstants.traceAction, ""); //$NON-NLS-1$
 		String mechanismID = m_marker.getAttribute(TracepointConstants.traceMechanism, ""); //$NON-NLS-1$
 
@@ -206,6 +221,15 @@ public class TraceActionSelection extends SelectionStatusDialog {
 		else if (m_me instanceof Operation) {
 			operationOptions = new BinaryEncodedMChoiceFieldEditor(Messages.TraceActionSelection_OperationOptions, 3, taOperationOptions, contents, true);
 			operationOptions.setupViaString(actionString);
+		}
+		else if (m_me instanceof Port) {
+			// same options as for operation - only the operation name or the parameters as well
+			portOptions = new BinaryEncodedMChoiceFieldEditor(Messages.TraceActionSelection_PortOptions, 3, taOperationOptions, contents, true);
+			portOptions.setupViaString(actionString);
+		}
+		else if (m_me instanceof Transition) {
+			transitionOptions = new BinaryEncodedMChoiceFieldEditor(Messages.TraceActionSelection_TransitionOptions, 3, taTransitionOptions, contents, true);
+			transitionOptions.setupViaString(actionString);
 		}
 
 		Group implementationGroup = new Group(parent, SWT.NONE);
@@ -243,7 +267,7 @@ public class TraceActionSelection extends SelectionStatusDialog {
 				if (selection instanceof IStructuredSelection) {
 					Object first = ((IStructuredSelection) selection).getFirstElement();
 					if (first instanceof String) {
-						EList<ITraceMechanism> mechanisms = TraceMechanism.getTraceMechanisms();
+						List<ITraceMechanism> mechanisms = TraceMechanism.getTraceMechanisms();
 						boolean noDesc = true;
 						for (ITraceMechanism mechanism : mechanisms) {
 							String description = mechanism.getTraceMechanismDescription(m_me, (String) first);

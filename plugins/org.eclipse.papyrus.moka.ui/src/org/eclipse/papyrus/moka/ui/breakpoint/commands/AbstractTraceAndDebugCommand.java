@@ -22,7 +22,6 @@ import javax.sound.sampled.Port;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -130,8 +129,7 @@ abstract public class AbstractTraceAndDebugCommand extends AbstractTransactional
 						id = store.getDefaultString(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_SM);
 					}
 					if (id != null) {
-						EList<ITraceMechanism> mechanisms = TraceMechanism.getTraceMechanisms();
-						for (ITraceMechanism mechanism : mechanisms) {
+						for (ITraceMechanism mechanism : TraceMechanism.getTraceMechanisms()) {
 							for (String providedID : mechanism.getTraceMechanismIDs(selectedElement)) {
 								if (id.equals(providedID)) {
 									mechanism.applyTraceMechanism(selectedElement, id, 0);

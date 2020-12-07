@@ -44,4 +44,10 @@
 			name="Tracepoint preferences">
 		</page>
 	</extension>
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer
+			class="org.eclipse.papyrus.moka.tracepoint.service.preferences.TPPreferenceInitializer">
+		</initializer>
+	</extension>
+
 </plugin>

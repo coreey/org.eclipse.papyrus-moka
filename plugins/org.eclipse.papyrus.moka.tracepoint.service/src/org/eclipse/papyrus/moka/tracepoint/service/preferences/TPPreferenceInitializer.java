@@ -15,6 +15,8 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.tracepoint.service.preferences;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -35,7 +37,7 @@ public class TPPreferenceInitializer extends AbstractPreferenceInitializer {
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		EList<ITraceMechanism> mechanisms = TraceMechanism.getTraceMechanisms();
+		List<ITraceMechanism> mechanisms = TraceMechanism.getTraceMechanisms();
 		String mechanismID = ""; //$NON-NLS-1$
 		if (mechanisms.size() > 0) {
 			ITraceMechanism mechanism = mechanisms.get(0);
@@ -45,12 +47,12 @@ public class TPPreferenceInitializer extends AbstractPreferenceInitializer {
 				mechanismID = mechanismIDs.get(0);
 			}
 		}
-		store.setDefault(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_PORT, mechanismID);
-		store.setDefault(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_OP, mechanismID);
-		store.setDefault(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_SM, mechanismID);
+		store.setDefault(TPPreferenceConstants.P_TRACE_IMPLEMENTATION, mechanismID);
 
 		store.setDefault(TPPreferenceConstants.P_TRACE_OPTION_CLASS, 3);
-		store.setDefault(TPPreferenceConstants.P_TRACE_OPTION_STATE, 0);
+		store.setDefault(TPPreferenceConstants.P_TRACE_OPTION_STATE, 1);
 		store.setDefault(TPPreferenceConstants.P_TRACE_OPTION_OP, 0);
+		store.setDefault(TPPreferenceConstants.P_TRACE_OPTION_PORT, 0);
+		store.setDefault(TPPreferenceConstants.P_TRACE_OPTION_TRANSITION, 0);
 	}
 }

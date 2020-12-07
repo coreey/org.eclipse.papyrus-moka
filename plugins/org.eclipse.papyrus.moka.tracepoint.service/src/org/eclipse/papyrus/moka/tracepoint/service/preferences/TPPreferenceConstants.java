@@ -23,28 +23,27 @@ public class TPPreferenceConstants {
 	/**
 	 * The trace mechanism that should be used by default
 	 */
-	public static final String P_TRACE_IMPLEMENTATION_PORT = "papyrus.trace.implementation.port"; //$NON-NLS-1$
+	public static final String P_TRACE_IMPLEMENTATION = "papyrus.trace.implementation"; //$NON-NLS-1$
 
 	/**
-	 * The trace mechanism that should be used by default
-	 */
-	public static final String P_TRACE_IMPLEMENTATION_OP = "papyrus.trace.implementation.op"; //$NON-NLS-1$
-
-	/**
-	 * The trace mechanism that should be used by default
-	 */
-	public static final String P_TRACE_IMPLEMENTATION_SM = "papyrus.trace.implementation.sm"; //$NON-NLS-1$
-
-
-	/**
-	 * Options for trace implementation via state machines
+	 * Options for class trace options
 	 */
 	public static final String P_TRACE_OPTION_CLASS = "papyrus.trace.option.class"; //$NON-NLS-1$
 
 	/**
-	 * Options for trace implementation for operations
+	 * Options for state trace options
 	 */
 	public static final String P_TRACE_OPTION_STATE = "papyrus.trace.option.state"; //$NON-NLS-1$
+
+	/**
+	 * Options for state trace options
+	 */
+	public static final String P_TRACE_OPTION_PORT = "papyrus.trace.option.port"; //$NON-NLS-1$
+
+	/**
+	 * Options for trnasition trace options
+	 */
+	public static final String P_TRACE_OPTION_TRANSITION = "papyrus.trace.option.transition"; //$NON-NLS-1$
 
 	/**
 	 * Options for trace implementation via state machines

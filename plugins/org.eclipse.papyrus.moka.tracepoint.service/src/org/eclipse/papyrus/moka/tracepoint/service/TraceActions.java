@@ -78,6 +78,11 @@ public class TraceActions {
 		Transition // nothing (?) (triggers are known? - no, could be one out of many triggers)
 	};
 
+	public enum TATransition {
+		OnlyTrigger,
+		TriggerValues,
+	};
+
 	/**
 	 * Not used for the moment
 	 */
@@ -100,6 +105,7 @@ public class TraceActions {
 		Class,
 		Port,
 		State,
+		Transition,
 		Operation
 	};
 
@@ -146,6 +152,9 @@ public class TraceActions {
 		else if (feature == TraceFeature.Operation) {
 			return "O:"; //$NON-NLS-1$
 		}
+		else if (feature == TraceFeature.Transition) {
+			return "T:"; //$NON-NLS-1$
+		}
 		return null;
 	}
 
@@ -164,8 +173,14 @@ public class TraceActions {
 					store.getInt(TPPreferenceConstants.P_TRACE_OPTION_STATE),
 					store.getInt(TPPreferenceConstants.P_TRACE_OPTION_OP));
 		}
+		else if (feature == TraceFeature.Port) {
+			return store.getString(TPPreferenceConstants.P_TRACE_OPTION_PORT);
+		}
 		else if (feature == TraceFeature.State) {
 			return store.getString(TPPreferenceConstants.P_TRACE_OPTION_STATE);
+		}
+		else if (feature == TraceFeature.Transition) {
+			return store.getString(TPPreferenceConstants.P_TRACE_OPTION_TRANSITION);
 		}
 		else if (feature == TraceFeature.Operation) {
 			return store.getString(TPPreferenceConstants.P_TRACE_OPTION_OP);

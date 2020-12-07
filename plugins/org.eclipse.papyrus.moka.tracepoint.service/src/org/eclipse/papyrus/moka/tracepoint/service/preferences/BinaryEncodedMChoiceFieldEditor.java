@@ -117,7 +117,7 @@ public class BinaryEncodedMChoiceFieldEditor extends MultipleChoiceFieldEditor {
 	@Override
 	protected boolean isSelected(String fieldName, String valueToSet) {
 		try {
-			int value = new Integer(valueToSet);
+			int value = Integer.parseInt(valueToSet);
 			int index = 0;
 			for (String setting[] : labelsAndValues) {
 				// [0] = name, [1] = value [2] = checked

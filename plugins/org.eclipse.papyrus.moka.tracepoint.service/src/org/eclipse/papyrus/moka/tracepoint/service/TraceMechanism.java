@@ -15,6 +15,8 @@
  *****************************************************************************/
 package org.eclipse.papyrus.moka.tracepoint.service;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
@@ -34,7 +36,7 @@ public class TraceMechanism {
 
 	public static final String ITRACE_MECHANISM_ID = Activator.PLUGIN_ID + ".traceMechanism"; //$NON-NLS-1$
 
-	public static EList<ITraceMechanism> getTraceMechanisms()
+	public static List<ITraceMechanism> getTraceMechanisms()
 	{
 		EList<ITraceMechanism> mechanisms = new BasicEList<ITraceMechanism>();
 		IExtensionRegistry reg = Platform.getExtensionRegistry();
