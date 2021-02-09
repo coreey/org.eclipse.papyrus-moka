@@ -32,14 +32,14 @@ import org.eclipse.papyrus.infra.core.markers.MarkerConstants;
 import org.eclipse.papyrus.moka.tracepoint.service.Activator;
 import org.eclipse.papyrus.moka.tracepoint.service.ITraceMechanism;
 import org.eclipse.papyrus.moka.tracepoint.service.TPPreferenceConstants;
+import org.eclipse.papyrus.moka.tracepoint.service.TraceActions;
 import org.eclipse.papyrus.moka.tracepoint.service.TraceMechanism;
 import org.eclipse.papyrus.moka.tracepoint.service.TracepointConstants;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.State;
 
 /**
- * Action used for pasting either a model element or a shape (i.e. the model element represented
- * by the shape). Delegates to PasteShapeOrElementCommand
+ * Command used for setting a trace or breakpoint
  *
  * @author Ansgar Radermacher (CEA LIST)
  */
@@ -95,9 +95,34 @@ abstract public class AbstractTraceAndDebugCommand extends AbstractTransactional
 					marker = iresource.createMarker(TracepointConstants.tracepointMarker);
 					marker.setAttribute(MarkerConstants.uri, uri);
 					marker.setAttribute(TracepointConstants.isActive, true);
+
+					marker.setAttribute(TracepointConstants.isTracepoint, true);
+					// set default options from preferences
+					marker.setAttribute(TracepointConstants.traceAction, TraceActions.actionFromPreferences(selectedElement));
+					marker.setAttribute(TracepointConstants.traceMechanism, TraceMechanism.getDefaultMechanism(selectedElement));
+
+					// apply trace mechanism according to default in preferences
+					IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+					String id = null;
+					if (selectedElement instanceof Operation) {
+						id = store.getDefaultString(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_OP);
+					} else if (selectedElement instanceof Port) {
+						id = store.getDefaultString(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_PORT);
+					} else if (selectedElement instanceof State) {
+						id = store.getDefaultString(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_SM);
+					}
+					if (id != null) {
+						for (ITraceMechanism mechanism : TraceMechanism.getTraceMechanisms()) {
+							for (String providedID : mechanism.getTraceMechanismIDs(selectedElement)) {
+								if (id.equals(providedID)) {
+									mechanism.applyTraceMechanism(selectedElement, id, 0);
+								}
+							}
+						}
+					}
+
 					return marker;
-				}
-				else {
+				} else {
 					// marker exists => delete
 					marker.delete();
 				}
@@ -112,33 +137,8 @@ abstract public class AbstractTraceAndDebugCommand extends AbstractTransactional
 			if (iresource != null) {
 				IMarker marker = findMarker(TracepointConstants.tracepointMarker);
 				if (marker == null) { // marker does not exist => create
-					marker = iresource.createMarker(TracepointConstants.tracepointMarker);
-					marker.setAttribute(MarkerConstants.uri, uri);
-					marker.setAttribute(TracepointConstants.isActive, true);
-
-					// apply trace mechanism according to default in preferences
-					IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-					String id = null;
-					if (selectedElement instanceof Operation) {
-						id = store.getDefaultString(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_OP);
-					}
-					else if (selectedElement instanceof Port) {
-						id = store.getDefaultString(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_PORT);
-					}
-					else if (selectedElement instanceof State) {
-						id = store.getDefaultString(TPPreferenceConstants.P_TRACE_IMPLEMENTATION_SM);
-					}
-					if (id != null) {
-						for (ITraceMechanism mechanism : TraceMechanism.getTraceMechanisms()) {
-							for (String providedID : mechanism.getTraceMechanismIDs(selectedElement)) {
-								if (id.equals(providedID)) {
-									mechanism.applyTraceMechanism(selectedElement, id, 0);
-								}
-							}
-						}
-					}
-				}
-				else {
+					marker = toggleMarker();
+				} else {
 					// marker exists => change activation status
 					boolean isSet = marker.getAttribute(TracepointConstants.isActive, false);
 					marker.setAttribute(TracepointConstants.isActive, !isSet);

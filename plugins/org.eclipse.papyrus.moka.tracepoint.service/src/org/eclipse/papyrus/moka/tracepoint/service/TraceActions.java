@@ -45,7 +45,8 @@ public class TraceActions {
 		Destruction,
 		AllOperations,
 		AllPorts,
-		AllStates
+		AllStates,
+		AllTransitions
 		// +(?) all properties/all operations
 		// +(all ports?)
 		// +all state changes? (hierarchical propagation?)
@@ -57,8 +58,8 @@ public class TraceActions {
 	 * a trace event.
 	 */
 	public enum TAOperation {
-		OnlyCall,
-		ParameterValues, // here exclusive (parameter values and OnlyCall may not be selected at the same time)
+		ParameterValues,
+		MethodEnds,
 	};
 
 	/**

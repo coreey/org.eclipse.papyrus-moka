@@ -26,9 +26,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.papyrus.infra.core.Activator;
-import org.eclipse.papyrus.infra.core.services.ServiceException;
-import org.eclipse.papyrus.infra.ui.util.ServiceUtilsForHandlers;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -104,12 +101,9 @@ public abstract class AbstractTraceAndDebugCommandHandler extends MokaAbstractHa
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		try {
-			ServiceUtilsForHandlers util = ServiceUtilsForHandlers.getInstance();
-			util.getTransactionalEditingDomain(event).getCommandStack().execute(getCommand());
-		} catch (ServiceException e) {
-			Activator.log.error("Unexpected error while executing command.", e); //$NON-NLS-1$
-		}
+		// Trace & breakpoint commands do not modify the model, don't execute
+		// on stack
+		getCommand().execute();
 
 		return null;
 	}
