@@ -20,7 +20,6 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
-import org.eclipse.jface.preference.RadioGroupFieldEditor;
 import org.eclipse.papyrus.moka.tracepoint.service.Activator;
 import org.eclipse.papyrus.moka.tracepoint.service.ITraceMechanism;
 import org.eclipse.papyrus.moka.tracepoint.service.Messages;
@@ -84,21 +83,20 @@ public class TPPreferencePage
 		String[][] taPortOptions = TraceActions.getStringFields(TAOperation.values());
 		String[][] taTransitionOptions = TraceActions.getStringFields(TATransition.values());
 
-		String tst = getPreferenceStore().getString(TPPreferenceConstants.P_TRACE_OPTION_CLASS);
-		
-		addField(new BinaryEncodedMChoiceFieldEditor(TPPreferenceConstants.P_TRACE_OPTION_CLASS, Messages.TraceActionSelection_ClassOptions, 3, taClassOptions, getFieldEditorParent(), true));
+		addField(new BinaryEncodedMChoiceFieldEditor(TPPreferenceConstants.P_TRACE_OPTION_CLASS,
+				Messages.TraceActionSelection_ClassOptions, 3, taClassOptions, getFieldEditorParent(), true));
 
-		addField(new BinaryEncodedMChoiceFieldEditor(TPPreferenceConstants.P_TRACE_OPTION_STATE, Messages.TraceActionSelection_StateOptions, 3, taStateOptions, getFieldEditorParent(), true));
+		addField(new BinaryEncodedMChoiceFieldEditor(TPPreferenceConstants.P_TRACE_OPTION_STATE,
+				Messages.TraceActionSelection_StateOptions, 3, taStateOptions, getFieldEditorParent(), true));
 
-		addField(new RadioGroupFieldEditor(
-				TPPreferenceConstants.P_TRACE_OPTION_OP,
+		addField(new BinaryEncodedMChoiceFieldEditor(TPPreferenceConstants.P_TRACE_OPTION_OP,
 				Messages.TraceActionSelection_OperationOptions, 3, taOperationOptions, getFieldEditorParent(), true));
 
-		addField(new RadioGroupFieldEditor(
+		addField(new BinaryEncodedMChoiceFieldEditor(
 				TPPreferenceConstants.P_TRACE_OPTION_PORT,
 				Messages.TraceActionSelection_PortOptions, 3, taPortOptions, getFieldEditorParent(), true));
 
-		addField(new RadioGroupFieldEditor(
+		addField(new BinaryEncodedMChoiceFieldEditor(
 				TPPreferenceConstants.P_TRACE_OPTION_TRANSITION,
 				Messages.TraceActionSelection_TransitionOptions, 3, taTransitionOptions, getFieldEditorParent(), true));
 

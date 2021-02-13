@@ -40,7 +40,7 @@ public class TraceFunctions implements IDecorationSpecificFunctions {
 
 	public static final String activeTracepoint11 = "icons/etool16/trcp_11x12.gif"; //$NON-NLS-1$
 
-	public static final String inActiveTracepoint11 = "icons/etool16/trcp_11x12.gif"; //$NON-NLS-1$
+	public static final String inActiveTracepoint11 = "icons/etool16/trcpd_11x12.gif"; //$NON-NLS-1$
 
 	/**
 	 * Return the image descriptor associated with a trace or breakpoint marker

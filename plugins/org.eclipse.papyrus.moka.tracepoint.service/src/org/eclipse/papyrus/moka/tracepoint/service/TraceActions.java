@@ -76,11 +76,10 @@ public class TraceActions {
 	public enum TAState {
 		StateEnter, // add incoming transition to trace?
 		StateLeave, // add outgoing transition to trace?
-		Transition // nothing (?) (triggers are known? - no, could be one out of many triggers)
+		Transition // add incoming and outgoing transitions to trace
 	};
 
 	public enum TATransition {
-		OnlyTrigger,
 		TriggerValues,
 	};
 
