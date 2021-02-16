@@ -128,7 +128,6 @@ public class TraceActionSelection extends SelectionStatusDialog {
 		for (Object tableElement : fTraceImplementations.getCheckedElements()) {
 			traceMechanism = (String) tableElement;
 		}
-		;
 
 		Object[] result = new Object[] {
 				traceActionValue,

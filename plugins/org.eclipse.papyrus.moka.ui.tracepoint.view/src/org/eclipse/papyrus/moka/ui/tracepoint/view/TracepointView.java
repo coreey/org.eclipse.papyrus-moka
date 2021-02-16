@@ -388,6 +388,7 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 		manager.add(actionGoto);
 		manager.add(actionImport);
 		manager.add(actionExport);
+		manager.add(actionTraceSelect);
 		// Other plug-ins can contribute there actions here
 		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
@@ -529,7 +530,7 @@ public class TracepointView extends ViewPart implements ISelectionListener {
 						if (tad.getReturnCode() == IDialogConstants.OK_ID) {
 							Object[] result = tad.getResult();
 							if (result != null && result.length >= 2) {
-								Integer traceAction = (Integer) result[0];
+								String traceAction = (String) result[0];
 								String traceMechanism = (String) result[1];
 								try {
 									marker.setAttribute(TracepointConstants.traceAction, traceAction);
