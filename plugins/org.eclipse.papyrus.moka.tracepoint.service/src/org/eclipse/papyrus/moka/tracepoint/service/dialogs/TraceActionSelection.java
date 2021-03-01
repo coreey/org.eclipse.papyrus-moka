@@ -203,6 +203,11 @@ public class TraceActionSelection extends SelectionStatusDialog {
 		String[][] taOperationOptions = TraceActions.getStringFields(TAOperation.values());
 		String[][] taTransitionOptions = TraceActions.getStringFields(TATransition.values());
 		String actionString = m_marker.getAttribute(TracepointConstants.traceAction, ""); //$NON-NLS-1$
+		if (actionString.length() == 0) {
+			// after import, traceAction is recognized as integer - if not containing characters
+			int actionVal = m_marker.getAttribute(TracepointConstants.traceAction, 0);
+			actionString = String.valueOf(actionVal);
+		}
 		String mechanismID = m_marker.getAttribute(TracepointConstants.traceMechanism, ""); //$NON-NLS-1$
 
 		if (m_me instanceof State) {
