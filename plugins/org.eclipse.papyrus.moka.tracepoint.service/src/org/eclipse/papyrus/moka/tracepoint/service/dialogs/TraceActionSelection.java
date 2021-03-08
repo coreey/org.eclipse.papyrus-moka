@@ -110,7 +110,8 @@ public class TraceActionSelection extends SelectionStatusDialog {
 			traceActionValue = TraceActions.compositeClassOption(
 					classOptions.getIntResult(),
 					stateOptions.getIntResult(),
-					operationOptions.getIntResult());
+					operationOptions.getIntResult(),
+					transitionOptions.getIntResult());
 		}
 		else if (m_me instanceof State) {
 			traceActionValue = stateOptions.getResult();
@@ -218,9 +219,11 @@ public class TraceActionSelection extends SelectionStatusDialog {
 			classOptions = new BinaryEncodedMChoiceFieldEditor(Messages.TraceActionSelection_ClassOptions, 3, taClassOptions, contents, true);
 			stateOptions = new BinaryEncodedMChoiceFieldEditor(Messages.TraceActionSelection_StateOptions, 3, taStateOptions, contents, true);
 			operationOptions = new BinaryEncodedMChoiceFieldEditor(Messages.TraceActionSelection_OperationOptions, 3, taOperationOptions, contents, true);
+			transitionOptions = new BinaryEncodedMChoiceFieldEditor(Messages.TraceActionSelection_TransitionOptions, 3, taTransitionOptions, contents, true);
 			classOptions.setupViaString(TraceActions.getOptions(actionString, TraceFeature.Class));
 			stateOptions.setupViaString(TraceActions.getOptions(actionString, TraceFeature.State));
 			operationOptions.setupViaString(TraceActions.getOptions(actionString, TraceFeature.Operation));
+			transitionOptions.setupViaString(TraceActions.getOptions(actionString, TraceFeature.Transition));
 		}
 		else if (m_me instanceof Operation) {
 			operationOptions = new BinaryEncodedMChoiceFieldEditor(Messages.TraceActionSelection_OperationOptions, 3, taOperationOptions, contents, true);

@@ -71,8 +71,8 @@ public class TPPreferencePage
 				if (description == null) {
 					description = Messages.TraceActionSelection_NotAvail;
 				}
-				mechList[elements][1] = id;
-				mechList[elements][0] = description;
+				mechList[elements][0] = id;
+				mechList[elements][1] = description;
 				elements++;
 			}
 		}

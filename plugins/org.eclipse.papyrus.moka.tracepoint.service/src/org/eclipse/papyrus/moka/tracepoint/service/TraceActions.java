@@ -171,7 +171,8 @@ public class TraceActions {
 		if (feature == TraceFeature.Class) {
 			return compositeClassOption(store.getInt(TPPreferenceConstants.P_TRACE_OPTION_CLASS),
 					store.getInt(TPPreferenceConstants.P_TRACE_OPTION_STATE),
-					store.getInt(TPPreferenceConstants.P_TRACE_OPTION_OP));
+					store.getInt(TPPreferenceConstants.P_TRACE_OPTION_OP),
+					store.getInt(TPPreferenceConstants.P_TRACE_OPTION_TRANSITION));
 		}
 		else if (feature == TraceFeature.Port) {
 			return store.getString(TPPreferenceConstants.P_TRACE_OPTION_PORT);
@@ -188,11 +189,12 @@ public class TraceActions {
 		return ""; //$NON-NLS-1$
 	}
 
-	public static String compositeClassOption(int classOption, int stateOption, int operationOption) {
+	public static String compositeClassOption(int classOption, int stateOption, int operationOption, int transitionOption) {
 		return getStringPrefix(TraceFeature.Class) + classOption + "," + //$NON-NLS-1$
 				getStringPrefix(TraceFeature.State) + stateOption + "," + //$NON-NLS-1$
-				getStringPrefix(TraceFeature.Operation) + operationOption;
-	}
+				getStringPrefix(TraceFeature.Operation) + operationOption + "," + //$NON-NLS-1$;
+				getStringPrefix(TraceFeature.Transition) + transitionOption;
+ 	}
 
 	/**
 	 * Convenience function, return the action defined in the preferences in function of the model element
