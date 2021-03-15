@@ -39,11 +39,9 @@ public abstract class AbstractUMLExecutionEngine extends AbstractScheduledExecut
 
 	@Override
 	protected void init(EngineConfiguration<?> configuration, SubMonitor monitor) {
-
 		super.init(configuration, monitor);
 		locus = createLocus();
 		rootTaskFactory = createUMLTaskFactory();
-		controller = createController();
 		locus.getFactory().setTaskFactory(rootTaskFactory);
 		installBuiltInTypes();
 		installLibraries();
@@ -57,15 +55,6 @@ public abstract class AbstractUMLExecutionEngine extends AbstractScheduledExecut
 	 */
 	protected IUMLTaskExecutionFactory createUMLTaskFactory() {
 		return new UMLTaskExecutionFactory(controller.getExecutionLoop());
-	}
-
-	/**
-	 * @see {@link IDebuggableExecutionEngine#createController()}
-	 */
-	public IExecutionController createController() {
-		IExecutionController controller = new ExecutionController();
-		controller.setExecutionLoop(new ExecutionLoop());
-		return controller;
 	}
 
 	/**

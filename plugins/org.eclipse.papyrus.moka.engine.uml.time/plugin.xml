@@ -17,9 +17,6 @@
          <context
                engineID="org.eclipse.papyrus.moka.engine.uml.debug">
          </context>
-         <context
-               engineID="org.eclipse.papyrus.moka.engine.uml.time">
-         </context>
       </service>
    </extension>
 </plugin>
