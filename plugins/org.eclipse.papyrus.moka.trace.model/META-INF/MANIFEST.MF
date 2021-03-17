@@ -8,5 +8,5 @@ Bundle-ClassPath: .
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.papyrus.moka.trace.model.mokatraceservice
-Require-Bundle: org.eclipse.emf.ecore;bundle-version="[2.23.0,3.0.0)";visibility:=reexport
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="[2.20.0,3.0.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy

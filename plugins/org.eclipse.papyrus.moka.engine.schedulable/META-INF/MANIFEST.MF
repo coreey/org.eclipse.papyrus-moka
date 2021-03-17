@@ -6,7 +6,7 @@ Bundle-Version: 4.1.0.qualifier
 Automatic-Module-Name: org.eclipse.papyrus.moka.engine.schedulable
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",
- org.eclipse.emf.ecore;bundle-version="[2.23.0,3.0.0)",
+ org.eclipse.emf.ecore;bundle-version="[2.20.0,3.0.0)",
  org.eclipse.papyrus.moka.kernel.scheduling;bundle-version="[4.0.0,5.0.0]";visibility:=reexport,
  org.eclipse.papyrus.moka.kernel;bundle-version="[4.0.0,5.0.0]";visibility:=reexport
 Export-Package: org.eclipse.papyrus.moka.engine.schedulable
