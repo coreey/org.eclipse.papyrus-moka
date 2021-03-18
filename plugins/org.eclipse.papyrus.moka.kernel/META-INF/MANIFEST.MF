@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Require-Bundle: org.eclipse.debug.core;bundle-version="[3.15.0,4.0.0)";visibility:=reexport,
- org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.18.0,4.0.0)",
  org.eclipse.papyrus.moka.fuml.interfaces;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.paho.client.mqttv3;bundle-version="[1.2.0,2.0.0)";visibility:=reexport
 Export-Package: org.eclipse.papyrus.moka.kernel,
