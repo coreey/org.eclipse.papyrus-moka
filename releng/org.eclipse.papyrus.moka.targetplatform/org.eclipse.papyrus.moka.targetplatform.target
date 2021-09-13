@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Moka Target Platform" sequenceNumber="1605541058">
+<target name="Moka Target Platform" sequenceNumber="1631541882">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
@@ -10,7 +10,7 @@
       <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.json" version="0.0.0"/>
-      <repository id="eclipse" location="http://download.eclipse.org/releases/2020-12"/>
+      <repository id="eclipse" location="http://download.eclipse.org/releases/2021-06"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="0.0.0"/>
@@ -31,6 +31,10 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.paho.client.mqttv3" version="0.0.0"/>
       <repository id="paho" location="https://download.eclipse.org/paho/releases/1.2.0/Java"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.xwt.feature.feature.group" version="0.0.0"/>
+      <repository id="xwt" location="https://download.eclipse.org/xwt/milestones-1.7.0/1.7.0-S/"/>
     </location>
   </locations>
 </target>
