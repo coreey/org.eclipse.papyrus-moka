@@ -11,7 +11,7 @@
  * Contributors:
  *  CEA LIST Initial API and implementation
  *****************************************************************************/
-package org.eclipse.papyrus.moka.pscs;
+package org.eclipse.papyrus.moka.pscs.interfaces;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
