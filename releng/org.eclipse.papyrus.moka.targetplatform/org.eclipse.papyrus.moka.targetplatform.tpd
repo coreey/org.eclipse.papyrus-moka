@@ -1,6 +1,6 @@
 target "Moka Target Platform" with source requirements
 
-location "http://download.eclipse.org/releases/2021-06" eclipse {
+location "http://download.eclipse.org/releases/2021-09" eclipse {
 	org.eclipse.platform.feature.group lazy
  	org.eclipse.rcp.feature.group lazy
  	org.eclipse.jdt.feature.group lazy

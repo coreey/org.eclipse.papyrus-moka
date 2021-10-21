@@ -68,7 +68,7 @@
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.9.0" match="compatible"/>
       <import plugin="org.eclipse.papyrus.editor" version="3.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.common.ui" version="2.18.0" match="compatible"/>
-      <import plugin="org.eclipse.papyrus.uml.diagram.common" version="4.0.0" match="compatible"/>
+      <import plugin="org.eclipse.papyrus.uml.diagram.common" version="5.0.0" match="compatible"/>
       <import plugin="org.eclipse.papyrus.infra.services.validation" version="4.0.0" match="compatible"/>
       <import plugin="org.eclipse.papyrus.moka.ui.tracepoint.view" version="4.0.0" match="compatible"/>
       <import plugin="org.eclipse.papyrus.moka.trace.interfaces" version="4.0.0" match="compatible"/>
