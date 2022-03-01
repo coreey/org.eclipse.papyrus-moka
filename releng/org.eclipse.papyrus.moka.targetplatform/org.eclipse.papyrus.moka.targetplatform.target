@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Moka Target Platform" sequenceNumber="1634806128">
+<target name="Moka Target Platform" sequenceNumber="1647277313">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
@@ -10,7 +10,18 @@
       <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.json" version="0.0.0"/>
-      <repository id="eclipse" location="http://download.eclipse.org/releases/2021-09"/>
+      <repository id="eclipse" location="http://download.eclipse.org/releases/2021-12"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.apache.batik.anim" version="1.14.0.v20210324-0332"/>
+      <unit id="org.apache.batik.dom" version="1.14.0.v20210324-0332"/>
+      <unit id="org.apache.batik.dom.svg" version="1.14.0.v20210324-0332"/>
+      <unit id="org.apache.batik.xml" version="1.14.0.v20210324-0332"/>
+      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20211213173813/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
+      <repository id="gmfRuntime" location="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202202190902"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="0.0.0"/>
@@ -19,9 +30,8 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.aspectj.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.ajdt.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.equinox.weaving.sdk.feature.group" version="0.0.0"/>
-      <repository id="aspectj" location="http://download.eclipse.org/tools/ajdt/410/dev/update/"/>
+      <repository id="aspectj" location="https://download.eclipse.org/tools/ajdt/421/dev/update/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.nebula.widgets.xviewer.feature.feature.group" version="0.0.0"/>
