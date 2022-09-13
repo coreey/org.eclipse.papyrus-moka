@@ -30,7 +30,7 @@ public class DEScheduler {
 	protected List<CallbackAction> preRunActions = new ArrayList<CallbackAction>() ;
 	protected List<CallbackAction> preStepActions = new ArrayList<CallbackAction>() ;
 	protected List<CallbackAction> postStepActions = new ArrayList<CallbackAction>() ;
-	protected static DEScheduler instance ;
+	protected static ThreadLocal<DEScheduler> instance = new ThreadLocal<>();
 	protected AbstractPushPullStrategy pushPullStrategy ;
 	
 	public static void init(double stopTime) {
@@ -44,13 +44,14 @@ public class DEScheduler {
 	}
 	
 	public static void init(double stopTime, double startTime, AbstractPushPullStrategy pushPullStrategy) {
-		instance = new DEScheduler() ;
-		instance.stopTime = stopTime ;
-		instance.currentTime =startTime;
-		instance.started = false ;
-		instance.finished = false ;
-		instance.pushPullStrategy = pushPullStrategy ;
-		instance.pushPullStrategy.setScheduler(instance);
+		DEScheduler scheduler=  new DEScheduler() ;
+		instance.set(scheduler);
+		scheduler.stopTime = stopTime ;
+		scheduler.currentTime =startTime;
+		scheduler.started = false ;
+		scheduler.finished = false ;
+		scheduler.pushPullStrategy = pushPullStrategy ;
+		scheduler.pushPullStrategy.setScheduler(scheduler);
 		
 	}
 	
@@ -59,7 +60,7 @@ public class DEScheduler {
 	}
 	
 	public static DEScheduler getInstance() {
-		return instance ;
+		return instance.get() ;
 	}
 	
 	public void run() {
@@ -109,7 +110,7 @@ public class DEScheduler {
 	}
 	
 	public void pushEvent(Event event, double absoluteDate) {
-		if(this.currentTime < absoluteDate) {
+		if(this.currentTime <= absoluteDate) {
 			this.pushPullStrategy.pushEvent(event, absoluteDate);
 		}
 	}
