@@ -1,6 +1,6 @@
 target "Moka Target Platform" with source requirements
 
-location "http://download.eclipse.org/releases/2021-12" eclipse {
+location "http://download.eclipse.org/releases/2022-12" eclipse {
 	org.eclipse.platform.feature.group lazy
 	org.eclipse.rcp.feature.group lazy
 	org.eclipse.jdt.feature.group lazy
@@ -9,23 +9,23 @@ location "http://download.eclipse.org/releases/2021-12" eclipse {
 	org.eclipse.json lazy
 }
 
-location "https://download.eclipse.org/tools/orbit/downloads/drops/R20211213173813/repository/" orbit {
-	org.apache.batik.anim [1.14.0,1.15.0)
-	org.apache.batik.dom [1.14.0,1.15.0)
-	org.apache.batik.dom.svg [1.14.0,1.15.0)
-	org.apache.batik.xml [1.14.0,1.15.0)
+location "https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository/" orbit {
+	org.apache.batik.anim [1.16.0,1.17.0)
+	org.apache.batik.dom [1.16.0,1.17.0)
+	org.apache.batik.dom.svg [1.16.0,1.17.0)
+	org.apache.batik.xml [1.16.0,1.17.0)
 }
 
-location "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202202190902" gmfRuntime {
+location "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202211041032/" gmfRuntime {
 	org.eclipse.gmf.runtime.sdk.feature.group lazy
 }
 
-location "https://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/master/" papyrus {
+location "https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2022-12/" papyrus {
 	org.eclipse.papyrus.sdk.feature.feature.group lazy
 	org.eclipse.papyrus.junit.feature.feature.group lazy
 }
 
-location "https://download.eclipse.org/tools/ajdt/421/dev/update/" aspectj {
+location "https://download.eclipse.org/tools/ajdt/423/dev/update/" aspectj {
 	org.aspectj.feature.group lazy
 	org.eclipse.equinox.weaving.sdk.feature.group lazy
 }
@@ -37,8 +37,4 @@ location "http://download.eclipse.org/nebula/releases/2.0.1" nebula {
 
 location "https://download.eclipse.org/paho/releases/1.2.0/Java" paho {
 	org.eclipse.paho.client.mqttv3 lazy
-}
-
-location xwt "https://download.eclipse.org/xwt/milestones-1.7.0/1.7.0-S/" {
-	org.eclipse.xwt.feature.feature.group lazy
 }
