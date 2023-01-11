@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature id="org.eclipse.papyrus.moka.feature">
-      <category name="org.eclipse.papyrus.moka"/>
+   <feature url="features/org.eclipse.papyrus.moka.feature_4.1.0.qualifier.jar" id="org.eclipse.papyrus.moka.feature" version="4.1.0.qualifier">
+      <category name="org.eclipse.papyrus.moka.category"/>
    </feature>
-   <category-def name="org.eclipse.papyrus.moka" label="Moka">
+   <feature url="features/org.eclipse.papyrus.moka.feature.source_4.1.0.qualifier.jar" id="org.eclipse.papyrus.moka.feature.source" version="4.1.0.qualifier">
+      <category name="org.eclipse.papyrus.moka.category"/>
+   </feature>
+   <category-def name="org.eclipse.papyrus.moka.category" label="Moka">
       <description>
          Papyrus Model Execution Tool
       </description>

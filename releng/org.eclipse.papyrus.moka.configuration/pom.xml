@@ -13,8 +13,8 @@
 	<inceptionYear>2012</inceptionYear>
 
 	<properties>
-		<tycho.version>1.7.0</tycho.version>
-		<tycho.extras.version>1.7.0</tycho.extras.version>
+		<tycho.version>2.2.0</tycho.version>
+		<tycho.extras.version>2.2.0</tycho.extras.version>
 		<xtend.version>2.21.0</xtend.version>
 		<maven.resources.version>3.1.0</maven.resources.version>
 		<maven.clean.version>3.1.0</maven.clean.version>
@@ -149,6 +149,44 @@
 							<version>${project.version}</version>
 						</artifact>
 					</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<!-- enable source bundle generation -->
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>feature-source</id>
+						<goals>
+							<goal>feature-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>attach-p2-metadata</id>
+						<phase>package</phase>
+						<goals>
+							<goal>p2-metadata</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<defaultP2Metadata>false</defaultP2Metadata>
 				</configuration>
 			</plugin>
 		</plugins>
