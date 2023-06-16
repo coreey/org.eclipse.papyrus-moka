@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2019 CEA LIST.
+ * Copyright (c) 2019, 2023 CEA LIST.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -10,6 +10,8 @@
  *
  * Contributors:
  *  CEA LIST Initial API and implementation
+ *  Pauline DEVILLE (CEA LIST) pauline.deville@cea.fr - Bug 582072
+ *  
  *****************************************************************************/
 
 package org.eclipse.papyrus.moka.launch;
@@ -27,28 +29,30 @@ import org.eclipse.papyrus.moka.kernel.engine.IExecutionEngine;
 
 public class ExecutionEngineLaunchConfigurationReader implements IExecutionEngineLaunchConfigurationReader {
 
+	private static final String DEFAULT_VALUE_STRING = ""; //$NON-NLS-1$
+
 	// Configuration attribute referencing the URI of the model
-	public static String MODEL_URI_ATTRIBUTE_NAME = "URI_ATTRIBUTE";
+	public static String MODEL_URI_ATTRIBUTE_NAME = "URI_ATTRIBUTE"; //$NON-NLS-1$
 
 	// Configuration attribute referencing the URI of the model element
 	// that will be the source of the execution
-	public static String MODEL_ELEMENT_URI_ATTRIBUTE_NAME = "FRAGMENT_ATTRIBUTE";
+	public static String MODEL_ELEMENT_URI_ATTRIBUTE_NAME = "FRAGMENT_ATTRIBUTE"; //$NON-NLS-1$
 
 	// Configuration attribute referencing the engine to be used to
 	// perform the execution
-	public final static String EXECUTION_ENGINE_ATTRIBUTE_NAME = "EXECUTION_ENGINE_ATTRIBUTE";
+	public final static String EXECUTION_ENGINE_ATTRIBUTE_NAME = "EXECUTION_ENGINE_ATTRIBUTE"; //$NON-NLS-1$
 
 	// The constant for trace file path of the run configuration argument
-	public static final String MOKA_TRACE_FILE_PATH = "MOKA_TRACE_FILE_PATH";
+	public static final String MOKA_TRACE_FILE_PATH = "MOKA_TRACE_FILE_PATH"; //$NON-NLS-1$
 	
 	// The constant for trace formater of the run configuration argument
-	public static final String MOKA_TRACE_FORMATER = "MOKA_TRACE_FORMATER";
+	public static final String MOKA_TRACE_FORMATER = "MOKA_TRACE_FORMATER"; //$NON-NLS-1$
 	
 	// The constant to define in the configuration if the trace service is activate */
-	public static final String MOKA_TRACE_SERVICE_ACTIVATE = "MOKA_TRACE_SERVICE_ACTIVATE";
+	public static final String MOKA_TRACE_SERVICE_ACTIVATE = "MOKA_TRACE_SERVICE_ACTIVATE"; //$NON-NLS-1$
 	
 	// The constant to define in the configuration if the tracepoint mode should be is activate */
-	public static final String MOKA_TRACE_TRACEPOINT_MODE = "MOKA_TRACE_TRACEPOINT_MODE";
+	public static final String MOKA_TRACE_TRACEPOINT_MODE = "MOKA_TRACE_TRACEPOINT_MODE"; //$NON-NLS-1$
 	
 	// The configuration from which information are extracted
 	protected ILaunchConfiguration configuration;
@@ -86,7 +90,10 @@ public class ExecutionEngineLaunchConfigurationReader implements IExecutionEngin
 		URI uri = null;
 		URI modelURI = getModelURI();
 		if (modelURI != null && !modelURI.isEmpty()) {
-			uri = URI.createURI(modelURI.toString().replaceFirst(".uml", ".di"));
+			if ("uml".equals(modelURI.fileExtension())) { //$NON-NLS-1$
+				uri = modelURI.trimFileExtension();
+				uri = uri.appendFileExtension("di"); //$NON-NLS-1$
+			}
 		}
 		return uri;
 	}
@@ -96,7 +103,7 @@ public class ExecutionEngineLaunchConfigurationReader implements IExecutionEngin
 		URI uri = null;
 		if (configuration != null) {
 			try {
-				uri = URI.createURI(configuration.getAttribute(MODEL_URI_ATTRIBUTE_NAME, ""));
+				uri = URI.createURI(configuration.getAttribute(MODEL_URI_ATTRIBUTE_NAME, DEFAULT_VALUE_STRING));
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
@@ -109,7 +116,7 @@ public class ExecutionEngineLaunchConfigurationReader implements IExecutionEngin
 		URI uri = null;
 		if (configuration != null) {
 			try {
-				uri = URI.createURI(configuration.getAttribute(MODEL_ELEMENT_URI_ATTRIBUTE_NAME, ""));
+				uri = URI.createURI(configuration.getAttribute(MODEL_ELEMENT_URI_ATTRIBUTE_NAME, DEFAULT_VALUE_STRING));
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
@@ -122,7 +129,7 @@ public class ExecutionEngineLaunchConfigurationReader implements IExecutionEngin
 		String engineID = null;
 		if (configuration != null) {
 			try {
-				engineID = configuration.getAttribute(EXECUTION_ENGINE_ATTRIBUTE_NAME, "");
+				engineID = configuration.getAttribute(EXECUTION_ENGINE_ATTRIBUTE_NAME, DEFAULT_VALUE_STRING);
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
@@ -135,7 +142,7 @@ public class ExecutionEngineLaunchConfigurationReader implements IExecutionEngin
 		String traceFile = null;
 		if (configuration != null) {
 			try {
-				traceFile = configuration.getAttribute(MOKA_TRACE_FILE_PATH, "");
+				traceFile = configuration.getAttribute(MOKA_TRACE_FILE_PATH, DEFAULT_VALUE_STRING);
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
@@ -148,7 +155,7 @@ public class ExecutionEngineLaunchConfigurationReader implements IExecutionEngin
 		String traceFormatterID = null;
 		if (configuration != null) {
 			try {
-				traceFormatterID = configuration.getAttribute(MOKA_TRACE_FORMATER, "");
+				traceFormatterID = configuration.getAttribute(MOKA_TRACE_FORMATER, DEFAULT_VALUE_STRING);
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
